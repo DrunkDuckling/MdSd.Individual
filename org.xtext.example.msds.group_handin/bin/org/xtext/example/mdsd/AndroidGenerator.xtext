@@ -1,0 +1,132 @@
+grammar org.xtext.example.mdsd.AndroidGenerator with org.eclipse.xtext.common.Terminals
+ 
+generate androidGenerator "http://www.xtext.org/example/mdsd/AndroidGenerator"
+ 
+AndroidAppProject:
+    (applications += Application) (',' applications += Application)*
+;
+ 
+terminal PACKAGE_NAME:
+    '"' ( ID ('.' ID)* ) '"'
+;
+ 
+Application:
+    'Application' name=ID attributes += ApplicationAttribute*
+;
+ 
+ApplicationAttribute:
+        (ApplicationVersion)		|
+        ApplicationPermissionList   |
+        ApplicationElementList      |
+        ApplicationMainActivity
+;
+
+ApplicationVersion:
+	{ApplicationVersion} 'Android-SDK' ':' result=Number (targetsdk=TargetSDK)?
+;
+
+TargetSDK:
+	{TargetSDK} 'Target-SDK' ':' result=Number (minsdk=MinSDK)?
+;
+
+MinSDK:
+	{MinSDK} 'Minimum-SDK' ':' result=Number
+;
+ 
+ 
+ApplicationPermissionList:
+    'permissions' permissions+=Permission (',' permissions += Permission)*
+;
+ 
+Permission:
+    name = PACKAGE_NAME // android permissions are in packagename fortmat (e.g. "android.permission.INTERNET")
+;
+ 
+ApplicationElementList:
+    {ApplicationElementList} 'elements' elements += ApplicationElement*
+;
+ 
+ApplicationMainActivity:
+    'main-activity' launcherActivity = [Activity] // referenced by the magical "name" of an Activity
+;
+ 
+ 
+ApplicationElement:
+    Activity | Fragment | Model
+;
+ 
+Model:
+    {Model}'Model'  (':' activityType=ActivityType)? name=ID modellist = ModelList? //*
+;
+ 
+ModelList:
+    type += Type ':' getset+=GetSet (',' type += Type ':' getset+=GetSet)*
+;
+ 
+GetSet:
+    {GetSet} name = ID
+;
+ 
+Type:
+    {Type} name = ID
+;
+ 
+Fragment:
+	'Fragment'  (':' activityType=ActivityType)? name=ID (activityAttributes+=ActivityLayoutAttributes)?
+;
+
+
+Activity:
+	{Activity} 'Activity'  (':' activityType=ActivityType name=ID activityTypeAttributes=ActivityTypeAttributes (activityAttributes+=ActivityLayoutAttributes)*)? | 
+	{Activity} 'Activity' name=ID activityAttributes+=ActivityLayoutAttributes*
+;
+ 
+ActivityTypeAttributes:
+    filter=FilterQuery
+;
+ 
+ActivityType:
+    {TypeMap} 'Maps'
+;
+ 
+
+ActivityLayoutAttributes:
+	layoutElements += LayoutElement (',' layoutElements += LayoutElement)*
+;
+
+LayoutElement:
+	Button | TextView
+;
+
+ 
+TextView:
+    {TextView}'TextView' name=ID
+;
+ 
+Button:
+    {Button} 'Button' name=ID
+;
+ 
+FilterQuery:
+    {FilterQuery} 'FilterQuery' name=ID filterAttributes=FilterAttributes
+;
+ 
+FilterAttributes:
+    distance=Distance
+;
+ 
+Distance:
+    'Distance' ':' unit=Unit operator=Operator results=Number
+;
+ 
+Number:
+    value=INT
+;
+ 
+Operator:
+    {Less} '>' | {More} '<' | {Equal} '='
+;
+ 
+Unit:
+    {Meters} 'm' | {Imperial} 'f'
+;

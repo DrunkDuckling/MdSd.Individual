@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.example.msds.group_handin
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.example.msds.group_handin
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.example.msds.group_handin; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.xtext.example.mdsd.androidGenerator,
+ org.xtext.example.mdsd.androidGenerator.impl,
+ org.xtext.example.mdsd.androidGenerator.util,
+ org.xtext.example.mdsd.services,
+ org.xtext.example.mdsd.parser.antlr.internal,
+ org.xtext.example.mdsd.generator,
+ org.xtext.example.mdsd.parser.antlr,
+ org.xtext.example.mdsd,
+ org.xtext.example.mdsd.serializer,
+ org.xtext.example.mdsd.scoping,
+ org.xtext.example.mdsd.validation
+Import-Package: org.apache.log4j
