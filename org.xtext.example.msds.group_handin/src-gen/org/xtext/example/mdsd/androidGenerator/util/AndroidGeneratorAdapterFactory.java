@@ -44,6 +44,7 @@ import org.xtext.example.mdsd.androidGenerator.TargetSDK;
 import org.xtext.example.mdsd.androidGenerator.TextView;
 import org.xtext.example.mdsd.androidGenerator.Type;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
+import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.androidGenerator.Unit;
 
 /**
@@ -258,6 +259,11 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
       public Adapter caseTypeMap(TypeMap object)
       {
         return createTypeMapAdapter();
+      }
+      @Override
+      public Adapter caseTypeSetting(TypeSetting object)
+      {
+        return createTypeSettingAdapter();
       }
       @Override
       public Adapter caseLess(Less object)
@@ -752,6 +758,21 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTypeMapAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.TypeSetting <em>Type Setting</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mdsd.androidGenerator.TypeSetting
+   * @generated
+   */
+  public Adapter createTypeSettingAdapter()
   {
     return null;
   }

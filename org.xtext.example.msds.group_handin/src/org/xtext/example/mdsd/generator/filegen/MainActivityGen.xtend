@@ -9,7 +9,8 @@ import org.xtext.example.mdsd.androidGenerator.ApplicationElementList
 import org.xtext.example.mdsd.androidGenerator.TypeMap
 import org.xtext.example.mdsd.generator.abstractfiles.AbstractGen
 import java.util.ArrayList
- 
+import org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity
+
 class MainActivityGen extends AbstractGen {
     ArrayList<ArrayList<Object>> activityArrayList = newArrayList();
    
@@ -18,13 +19,9 @@ class MainActivityGen extends AbstractGen {
             var projectName = getProjectName(applications, app);
            
             constructActivityArray(app);
-           
-            filesystem.generateFile(String.format("%s/src/main/java/" + app.name + "/activity/" + app.name + ".java", projectName),
+           	
+        	filesystem.generateFile(String.format("%s/src/main/java/" + app.name + "/activity/" + app.name + ".java", projectName),
                 retrieveMainActivity(app)
-            );
-           
-            filesystem.generateFile(String.format("%s/src/main/java/" + app.name + "/activity/ViewPagerAdapter.java", projectName),
-                retrieveViewPagerAdapter(app)
             );
            
             filesystem.generateFile(String.format("%s/src/main/res/layout/" + app.name.toLowerCase + ".xml", projectName),
@@ -49,7 +46,7 @@ class MainActivityGen extends AbstractGen {
        
             «FOR activity : activityArrayList»
             <item
-                android:id="@+id/"«activity.get(0)»"
+                android:id="@+id/Nav_«activity.get(0)»"
                 android:icon="@drawable/ic_«activity.get(3)»"
                 android:title="«activity.get(0)»"/>
             «ENDFOR»
@@ -75,92 +72,92 @@ class MainActivityGen extends AbstractGen {
         '''
     }
    
- 
-    def retrieveViewPagerAdapter(Application application) {
-        return '''
-        package «application.name»;
-       
-        import androidx.fragment.app.Fragment;
-        import androidx.fragment.app.FragmentManager;
-        import androidx.fragment.app.FragmentStatePagerAdapter;
-       
-        public class ViewPagerAdapter extends FragmentStatePagerAdapter {
-       
-            public ViewPagerAdapter(FragmentManager fm) {
-                super(fm);
-            }
-       
-            @Override
-            public Fragment getItem(int position) {
-                switch (position) {
-                    «FOR activity : activityArrayList»
-                    case «activity.get(1)»:
-                        return new «activity.get(2)»();
-                    «ENDFOR»
-                }
-                return null;
-            }
-       
-            @Override
-            public int getCount() {
-                return «activityArrayList.size()»;
-            }
-        }
-        '''
-    }
-   
     def String retrieveMainActivity(Application application) {
         return '''
         package «application.name»;
-       
-        import android.content.Context;
-        import android.location.LocationManager;
+        
+        import android.content.pm.PackageManager;
         import android.os.Bundle;
         import android.view.MenuItem;
-       
+        
         import androidx.annotation.NonNull;
-        import androidx.appcompat.app.AppCompatActivity;
+        import androidx.core.app.ActivityCompat;
+        import androidx.core.content.ContextCompat;
         import androidx.fragment.app.Fragment;
-        import androidx.fragment.app.FragmentTransaction;
-        import androidx.viewpager.widget.ViewPager;
+        import androidx.fragment.app.FragmentActivity;
+        
+        import com.example.mdsdproject.fragments.MapsFragment;
+        import com.example.mdsdproject.fragments.SettingsFragment;
         import com.google.android.material.bottomnavigation.BottomNavigationView;
         
+        import java.util.ArrayList;
+        import java.util.List;
         
-        public class «application.name» extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
         
-            private BottomNavigationView mBottomNavigation;
-            private ViewPager viewPager;
-            private ViewPagerAdapter mViewPagerAdapter;
-       
+        public class «application.name» extends FragmentActivity {
+        	
+        	public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
+        	
             @Override
             protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_main);
-       
-                mBottomNavigation = findViewById(R.id.buttom_navigation);
-                mBottomNavigation.setOnNavigationItemSelectedListener(this);
-       
-                viewPager = findViewById(R.id.view_pager);
-                mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-                viewPager.setAdapter(mViewPagerAdapter);
-       
-                // Permission Check
-                if (!Permissions.Check_FINE_LOCATION(this)) {
-                    Permissions.Request_FINE_LOCATION(this, 1234);
-                }
+        
+                BottomNavigationView navigationView = findViewById(R.id.buttom_navigation);
+                navigationView.setOnNavigationItemSelectedListener(navItemSelectedListener);
+                // Checks if any permissions are in use
+                checkAndRequestPermissions();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_frame_layout,
+                        new SettingsFragment()).commit();
             }
-       
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    «FOR activity : activityArrayList»
-                    case R.id.«activity.get(0)»:
-                        viewPager.setCurrentItem(«activity.get(1)»);
-                        break;
-                    «ENDFOR»
-                }
-                return true;
-            }'''
+            
+            private BottomNavigationView.OnNavigationItemSelectedListener navItemSelectedListener =
+                    new BottomNavigationView.OnNavigationItemSelectedListener() {
+                        @Override
+                        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                            Fragment selectedFragment = null;
+                            switch (item.getItemId()) {
+                            	«FOR activity : activityArrayList»
+                            	case R.id.Nav_«activity.get(0)»:
+                            	     selectedFragment = new «activity.get(0)»();
+                            	     break;
+                            	«ENDFOR»
+                            }
+                            getSupportFragmentManager().beginTransaction().replace(R.id.container_frame_layout,
+                                    selectedFragment).commit();
+                            return true;
+                        }
+                    };
+                    
+                    
+             private  boolean checkAndRequestPermissions() {
+                 int camera = ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA);
+                 int storage = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                 int loc = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+                 int loc2 = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION);
+                 List<String> listPermissionsNeeded = new ArrayList<>();
+         
+                 if (camera != PackageManager.PERMISSION_GRANTED) {
+                     listPermissionsNeeded.add(android.Manifest.permission.CAMERA);
+                 }
+                 if (storage != PackageManager.PERMISSION_GRANTED) {
+                     listPermissionsNeeded.add(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                 }
+                 if (loc2 != PackageManager.PERMISSION_GRANTED) {
+                     listPermissionsNeeded.add(android.Manifest.permission.ACCESS_FINE_LOCATION);
+                 }
+                 if (loc != PackageManager.PERMISSION_GRANTED) {
+                     listPermissionsNeeded.add(android.Manifest.permission.ACCESS_COARSE_LOCATION);
+                 }
+                 if (!listPermissionsNeeded.isEmpty())
+                 {
+                     ActivityCompat.requestPermissions(this,listPermissionsNeeded.toArray
+                             (new String[listPermissionsNeeded.size()]),REQUEST_ID_MULTIPLE_PERMISSIONS);
+                     return false;
+                 }
+                 return true;
+             }
+                    '''
     }
    
     def String retrieveMainXML(Application application) {
@@ -172,17 +169,13 @@ class MainActivityGen extends AbstractGen {
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".«application.name»">
-       
+            
             <FrameLayout
                 android:id="@+id/container_frame_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-       
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/view_pager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-       
+                android:layout_height="match_parent"
+                android:layout_above="@+id/buttom_navigation"/>
+                
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/buttom_navigation"
                 android:layout_width="match_parent"

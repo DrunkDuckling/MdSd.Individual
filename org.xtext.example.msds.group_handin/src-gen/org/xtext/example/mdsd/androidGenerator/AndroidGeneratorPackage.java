@@ -988,6 +988,25 @@ public interface AndroidGeneratorPackage extends EPackage
   int TYPE_MAP_FEATURE_COUNT = ACTIVITY_TYPE_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl <em>Type Setting</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTypeSetting()
+   * @generated
+   */
+  int TYPE_SETTING = 30;
+
+  /**
+   * The number of structural features of the '<em>Type Setting</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_SETTING_FEATURE_COUNT = ACTIVITY_TYPE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.LessImpl <em>Less</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -995,7 +1014,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getLess()
    * @generated
    */
-  int LESS = 30;
+  int LESS = 31;
 
   /**
    * The number of structural features of the '<em>Less</em>' class.
@@ -1014,7 +1033,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getMore()
    * @generated
    */
-  int MORE = 31;
+  int MORE = 32;
 
   /**
    * The number of structural features of the '<em>More</em>' class.
@@ -1033,7 +1052,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getEqual()
    * @generated
    */
-  int EQUAL = 32;
+  int EQUAL = 33;
 
   /**
    * The number of structural features of the '<em>Equal</em>' class.
@@ -1052,7 +1071,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getMeters()
    * @generated
    */
-  int METERS = 33;
+  int METERS = 34;
 
   /**
    * The number of structural features of the '<em>Meters</em>' class.
@@ -1071,7 +1090,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getImperial()
    * @generated
    */
-  int IMPERIAL = 34;
+  int IMPERIAL = 35;
 
   /**
    * The number of structural features of the '<em>Imperial</em>' class.
@@ -1736,6 +1755,16 @@ public interface AndroidGeneratorPackage extends EPackage
   EClass getTypeMap();
 
   /**
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.TypeSetting <em>Type Setting</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Type Setting</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.TypeSetting
+   * @generated
+   */
+  EClass getTypeSetting();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Less <em>Less</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2363,6 +2392,16 @@ public interface AndroidGeneratorPackage extends EPackage
      * @generated
      */
     EClass TYPE_MAP = eINSTANCE.getTypeMap();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl <em>Type Setting</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTypeSetting()
+     * @generated
+     */
+    EClass TYPE_SETTING = eINSTANCE.getTypeSetting();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.LessImpl <em>Less</em>}' class.

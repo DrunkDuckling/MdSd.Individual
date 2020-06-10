@@ -46,6 +46,7 @@ import org.xtext.example.mdsd.androidGenerator.TargetSDK;
 import org.xtext.example.mdsd.androidGenerator.TextView;
 import org.xtext.example.mdsd.androidGenerator.Type;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
+import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.androidGenerator.Unit;
 
 /**
@@ -130,6 +131,7 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
       case AndroidGeneratorPackage.OPERATOR: return createOperator();
       case AndroidGeneratorPackage.UNIT: return createUnit();
       case AndroidGeneratorPackage.TYPE_MAP: return createTypeMap();
+      case AndroidGeneratorPackage.TYPE_SETTING: return createTypeSetting();
       case AndroidGeneratorPackage.LESS: return createLess();
       case AndroidGeneratorPackage.MORE: return createMore();
       case AndroidGeneratorPackage.EQUAL: return createEqual();
@@ -498,6 +500,18 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
   {
     TypeMapImpl typeMap = new TypeMapImpl();
     return typeMap;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeSetting createTypeSetting()
+  {
+    TypeSettingImpl typeSetting = new TypeSettingImpl();
+    return typeSetting;
   }
 
   /**

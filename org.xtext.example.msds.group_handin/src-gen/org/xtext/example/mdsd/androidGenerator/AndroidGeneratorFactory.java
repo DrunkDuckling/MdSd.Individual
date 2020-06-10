@@ -294,6 +294,15 @@ public interface AndroidGeneratorFactory extends EFactory
   TypeMap createTypeMap();
 
   /**
+   * Returns a new object of class '<em>Type Setting</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type Setting</em>'.
+   * @generated
+   */
+  TypeSetting createTypeSetting();
+
+  /**
    * Returns a new object of class '<em>Less</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -18,6 +18,7 @@ import org.xtext.example.mdsd.generator.filegen.GradleGen
 import org.xtext.example.mdsd.generator.filegen.ManifestGen
 import org.xtext.example.mdsd.generator.filegen.LayoutGen
 import org.xtext.example.mdsd.generator.filegen.MainActivityGen
+import org.xtext.example.mdsd.generator.filegen.FragmentGen
 
 /**
  * Generates code from your model files on save.
@@ -47,6 +48,8 @@ class AndroidGeneratorGenerator extends AbstractGenerator {
 		generators.add(new LayoutGen());
 		logger.info("Generating Gradle build..");
 		generators.add(new GradleGen());
+		logger.info("Generating Fragments..");
+		generators.add(new FragmentGen());
 		
 		logger.info(String.format("added %d DSL sub-generators", generators.size()));
 	}

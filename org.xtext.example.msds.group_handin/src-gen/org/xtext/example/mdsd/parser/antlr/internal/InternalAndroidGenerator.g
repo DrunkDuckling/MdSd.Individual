@@ -971,21 +971,28 @@ ruleFragment returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Fragment'
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getFragmentAccess().getFragmentAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='Fragment'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getFragmentAccess().getFragmentKeyword_0());
+			newLeafNode(otherlv_1, grammarAccess.getFragmentAccess().getFragmentKeyword_1());
 		}
 		(
-			otherlv_1=':'
+			otherlv_2=':'
 			{
-				newLeafNode(otherlv_1, grammarAccess.getFragmentAccess().getColonKeyword_1_0());
+				newLeafNode(otherlv_2, grammarAccess.getFragmentAccess().getColonKeyword_2_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getFragmentAccess().getActivityTypeActivityTypeParserRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getFragmentAccess().getActivityTypeActivityTypeParserRuleCall_2_1_0());
 					}
-					lv_activityType_2_0=ruleActivityType
+					lv_activityType_3_0=ruleActivityType
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getFragmentRule());
@@ -993,7 +1000,7 @@ ruleFragment returns [EObject current=null]
 						set(
 							$current,
 							"activityType",
-							lv_activityType_2_0,
+							lv_activityType_3_0,
 							"org.xtext.example.mdsd.AndroidGenerator.ActivityType");
 						afterParserOrEnumRuleCall();
 					}
@@ -1002,9 +1009,9 @@ ruleFragment returns [EObject current=null]
 		)?
 		(
 			(
-				lv_name_3_0=RULE_ID
+				lv_name_4_0=RULE_ID
 				{
-					newLeafNode(lv_name_3_0, grammarAccess.getFragmentAccess().getNameIDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_4_0, grammarAccess.getFragmentAccess().getNameIDTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -1013,7 +1020,7 @@ ruleFragment returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_3_0,
+						lv_name_4_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -1021,9 +1028,9 @@ ruleFragment returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFragmentAccess().getActivityAttributesActivityLayoutAttributesParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getFragmentAccess().getActivityAttributesActivityLayoutAttributesParserRuleCall_4_0());
 				}
-				lv_activityAttributes_4_0=ruleActivityLayoutAttributes
+				lv_activityAttributes_5_0=ruleActivityLayoutAttributes
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFragmentRule());
@@ -1031,7 +1038,7 @@ ruleFragment returns [EObject current=null]
 					add(
 						$current,
 						"activityAttributes",
-						lv_activityAttributes_4_0,
+						lv_activityAttributes_5_0,
 						"org.xtext.example.mdsd.AndroidGenerator.ActivityLayoutAttributes");
 					afterParserOrEnumRuleCall();
 				}
@@ -1257,16 +1264,32 @@ ruleActivityType returns [EObject current=null]
 }:
 	(
 		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getActivityTypeAccess().getTypeMapAction_0_0(),
+						$current);
+				}
+			)
+			otherlv_1='Maps'
 			{
-				$current = forceCreateModelElement(
-					grammarAccess.getActivityTypeAccess().getTypeMapAction_0(),
-					$current);
+				newLeafNode(otherlv_1, grammarAccess.getActivityTypeAccess().getMapsKeyword_0_1());
 			}
 		)
-		otherlv_1='Maps'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getActivityTypeAccess().getMapsKeyword_1());
-		}
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getActivityTypeAccess().getTypeSettingAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_3='Settings'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getActivityTypeAccess().getSettingsKeyword_1_1());
+			}
+		)
 	)
 ;
 

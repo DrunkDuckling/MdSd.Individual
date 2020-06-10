@@ -14,6 +14,7 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.generator.abstractfiles.ContentGen;
+import org.xtext.example.mdsd.generator.filegen.FragmentGen;
 import org.xtext.example.mdsd.generator.filegen.GradleGen;
 import org.xtext.example.mdsd.generator.filegen.JavaActivityGen;
 import org.xtext.example.mdsd.generator.filegen.LayoutGen;
@@ -54,6 +55,9 @@ public class AndroidGeneratorGenerator extends AbstractGenerator {
     AndroidGeneratorGenerator.logger.info("Generating Gradle build..");
     GradleGen _gradleGen = new GradleGen();
     this.generators.add(_gradleGen);
+    AndroidGeneratorGenerator.logger.info("Generating Fragments..");
+    FragmentGen _fragmentGen = new FragmentGen();
+    this.generators.add(_fragmentGen);
     AndroidGeneratorGenerator.logger.info(String.format("added %d DSL sub-generators", Integer.valueOf(this.generators.size())));
   }
   

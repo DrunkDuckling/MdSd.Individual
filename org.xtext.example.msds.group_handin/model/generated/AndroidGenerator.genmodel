@@ -91,6 +91,7 @@
     <genClasses ecoreClass="AndroidGenerator.ecore#//Operator"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Unit"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//TypeMap"/>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//TypeSetting"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Less"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//More"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Equal"/>

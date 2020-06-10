@@ -72,7 +72,7 @@ Type:
 ;
  
 Fragment:
-	'Fragment'  (':' activityType=ActivityType)? name=ID (activityAttributes+=ActivityLayoutAttributes)?
+	{Fragment} 'Fragment'  (':' activityType=ActivityType)? name=ID (activityAttributes+=ActivityLayoutAttributes)?
 ;
 
 
@@ -86,7 +86,7 @@ ActivityTypeAttributes:
 ;
  
 ActivityType:
-    {TypeMap} 'Maps'
+    {TypeMap} 'Maps' | {TypeSetting} 'Settings'
 ;
  
 

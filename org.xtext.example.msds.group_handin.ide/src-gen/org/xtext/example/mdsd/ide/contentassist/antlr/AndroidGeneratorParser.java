@@ -34,6 +34,7 @@ public class AndroidGeneratorParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getApplicationAttributeAccess().getAlternatives(), "rule__ApplicationAttribute__Alternatives");
 			builder.put(grammarAccess.getApplicationElementAccess().getAlternatives(), "rule__ApplicationElement__Alternatives");
 			builder.put(grammarAccess.getActivityAccess().getAlternatives(), "rule__Activity__Alternatives");
+			builder.put(grammarAccess.getActivityTypeAccess().getAlternatives(), "rule__ActivityType__Alternatives");
 			builder.put(grammarAccess.getLayoutElementAccess().getAlternatives(), "rule__LayoutElement__Alternatives");
 			builder.put(grammarAccess.getOperatorAccess().getAlternatives(), "rule__Operator__Alternatives");
 			builder.put(grammarAccess.getUnitAccess().getAlternatives(), "rule__Unit__Alternatives");
@@ -54,11 +55,12 @@ public class AndroidGeneratorParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getGetSetAccess().getGroup(), "rule__GetSet__Group__0");
 			builder.put(grammarAccess.getTypeAccess().getGroup(), "rule__Type__Group__0");
 			builder.put(grammarAccess.getFragmentAccess().getGroup(), "rule__Fragment__Group__0");
-			builder.put(grammarAccess.getFragmentAccess().getGroup_1(), "rule__Fragment__Group_1__0");
+			builder.put(grammarAccess.getFragmentAccess().getGroup_2(), "rule__Fragment__Group_2__0");
 			builder.put(grammarAccess.getActivityAccess().getGroup_0(), "rule__Activity__Group_0__0");
 			builder.put(grammarAccess.getActivityAccess().getGroup_0_2(), "rule__Activity__Group_0_2__0");
 			builder.put(grammarAccess.getActivityAccess().getGroup_1(), "rule__Activity__Group_1__0");
-			builder.put(grammarAccess.getActivityTypeAccess().getGroup(), "rule__ActivityType__Group__0");
+			builder.put(grammarAccess.getActivityTypeAccess().getGroup_0(), "rule__ActivityType__Group_0__0");
+			builder.put(grammarAccess.getActivityTypeAccess().getGroup_1(), "rule__ActivityType__Group_1__0");
 			builder.put(grammarAccess.getActivityLayoutAttributesAccess().getGroup(), "rule__ActivityLayoutAttributes__Group__0");
 			builder.put(grammarAccess.getActivityLayoutAttributesAccess().getGroup_1(), "rule__ActivityLayoutAttributes__Group_1__0");
 			builder.put(grammarAccess.getTextViewAccess().getGroup(), "rule__TextView__Group__0");
@@ -93,9 +95,9 @@ public class AndroidGeneratorParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getModelListAccess().getGetsetAssignment_3_3(), "rule__ModelList__GetsetAssignment_3_3");
 			builder.put(grammarAccess.getGetSetAccess().getNameAssignment_1(), "rule__GetSet__NameAssignment_1");
 			builder.put(grammarAccess.getTypeAccess().getNameAssignment_1(), "rule__Type__NameAssignment_1");
-			builder.put(grammarAccess.getFragmentAccess().getActivityTypeAssignment_1_1(), "rule__Fragment__ActivityTypeAssignment_1_1");
-			builder.put(grammarAccess.getFragmentAccess().getNameAssignment_2(), "rule__Fragment__NameAssignment_2");
-			builder.put(grammarAccess.getFragmentAccess().getActivityAttributesAssignment_3(), "rule__Fragment__ActivityAttributesAssignment_3");
+			builder.put(grammarAccess.getFragmentAccess().getActivityTypeAssignment_2_1(), "rule__Fragment__ActivityTypeAssignment_2_1");
+			builder.put(grammarAccess.getFragmentAccess().getNameAssignment_3(), "rule__Fragment__NameAssignment_3");
+			builder.put(grammarAccess.getFragmentAccess().getActivityAttributesAssignment_4(), "rule__Fragment__ActivityAttributesAssignment_4");
 			builder.put(grammarAccess.getActivityAccess().getActivityTypeAssignment_0_2_1(), "rule__Activity__ActivityTypeAssignment_0_2_1");
 			builder.put(grammarAccess.getActivityAccess().getNameAssignment_0_2_2(), "rule__Activity__NameAssignment_0_2_2");
 			builder.put(grammarAccess.getActivityAccess().getActivityTypeAttributesAssignment_0_2_3(), "rule__Activity__ActivityTypeAttributesAssignment_0_2_3");

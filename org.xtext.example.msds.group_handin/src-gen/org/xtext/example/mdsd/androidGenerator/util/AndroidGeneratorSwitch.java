@@ -42,6 +42,7 @@ import org.xtext.example.mdsd.androidGenerator.TargetSDK;
 import org.xtext.example.mdsd.androidGenerator.TextView;
 import org.xtext.example.mdsd.androidGenerator.Type;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
+import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.androidGenerator.Unit;
 
 /**
@@ -324,6 +325,14 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
         TypeMap typeMap = (TypeMap)theEObject;
         T result = caseTypeMap(typeMap);
         if (result == null) result = caseActivityType(typeMap);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AndroidGeneratorPackage.TYPE_SETTING:
+      {
+        TypeSetting typeSetting = (TypeSetting)theEObject;
+        T result = caseTypeSetting(typeSetting);
+        if (result == null) result = caseActivityType(typeSetting);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -847,6 +856,22 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTypeMap(TypeMap object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Type Setting</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Type Setting</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTypeSetting(TypeSetting object)
   {
     return null;
   }

@@ -45,6 +45,7 @@ import org.xtext.example.mdsd.androidGenerator.TargetSDK;
 import org.xtext.example.mdsd.androidGenerator.TextView;
 import org.xtext.example.mdsd.androidGenerator.Type;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
+import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.androidGenerator.Unit;
 
 /**
@@ -264,6 +265,13 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   private EClass typeMapEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeSettingEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1051,6 +1059,17 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   @Override
+  public EClass getTypeSetting()
+  {
+    return typeSettingEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getLess()
   {
     return lessEClass;
@@ -1223,6 +1242,8 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
 
     typeMapEClass = createEClass(TYPE_MAP);
 
+    typeSettingEClass = createEClass(TYPE_SETTING);
+
     lessEClass = createEClass(LESS);
 
     moreEClass = createEClass(MORE);
@@ -1273,6 +1294,7 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
     textViewEClass.getESuperTypes().add(this.getLayoutElement());
     buttonEClass.getESuperTypes().add(this.getLayoutElement());
     typeMapEClass.getESuperTypes().add(this.getActivityType());
+    typeSettingEClass.getESuperTypes().add(this.getActivityType());
     lessEClass.getESuperTypes().add(this.getOperator());
     moreEClass.getESuperTypes().add(this.getOperator());
     equalEClass.getESuperTypes().add(this.getOperator());
@@ -1371,6 +1393,8 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
     initEClass(unitEClass, Unit.class, "Unit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(typeMapEClass, TypeMap.class, "TypeMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(typeSettingEClass, TypeSetting.class, "TypeSetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(lessEClass, Less.class, "Less", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

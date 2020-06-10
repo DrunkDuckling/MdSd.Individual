@@ -109,6 +109,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Unit"/>
   <eClassifiers xsi:type="ecore:EClass" name="TypeMap" eSuperTypes="#//ActivityType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeSetting" eSuperTypes="#//ActivityType"/>
   <eClassifiers xsi:type="ecore:EClass" name="Less" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="More" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Equal" eSuperTypes="#//Operator"/>

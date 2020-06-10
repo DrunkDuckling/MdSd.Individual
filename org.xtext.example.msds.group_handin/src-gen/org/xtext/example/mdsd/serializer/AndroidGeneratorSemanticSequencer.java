@@ -43,6 +43,7 @@ import org.xtext.example.mdsd.androidGenerator.TargetSDK;
 import org.xtext.example.mdsd.androidGenerator.TextView;
 import org.xtext.example.mdsd.androidGenerator.Type;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
+import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.services.AndroidGeneratorGrammarAccess;
 
 @SuppressWarnings("all")
@@ -146,6 +147,9 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 			case AndroidGeneratorPackage.TYPE_MAP:
 				sequence_ActivityType(context, (TypeMap) semanticObject); 
 				return; 
+			case AndroidGeneratorPackage.TYPE_SETTING:
+				sequence_ActivityType(context, (TypeSetting) semanticObject); 
+				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
@@ -189,6 +193,18 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *     {TypeMap}
 	 */
 	protected void sequence_ActivityType(ISerializationContext context, TypeMap semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ActivityType returns TypeSetting
+	 *
+	 * Constraint:
+	 *     {TypeSetting}
+	 */
+	protected void sequence_ActivityType(ISerializationContext context, TypeSetting semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
