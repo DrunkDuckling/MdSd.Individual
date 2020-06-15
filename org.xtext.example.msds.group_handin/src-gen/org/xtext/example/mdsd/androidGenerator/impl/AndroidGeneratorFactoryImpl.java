@@ -11,9 +11,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.xtext.example.mdsd.androidGenerator.Activity;
 import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
-import org.xtext.example.mdsd.androidGenerator.ActivityType;
 import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidAppProject;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorFactory;
@@ -22,29 +20,29 @@ import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.androidGenerator.ApplicationAttribute;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
-import org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity;
 import org.xtext.example.mdsd.androidGenerator.ApplicationPermissionList;
 import org.xtext.example.mdsd.androidGenerator.ApplicationVersion;
+import org.xtext.example.mdsd.androidGenerator.Bundle;
 import org.xtext.example.mdsd.androidGenerator.Button;
+import org.xtext.example.mdsd.androidGenerator.ButtonActions;
 import org.xtext.example.mdsd.androidGenerator.Distance;
+import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
-import org.xtext.example.mdsd.androidGenerator.GetSet;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.Less;
 import org.xtext.example.mdsd.androidGenerator.Meters;
 import org.xtext.example.mdsd.androidGenerator.MinSDK;
 import org.xtext.example.mdsd.androidGenerator.Model;
-import org.xtext.example.mdsd.androidGenerator.ModelList;
 import org.xtext.example.mdsd.androidGenerator.More;
 import org.xtext.example.mdsd.androidGenerator.Operator;
 import org.xtext.example.mdsd.androidGenerator.Permission;
+import org.xtext.example.mdsd.androidGenerator.Spinner;
 import org.xtext.example.mdsd.androidGenerator.TargetSDK;
-import org.xtext.example.mdsd.androidGenerator.TextView;
-import org.xtext.example.mdsd.androidGenerator.Type;
+import org.xtext.example.mdsd.androidGenerator.Toast;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.androidGenerator.Unit;
@@ -110,28 +108,26 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
       case AndroidGeneratorPackage.APPLICATION_PERMISSION_LIST: return createApplicationPermissionList();
       case AndroidGeneratorPackage.PERMISSION: return createPermission();
       case AndroidGeneratorPackage.APPLICATION_ELEMENT_LIST: return createApplicationElementList();
-      case AndroidGeneratorPackage.APPLICATION_MAIN_ACTIVITY: return createApplicationMainActivity();
       case AndroidGeneratorPackage.APPLICATION_ELEMENT: return createApplicationElement();
       case AndroidGeneratorPackage.MODEL: return createModel();
-      case AndroidGeneratorPackage.MODEL_LIST: return createModelList();
-      case AndroidGeneratorPackage.GET_SET: return createGetSet();
-      case AndroidGeneratorPackage.TYPE: return createType();
       case AndroidGeneratorPackage.FRAGMENT: return createFragment();
-      case AndroidGeneratorPackage.ACTIVITY: return createActivity();
-      case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES: return createActivityTypeAttributes();
-      case AndroidGeneratorPackage.ACTIVITY_TYPE: return createActivityType();
       case AndroidGeneratorPackage.ACTIVITY_LAYOUT_ATTRIBUTES: return createActivityLayoutAttributes();
       case AndroidGeneratorPackage.LAYOUT_ELEMENT: return createLayoutElement();
-      case AndroidGeneratorPackage.TEXT_VIEW: return createTextView();
+      case AndroidGeneratorPackage.TYPE_MAP: return createTypeMap();
+      case AndroidGeneratorPackage.TYPE_SETTING: return createTypeSetting();
+      case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES: return createActivityTypeAttributes();
+      case AndroidGeneratorPackage.EDIT_TEXT: return createEditText();
+      case AndroidGeneratorPackage.SPINNER: return createSpinner();
       case AndroidGeneratorPackage.BUTTON: return createButton();
+      case AndroidGeneratorPackage.BUTTON_ACTIONS: return createButtonActions();
+      case AndroidGeneratorPackage.TOAST: return createToast();
+      case AndroidGeneratorPackage.BUNDLE: return createBundle();
       case AndroidGeneratorPackage.FILTER_QUERY: return createFilterQuery();
       case AndroidGeneratorPackage.FILTER_ATTRIBUTES: return createFilterAttributes();
       case AndroidGeneratorPackage.DISTANCE: return createDistance();
       case AndroidGeneratorPackage.NUMBER: return createNumber();
       case AndroidGeneratorPackage.OPERATOR: return createOperator();
       case AndroidGeneratorPackage.UNIT: return createUnit();
-      case AndroidGeneratorPackage.TYPE_MAP: return createTypeMap();
-      case AndroidGeneratorPackage.TYPE_SETTING: return createTypeSetting();
       case AndroidGeneratorPackage.LESS: return createLess();
       case AndroidGeneratorPackage.MORE: return createMore();
       case AndroidGeneratorPackage.EQUAL: return createEqual();
@@ -256,18 +252,6 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
    * @generated
    */
   @Override
-  public ApplicationMainActivity createApplicationMainActivity()
-  {
-    ApplicationMainActivityImpl applicationMainActivity = new ApplicationMainActivityImpl();
-    return applicationMainActivity;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public ApplicationElement createApplicationElement()
   {
     ApplicationElementImpl applicationElement = new ApplicationElementImpl();
@@ -292,82 +276,10 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
    * @generated
    */
   @Override
-  public ModelList createModelList()
-  {
-    ModelListImpl modelList = new ModelListImpl();
-    return modelList;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public GetSet createGetSet()
-  {
-    GetSetImpl getSet = new GetSetImpl();
-    return getSet;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Type createType()
-  {
-    TypeImpl type = new TypeImpl();
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Fragment createFragment()
   {
     FragmentImpl fragment = new FragmentImpl();
     return fragment;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Activity createActivity()
-  {
-    ActivityImpl activity = new ActivityImpl();
-    return activity;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ActivityTypeAttributes createActivityTypeAttributes()
-  {
-    ActivityTypeAttributesImpl activityTypeAttributes = new ActivityTypeAttributesImpl();
-    return activityTypeAttributes;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ActivityType createActivityType()
-  {
-    ActivityTypeImpl activityType = new ActivityTypeImpl();
-    return activityType;
   }
 
   /**
@@ -400,10 +312,58 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
    * @generated
    */
   @Override
-  public TextView createTextView()
+  public TypeMap createTypeMap()
   {
-    TextViewImpl textView = new TextViewImpl();
-    return textView;
+    TypeMapImpl typeMap = new TypeMapImpl();
+    return typeMap;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeSetting createTypeSetting()
+  {
+    TypeSettingImpl typeSetting = new TypeSettingImpl();
+    return typeSetting;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ActivityTypeAttributes createActivityTypeAttributes()
+  {
+    ActivityTypeAttributesImpl activityTypeAttributes = new ActivityTypeAttributesImpl();
+    return activityTypeAttributes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EditText createEditText()
+  {
+    EditTextImpl editText = new EditTextImpl();
+    return editText;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Spinner createSpinner()
+  {
+    SpinnerImpl spinner = new SpinnerImpl();
+    return spinner;
   }
 
   /**
@@ -416,6 +376,42 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
   {
     ButtonImpl button = new ButtonImpl();
     return button;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ButtonActions createButtonActions()
+  {
+    ButtonActionsImpl buttonActions = new ButtonActionsImpl();
+    return buttonActions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Toast createToast()
+  {
+    ToastImpl toast = new ToastImpl();
+    return toast;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Bundle createBundle()
+  {
+    BundleImpl bundle = new BundleImpl();
+    return bundle;
   }
 
   /**
@@ -488,30 +484,6 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
   {
     UnitImpl unit = new UnitImpl();
     return unit;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public TypeMap createTypeMap()
-  {
-    TypeMapImpl typeMap = new TypeMapImpl();
-    return typeMap;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public TypeSetting createTypeSetting()
-  {
-    TypeSettingImpl typeSetting = new TypeSettingImpl();
-    return typeSetting;
   }
 
   /**

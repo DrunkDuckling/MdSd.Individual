@@ -1,15 +1,10 @@
 package org.xtext.example.mdsd.generator.filegen;
 
-import com.google.common.base.Objects;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
-import org.xtext.example.mdsd.androidGenerator.Activity;
 import org.xtext.example.mdsd.androidGenerator.Application;
-import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
-import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
-import org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity;
 import org.xtext.example.mdsd.androidGenerator.ApplicationPermissionList;
 import org.xtext.example.mdsd.androidGenerator.Permission;
 import org.xtext.example.mdsd.generator.abstractfiles.AbstractGen;
@@ -29,8 +24,6 @@ public class ManifestGen extends AbstractGen {
   
   private String retrieveAndroidManifest(final Application application) {
     ApplicationPermissionList permissions = this.<ApplicationPermissionList>getFieldData(application.getAttributes(), ApplicationPermissionList.class);
-    ApplicationMainActivity mainActivity = this.<ApplicationMainActivity>getFieldData(application.getAttributes(), ApplicationMainActivity.class);
-    ApplicationElementList elements = this.<ApplicationElementList>getFieldData(application.getAttributes(), ApplicationElementList.class);
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
     _builder.newLine();
@@ -75,9 +68,46 @@ public class ManifestGen extends AbstractGen {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("     ");
-    String _generateMetaData = this.generateMetaData(elements, mainActivity);
-    _builder.append(_generateMetaData, "     ");
+    _builder.append("<meta-data");
+    _builder.newLine();
+    _builder.append("     \t");
+    _builder.append("android:name=\"com.google.android.geo.API_KEY\"");
+    _builder.newLine();
+    _builder.append("     \t");
+    _builder.append("android:value=\"PLACE OR REF TO GOOGLE KEY HERE\" />");
+    _builder.newLine();
+    _builder.append("     \t");
+    _builder.newLine();
+    _builder.append("     ");
+    _builder.append("<activity");
+    _builder.newLine();
+    _builder.append("     \t");
+    _builder.append("android:name=\".activity.");
+    String _name_1 = application.getName();
+    _builder.append(_name_1, "     \t");
+    _builder.append("\"");
     _builder.newLineIfNotEmpty();
+    _builder.append("     \t");
+    _builder.append("android:label=\"@string/");
+    String _javaToAndroidIdentifier = this.javaToAndroidIdentifier(application.getName());
+    _builder.append(_javaToAndroidIdentifier, "     \t");
+    _builder.append("_title\">");
+    _builder.newLineIfNotEmpty();
+    _builder.append("     \t");
+    _builder.append("<intent-filter>");
+    _builder.newLine();
+    _builder.append("     \t\t");
+    _builder.append("<action android:name=\"android.intent.action.MAIN\" />");
+    _builder.newLine();
+    _builder.append("     \t\t");
+    _builder.append("<category android:name=\"android.intent.category.LAUNCHER\" />");
+    _builder.newLine();
+    _builder.append("     \t");
+    _builder.append("</intent-filter>");
+    _builder.newLine();
+    _builder.append("     ");
+    _builder.append("</activity>");
+    _builder.newLine();
     _builder.append("     ");
     _builder.newLine();
     _builder.append("    ");
@@ -101,63 +131,6 @@ public class ManifestGen extends AbstractGen {
         _builder.newLineIfNotEmpty();
       }
     }
-    return _builder.toString();
-  }
-  
-  private String generateMetaData(final ApplicationElementList elements, final ApplicationMainActivity mainActivity) {
-    String result = "";
-    EList<ApplicationElement> _elements = elements.getElements();
-    for (final ApplicationElement element : _elements) {
-      if ((element instanceof Activity)) {
-        String _result = result;
-        String _generateActivity = this.generateActivity(((Activity) element), 
-          ((!Objects.equal(mainActivity, null)) && ((Activity)element).equals(mainActivity.getLauncherActivity())));
-        result = (_result + _generateActivity);
-      }
-    }
-    return result;
-  }
-  
-  private String generateActivity(final Activity activity, final boolean launchable) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<meta-data");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("android:name=\"com.google.android.geo.API_KEY\"");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("android:value=\"PLACE OR REF TO GOOGLE KEY HERE\" />");
-    _builder.newLine();
-    _builder.append("     ");
-    _builder.newLine();
-    _builder.append("<activity");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("android:name=\".activity.");
-    String _name = activity.getName();
-    _builder.append(_name, "\t");
-    _builder.append("\"");
-    _builder.newLineIfNotEmpty();
-    _builder.append("    ");
-    _builder.append("android:label=\"@string/");
-    String _javaToAndroidIdentifier = this.javaToAndroidIdentifier(activity.getName());
-    _builder.append(_javaToAndroidIdentifier, "    ");
-    _builder.append("_title\">");
-    _builder.newLineIfNotEmpty();
-    _builder.append("    ");
-    _builder.append("<intent-filter>");
-    _builder.newLine();
-    _builder.append("    \t");
-    _builder.append("<action android:name=\"android.intent.action.MAIN\" />");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("<category android:name=\"android.intent.category.LAUNCHER\" />");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("</intent-filter>");
-    _builder.newLine();
-    _builder.append("</activity>");
-    _builder.newLine();
     return _builder.toString();
   }
 }

@@ -10,9 +10,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.xtext.example.mdsd.androidGenerator.Activity;
 import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
-import org.xtext.example.mdsd.androidGenerator.ActivityType;
 import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidAppProject;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorFactory;
@@ -21,29 +19,29 @@ import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.androidGenerator.ApplicationAttribute;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
-import org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity;
 import org.xtext.example.mdsd.androidGenerator.ApplicationPermissionList;
 import org.xtext.example.mdsd.androidGenerator.ApplicationVersion;
+import org.xtext.example.mdsd.androidGenerator.Bundle;
 import org.xtext.example.mdsd.androidGenerator.Button;
+import org.xtext.example.mdsd.androidGenerator.ButtonActions;
 import org.xtext.example.mdsd.androidGenerator.Distance;
+import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
-import org.xtext.example.mdsd.androidGenerator.GetSet;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.Less;
 import org.xtext.example.mdsd.androidGenerator.Meters;
 import org.xtext.example.mdsd.androidGenerator.MinSDK;
 import org.xtext.example.mdsd.androidGenerator.Model;
-import org.xtext.example.mdsd.androidGenerator.ModelList;
 import org.xtext.example.mdsd.androidGenerator.More;
 import org.xtext.example.mdsd.androidGenerator.Operator;
 import org.xtext.example.mdsd.androidGenerator.Permission;
+import org.xtext.example.mdsd.androidGenerator.Spinner;
 import org.xtext.example.mdsd.androidGenerator.TargetSDK;
-import org.xtext.example.mdsd.androidGenerator.TextView;
-import org.xtext.example.mdsd.androidGenerator.Type;
+import org.xtext.example.mdsd.androidGenerator.Toast;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.androidGenerator.Unit;
@@ -124,13 +122,6 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass applicationMainActivityEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass applicationElementEClass = null;
 
   /**
@@ -145,49 +136,7 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass modelListEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass getSetEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass typeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass fragmentEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass activityEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass activityTypeAttributesEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass activityTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -208,7 +157,35 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass textViewEClass = null;
+  private EClass typeMapEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeSettingEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass activityTypeAttributesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass editTextEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass spinnerEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -216,6 +193,27 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   private EClass buttonEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass buttonActionsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass toastEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass bundleEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -258,20 +256,6 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   private EClass unitEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass typeMapEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass typeSettingEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -597,28 +581,6 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   @Override
-  public EClass getApplicationMainActivity()
-  {
-    return applicationMainActivityEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getApplicationMainActivity_LauncherActivity()
-  {
-    return (EReference)applicationMainActivityEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getApplicationElement()
   {
     return applicationElementEClass;
@@ -630,20 +592,9 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   @Override
-  public EReference getApplicationElement_ActivityType()
-  {
-    return (EReference)applicationElementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EAttribute getApplicationElement_Name()
   {
-    return (EAttribute)applicationElementEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)applicationElementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -655,94 +606,6 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
   public EClass getModel()
   {
     return modelEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getModel_Modellist()
-  {
-    return (EReference)modelEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getModelList()
-  {
-    return modelListEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getModelList_Type()
-  {
-    return (EReference)modelListEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getModelList_Getset()
-  {
-    return (EReference)modelListEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getGetSet()
-  {
-    return getSetEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getGetSet_Name()
-  {
-    return (EAttribute)getSetEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getType()
-  {
-    return typeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getType_Name()
-  {
-    return (EAttribute)typeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -765,72 +628,6 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
   public EReference getFragment_ActivityAttributes()
   {
     return (EReference)fragmentEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getActivity()
-  {
-    return activityEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getActivity_ActivityTypeAttributes()
-  {
-    return (EReference)activityEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getActivity_ActivityAttributes()
-  {
-    return (EReference)activityEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getActivityTypeAttributes()
-  {
-    return activityTypeAttributesEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getActivityTypeAttributes_Filter()
-  {
-    return (EReference)activityTypeAttributesEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getActivityType()
-  {
-    return activityTypeEClass;
   }
 
   /**
@@ -872,9 +669,9 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   @Override
-  public EAttribute getLayoutElement_Name()
+  public EClass getTypeMap()
   {
-    return (EAttribute)layoutElementEClass.getEStructuralFeatures().get(0);
+    return typeMapEClass;
   }
 
   /**
@@ -883,9 +680,86 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   @Override
-  public EClass getTextView()
+  public EReference getTypeMap_Activitytypeattribute()
   {
-    return textViewEClass;
+    return (EReference)typeMapEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTypeSetting()
+  {
+    return typeSettingEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getActivityTypeAttributes()
+  {
+    return activityTypeAttributesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getActivityTypeAttributes_Filter()
+  {
+    return (EReference)activityTypeAttributesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEditText()
+  {
+    return editTextEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEditText_Name()
+  {
+    return (EAttribute)editTextEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSpinner()
+  {
+    return spinnerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSpinner_Name()
+  {
+    return (EAttribute)spinnerEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -897,6 +771,83 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
   public EClass getButton()
   {
     return buttonEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getButton_Name()
+  {
+    return (EAttribute)buttonEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getButton_Actions()
+  {
+    return (EReference)buttonEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getButtonActions()
+  {
+    return buttonActionsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getToast()
+  {
+    return toastEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getToast_Text()
+  {
+    return (EAttribute)toastEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBundle()
+  {
+    return bundleEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBundle_BundleRecipient()
+  {
+    return (EReference)bundleEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1048,28 +999,6 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   @Override
-  public EClass getTypeMap()
-  {
-    return typeMapEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getTypeSetting()
-  {
-    return typeSettingEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getLess()
   {
     return lessEClass;
@@ -1179,47 +1108,44 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
     applicationElementListEClass = createEClass(APPLICATION_ELEMENT_LIST);
     createEReference(applicationElementListEClass, APPLICATION_ELEMENT_LIST__ELEMENTS);
 
-    applicationMainActivityEClass = createEClass(APPLICATION_MAIN_ACTIVITY);
-    createEReference(applicationMainActivityEClass, APPLICATION_MAIN_ACTIVITY__LAUNCHER_ACTIVITY);
-
     applicationElementEClass = createEClass(APPLICATION_ELEMENT);
-    createEReference(applicationElementEClass, APPLICATION_ELEMENT__ACTIVITY_TYPE);
     createEAttribute(applicationElementEClass, APPLICATION_ELEMENT__NAME);
 
     modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__MODELLIST);
-
-    modelListEClass = createEClass(MODEL_LIST);
-    createEReference(modelListEClass, MODEL_LIST__TYPE);
-    createEReference(modelListEClass, MODEL_LIST__GETSET);
-
-    getSetEClass = createEClass(GET_SET);
-    createEAttribute(getSetEClass, GET_SET__NAME);
-
-    typeEClass = createEClass(TYPE);
-    createEAttribute(typeEClass, TYPE__NAME);
 
     fragmentEClass = createEClass(FRAGMENT);
     createEReference(fragmentEClass, FRAGMENT__ACTIVITY_ATTRIBUTES);
-
-    activityEClass = createEClass(ACTIVITY);
-    createEReference(activityEClass, ACTIVITY__ACTIVITY_TYPE_ATTRIBUTES);
-    createEReference(activityEClass, ACTIVITY__ACTIVITY_ATTRIBUTES);
-
-    activityTypeAttributesEClass = createEClass(ACTIVITY_TYPE_ATTRIBUTES);
-    createEReference(activityTypeAttributesEClass, ACTIVITY_TYPE_ATTRIBUTES__FILTER);
-
-    activityTypeEClass = createEClass(ACTIVITY_TYPE);
 
     activityLayoutAttributesEClass = createEClass(ACTIVITY_LAYOUT_ATTRIBUTES);
     createEReference(activityLayoutAttributesEClass, ACTIVITY_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS);
 
     layoutElementEClass = createEClass(LAYOUT_ELEMENT);
-    createEAttribute(layoutElementEClass, LAYOUT_ELEMENT__NAME);
 
-    textViewEClass = createEClass(TEXT_VIEW);
+    typeMapEClass = createEClass(TYPE_MAP);
+    createEReference(typeMapEClass, TYPE_MAP__ACTIVITYTYPEATTRIBUTE);
+
+    typeSettingEClass = createEClass(TYPE_SETTING);
+
+    activityTypeAttributesEClass = createEClass(ACTIVITY_TYPE_ATTRIBUTES);
+    createEReference(activityTypeAttributesEClass, ACTIVITY_TYPE_ATTRIBUTES__FILTER);
+
+    editTextEClass = createEClass(EDIT_TEXT);
+    createEAttribute(editTextEClass, EDIT_TEXT__NAME);
+
+    spinnerEClass = createEClass(SPINNER);
+    createEAttribute(spinnerEClass, SPINNER__NAME);
 
     buttonEClass = createEClass(BUTTON);
+    createEAttribute(buttonEClass, BUTTON__NAME);
+    createEReference(buttonEClass, BUTTON__ACTIONS);
+
+    buttonActionsEClass = createEClass(BUTTON_ACTIONS);
+
+    toastEClass = createEClass(TOAST);
+    createEAttribute(toastEClass, TOAST__TEXT);
+
+    bundleEClass = createEClass(BUNDLE);
+    createEReference(bundleEClass, BUNDLE__BUNDLE_RECIPIENT);
 
     filterQueryEClass = createEClass(FILTER_QUERY);
     createEAttribute(filterQueryEClass, FILTER_QUERY__NAME);
@@ -1239,10 +1165,6 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
     operatorEClass = createEClass(OPERATOR);
 
     unitEClass = createEClass(UNIT);
-
-    typeMapEClass = createEClass(TYPE_MAP);
-
-    typeSettingEClass = createEClass(TYPE_SETTING);
 
     lessEClass = createEClass(LESS);
 
@@ -1287,14 +1209,15 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
     applicationVersionEClass.getESuperTypes().add(this.getApplicationAttribute());
     applicationPermissionListEClass.getESuperTypes().add(this.getApplicationAttribute());
     applicationElementListEClass.getESuperTypes().add(this.getApplicationAttribute());
-    applicationMainActivityEClass.getESuperTypes().add(this.getApplicationAttribute());
     modelEClass.getESuperTypes().add(this.getApplicationElement());
     fragmentEClass.getESuperTypes().add(this.getApplicationElement());
-    activityEClass.getESuperTypes().add(this.getApplicationElement());
-    textViewEClass.getESuperTypes().add(this.getLayoutElement());
+    typeMapEClass.getESuperTypes().add(this.getLayoutElement());
+    typeSettingEClass.getESuperTypes().add(this.getLayoutElement());
+    editTextEClass.getESuperTypes().add(this.getLayoutElement());
+    spinnerEClass.getESuperTypes().add(this.getLayoutElement());
     buttonEClass.getESuperTypes().add(this.getLayoutElement());
-    typeMapEClass.getESuperTypes().add(this.getActivityType());
-    typeSettingEClass.getESuperTypes().add(this.getActivityType());
+    toastEClass.getESuperTypes().add(this.getButtonActions());
+    bundleEClass.getESuperTypes().add(this.getButtonActions());
     lessEClass.getESuperTypes().add(this.getOperator());
     moreEClass.getESuperTypes().add(this.getOperator());
     equalEClass.getESuperTypes().add(this.getOperator());
@@ -1331,47 +1254,44 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
     initEClass(applicationElementListEClass, ApplicationElementList.class, "ApplicationElementList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getApplicationElementList_Elements(), this.getApplicationElement(), null, "elements", null, 0, -1, ApplicationElementList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(applicationMainActivityEClass, ApplicationMainActivity.class, "ApplicationMainActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getApplicationMainActivity_LauncherActivity(), this.getActivity(), null, "launcherActivity", null, 0, 1, ApplicationMainActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(applicationElementEClass, ApplicationElement.class, "ApplicationElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getApplicationElement_ActivityType(), this.getActivityType(), null, "activityType", null, 0, 1, ApplicationElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getApplicationElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ApplicationElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_Modellist(), this.getModelList(), null, "modellist", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(modelListEClass, ModelList.class, "ModelList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModelList_Type(), this.getType(), null, "type", null, 0, -1, ModelList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModelList_Getset(), this.getGetSet(), null, "getset", null, 0, -1, ModelList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(getSetEClass, GetSet.class, "GetSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGetSet_Name(), ecorePackage.getEString(), "name", null, 0, 1, GetSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getType_Name(), ecorePackage.getEString(), "name", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fragmentEClass, Fragment.class, "Fragment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFragment_ActivityAttributes(), this.getActivityLayoutAttributes(), null, "activityAttributes", null, 0, -1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getActivity_ActivityTypeAttributes(), this.getActivityTypeAttributes(), null, "activityTypeAttributes", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getActivity_ActivityAttributes(), this.getActivityLayoutAttributes(), null, "activityAttributes", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(activityTypeAttributesEClass, ActivityTypeAttributes.class, "ActivityTypeAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getActivityTypeAttributes_Filter(), this.getFilterQuery(), null, "filter", null, 0, 1, ActivityTypeAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(activityTypeEClass, ActivityType.class, "ActivityType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(activityLayoutAttributesEClass, ActivityLayoutAttributes.class, "ActivityLayoutAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getActivityLayoutAttributes_LayoutElements(), this.getLayoutElement(), null, "layoutElements", null, 0, -1, ActivityLayoutAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(layoutElementEClass, LayoutElement.class, "LayoutElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLayoutElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, LayoutElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(textViewEClass, TextView.class, "TextView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(typeMapEClass, TypeMap.class, "TypeMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTypeMap_Activitytypeattribute(), this.getActivityTypeAttributes(), null, "activitytypeattribute", null, 0, 1, TypeMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(typeSettingEClass, TypeSetting.class, "TypeSetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(activityTypeAttributesEClass, ActivityTypeAttributes.class, "ActivityTypeAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getActivityTypeAttributes_Filter(), this.getFilterQuery(), null, "filter", null, 0, 1, ActivityTypeAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(editTextEClass, EditText.class, "EditText", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEditText_Name(), ecorePackage.getEString(), "name", null, 0, 1, EditText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(spinnerEClass, Spinner.class, "Spinner", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSpinner_Name(), ecorePackage.getEString(), "name", null, 0, 1, Spinner.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(buttonEClass, Button.class, "Button", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getButton_Name(), ecorePackage.getEString(), "name", null, 0, 1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getButton_Actions(), this.getButtonActions(), null, "actions", null, 0, -1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(buttonActionsEClass, ButtonActions.class, "ButtonActions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(toastEClass, Toast.class, "Toast", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getToast_Text(), ecorePackage.getEString(), "text", null, 0, 1, Toast.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(bundleEClass, Bundle.class, "Bundle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBundle_BundleRecipient(), this.getFragment(), null, "bundleRecipient", null, 0, 1, Bundle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(filterQueryEClass, FilterQuery.class, "FilterQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFilterQuery_Name(), ecorePackage.getEString(), "name", null, 0, 1, FilterQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1391,10 +1311,6 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
     initEClass(operatorEClass, Operator.class, "Operator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(unitEClass, Unit.class, "Unit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(typeMapEClass, TypeMap.class, "TypeMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(typeSettingEClass, TypeSetting.class, "TypeSetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(lessEClass, Less.class, "Less", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -8,9 +8,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.xtext.example.mdsd.androidGenerator.Activity;
 import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
-import org.xtext.example.mdsd.androidGenerator.ActivityType;
 import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidAppProject;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
@@ -18,29 +16,29 @@ import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.androidGenerator.ApplicationAttribute;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
-import org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity;
 import org.xtext.example.mdsd.androidGenerator.ApplicationPermissionList;
 import org.xtext.example.mdsd.androidGenerator.ApplicationVersion;
+import org.xtext.example.mdsd.androidGenerator.Bundle;
 import org.xtext.example.mdsd.androidGenerator.Button;
+import org.xtext.example.mdsd.androidGenerator.ButtonActions;
 import org.xtext.example.mdsd.androidGenerator.Distance;
+import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
-import org.xtext.example.mdsd.androidGenerator.GetSet;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.Less;
 import org.xtext.example.mdsd.androidGenerator.Meters;
 import org.xtext.example.mdsd.androidGenerator.MinSDK;
 import org.xtext.example.mdsd.androidGenerator.Model;
-import org.xtext.example.mdsd.androidGenerator.ModelList;
 import org.xtext.example.mdsd.androidGenerator.More;
 import org.xtext.example.mdsd.androidGenerator.Operator;
 import org.xtext.example.mdsd.androidGenerator.Permission;
+import org.xtext.example.mdsd.androidGenerator.Spinner;
 import org.xtext.example.mdsd.androidGenerator.TargetSDK;
-import org.xtext.example.mdsd.androidGenerator.TextView;
-import org.xtext.example.mdsd.androidGenerator.Type;
+import org.xtext.example.mdsd.androidGenerator.Toast;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.androidGenerator.Unit;
@@ -174,14 +172,6 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AndroidGeneratorPackage.APPLICATION_MAIN_ACTIVITY:
-      {
-        ApplicationMainActivity applicationMainActivity = (ApplicationMainActivity)theEObject;
-        T result = caseApplicationMainActivity(applicationMainActivity);
-        if (result == null) result = caseApplicationAttribute(applicationMainActivity);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case AndroidGeneratorPackage.APPLICATION_ELEMENT:
       {
         ApplicationElement applicationElement = (ApplicationElement)theEObject;
@@ -197,54 +187,11 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AndroidGeneratorPackage.MODEL_LIST:
-      {
-        ModelList modelList = (ModelList)theEObject;
-        T result = caseModelList(modelList);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AndroidGeneratorPackage.GET_SET:
-      {
-        GetSet getSet = (GetSet)theEObject;
-        T result = caseGetSet(getSet);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AndroidGeneratorPackage.TYPE:
-      {
-        Type type = (Type)theEObject;
-        T result = caseType(type);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case AndroidGeneratorPackage.FRAGMENT:
       {
         Fragment fragment = (Fragment)theEObject;
         T result = caseFragment(fragment);
         if (result == null) result = caseApplicationElement(fragment);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AndroidGeneratorPackage.ACTIVITY:
-      {
-        Activity activity = (Activity)theEObject;
-        T result = caseActivity(activity);
-        if (result == null) result = caseApplicationElement(activity);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES:
-      {
-        ActivityTypeAttributes activityTypeAttributes = (ActivityTypeAttributes)theEObject;
-        T result = caseActivityTypeAttributes(activityTypeAttributes);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AndroidGeneratorPackage.ACTIVITY_TYPE:
-      {
-        ActivityType activityType = (ActivityType)theEObject;
-        T result = caseActivityType(activityType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -262,11 +209,42 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AndroidGeneratorPackage.TEXT_VIEW:
+      case AndroidGeneratorPackage.TYPE_MAP:
       {
-        TextView textView = (TextView)theEObject;
-        T result = caseTextView(textView);
-        if (result == null) result = caseLayoutElement(textView);
+        TypeMap typeMap = (TypeMap)theEObject;
+        T result = caseTypeMap(typeMap);
+        if (result == null) result = caseLayoutElement(typeMap);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AndroidGeneratorPackage.TYPE_SETTING:
+      {
+        TypeSetting typeSetting = (TypeSetting)theEObject;
+        T result = caseTypeSetting(typeSetting);
+        if (result == null) result = caseLayoutElement(typeSetting);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES:
+      {
+        ActivityTypeAttributes activityTypeAttributes = (ActivityTypeAttributes)theEObject;
+        T result = caseActivityTypeAttributes(activityTypeAttributes);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AndroidGeneratorPackage.EDIT_TEXT:
+      {
+        EditText editText = (EditText)theEObject;
+        T result = caseEditText(editText);
+        if (result == null) result = caseLayoutElement(editText);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AndroidGeneratorPackage.SPINNER:
+      {
+        Spinner spinner = (Spinner)theEObject;
+        T result = caseSpinner(spinner);
+        if (result == null) result = caseLayoutElement(spinner);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -275,6 +253,29 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
         Button button = (Button)theEObject;
         T result = caseButton(button);
         if (result == null) result = caseLayoutElement(button);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AndroidGeneratorPackage.BUTTON_ACTIONS:
+      {
+        ButtonActions buttonActions = (ButtonActions)theEObject;
+        T result = caseButtonActions(buttonActions);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AndroidGeneratorPackage.TOAST:
+      {
+        Toast toast = (Toast)theEObject;
+        T result = caseToast(toast);
+        if (result == null) result = caseButtonActions(toast);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AndroidGeneratorPackage.BUNDLE:
+      {
+        Bundle bundle = (Bundle)theEObject;
+        T result = caseBundle(bundle);
+        if (result == null) result = caseButtonActions(bundle);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -317,22 +318,6 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
       {
         Unit unit = (Unit)theEObject;
         T result = caseUnit(unit);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AndroidGeneratorPackage.TYPE_MAP:
-      {
-        TypeMap typeMap = (TypeMap)theEObject;
-        T result = caseTypeMap(typeMap);
-        if (result == null) result = caseActivityType(typeMap);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AndroidGeneratorPackage.TYPE_SETTING:
-      {
-        TypeSetting typeSetting = (TypeSetting)theEObject;
-        T result = caseTypeSetting(typeSetting);
-        if (result == null) result = caseActivityType(typeSetting);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -525,22 +510,6 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Application Main Activity</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Application Main Activity</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseApplicationMainActivity(ApplicationMainActivity object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Application Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -573,54 +542,6 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Model List</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Model List</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseModelList(ModelList object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Get Set</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Get Set</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseGetSet(GetSet object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseType(Type object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Fragment</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -632,54 +553,6 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFragment(Fragment object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Activity</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Activity</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseActivity(Activity object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Activity Type Attributes</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Activity Type Attributes</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseActivityTypeAttributes(ActivityTypeAttributes object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Activity Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Activity Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseActivityType(ActivityType object)
   {
     return null;
   }
@@ -717,17 +590,81 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Text View</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Type Map</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Text View</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Type Map</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseTextView(TextView object)
+  public T caseTypeMap(TypeMap object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Type Setting</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Type Setting</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTypeSetting(TypeSetting object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Activity Type Attributes</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Activity Type Attributes</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActivityTypeAttributes(ActivityTypeAttributes object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Edit Text</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Edit Text</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEditText(EditText object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Spinner</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Spinner</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSpinner(Spinner object)
   {
     return null;
   }
@@ -744,6 +681,54 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseButton(Button object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Button Actions</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Button Actions</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseButtonActions(ButtonActions object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Toast</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Toast</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseToast(Toast object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Bundle</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Bundle</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBundle(Bundle object)
   {
     return null;
   }
@@ -840,38 +825,6 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseUnit(Unit object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Type Map</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Type Map</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTypeMap(TypeMap object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Type Setting</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Type Setting</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTypeSetting(TypeSetting object)
   {
     return null;
   }

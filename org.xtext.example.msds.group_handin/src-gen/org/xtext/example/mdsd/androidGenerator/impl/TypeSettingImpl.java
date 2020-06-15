@@ -15,7 +15,7 @@ import org.xtext.example.mdsd.androidGenerator.TypeSetting;
  *
  * @generated
  */
-public class TypeSettingImpl extends ActivityTypeImpl implements TypeSetting
+public class TypeSettingImpl extends LayoutElementImpl implements TypeSetting
 {
   /**
    * <!-- begin-user-doc -->

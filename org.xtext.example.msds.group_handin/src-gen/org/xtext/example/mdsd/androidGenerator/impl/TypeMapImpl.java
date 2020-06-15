@@ -3,8 +3,15 @@
  */
 package org.xtext.example.mdsd.androidGenerator.impl;
 
-import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 
@@ -12,11 +19,27 @@ import org.xtext.example.mdsd.androidGenerator.TypeMap;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Type Map</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl#getActivitytypeattribute <em>Activitytypeattribute</em>}</li>
+ * </ul>
  *
  * @generated
  */
-public class TypeMapImpl extends ActivityTypeImpl implements TypeMap
+public class TypeMapImpl extends LayoutElementImpl implements TypeMap
 {
+  /**
+   * The cached value of the '{@link #getActivitytypeattribute() <em>Activitytypeattribute</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getActivitytypeattribute()
+   * @generated
+   * @ordered
+   */
+  protected ActivityTypeAttributes activitytypeattribute;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -36,6 +59,138 @@ public class TypeMapImpl extends ActivityTypeImpl implements TypeMap
   protected EClass eStaticClass()
   {
     return AndroidGeneratorPackage.Literals.TYPE_MAP;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ActivityTypeAttributes getActivitytypeattribute()
+  {
+    return activitytypeattribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetActivitytypeattribute(ActivityTypeAttributes newActivitytypeattribute, NotificationChain msgs)
+  {
+    ActivityTypeAttributes oldActivitytypeattribute = activitytypeattribute;
+    activitytypeattribute = newActivitytypeattribute;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE, oldActivitytypeattribute, newActivitytypeattribute);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setActivitytypeattribute(ActivityTypeAttributes newActivitytypeattribute)
+  {
+    if (newActivitytypeattribute != activitytypeattribute)
+    {
+      NotificationChain msgs = null;
+      if (activitytypeattribute != null)
+        msgs = ((InternalEObject)activitytypeattribute).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE, null, msgs);
+      if (newActivitytypeattribute != null)
+        msgs = ((InternalEObject)newActivitytypeattribute).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE, null, msgs);
+      msgs = basicSetActivitytypeattribute(newActivitytypeattribute, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE, newActivitytypeattribute, newActivitytypeattribute));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE:
+        return basicSetActivitytypeattribute(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE:
+        return getActivitytypeattribute();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE:
+        setActivitytypeattribute((ActivityTypeAttributes)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE:
+        setActivitytypeattribute((ActivityTypeAttributes)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE:
+        return activitytypeattribute != null;
+    }
+    return super.eIsSet(featureID);
   }
 
 } //TypeMapImpl

@@ -1,13 +1,10 @@
 package org.xtext.example.mdsd.generator.filegen
 
 import java.util.List
+import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.xtext.example.mdsd.androidGenerator.Application
-import org.xtext.example.mdsd.androidGenerator.ApplicationElementList
-import org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity
 import org.xtext.example.mdsd.androidGenerator.ApplicationPermissionList
 import org.xtext.example.mdsd.generator.abstractfiles.AbstractGen
-import org.xtext.example.mdsd.androidGenerator.Activity
-import org.eclipse.xtext.generator.IFileSystemAccess2
 
 class ManifestGen extends AbstractGen {
 	
@@ -23,11 +20,8 @@ class ManifestGen extends AbstractGen {
 	
 	
 	private def String retrieveAndroidManifest(Application application) {
-		// TODO maybe build xml directly (Nope, we fucking code it brah!)
 		
 		var ApplicationPermissionList permissions = getFieldData(application.attributes, typeof(ApplicationPermissionList));
-		var ApplicationMainActivity mainActivity = getFieldData(application.attributes, typeof(ApplicationMainActivity));
-		var ApplicationElementList elements = getFieldData(application.attributes, typeof(ApplicationElementList));
 		
 		return '''
 		<?xml version="1.0" encoding="utf-8"?>
@@ -44,7 +38,18 @@ class ManifestGen extends AbstractGen {
 				android:supportsRtl="true"
 				android:theme="@style/AppTheme">
 				
-		     «generateMetaData(elements, mainActivity)»
+		     <meta-data
+		     	android:name="com.google.android.geo.API_KEY"
+		     	android:value="PLACE OR REF TO GOOGLE KEY HERE" />
+		     	
+		     <activity
+		     	android:name=".activity.«application.name»"
+		     	android:label="@string/«javaToAndroidIdentifier(application.name)»_title">
+		     	<intent-filter>
+		     		<action android:name="android.intent.action.MAIN" />
+		     		<category android:name="android.intent.category.LAUNCHER" />
+		     	</intent-filter>
+		     </activity>
 		     
 		    </application>
 		
@@ -61,36 +66,5 @@ class ManifestGen extends AbstractGen {
 		''';
 	}
 	
-	// Method used to sort out in the elements, such as main activity or fragments and so on. 
-	private def String generateMetaData(ApplicationElementList elements, ApplicationMainActivity mainActivity){
-		var result = "";
-		
-		for (element : elements.elements) {
-			if (element instanceof Activity) {
-				result += generateActivity(element as Activity,
-					mainActivity != null && element.equals(mainActivity.launcherActivity)
-				);
-			}
-		}
-		return result;
-	}
-	
-	// Method used to generate metadata for the main activity in manifest file
-	private def String generateActivity(Activity activity, boolean launchable) {
-		return '''
-		<meta-data
-			android:name="com.google.android.geo.API_KEY"
-		    android:value="PLACE OR REF TO GOOGLE KEY HERE" />
-		     
-		<activity
-			android:name=".activity.«activity.name»"
-		    android:label="@string/«javaToAndroidIdentifier(activity.name)»_title">
-		    <intent-filter>
-		    	<action android:name="android.intent.action.MAIN" />
-		        <category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
-		''';
-	}
 	
 }

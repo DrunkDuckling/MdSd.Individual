@@ -15,10 +15,9 @@ Application:
 ;
  
 ApplicationAttribute:
-        (ApplicationVersion)		|
+        ApplicationVersion		|
         ApplicationPermissionList   |
-        ApplicationElementList      |
-        ApplicationMainActivity
+        ApplicationElementList      
 ;
 
 ApplicationVersion:
@@ -33,7 +32,6 @@ MinSDK:
 	{MinSDK} 'Minimum-SDK' ':' result=Number
 ;
  
- 
 ApplicationPermissionList:
     'permissions' permissions+=Permission (',' permissions += Permission)*
 ;
@@ -45,67 +43,70 @@ Permission:
 ApplicationElementList:
     {ApplicationElementList} 'elements' elements += ApplicationElement*
 ;
- 
-ApplicationMainActivity:
-    'main-activity' launcherActivity = [Activity] // referenced by the magical "name" of an Activity
-;
- 
- 
+
 ApplicationElement:
-    Activity | Fragment | Model
+	Fragment | Model
 ;
- 
+
 Model:
-    {Model}'Model'  (':' activityType=ActivityType)? name=ID modellist = ModelList? //*
+	'Model' name = ID
 ;
- 
-ModelList:
-    type += Type ':' getset+=GetSet (',' type += Type ':' getset+=GetSet)*
-;
- 
-GetSet:
-    {GetSet} name = ID
-;
- 
-Type:
-    {Type} name = ID
-;
+
  
 Fragment:
-	{Fragment} 'Fragment'  (':' activityType=ActivityType)? name=ID (activityAttributes+=ActivityLayoutAttributes)?
+	{Fragment} 'Fragment' name=ID (activityAttributes+=ActivityLayoutAttributes)?
 ;
 
-
-Activity:
-	{Activity} 'Activity'  (':' activityType=ActivityType name=ID activityTypeAttributes=ActivityTypeAttributes (activityAttributes+=ActivityLayoutAttributes)*)? | 
-	{Activity} 'Activity' name=ID activityAttributes+=ActivityLayoutAttributes*
-;
- 
-ActivityTypeAttributes:
-    filter=FilterQuery
-;
- 
-ActivityType:
-    {TypeMap} 'Maps' | {TypeSetting} 'Settings'
-;
- 
 
 ActivityLayoutAttributes:
 	layoutElements += LayoutElement (',' layoutElements += LayoutElement)*
 ;
 
 LayoutElement:
-	Button | TextView
+	Button 					| 
+	EditText 				|
+	Spinner					| 
+	TypeMap					|
+	TypeSetting
 ;
 
- 
-TextView:
-    {TextView}'TextView' name=ID
+
+TypeMap:
+	{TypeMap} 'Map' (activitytypeattribute = ActivityTypeAttributes)?
+;
+
+TypeSetting:
+	{TypeSetting} 'Settings'
+;
+
+ActivityTypeAttributes:
+    filter=FilterQuery
 ;
  
+EditText:
+    {EditText}'EditText' name=ID
+;
+
+Spinner:
+	{Spinner}'Spinner' name=ID
+;
+
 Button:
-    {Button} 'Button' name=ID
+    {Button}'Button' name=ID (actions += ButtonActions (',' actions += ButtonActions)*)?
 ;
+
+ButtonActions:
+	Toast | Bundle
+;
+
+Toast:
+	'Toast' text = STRING
+;
+
+Bundle:
+	'Bundle' bundleRecipient = [Fragment]
+;
+
  
 FilterQuery:
     {FilterQuery} 'FilterQuery' name=ID filterAttributes=FilterAttributes

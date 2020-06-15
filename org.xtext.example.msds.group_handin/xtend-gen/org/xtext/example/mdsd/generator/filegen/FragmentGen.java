@@ -1,18 +1,29 @@
 package org.xtext.example.mdsd.generator.filegen;
 
 import com.google.common.base.Objects;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.xtext.example.mdsd.androidGenerator.ActivityType;
+import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
+import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
+import org.xtext.example.mdsd.androidGenerator.Bundle;
+import org.xtext.example.mdsd.androidGenerator.Button;
+import org.xtext.example.mdsd.androidGenerator.ButtonActions;
+import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.LayoutElement;
+import org.xtext.example.mdsd.androidGenerator.Spinner;
+import org.xtext.example.mdsd.androidGenerator.Toast;
+import org.xtext.example.mdsd.androidGenerator.TypeMap;
+import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.generator.abstractfiles.AbstractClassGen;
 
 @SuppressWarnings("all")
 public class FragmentGen extends AbstractClassGen {
   @Override
   protected String getSubClassPath() {
-    return "activity";
+    return "fragments";
   }
   
   @Override
@@ -23,25 +34,87 @@ public class FragmentGen extends AbstractClassGen {
   @Override
   protected String retrieveElementTemplate(final Application application, final ApplicationElement element) {
     Fragment fragment = ((Fragment) element);
-    ActivityType map = fragment.getActivityType();
-    boolean isMapActivity = (!Objects.equal(map, null));
     StringConcatenation _builder = new StringConcatenation();
-    {
-      if (isMapActivity) {
-        String _insertMapImports = this.insertMapImports(application);
-        _builder.append(_insertMapImports);
-        _builder.newLineIfNotEmpty();
-        String _insertMapfragment = this.insertMapfragment(fragment);
-        _builder.append(_insertMapfragment);
-        _builder.newLineIfNotEmpty();
+    _builder.append("Something went wrong");
+    String data = _builder.toString();
+    ActivityLayoutAttributes layout = this.<ActivityLayoutAttributes>getFieldData(fragment.getActivityAttributes(), ActivityLayoutAttributes.class);
+    boolean _notEquals = (!Objects.equal(layout, null));
+    if (_notEquals) {
+      EList<LayoutElement> _layoutElements = layout.getLayoutElements();
+      for (final LayoutElement type : _layoutElements) {
+        {
+          if ((type instanceof TypeMap)) {
+            StringConcatenation _builder_1 = new StringConcatenation();
+            String _insertMapFragment = this.insertMapFragment(fragment, application);
+            _builder_1.append(_insertMapFragment);
+            data = _builder_1.toString();
+          }
+          if ((type instanceof TypeSetting)) {
+            StringConcatenation _builder_2 = new StringConcatenation();
+            String _insertSettingFragment = this.insertSettingFragment(fragment, application);
+            _builder_2.append(_insertSettingFragment);
+            data = _builder_2.toString();
+          }
+          if (((!(type instanceof TypeMap)) && (!(type instanceof TypeSetting)))) {
+            StringConcatenation _builder_3 = new StringConcatenation();
+            StringBuilder _insertCustomFragment = this.insertCustomFragment(fragment, application);
+            _builder_3.append(_insertCustomFragment);
+            data = _builder_3.toString();
+          }
+        }
       }
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      String _insertBlankFragment = this.insertBlankFragment(fragment, application);
+      _builder_1.append(_insertBlankFragment);
+      _builder_1.append(" ");
+      data = _builder_1.toString();
     }
-    _builder.newLine();
-    return _builder.toString();
+    return data;
   }
   
-  private String insertMapImports(final Application application) {
+  public String filterOptions(final Fragment fragment, final Application application) {
+    ActivityLayoutAttributes layout = this.<ActivityLayoutAttributes>getFieldData(fragment.getActivityAttributes(), ActivityLayoutAttributes.class);
+    EList<LayoutElement> _layoutElements = layout.getLayoutElements();
+    for (final LayoutElement type : _layoutElements) {
+      if ((type instanceof TypeMap)) {
+        ActivityTypeAttributes _activitytypeattribute = ((TypeMap)type).getActivitytypeattribute();
+        boolean _notEquals = (!Objects.equal(_activitytypeattribute, null));
+        if (_notEquals) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("String filterQuery = \"");
+          String _name = ((TypeMap)type).getActivitytypeattribute().getFilter().getName();
+          _builder.append(_name);
+          _builder.append("\";");
+          _builder.newLineIfNotEmpty();
+          _builder.append("double distanceThreshold = ");
+          int _value = ((TypeMap)type).getActivitytypeattribute().getFilter().getFilterAttributes().getDistance().getResults().getValue();
+          _builder.append(_value);
+          _builder.append(";");
+          _builder.newLineIfNotEmpty();
+          return _builder.toString();
+        } else {
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("// Change values for different options.");
+          _builder_1.newLine();
+          _builder_1.append("String filterQuery = \"Hotels\";");
+          _builder_1.newLine();
+          _builder_1.append("double distanceThreshold = 5000;");
+          _builder_1.newLine();
+          return _builder_1.toString();
+        }
+      }
+    }
+    return null;
+  }
+  
+  public String insertMapFragment(final Fragment fragment, final Application application) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package ");
+    String _name = application.getName();
+    _builder.append(_name);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
     _builder.append("import android.annotation.SuppressLint;");
     _builder.newLine();
     _builder.append("import android.content.Context;");
@@ -101,14 +174,10 @@ public class FragmentGen extends AbstractClassGen {
     _builder.newLine();
     _builder.append("import java.util.List;");
     _builder.newLine();
-    return _builder.toString();
-  }
-  
-  private String insertMapfragment(final Fragment fragment) {
-    StringConcatenation _builder = new StringConcatenation();
+    _builder.newLine();
     _builder.append("public class ");
-    String _name = fragment.getName();
-    _builder.append(_name);
+    String _name_1 = fragment.getName();
+    _builder.append(_name_1);
     _builder.append(" extends Fragment implements LocationListener {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -148,11 +217,9 @@ public class FragmentGen extends AbstractClassGen {
     _builder.append("// DSL Params");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("String filterQuery = \"Hotels\";");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("double distanceThreshold = 5000;");
-    _builder.newLine();
+    String _filterOptions = this.filterOptions(fragment, application);
+    _builder.append(_filterOptions, "\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("Location startPoint = new Location(\"locationA\"); // Used for distance measuring");
     _builder.newLine();
@@ -563,5 +630,634 @@ public class FragmentGen extends AbstractClassGen {
     _builder.append("}");
     _builder.newLine();
     return _builder.toString();
+  }
+  
+  public String insertSettingFragment(final Fragment fragment, final Application application) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package ");
+    String _name = application.getName();
+    _builder.append(_name);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("package com.example.mdsdproject.fragments;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("import android.os.Bundle;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("import androidx.fragment.app.Fragment;");
+    _builder.newLine();
+    _builder.append("import androidx.fragment.app.FragmentTransaction;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("import android.view.LayoutInflater;");
+    _builder.newLine();
+    _builder.append("import android.view.View;");
+    _builder.newLine();
+    _builder.append("import android.view.ViewGroup;");
+    _builder.newLine();
+    _builder.append("import android.widget.AdapterView;");
+    _builder.newLine();
+    _builder.append("import android.widget.ArrayAdapter;");
+    _builder.newLine();
+    _builder.append("import android.widget.Button;");
+    _builder.newLine();
+    _builder.append("import android.widget.EditText;");
+    _builder.newLine();
+    _builder.append("import android.widget.Spinner;");
+    _builder.newLine();
+    _builder.append("import android.widget.Toast;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("import com.example.mdsdproject.R;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("public class SettingsFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("private String mSpinnerText;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("private Double number;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("private EditText editText;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public SettingsFragment() {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("// Required empty public constructor");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public void onCreate(Bundle savedInstanceState) {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("super.onCreate(savedInstanceState);");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("// Inflate the layout for this fragment");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("View view = inflater.inflate(R.layout.fragment_settings, container, false);");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("Spinner spinner = view.findViewById(R.id.spinner);");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.places, android.R.layout.simple_spinner_item);");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("spinner.setAdapter(adapter);");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("spinner.setOnItemSelectedListener(this);");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("Button btn = view.findViewById(R.id.button);");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("btn.setOnClickListener(this);");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("editText = view.findViewById(R.id.editTextNumber);");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("return view;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("mSpinnerText = parent.getItemAtPosition(position).toString();");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public void onNothingSelected(AdapterView<?> parent) {");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public void onClick(View v) {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("switch (v.getId()){");
+    _builder.newLine();
+    _builder.append("            ");
+    _builder.append("case R.id.button:");
+    _builder.newLine();
+    _builder.append("                ");
+    _builder.append("String failSafe = editText.getText().toString();");
+    _builder.newLine();
+    _builder.append("                ");
+    _builder.append("if(failSafe.matches(\"\")){");
+    _builder.newLine();
+    _builder.append("                    ");
+    _builder.append("Toast.makeText(getActivity().getApplicationContext(), \"Please specify number\", Toast.LENGTH_SHORT).show();");
+    _builder.newLine();
+    _builder.append("                ");
+    _builder.append("}else{");
+    _builder.newLine();
+    _builder.append("                    ");
+    _builder.append("FragmentTransaction transaction = getFragmentManager().beginTransaction();");
+    _builder.newLine();
+    _builder.append("                    ");
+    _builder.append("MapsFragment mapsFragment = new MapsFragment();");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("                    ");
+    _builder.append("number = Double.parseDouble(editText.getText().toString());");
+    _builder.newLine();
+    _builder.append("                    ");
+    _builder.append("Bundle bundle = new Bundle();");
+    _builder.newLine();
+    _builder.append("                    ");
+    _builder.append("bundle.putString(\"location\", mSpinnerText);");
+    _builder.newLine();
+    _builder.append("                    ");
+    _builder.append("bundle.putDouble(\"radius\", number);");
+    _builder.newLine();
+    _builder.append("                    ");
+    _builder.append("mapsFragment.setArguments(bundle);");
+    _builder.newLine();
+    _builder.append("                    ");
+    _builder.append("transaction.replace(R.id.container_frame_layout, mapsFragment).commit();");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("                ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder.toString();
+  }
+  
+  public String insertBlankFragment(final Fragment fragment, final Application application) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package ");
+    String _name = application.getName();
+    _builder.append(_name);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("import android.os.Bundle;");
+    _builder.newLine();
+    _builder.append("import androidx.fragment.app.Fragment;");
+    _builder.newLine();
+    _builder.append("import android.view.LayoutInflater;");
+    _builder.newLine();
+    _builder.append("import android.view.View;");
+    _builder.newLine();
+    _builder.append("import android.view.ViewGroup;");
+    _builder.newLine();
+    _builder.append("import ");
+    String _name_1 = application.getName();
+    _builder.append(_name_1);
+    _builder.append(".R;");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("public class ");
+    String _name_2 = fragment.getName();
+    _builder.append(_name_2);
+    _builder.append(" extends Fragment {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public ");
+    String _name_3 = fragment.getName();
+    _builder.append(_name_3, "\t");
+    _builder.append(" {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("// Required empty public constructor");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public void onCreate(Bundle savedInstanceState) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("super.onCreate(savedInstanceState);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {");
+    _builder.newLine();
+    _builder.append("    \t");
+    _builder.append("// Inflate the layout for this fragment");
+    _builder.newLine();
+    _builder.append("    \t");
+    _builder.append("View view = inflater.inflate(R.layout.fragment_settings, container, false);");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return view;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder.toString();
+  }
+  
+  public StringBuilder insertCustomFragment(final Fragment fragment, final Application application) {
+    ActivityLayoutAttributes layout = this.<ActivityLayoutAttributes>getFieldData(fragment.getActivityAttributes(), ActivityLayoutAttributes.class);
+    final StringBuilder string = new StringBuilder();
+    final StringBuilder instances = new StringBuilder();
+    final StringBuilder vars = new StringBuilder();
+    final StringBuilder methods = new StringBuilder();
+    EList<LayoutElement> _layoutElements = layout.getLayoutElements();
+    for (final LayoutElement element : _layoutElements) {
+      {
+        if ((element instanceof Spinner)) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("private String m");
+          String _name = ((Spinner)element).getName();
+          _builder.append(_name);
+          _builder.append(";");
+          _builder.newLineIfNotEmpty();
+          vars.append(_builder);
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("Spinner ");
+          String _name_1 = ((Spinner)element).getName();
+          _builder_1.append(_name_1);
+          _builder_1.append(" = view.findViewById(R.id.");
+          String _javaToAndroidIdentifier = this.javaToAndroidIdentifier(((Spinner)element).getName());
+          _builder_1.append(_javaToAndroidIdentifier);
+          _builder_1.append(");");
+          _builder_1.newLineIfNotEmpty();
+          _builder_1.append("ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.places, android.R.layout.simple_spinner_item);");
+          _builder_1.newLine();
+          _builder_1.append("adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);");
+          _builder_1.newLine();
+          _builder_1.append("spinner.setAdapter(adapter);");
+          _builder_1.newLine();
+          _builder_1.append("spinner.setOnItemSelectedListener(this);");
+          _builder_1.newLine();
+          _builder_1.newLine();
+          instances.append(_builder_1);
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("@Override");
+          _builder_2.newLine();
+          _builder_2.append("public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {");
+          _builder_2.newLine();
+          _builder_2.append("    ");
+          _builder_2.append("m");
+          String _name_2 = ((Spinner)element).getName();
+          _builder_2.append(_name_2, "    ");
+          _builder_2.append(" = parent.getItemAtPosition(position).toString();");
+          _builder_2.newLineIfNotEmpty();
+          _builder_2.append("}");
+          _builder_2.newLine();
+          _builder_2.newLine();
+          _builder_2.append("@Override");
+          _builder_2.newLine();
+          _builder_2.append("public void onNothingSelected(AdapterView<?> parent) { }");
+          _builder_2.newLine();
+          _builder_2.newLine();
+          methods.append(_builder_2);
+        }
+        if ((element instanceof Button)) {
+          StringConcatenation _builder_3 = new StringConcatenation();
+          vars.append(_builder_3);
+          StringConcatenation _builder_4 = new StringConcatenation();
+          _builder_4.append("Button ");
+          String _name_3 = ((Button)element).getName();
+          _builder_4.append(_name_3);
+          _builder_4.append(" = view.findViewById(R.id.");
+          String _javaToAndroidIdentifier_1 = this.javaToAndroidIdentifier(((Button)element).getName());
+          _builder_4.append(_javaToAndroidIdentifier_1);
+          _builder_4.append(");");
+          _builder_4.newLineIfNotEmpty();
+          String _name_4 = ((Button)element).getName();
+          _builder_4.append(_name_4);
+          _builder_4.append(".setOnClickListener(this);");
+          _builder_4.newLineIfNotEmpty();
+          _builder_4.newLine();
+          instances.append(_builder_4);
+          StringConcatenation _builder_5 = new StringConcatenation();
+          _builder_5.append("@Override");
+          _builder_5.newLine();
+          _builder_5.append("public void onClick(View v) {");
+          _builder_5.newLine();
+          _builder_5.append("    ");
+          _builder_5.append("switch (v.getId()){");
+          _builder_5.newLine();
+          _builder_5.append("        ");
+          _builder_5.append("case R.id.");
+          String _javaToAndroidIdentifier_2 = this.javaToAndroidIdentifier(((Button)element).getName());
+          _builder_5.append(_javaToAndroidIdentifier_2, "        ");
+          _builder_5.append(":");
+          _builder_5.newLineIfNotEmpty();
+          _builder_5.append("            ");
+          StringBuilder _insertVariablesBundle = this.insertVariablesBundle(fragment, application);
+          _builder_5.append(_insertVariablesBundle, "            ");
+          _builder_5.newLineIfNotEmpty();
+          _builder_5.append("    ");
+          _builder_5.append("}");
+          _builder_5.newLine();
+          _builder_5.append("}");
+          _builder_5.newLine();
+          methods.append(_builder_5);
+        }
+        if ((element instanceof EditText)) {
+          StringConcatenation _builder_6 = new StringConcatenation();
+          _builder_6.append("private EditText m");
+          String _name_5 = ((EditText)element).getName();
+          _builder_6.append(_name_5);
+          _builder_6.append(";");
+          _builder_6.newLineIfNotEmpty();
+          _builder_6.append("private Double m");
+          String _name_6 = ((EditText)element).getName();
+          _builder_6.append(_name_6);
+          _builder_6.append("_number;");
+          _builder_6.newLineIfNotEmpty();
+          _builder_6.newLine();
+          vars.append(_builder_6);
+          StringConcatenation _builder_7 = new StringConcatenation();
+          _builder_7.append("m");
+          String _name_7 = ((EditText)element).getName();
+          _builder_7.append(_name_7);
+          _builder_7.append(" = view.findViewById(R.id.");
+          String _javaToAndroidIdentifier_3 = this.javaToAndroidIdentifier(((EditText)element).getName());
+          _builder_7.append(_javaToAndroidIdentifier_3);
+          _builder_7.append(");");
+          _builder_7.newLineIfNotEmpty();
+          _builder_7.newLine();
+          instances.append(_builder_7);
+        }
+      }
+    }
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("package ");
+    String _name = application.getName();
+    _builder.append(_name);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("import android.os.Bundle;");
+    _builder.newLine();
+    _builder.append("import androidx.fragment.app.Fragment;");
+    _builder.newLine();
+    _builder.append("import android.view.LayoutInflater;");
+    _builder.newLine();
+    _builder.append("import android.view.View;");
+    _builder.newLine();
+    _builder.append("import android.view.ViewGroup;");
+    _builder.newLine();
+    _builder.append("import ");
+    String _name_1 = application.getName();
+    _builder.append(_name_1);
+    _builder.append(".R;");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("public class ");
+    String _name_2 = fragment.getName();
+    _builder.append(_name_2);
+    _builder.append(" extends Fragment {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append(vars);
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("public SettingsFragment() {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("// Required empty public constructor");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public void onCreate(Bundle savedInstanceState) {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("super.onCreate(savedInstanceState);");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("@Override");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("// Inflate the layout for this fragment");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("View view = inflater.inflate(R.layout.");
+    String _javaToAndroidIdentifier = this.javaToAndroidIdentifier(fragment.getName());
+    _builder.append(_javaToAndroidIdentifier, "        ");
+    _builder.append(", container, false);");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append(instances, "        ");
+    _builder.newLineIfNotEmpty();
+    _builder.append("        ");
+    _builder.append("return view;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append(methods, "    ");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    string.append(_builder);
+    return string;
+  }
+  
+  public StringBuilder insertVariablesBundle(final Fragment fragment, final Application application) {
+    StringBuilder _xblockexpression = null;
+    {
+      ActivityLayoutAttributes layout = this.<ActivityLayoutAttributes>getFieldData(fragment.getActivityAttributes(), ActivityLayoutAttributes.class);
+      final StringBuilder string = new StringBuilder();
+      final StringBuilder spinner = new StringBuilder();
+      final StringBuilder edittext = new StringBuilder();
+      final StringBuilder edittext2 = new StringBuilder();
+      final StringBuilder buttonString = new StringBuilder();
+      final StringBuilder bundleString = new StringBuilder();
+      final StringBuilder bundleString2 = new StringBuilder();
+      EList<LayoutElement> _layoutElements = layout.getLayoutElements();
+      for (final LayoutElement element : _layoutElements) {
+        {
+          if ((element instanceof Spinner)) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("bundle.putString(\"location\", m");
+            String _name = ((Spinner)element).getName();
+            _builder.append(_name);
+            _builder.append(");");
+            _builder.newLineIfNotEmpty();
+            spinner.append(_builder);
+          }
+          if ((element instanceof EditText)) {
+            StringConcatenation _builder_1 = new StringConcatenation();
+            _builder_1.append("String failSafe = medittext.getText().toString();");
+            _builder_1.newLine();
+            _builder_1.append("if(failSafe.matches(\"\")){");
+            _builder_1.newLine();
+            _builder_1.append("\t");
+            _builder_1.append("Toast.makeText(getActivity().getApplicationContext(), \"Please specify number\", Toast.LENGTH_SHORT).show();");
+            _builder_1.newLine();
+            _builder_1.append("}else{");
+            _builder_1.newLine();
+            edittext.append(_builder_1);
+            StringConcatenation _builder_2 = new StringConcatenation();
+            _builder_2.append("m");
+            String _name_1 = ((EditText)element).getName();
+            _builder_2.append(_name_1);
+            _builder_2.append("_number = Double.parseDouble(m");
+            String _name_2 = ((EditText)element).getName();
+            _builder_2.append(_name_2);
+            _builder_2.append(".getText().toString());");
+            _builder_2.newLineIfNotEmpty();
+            _builder_2.append("bundle.putDouble(\"radius\", m");
+            String _name_3 = ((EditText)element).getName();
+            _builder_2.append(_name_3);
+            _builder_2.append("_number);");
+            _builder_2.newLineIfNotEmpty();
+            edittext2.append(_builder_2);
+          }
+          if ((element instanceof Button)) {
+            EList<ButtonActions> action = ((Button)element).getActions();
+            for (final ButtonActions actions : action) {
+              {
+                if ((actions instanceof Toast)) {
+                  StringConcatenation _builder_3 = new StringConcatenation();
+                  _builder_3.append("Toast.makeText(getActivity().getApplicationContext(), \"");
+                  String _text = ((Toast)actions).getText();
+                  _builder_3.append(_text);
+                  _builder_3.append("\", Toast.LENGTH_SHORT).show();");
+                  _builder_3.newLineIfNotEmpty();
+                  buttonString.append(_builder_3);
+                }
+                if ((actions instanceof Bundle)) {
+                  StringConcatenation _builder_4 = new StringConcatenation();
+                  String _name_4 = ((Bundle)actions).getBundleRecipient().getName();
+                  _builder_4.append(_name_4);
+                  _builder_4.append(" b");
+                  String _name_5 = ((Bundle)actions).getBundleRecipient().getName();
+                  _builder_4.append(_name_5);
+                  _builder_4.append(" = new ");
+                  String _name_6 = ((Bundle)actions).getBundleRecipient().getName();
+                  _builder_4.append(_name_6);
+                  _builder_4.append("();");
+                  _builder_4.newLineIfNotEmpty();
+                  bundleString.append(_builder_4);
+                  StringConcatenation _builder_5 = new StringConcatenation();
+                  _builder_5.append("transaction.replace(R.id.container_frame_layout, b");
+                  String _name_7 = ((Bundle)actions).getBundleRecipient().getName();
+                  _builder_5.append(_name_7);
+                  _builder_5.append(").commit();");
+                  _builder_5.newLineIfNotEmpty();
+                  bundleString2.append(_builder_5);
+                }
+              }
+            }
+          }
+        }
+      }
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(buttonString);
+      _builder.newLineIfNotEmpty();
+      _builder.append(edittext);
+      _builder.newLineIfNotEmpty();
+      _builder.append("FragmentTransaction transaction = getFragmentManager().beginTransaction();");
+      _builder.newLine();
+      _builder.append("Bundle bundle = new Bundle();");
+      _builder.newLine();
+      _builder.append(bundleString);
+      _builder.newLineIfNotEmpty();
+      _builder.append(edittext2);
+      _builder.newLineIfNotEmpty();
+      _builder.append(spinner);
+      _builder.newLineIfNotEmpty();
+      _builder.append("mapsFragment.setArguments(bundle);");
+      _builder.newLine();
+      _builder.append(bundleString2);
+      _builder.newLineIfNotEmpty();
+      _builder.append("}");
+      _builder.newLine();
+      _xblockexpression = string.append(_builder);
+    }
+    return _xblockexpression;
   }
 }

@@ -1,15 +1,15 @@
 package org.xtext.example.mdsd.generator.filegen
- 
+
+import java.util.ArrayList
 import java.util.List
 import org.eclipse.xtext.generator.IFileSystemAccess2
-import org.xtext.example.mdsd.androidGenerator.Activity
-import org.xtext.example.mdsd.androidGenerator.ActivityType
 import org.xtext.example.mdsd.androidGenerator.Application
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList
+import org.xtext.example.mdsd.androidGenerator.Fragment
 import org.xtext.example.mdsd.androidGenerator.TypeMap
+import org.xtext.example.mdsd.androidGenerator.TypeSetting
 import org.xtext.example.mdsd.generator.abstractfiles.AbstractGen
-import java.util.ArrayList
-import org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity
+import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes
 
 class MainActivityGen extends AbstractGen {
     ArrayList<ArrayList<Object>> activityArrayList = newArrayList();
@@ -20,7 +20,7 @@ class MainActivityGen extends AbstractGen {
            
             constructActivityArray(app);
            	
-        	filesystem.generateFile(String.format("%s/src/main/java/" + app.name + "/activity/" + app.name + ".java", projectName),
+        	filesystem.generateFile(String.format("%s/src/main/java/" + app.name + "/" + app.name + ".java", projectName),
                 retrieveMainActivity(app)
             );
            
@@ -197,24 +197,38 @@ class MainActivityGen extends AbstractGen {
         activityArrayList = newArrayList();
        
         for (var i = 0; i < activityList.size(); i++) {
-            if (activityList.get(i) instanceof Activity) {
+            if (activityList.get(i) instanceof Fragment) {
                 // Init Array Item
                 var activityItem = newArrayList();
+                var ActivityLayoutAttributes layout = getFieldData(
+                	(activityList.get(i) as Fragment).activityAttributes,
+                	typeof(ActivityLayoutAttributes)
+                );
  
                 // Add Name to list
-                activityItem.add((activityList.get(i) as Activity).name)
+                activityItem.add((activityList.get(i) as Fragment).name)
            
                 // Add Index to list
                 activityItem.add(i)
            
                 // Check Type and add to list
-                if ((activityList.get(i) as Activity).activityType == ((activityList.get(i) as Activity).activityType as ActivityType) as TypeMap) {
-                    activityItem.add("MapsFragment")
-                    activityItem.add("maps")
-                } else {
-                    activityItem.add("StandardFragment")
-                    activityItem.add("standard")   
-                }
+                if(layout != null){
+		        	for(type : layout.layoutElements){
+		        		if( type instanceof TypeMap){
+		        			activityItem.add("MapsFragment")
+                    		activityItem.add("maps")
+		        		}if(type instanceof TypeSetting){
+		        			activityItem.add("SetFragment")
+                			activityItem.add("Setting")
+		        		}if(!(type instanceof TypeMap) && !(type instanceof TypeSetting)){
+        					activityItem.add("LayoutFragment")
+                    		activityItem.add("Layout")
+        				}
+		       		}
+		        }else {
+		        	activityItem.add("StandardFragment")
+                    activityItem.add("standard") 
+		        }
                
                 // Checks if all info is here
                 if (activityItem.size() == 4) {

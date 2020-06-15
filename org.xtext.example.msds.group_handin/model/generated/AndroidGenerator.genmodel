@@ -34,45 +34,41 @@
     <genClasses ecoreClass="AndroidGenerator.ecore#//ApplicationElementList">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ApplicationElementList/elements"/>
     </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//ApplicationMainActivity">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ApplicationMainActivity/launcherActivity"/>
-    </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//ApplicationElement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ApplicationElement/activityType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//ApplicationElement/name"/>
     </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Model/modellist"/>
-    </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//ModelList">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ModelList/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ModelList/getset"/>
-    </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//GetSet">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//GetSet/name"/>
-    </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//Type">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//Type/name"/>
-    </genClasses>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//Model"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Fragment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Fragment/activityAttributes"/>
     </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//Activity">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Activity/activityTypeAttributes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Activity/activityAttributes"/>
-    </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//ActivityTypeAttributes">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ActivityTypeAttributes/filter"/>
-    </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//ActivityType"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//ActivityLayoutAttributes">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ActivityLayoutAttributes/layoutElements"/>
     </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//LayoutElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//LayoutElement/name"/>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//LayoutElement"/>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//TypeMap">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//TypeMap/activitytypeattribute"/>
     </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//TextView"/>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//Button"/>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//TypeSetting"/>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//ActivityTypeAttributes">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ActivityTypeAttributes/filter"/>
+    </genClasses>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//EditText">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//EditText/name"/>
+    </genClasses>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//Spinner">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//Spinner/name"/>
+    </genClasses>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//Button">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//Button/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Button/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//ButtonActions"/>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//Toast">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//Toast/text"/>
+    </genClasses>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//Bundle">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Bundle/bundleRecipient"/>
+    </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//FilterQuery">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//FilterQuery/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//FilterQuery/filterAttributes"/>
@@ -90,8 +86,6 @@
     </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Operator"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Unit"/>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//TypeMap"/>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//TypeSetting"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Less"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//More"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Equal"/>

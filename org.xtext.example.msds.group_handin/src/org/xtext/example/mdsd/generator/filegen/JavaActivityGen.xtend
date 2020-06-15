@@ -3,11 +3,10 @@ package org.xtext.example.mdsd.generator.filegen
 import org.xtext.example.mdsd.androidGenerator.Activity
 import org.xtext.example.mdsd.androidGenerator.ApplicationElement
 import org.xtext.example.mdsd.androidGenerator.Application
-import org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity
-import org.xtext.example.mdsd.androidGenerator.ActivityType
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList
 import org.xtext.example.mdsd.generator.abstractfiles.AbstractClassGen
- 
+import org.xtext.example.mdsd.androidGenerator.TypeMap
+
 public class JavaActivityGen extends AbstractClassGen{
    
     override protected getSubClassPath() {
@@ -21,13 +20,9 @@ public class JavaActivityGen extends AbstractClassGen{
     override protected retrieveElementTemplate(Application application, ApplicationElement element) {
         var activity = element as Activity;
        
-        // returns a boolean if the activity is main or not
-        var ApplicationMainActivity mainActivity = getFieldData(application.attributes, typeof(ApplicationMainActivity));
-        var isMainActivity = mainActivity != null && mainActivity.launcherActivity.equals(activity);
        
         // Checks with a boolean if the activity is of type "Map" or not
-        var map = activity.activityType;
-        var isMapActivity = map != null;
+        var isMapActivity = true;
        
         return ''' 
         package «application.name»;
@@ -101,21 +96,14 @@ public class JavaActivityGen extends AbstractClassGen{
                 return rootView;
                
             }
-            «insertMapFields(map)»
+«««            «insertMapFields(map)»
            
         }
         ''';
     }
    
    
-    private def String insertMapFields(ActivityType activityType){
-        if (activityType == null) {
-            return "";
-        }
-       
-        // Checks with a boolean if the activity is of type "Map" or not
-        var isMapActivity = activityType != null;
-       
+    private def String insertMapFields(){       
        
         var data = '''
         @Override
@@ -165,7 +153,7 @@ public class JavaActivityGen extends AbstractClassGen{
         @Override
         public void onProviderDisabled(String provider) {}
        
-        «IF isMapActivity»
+«««        «IF isMapActivity»
         public class PlacesService {
         
                 private String API_KEY;
@@ -266,7 +254,7 @@ public class JavaActivityGen extends AbstractClassGen{
                     }
                 }
             }
-        «ENDIF»
+«««        «ENDIF»
         ''';
        
        

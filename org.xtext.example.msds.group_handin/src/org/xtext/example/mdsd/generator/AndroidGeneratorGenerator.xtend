@@ -35,19 +35,25 @@ class AndroidGeneratorGenerator extends AbstractGenerator {
 		logger.info("Init DSL Generator..");
 
 		generators = new ArrayList<ContentGen>();
-		
+	
 		logger.info("Generating Main Activity and Assets..");
 		generators.add(new MainActivityGen());
-		logger.info("Generating Activities..");
-		generators.add(new JavaActivityGen());
-		logger.info("Generating Model class..");
-		generators.add(new ModelClassGen());
+		
+		//logger.info("Generating Activities..");
+		//generators.add(new JavaActivityGen());
+		
+//		logger.info("Generating Model class..");
+//		generators.add(new ModelClassGen());
+		
 		logger.info("Generating Manifest file..");
 		generators.add(new ManifestGen());
+		
 		logger.info("Generating XML Layout..");
 		generators.add(new LayoutGen());
+		
 		logger.info("Generating Gradle build..");
 		generators.add(new GradleGen());
+		
 		logger.info("Generating Fragments..");
 		generators.add(new FragmentGen());
 		

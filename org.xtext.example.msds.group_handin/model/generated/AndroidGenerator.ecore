@@ -39,54 +39,46 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//ApplicationElement" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ApplicationMainActivity" eSuperTypes="#//ApplicationAttribute">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="launcherActivity" eType="#//Activity"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ApplicationElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activityType" eType="#//ActivityType"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//ApplicationElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modellist" eType="#//ModelList"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModelList">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" upperBound="-1" eType="#//Type"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="getset" upperBound="-1"
-        eType="#//GetSet" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GetSet">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Type">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//ApplicationElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Fragment" eSuperTypes="#//ApplicationElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="activityAttributes" upperBound="-1"
         eType="#//ActivityLayoutAttributes" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//ApplicationElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activityTypeAttributes"
-        eType="#//ActivityTypeAttributes" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activityAttributes" upperBound="-1"
-        eType="#//ActivityLayoutAttributes" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ActivityTypeAttributes">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="filter" eType="#//FilterQuery"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ActivityType"/>
   <eClassifiers xsi:type="ecore:EClass" name="ActivityLayoutAttributes">
     <eStructuralFeatures xsi:type="ecore:EReference" name="layoutElements" upperBound="-1"
         eType="#//LayoutElement" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LayoutElement">
+  <eClassifiers xsi:type="ecore:EClass" name="LayoutElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeMap" eSuperTypes="#//LayoutElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activitytypeattribute"
+        eType="#//ActivityTypeAttributes" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeSetting" eSuperTypes="#//LayoutElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityTypeAttributes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filter" eType="#//FilterQuery"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EditText" eSuperTypes="#//LayoutElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TextView" eSuperTypes="#//LayoutElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Button" eSuperTypes="#//LayoutElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Spinner" eSuperTypes="#//LayoutElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Button" eSuperTypes="#//LayoutElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//ButtonActions" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ButtonActions"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Toast" eSuperTypes="#//ButtonActions">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bundle" eSuperTypes="#//ButtonActions">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bundleRecipient" eType="#//Fragment"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FilterQuery">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="filterAttributes" eType="#//FilterAttributes"
@@ -108,8 +100,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Unit"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TypeMap" eSuperTypes="#//ActivityType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TypeSetting" eSuperTypes="#//ActivityType"/>
   <eClassifiers xsi:type="ecore:EClass" name="Less" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="More" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Equal" eSuperTypes="#//Operator"/>

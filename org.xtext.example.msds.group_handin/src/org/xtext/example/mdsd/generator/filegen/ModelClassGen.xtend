@@ -5,6 +5,9 @@ import org.xtext.example.mdsd.androidGenerator.ApplicationElement
 import org.xtext.example.mdsd.androidGenerator.Application
 import org.xtext.example.mdsd.androidGenerator.Model
 import org.xtext.example.mdsd.androidGenerator.ModelList
+import org.xtext.example.mdsd.androidGenerator.Fragment
+import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes
+import org.xtext.example.mdsd.androidGenerator.TypeMap
 
 class ModelClassGen extends AbstractClassGen{
 	
@@ -19,16 +22,19 @@ class ModelClassGen extends AbstractClassGen{
 	override protected retrieveElementTemplate(Application application, ApplicationElement element) {
 		var model = element as Model;
 		var ModelList modlist = getFieldData(application.attributes, typeof(ModelList));
-		var map = model.activityType;
-		var mod = model.modellist;
-		var isModList = mod != null;
-		var isMapModel = map != null;
+		var ActivityLayoutAttributes layout = getFieldData(model.activityAttributes, typeof(ActivityLayoutAttributes));
 		
-		
+		if(layout != null){
+			for (check: layout.layoutElements){
+	        	if (check instanceof TypeMap){
+	        		return '''
+						«generateMapModel(application)»
+					''';
+	        	}
+        	}
+		}
 		return '''
-		«IF isMapModel »
-			«generateMapModel(model, application)»
-		«ENDIF»
+			«generateGetSet(modlist, model, application)»
 		''';
 		
 	}
@@ -69,7 +75,7 @@ class ModelClassGen extends AbstractClassGen{
 	}
 	
 	// Generates the needed model for using Maps in Android
-	private def String generateMapModel(ApplicationElement model, Application application){
+	private def String generateMapModel(Application application){
 		
 		return 
 		'''
@@ -83,7 +89,7 @@ class ModelClassGen extends AbstractClassGen{
 			import org.json.JSONObject;
 			
 			
-			public class «model.name» {
+			public class Places {
 			    private String id;
 			    private String icon;
 			    private String name;
@@ -140,10 +146,10 @@ class ModelClassGen extends AbstractClassGen{
 			    }
 			
 			
-			    static «model.name» JSONToResult(JSONObject jsonObject) {
+			    static Places JSONToResult(JSONObject jsonObject) {
 			        if (jsonObject != null) {
 			            try {
-			                «model.name» result = new «model.name»();
+			                Places result = new Places();
 			                JSONObject geometry = (JSONObject) jsonObject.get("geometry");
 			                JSONObject location = (JSONObject) geometry.get("location");
 			                result.setLatitude((Double) location.get("lat"));
@@ -153,7 +159,7 @@ class ModelClassGen extends AbstractClassGen{
 			                result.setId(jsonObject.getString("id"));
 			                return result;
 			            } catch (JSONException ex) {
-			                Logger.getLogger(«model.name».class.getName()).log(Level.SEVERE, null, ex);
+			                Logger.getLogger(Places.class.getName()).log(Level.SEVERE, null, ex);
 			            }
 			        }
 			
@@ -162,7 +168,7 @@ class ModelClassGen extends AbstractClassGen{
 			
 			    @Override
 			    public String toString() {
-			        return "«model.name»{" + "id=" + id + ", icon=" + icon + ", name=" + name + ", latitude=" + latitude + ", longitude=" + longitude + '}';
+			        return "Places{" + "id=" + id + ", icon=" + icon + ", name=" + name + ", latitude=" + latitude + ", longitude=" + longitude + '}';
 			    }
 			
 			}

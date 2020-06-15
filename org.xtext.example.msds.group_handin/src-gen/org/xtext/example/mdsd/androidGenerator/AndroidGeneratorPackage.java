@@ -328,34 +328,6 @@ public interface AndroidGeneratorPackage extends EPackage
   int APPLICATION_ELEMENT_LIST_FEATURE_COUNT = APPLICATION_ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ApplicationMainActivityImpl <em>Application Main Activity</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mdsd.androidGenerator.impl.ApplicationMainActivityImpl
-   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getApplicationMainActivity()
-   * @generated
-   */
-  int APPLICATION_MAIN_ACTIVITY = 9;
-
-  /**
-   * The feature id for the '<em><b>Launcher Activity</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int APPLICATION_MAIN_ACTIVITY__LAUNCHER_ACTIVITY = APPLICATION_ATTRIBUTE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Application Main Activity</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int APPLICATION_MAIN_ACTIVITY_FEATURE_COUNT = APPLICATION_ATTRIBUTE_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ApplicationElementImpl <em>Application Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -363,16 +335,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getApplicationElement()
    * @generated
    */
-  int APPLICATION_ELEMENT = 10;
-
-  /**
-   * The feature id for the '<em><b>Activity Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int APPLICATION_ELEMENT__ACTIVITY_TYPE = 0;
+  int APPLICATION_ELEMENT = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -381,7 +344,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int APPLICATION_ELEMENT__NAME = 1;
+  int APPLICATION_ELEMENT__NAME = 0;
 
   /**
    * The number of structural features of the '<em>Application Element</em>' class.
@@ -390,7 +353,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int APPLICATION_ELEMENT_FEATURE_COUNT = 2;
+  int APPLICATION_ELEMENT_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ModelImpl <em>Model</em>}' class.
@@ -400,16 +363,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getModel()
    * @generated
    */
-  int MODEL = 11;
-
-  /**
-   * The feature id for the '<em><b>Activity Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL__ACTIVITY_TYPE = APPLICATION_ELEMENT__ACTIVITY_TYPE;
+  int MODEL = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -421,115 +375,13 @@ public interface AndroidGeneratorPackage extends EPackage
   int MODEL__NAME = APPLICATION_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Modellist</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL__MODELLIST = APPLICATION_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
    * The number of structural features of the '<em>Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = APPLICATION_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ModelListImpl <em>Model List</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mdsd.androidGenerator.impl.ModelListImpl
-   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getModelList()
-   * @generated
-   */
-  int MODEL_LIST = 12;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL_LIST__TYPE = 0;
-
-  /**
-   * The feature id for the '<em><b>Getset</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL_LIST__GETSET = 1;
-
-  /**
-   * The number of structural features of the '<em>Model List</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL_LIST_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.GetSetImpl <em>Get Set</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mdsd.androidGenerator.impl.GetSetImpl
-   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getGetSet()
-   * @generated
-   */
-  int GET_SET = 13;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GET_SET__NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Get Set</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GET_SET_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeImpl <em>Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mdsd.androidGenerator.impl.TypeImpl
-   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getType()
-   * @generated
-   */
-  int TYPE = 14;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE_FEATURE_COUNT = 1;
+  int MODEL_FEATURE_COUNT = APPLICATION_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.FragmentImpl <em>Fragment</em>}' class.
@@ -539,16 +391,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getFragment()
    * @generated
    */
-  int FRAGMENT = 15;
-
-  /**
-   * The feature id for the '<em><b>Activity Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FRAGMENT__ACTIVITY_TYPE = APPLICATION_ELEMENT__ACTIVITY_TYPE;
+  int FRAGMENT = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -578,108 +421,6 @@ public interface AndroidGeneratorPackage extends EPackage
   int FRAGMENT_FEATURE_COUNT = APPLICATION_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityImpl <em>Activity</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mdsd.androidGenerator.impl.ActivityImpl
-   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivity()
-   * @generated
-   */
-  int ACTIVITY = 16;
-
-  /**
-   * The feature id for the '<em><b>Activity Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ACTIVITY__ACTIVITY_TYPE = APPLICATION_ELEMENT__ACTIVITY_TYPE;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ACTIVITY__NAME = APPLICATION_ELEMENT__NAME;
-
-  /**
-   * The feature id for the '<em><b>Activity Type Attributes</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ACTIVITY__ACTIVITY_TYPE_ATTRIBUTES = APPLICATION_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Activity Attributes</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ACTIVITY__ACTIVITY_ATTRIBUTES = APPLICATION_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Activity</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ACTIVITY_FEATURE_COUNT = APPLICATION_ELEMENT_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl <em>Activity Type Attributes</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl
-   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivityTypeAttributes()
-   * @generated
-   */
-  int ACTIVITY_TYPE_ATTRIBUTES = 17;
-
-  /**
-   * The feature id for the '<em><b>Filter</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ACTIVITY_TYPE_ATTRIBUTES__FILTER = 0;
-
-  /**
-   * The number of structural features of the '<em>Activity Type Attributes</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ACTIVITY_TYPE_ATTRIBUTES_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeImpl <em>Activity Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeImpl
-   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivityType()
-   * @generated
-   */
-  int ACTIVITY_TYPE = 18;
-
-  /**
-   * The number of structural features of the '<em>Activity Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ACTIVITY_TYPE_FEATURE_COUNT = 0;
-
-  /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityLayoutAttributesImpl <em>Activity Layout Attributes</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -687,7 +428,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivityLayoutAttributes()
    * @generated
    */
-  int ACTIVITY_LAYOUT_ATTRIBUTES = 19;
+  int ACTIVITY_LAYOUT_ATTRIBUTES = 12;
 
   /**
    * The feature id for the '<em><b>Layout Elements</b></em>' containment reference list.
@@ -715,16 +456,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getLayoutElement()
    * @generated
    */
-  int LAYOUT_ELEMENT = 20;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LAYOUT_ELEMENT__NAME = 0;
+  int LAYOUT_ELEMENT = 13;
 
   /**
    * The number of structural features of the '<em>Layout Element</em>' class.
@@ -733,17 +465,92 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LAYOUT_ELEMENT_FEATURE_COUNT = 1;
+  int LAYOUT_ELEMENT_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TextViewImpl <em>Text View</em>}' class.
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl <em>Type Map</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.example.mdsd.androidGenerator.impl.TextViewImpl
-   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTextView()
+   * @see org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTypeMap()
    * @generated
    */
-  int TEXT_VIEW = 21;
+  int TYPE_MAP = 14;
+
+  /**
+   * The feature id for the '<em><b>Activitytypeattribute</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_MAP__ACTIVITYTYPEATTRIBUTE = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Type Map</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_MAP_FEATURE_COUNT = LAYOUT_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl <em>Type Setting</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTypeSetting()
+   * @generated
+   */
+  int TYPE_SETTING = 15;
+
+  /**
+   * The number of structural features of the '<em>Type Setting</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_SETTING_FEATURE_COUNT = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl <em>Activity Type Attributes</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivityTypeAttributes()
+   * @generated
+   */
+  int ACTIVITY_TYPE_ATTRIBUTES = 16;
+
+  /**
+   * The feature id for the '<em><b>Filter</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTIVITY_TYPE_ATTRIBUTES__FILTER = 0;
+
+  /**
+   * The number of structural features of the '<em>Activity Type Attributes</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTIVITY_TYPE_ATTRIBUTES_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.EditTextImpl <em>Edit Text</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mdsd.androidGenerator.impl.EditTextImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getEditText()
+   * @generated
+   */
+  int EDIT_TEXT = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -752,16 +559,44 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEXT_VIEW__NAME = LAYOUT_ELEMENT__NAME;
+  int EDIT_TEXT__NAME = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Text View</em>' class.
+   * The number of structural features of the '<em>Edit Text</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TEXT_VIEW_FEATURE_COUNT = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
+  int EDIT_TEXT_FEATURE_COUNT = LAYOUT_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.SpinnerImpl <em>Spinner</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mdsd.androidGenerator.impl.SpinnerImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getSpinner()
+   * @generated
+   */
+  int SPINNER = 18;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SPINNER__NAME = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Spinner</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SPINNER_FEATURE_COUNT = LAYOUT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ButtonImpl <em>Button</em>}' class.
@@ -771,7 +606,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getButton()
    * @generated
    */
-  int BUTTON = 22;
+  int BUTTON = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -780,7 +615,16 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUTTON__NAME = LAYOUT_ELEMENT__NAME;
+  int BUTTON__NAME = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON__ACTIONS = LAYOUT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Button</em>' class.
@@ -789,7 +633,82 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BUTTON_FEATURE_COUNT = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
+  int BUTTON_FEATURE_COUNT = LAYOUT_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ButtonActionsImpl <em>Button Actions</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mdsd.androidGenerator.impl.ButtonActionsImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getButtonActions()
+   * @generated
+   */
+  int BUTTON_ACTIONS = 20;
+
+  /**
+   * The number of structural features of the '<em>Button Actions</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUTTON_ACTIONS_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ToastImpl <em>Toast</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mdsd.androidGenerator.impl.ToastImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getToast()
+   * @generated
+   */
+  int TOAST = 21;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TOAST__TEXT = BUTTON_ACTIONS_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Toast</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TOAST_FEATURE_COUNT = BUTTON_ACTIONS_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.BundleImpl <em>Bundle</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mdsd.androidGenerator.impl.BundleImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getBundle()
+   * @generated
+   */
+  int BUNDLE = 22;
+
+  /**
+   * The feature id for the '<em><b>Bundle Recipient</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUNDLE__BUNDLE_RECIPIENT = BUTTON_ACTIONS_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Bundle</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUNDLE_FEATURE_COUNT = BUTTON_ACTIONS_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.FilterQueryImpl <em>Filter Query</em>}' class.
@@ -969,44 +888,6 @@ public interface AndroidGeneratorPackage extends EPackage
   int UNIT_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl <em>Type Map</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl
-   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTypeMap()
-   * @generated
-   */
-  int TYPE_MAP = 29;
-
-  /**
-   * The number of structural features of the '<em>Type Map</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE_MAP_FEATURE_COUNT = ACTIVITY_TYPE_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl <em>Type Setting</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl
-   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTypeSetting()
-   * @generated
-   */
-  int TYPE_SETTING = 30;
-
-  /**
-   * The number of structural features of the '<em>Type Setting</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE_SETTING_FEATURE_COUNT = ACTIVITY_TYPE_FEATURE_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.LessImpl <em>Less</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1014,7 +895,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getLess()
    * @generated
    */
-  int LESS = 31;
+  int LESS = 29;
 
   /**
    * The number of structural features of the '<em>Less</em>' class.
@@ -1033,7 +914,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getMore()
    * @generated
    */
-  int MORE = 32;
+  int MORE = 30;
 
   /**
    * The number of structural features of the '<em>More</em>' class.
@@ -1052,7 +933,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getEqual()
    * @generated
    */
-  int EQUAL = 33;
+  int EQUAL = 31;
 
   /**
    * The number of structural features of the '<em>Equal</em>' class.
@@ -1071,7 +952,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getMeters()
    * @generated
    */
-  int METERS = 34;
+  int METERS = 32;
 
   /**
    * The number of structural features of the '<em>Meters</em>' class.
@@ -1090,7 +971,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getImperial()
    * @generated
    */
-  int IMPERIAL = 35;
+  int IMPERIAL = 33;
 
   /**
    * The number of structural features of the '<em>Imperial</em>' class.
@@ -1314,27 +1195,6 @@ public interface AndroidGeneratorPackage extends EPackage
   EReference getApplicationElementList_Elements();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity <em>Application Main Activity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Application Main Activity</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity
-   * @generated
-   */
-  EClass getApplicationMainActivity();
-
-  /**
-   * Returns the meta object for the reference '{@link org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity#getLauncherActivity <em>Launcher Activity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Launcher Activity</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity#getLauncherActivity()
-   * @see #getApplicationMainActivity()
-   * @generated
-   */
-  EReference getApplicationMainActivity_LauncherActivity();
-
-  /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.ApplicationElement <em>Application Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1343,17 +1203,6 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    */
   EClass getApplicationElement();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mdsd.androidGenerator.ApplicationElement#getActivityType <em>Activity Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Activity Type</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ApplicationElement#getActivityType()
-   * @see #getApplicationElement()
-   * @generated
-   */
-  EReference getApplicationElement_ActivityType();
 
   /**
    * Returns the meta object for the attribute '{@link org.xtext.example.mdsd.androidGenerator.ApplicationElement#getName <em>Name</em>}'.
@@ -1377,91 +1226,6 @@ public interface AndroidGeneratorPackage extends EPackage
   EClass getModel();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mdsd.androidGenerator.Model#getModellist <em>Modellist</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Modellist</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.Model#getModellist()
-   * @see #getModel()
-   * @generated
-   */
-  EReference getModel_Modellist();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.ModelList <em>Model List</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Model List</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ModelList
-   * @generated
-   */
-  EClass getModelList();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mdsd.androidGenerator.ModelList#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Type</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ModelList#getType()
-   * @see #getModelList()
-   * @generated
-   */
-  EReference getModelList_Type();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mdsd.androidGenerator.ModelList#getGetset <em>Getset</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Getset</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ModelList#getGetset()
-   * @see #getModelList()
-   * @generated
-   */
-  EReference getModelList_Getset();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.GetSet <em>Get Set</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Get Set</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.GetSet
-   * @generated
-   */
-  EClass getGetSet();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mdsd.androidGenerator.GetSet#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.GetSet#getName()
-   * @see #getGetSet()
-   * @generated
-   */
-  EAttribute getGetSet_Name();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Type <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Type</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.Type
-   * @generated
-   */
-  EClass getType();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mdsd.androidGenerator.Type#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.Type#getName()
-   * @see #getType()
-   * @generated
-   */
-  EAttribute getType_Name();
-
-  /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Fragment <em>Fragment</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1481,69 +1245,6 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    */
   EReference getFragment_ActivityAttributes();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Activity <em>Activity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Activity</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.Activity
-   * @generated
-   */
-  EClass getActivity();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mdsd.androidGenerator.Activity#getActivityTypeAttributes <em>Activity Type Attributes</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Activity Type Attributes</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.Activity#getActivityTypeAttributes()
-   * @see #getActivity()
-   * @generated
-   */
-  EReference getActivity_ActivityTypeAttributes();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mdsd.androidGenerator.Activity#getActivityAttributes <em>Activity Attributes</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Activity Attributes</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.Activity#getActivityAttributes()
-   * @see #getActivity()
-   * @generated
-   */
-  EReference getActivity_ActivityAttributes();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes <em>Activity Type Attributes</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Activity Type Attributes</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes
-   * @generated
-   */
-  EClass getActivityTypeAttributes();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes#getFilter <em>Filter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Filter</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes#getFilter()
-   * @see #getActivityTypeAttributes()
-   * @generated
-   */
-  EReference getActivityTypeAttributes_Filter();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.ActivityType <em>Activity Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Activity Type</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ActivityType
-   * @generated
-   */
-  EClass getActivityType();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes <em>Activity Layout Attributes</em>}'.
@@ -1577,25 +1278,98 @@ public interface AndroidGeneratorPackage extends EPackage
   EClass getLayoutElement();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mdsd.androidGenerator.LayoutElement#getName <em>Name</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.TypeMap <em>Type Map</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Type Map</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.TypeMap
+   * @generated
+   */
+  EClass getTypeMap();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mdsd.androidGenerator.TypeMap#getActivitytypeattribute <em>Activitytypeattribute</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Activitytypeattribute</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.TypeMap#getActivitytypeattribute()
+   * @see #getTypeMap()
+   * @generated
+   */
+  EReference getTypeMap_Activitytypeattribute();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.TypeSetting <em>Type Setting</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Type Setting</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.TypeSetting
+   * @generated
+   */
+  EClass getTypeSetting();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes <em>Activity Type Attributes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Activity Type Attributes</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes
+   * @generated
+   */
+  EClass getActivityTypeAttributes();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes#getFilter <em>Filter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Filter</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes#getFilter()
+   * @see #getActivityTypeAttributes()
+   * @generated
+   */
+  EReference getActivityTypeAttributes_Filter();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.EditText <em>Edit Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Edit Text</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.EditText
+   * @generated
+   */
+  EClass getEditText();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mdsd.androidGenerator.EditText#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.LayoutElement#getName()
-   * @see #getLayoutElement()
+   * @see org.xtext.example.mdsd.androidGenerator.EditText#getName()
+   * @see #getEditText()
    * @generated
    */
-  EAttribute getLayoutElement_Name();
+  EAttribute getEditText_Name();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.TextView <em>Text View</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Spinner <em>Spinner</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Text View</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.TextView
+   * @return the meta object for class '<em>Spinner</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Spinner
    * @generated
    */
-  EClass getTextView();
+  EClass getSpinner();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mdsd.androidGenerator.Spinner#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Spinner#getName()
+   * @see #getSpinner()
+   * @generated
+   */
+  EAttribute getSpinner_Name();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Button <em>Button</em>}'.
@@ -1606,6 +1380,80 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    */
   EClass getButton();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mdsd.androidGenerator.Button#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Button#getName()
+   * @see #getButton()
+   * @generated
+   */
+  EAttribute getButton_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mdsd.androidGenerator.Button#getActions <em>Actions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Actions</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Button#getActions()
+   * @see #getButton()
+   * @generated
+   */
+  EReference getButton_Actions();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.ButtonActions <em>Button Actions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Button Actions</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.ButtonActions
+   * @generated
+   */
+  EClass getButtonActions();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Toast <em>Toast</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Toast</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Toast
+   * @generated
+   */
+  EClass getToast();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mdsd.androidGenerator.Toast#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Text</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Toast#getText()
+   * @see #getToast()
+   * @generated
+   */
+  EAttribute getToast_Text();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Bundle <em>Bundle</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Bundle</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Bundle
+   * @generated
+   */
+  EClass getBundle();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.example.mdsd.androidGenerator.Bundle#getBundleRecipient <em>Bundle Recipient</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Bundle Recipient</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Bundle#getBundleRecipient()
+   * @see #getBundle()
+   * @generated
+   */
+  EReference getBundle_BundleRecipient();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.FilterQuery <em>Filter Query</em>}'.
@@ -1743,26 +1591,6 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    */
   EClass getUnit();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.TypeMap <em>Type Map</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Type Map</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.TypeMap
-   * @generated
-   */
-  EClass getTypeMap();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.TypeSetting <em>Type Setting</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Type Setting</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.TypeSetting
-   * @generated
-   */
-  EClass getTypeSetting();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Less <em>Less</em>}'.
@@ -2016,24 +1844,6 @@ public interface AndroidGeneratorPackage extends EPackage
     EReference APPLICATION_ELEMENT_LIST__ELEMENTS = eINSTANCE.getApplicationElementList_Elements();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ApplicationMainActivityImpl <em>Application Main Activity</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mdsd.androidGenerator.impl.ApplicationMainActivityImpl
-     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getApplicationMainActivity()
-     * @generated
-     */
-    EClass APPLICATION_MAIN_ACTIVITY = eINSTANCE.getApplicationMainActivity();
-
-    /**
-     * The meta object literal for the '<em><b>Launcher Activity</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference APPLICATION_MAIN_ACTIVITY__LAUNCHER_ACTIVITY = eINSTANCE.getApplicationMainActivity_LauncherActivity();
-
-    /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ApplicationElementImpl <em>Application Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2042,14 +1852,6 @@ public interface AndroidGeneratorPackage extends EPackage
      * @generated
      */
     EClass APPLICATION_ELEMENT = eINSTANCE.getApplicationElement();
-
-    /**
-     * The meta object literal for the '<em><b>Activity Type</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference APPLICATION_ELEMENT__ACTIVITY_TYPE = eINSTANCE.getApplicationElement_ActivityType();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2070,76 +1872,6 @@ public interface AndroidGeneratorPackage extends EPackage
     EClass MODEL = eINSTANCE.getModel();
 
     /**
-     * The meta object literal for the '<em><b>Modellist</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODEL__MODELLIST = eINSTANCE.getModel_Modellist();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ModelListImpl <em>Model List</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mdsd.androidGenerator.impl.ModelListImpl
-     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getModelList()
-     * @generated
-     */
-    EClass MODEL_LIST = eINSTANCE.getModelList();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODEL_LIST__TYPE = eINSTANCE.getModelList_Type();
-
-    /**
-     * The meta object literal for the '<em><b>Getset</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODEL_LIST__GETSET = eINSTANCE.getModelList_Getset();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.GetSetImpl <em>Get Set</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mdsd.androidGenerator.impl.GetSetImpl
-     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getGetSet()
-     * @generated
-     */
-    EClass GET_SET = eINSTANCE.getGetSet();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute GET_SET__NAME = eINSTANCE.getGetSet_Name();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeImpl <em>Type</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mdsd.androidGenerator.impl.TypeImpl
-     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getType()
-     * @generated
-     */
-    EClass TYPE = eINSTANCE.getType();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TYPE__NAME = eINSTANCE.getType_Name();
-
-    /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.FragmentImpl <em>Fragment</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2156,60 +1888,6 @@ public interface AndroidGeneratorPackage extends EPackage
      * @generated
      */
     EReference FRAGMENT__ACTIVITY_ATTRIBUTES = eINSTANCE.getFragment_ActivityAttributes();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityImpl <em>Activity</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mdsd.androidGenerator.impl.ActivityImpl
-     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivity()
-     * @generated
-     */
-    EClass ACTIVITY = eINSTANCE.getActivity();
-
-    /**
-     * The meta object literal for the '<em><b>Activity Type Attributes</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ACTIVITY__ACTIVITY_TYPE_ATTRIBUTES = eINSTANCE.getActivity_ActivityTypeAttributes();
-
-    /**
-     * The meta object literal for the '<em><b>Activity Attributes</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ACTIVITY__ACTIVITY_ATTRIBUTES = eINSTANCE.getActivity_ActivityAttributes();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl <em>Activity Type Attributes</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl
-     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivityTypeAttributes()
-     * @generated
-     */
-    EClass ACTIVITY_TYPE_ATTRIBUTES = eINSTANCE.getActivityTypeAttributes();
-
-    /**
-     * The meta object literal for the '<em><b>Filter</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ACTIVITY_TYPE_ATTRIBUTES__FILTER = eINSTANCE.getActivityTypeAttributes_Filter();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeImpl <em>Activity Type</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeImpl
-     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivityType()
-     * @generated
-     */
-    EClass ACTIVITY_TYPE = eINSTANCE.getActivityType();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityLayoutAttributesImpl <em>Activity Layout Attributes</em>}' class.
@@ -2240,22 +1918,86 @@ public interface AndroidGeneratorPackage extends EPackage
     EClass LAYOUT_ELEMENT = eINSTANCE.getLayoutElement();
 
     /**
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl <em>Type Map</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTypeMap()
+     * @generated
+     */
+    EClass TYPE_MAP = eINSTANCE.getTypeMap();
+
+    /**
+     * The meta object literal for the '<em><b>Activitytypeattribute</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TYPE_MAP__ACTIVITYTYPEATTRIBUTE = eINSTANCE.getTypeMap_Activitytypeattribute();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl <em>Type Setting</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTypeSetting()
+     * @generated
+     */
+    EClass TYPE_SETTING = eINSTANCE.getTypeSetting();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl <em>Activity Type Attributes</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivityTypeAttributes()
+     * @generated
+     */
+    EClass ACTIVITY_TYPE_ATTRIBUTES = eINSTANCE.getActivityTypeAttributes();
+
+    /**
+     * The meta object literal for the '<em><b>Filter</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTIVITY_TYPE_ATTRIBUTES__FILTER = eINSTANCE.getActivityTypeAttributes_Filter();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.EditTextImpl <em>Edit Text</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mdsd.androidGenerator.impl.EditTextImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getEditText()
+     * @generated
+     */
+    EClass EDIT_TEXT = eINSTANCE.getEditText();
+
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute LAYOUT_ELEMENT__NAME = eINSTANCE.getLayoutElement_Name();
+    EAttribute EDIT_TEXT__NAME = eINSTANCE.getEditText_Name();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TextViewImpl <em>Text View</em>}' class.
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.SpinnerImpl <em>Spinner</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.example.mdsd.androidGenerator.impl.TextViewImpl
-     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTextView()
+     * @see org.xtext.example.mdsd.androidGenerator.impl.SpinnerImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getSpinner()
      * @generated
      */
-    EClass TEXT_VIEW = eINSTANCE.getTextView();
+    EClass SPINNER = eINSTANCE.getSpinner();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SPINNER__NAME = eINSTANCE.getSpinner_Name();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ButtonImpl <em>Button</em>}' class.
@@ -2266,6 +2008,68 @@ public interface AndroidGeneratorPackage extends EPackage
      * @generated
      */
     EClass BUTTON = eINSTANCE.getButton();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BUTTON__NAME = eINSTANCE.getButton_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Actions</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUTTON__ACTIONS = eINSTANCE.getButton_Actions();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ButtonActionsImpl <em>Button Actions</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mdsd.androidGenerator.impl.ButtonActionsImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getButtonActions()
+     * @generated
+     */
+    EClass BUTTON_ACTIONS = eINSTANCE.getButtonActions();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ToastImpl <em>Toast</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mdsd.androidGenerator.impl.ToastImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getToast()
+     * @generated
+     */
+    EClass TOAST = eINSTANCE.getToast();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TOAST__TEXT = eINSTANCE.getToast_Text();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.BundleImpl <em>Bundle</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mdsd.androidGenerator.impl.BundleImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getBundle()
+     * @generated
+     */
+    EClass BUNDLE = eINSTANCE.getBundle();
+
+    /**
+     * The meta object literal for the '<em><b>Bundle Recipient</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUNDLE__BUNDLE_RECIPIENT = eINSTANCE.getBundle_BundleRecipient();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.FilterQueryImpl <em>Filter Query</em>}' class.
@@ -2382,26 +2186,6 @@ public interface AndroidGeneratorPackage extends EPackage
      * @generated
      */
     EClass UNIT = eINSTANCE.getUnit();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl <em>Type Map</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl
-     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTypeMap()
-     * @generated
-     */
-    EClass TYPE_MAP = eINSTANCE.getTypeMap();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl <em>Type Setting</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl
-     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTypeSetting()
-     * @generated
-     */
-    EClass TYPE_SETTING = eINSTANCE.getTypeSetting();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.LessImpl <em>Less</em>}' class.

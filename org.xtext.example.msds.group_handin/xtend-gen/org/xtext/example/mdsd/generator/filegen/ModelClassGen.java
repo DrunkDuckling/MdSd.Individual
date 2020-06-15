@@ -1,12 +1,9 @@
 package org.xtext.example.mdsd.generator.filegen;
 
-import com.google.common.base.Objects;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.xtext.example.mdsd.androidGenerator.ActivityType;
 import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
 import org.xtext.example.mdsd.androidGenerator.Model;
-import org.xtext.example.mdsd.androidGenerator.ModelList;
 import org.xtext.example.mdsd.generator.abstractfiles.AbstractClassGen;
 
 @SuppressWarnings("all")
@@ -23,24 +20,14 @@ public class ModelClassGen extends AbstractClassGen {
   
   @Override
   protected String retrieveElementTemplate(final Application application, final ApplicationElement element) {
-    Model model = ((Model) element);
-    ModelList modlist = this.<ModelList>getFieldData(application.getAttributes(), ModelList.class);
-    ActivityType map = model.getActivityType();
-    ModelList mod = model.getModellist();
-    boolean isModList = (!Objects.equal(mod, null));
-    boolean isMapModel = (!Objects.equal(map, null));
-    StringConcatenation _builder = new StringConcatenation();
-    {
-      if (isMapModel) {
-        String _generateMapModel = this.generateMapModel(model, application);
-        _builder.append(_generateMapModel);
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    return _builder.toString();
+    throw new Error("Unresolved compilation problems:"
+      + "\nModelList cannot be resolved to a type."
+      + "\nModelList cannot be resolved to a type."
+      + "\nThe method or field activityAttributes is undefined for the type Model"
+      + "\nThe method generateGetSet(ModelList, ApplicationElement, Application) from the type ModelClassGen refers to the missing type ModelList");
   }
   
-  private String generateGetSet(final ModelList models, final ApplicationElement model, final Application application) {
+  private String generateGetSet(final /* ModelList */Object models, final ApplicationElement model, final Application application) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
     String _name = application.getName();
@@ -72,7 +59,7 @@ public class ModelClassGen extends AbstractClassGen {
     return _builder.toString();
   }
   
-  private String generateMapModel(final ApplicationElement model, final Application application) {
+  private String generateMapModel(final Application application) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
     String _name = application.getName();
@@ -93,11 +80,8 @@ public class ModelClassGen extends AbstractClassGen {
     _builder.newLine();
     _builder.newLine();
     _builder.newLine();
-    _builder.append("public class ");
-    String _name_1 = model.getName();
-    _builder.append(_name_1);
-    _builder.append(" {");
-    _builder.newLineIfNotEmpty();
+    _builder.append("public class Places {");
+    _builder.newLine();
     _builder.append("    ");
     _builder.append("private String id;");
     _builder.newLine();
@@ -239,11 +223,8 @@ public class ModelClassGen extends AbstractClassGen {
     _builder.newLine();
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("static ");
-    String _name_2 = model.getName();
-    _builder.append(_name_2, "    ");
-    _builder.append(" JSONToResult(JSONObject jsonObject) {");
-    _builder.newLineIfNotEmpty();
+    _builder.append("static Places JSONToResult(JSONObject jsonObject) {");
+    _builder.newLine();
     _builder.append("        ");
     _builder.append("if (jsonObject != null) {");
     _builder.newLine();
@@ -251,13 +232,8 @@ public class ModelClassGen extends AbstractClassGen {
     _builder.append("try {");
     _builder.newLine();
     _builder.append("                ");
-    String _name_3 = model.getName();
-    _builder.append(_name_3, "                ");
-    _builder.append(" result = new ");
-    String _name_4 = model.getName();
-    _builder.append(_name_4, "                ");
-    _builder.append("();");
-    _builder.newLineIfNotEmpty();
+    _builder.append("Places result = new Places();");
+    _builder.newLine();
     _builder.append("                ");
     _builder.append("JSONObject geometry = (JSONObject) jsonObject.get(\"geometry\");");
     _builder.newLine();
@@ -286,11 +262,8 @@ public class ModelClassGen extends AbstractClassGen {
     _builder.append("} catch (JSONException ex) {");
     _builder.newLine();
     _builder.append("                ");
-    _builder.append("Logger.getLogger(");
-    String _name_5 = model.getName();
-    _builder.append(_name_5, "                ");
-    _builder.append(".class.getName()).log(Level.SEVERE, null, ex);");
-    _builder.newLineIfNotEmpty();
+    _builder.append("Logger.getLogger(Places.class.getName()).log(Level.SEVERE, null, ex);");
+    _builder.newLine();
     _builder.append("            ");
     _builder.append("}");
     _builder.newLine();
@@ -312,11 +285,8 @@ public class ModelClassGen extends AbstractClassGen {
     _builder.append("public String toString() {");
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("return \"");
-    String _name_6 = model.getName();
-    _builder.append(_name_6, "        ");
-    _builder.append("{\" + \"id=\" + id + \", icon=\" + icon + \", name=\" + name + \", latitude=\" + latitude + \", longitude=\" + longitude + \'}\';");
-    _builder.newLineIfNotEmpty();
+    _builder.append("return \"Places{\" + \"id=\" + id + \", icon=\" + icon + \", name=\" + name + \", latitude=\" + latitude + \", longitude=\" + longitude + \'}\';");
+    _builder.newLine();
     _builder.append("    ");
     _builder.append("}");
     _builder.newLine();

@@ -10,9 +10,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.xtext.example.mdsd.androidGenerator.Activity;
 import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
-import org.xtext.example.mdsd.androidGenerator.ActivityType;
 import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidAppProject;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
@@ -20,29 +18,29 @@ import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.androidGenerator.ApplicationAttribute;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
-import org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity;
 import org.xtext.example.mdsd.androidGenerator.ApplicationPermissionList;
 import org.xtext.example.mdsd.androidGenerator.ApplicationVersion;
+import org.xtext.example.mdsd.androidGenerator.Bundle;
 import org.xtext.example.mdsd.androidGenerator.Button;
+import org.xtext.example.mdsd.androidGenerator.ButtonActions;
 import org.xtext.example.mdsd.androidGenerator.Distance;
+import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
-import org.xtext.example.mdsd.androidGenerator.GetSet;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.Less;
 import org.xtext.example.mdsd.androidGenerator.Meters;
 import org.xtext.example.mdsd.androidGenerator.MinSDK;
 import org.xtext.example.mdsd.androidGenerator.Model;
-import org.xtext.example.mdsd.androidGenerator.ModelList;
 import org.xtext.example.mdsd.androidGenerator.More;
 import org.xtext.example.mdsd.androidGenerator.Operator;
 import org.xtext.example.mdsd.androidGenerator.Permission;
+import org.xtext.example.mdsd.androidGenerator.Spinner;
 import org.xtext.example.mdsd.androidGenerator.TargetSDK;
-import org.xtext.example.mdsd.androidGenerator.TextView;
-import org.xtext.example.mdsd.androidGenerator.Type;
+import org.xtext.example.mdsd.androidGenerator.Toast;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.androidGenerator.Unit;
@@ -156,11 +154,6 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
         return createApplicationElementListAdapter();
       }
       @Override
-      public Adapter caseApplicationMainActivity(ApplicationMainActivity object)
-      {
-        return createApplicationMainActivityAdapter();
-      }
-      @Override
       public Adapter caseApplicationElement(ApplicationElement object)
       {
         return createApplicationElementAdapter();
@@ -171,39 +164,9 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
         return createModelAdapter();
       }
       @Override
-      public Adapter caseModelList(ModelList object)
-      {
-        return createModelListAdapter();
-      }
-      @Override
-      public Adapter caseGetSet(GetSet object)
-      {
-        return createGetSetAdapter();
-      }
-      @Override
-      public Adapter caseType(Type object)
-      {
-        return createTypeAdapter();
-      }
-      @Override
       public Adapter caseFragment(Fragment object)
       {
         return createFragmentAdapter();
-      }
-      @Override
-      public Adapter caseActivity(Activity object)
-      {
-        return createActivityAdapter();
-      }
-      @Override
-      public Adapter caseActivityTypeAttributes(ActivityTypeAttributes object)
-      {
-        return createActivityTypeAttributesAdapter();
-      }
-      @Override
-      public Adapter caseActivityType(ActivityType object)
-      {
-        return createActivityTypeAdapter();
       }
       @Override
       public Adapter caseActivityLayoutAttributes(ActivityLayoutAttributes object)
@@ -216,14 +179,49 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
         return createLayoutElementAdapter();
       }
       @Override
-      public Adapter caseTextView(TextView object)
+      public Adapter caseTypeMap(TypeMap object)
       {
-        return createTextViewAdapter();
+        return createTypeMapAdapter();
+      }
+      @Override
+      public Adapter caseTypeSetting(TypeSetting object)
+      {
+        return createTypeSettingAdapter();
+      }
+      @Override
+      public Adapter caseActivityTypeAttributes(ActivityTypeAttributes object)
+      {
+        return createActivityTypeAttributesAdapter();
+      }
+      @Override
+      public Adapter caseEditText(EditText object)
+      {
+        return createEditTextAdapter();
+      }
+      @Override
+      public Adapter caseSpinner(Spinner object)
+      {
+        return createSpinnerAdapter();
       }
       @Override
       public Adapter caseButton(Button object)
       {
         return createButtonAdapter();
+      }
+      @Override
+      public Adapter caseButtonActions(ButtonActions object)
+      {
+        return createButtonActionsAdapter();
+      }
+      @Override
+      public Adapter caseToast(Toast object)
+      {
+        return createToastAdapter();
+      }
+      @Override
+      public Adapter caseBundle(Bundle object)
+      {
+        return createBundleAdapter();
       }
       @Override
       public Adapter caseFilterQuery(FilterQuery object)
@@ -254,16 +252,6 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
       public Adapter caseUnit(Unit object)
       {
         return createUnitAdapter();
-      }
-      @Override
-      public Adapter caseTypeMap(TypeMap object)
-      {
-        return createTypeMapAdapter();
-      }
-      @Override
-      public Adapter caseTypeSetting(TypeSetting object)
-      {
-        return createTypeSettingAdapter();
       }
       @Override
       public Adapter caseLess(Less object)
@@ -448,21 +436,6 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity <em>Application Main Activity</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity
-   * @generated
-   */
-  public Adapter createApplicationMainActivityAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.ApplicationElement <em>Application Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -493,51 +466,6 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.ModelList <em>Model List</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.ModelList
-   * @generated
-   */
-  public Adapter createModelListAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.GetSet <em>Get Set</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.GetSet
-   * @generated
-   */
-  public Adapter createGetSetAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.Type <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.Type
-   * @generated
-   */
-  public Adapter createTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.Fragment <em>Fragment</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -548,51 +476,6 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFragmentAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.Activity <em>Activity</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.Activity
-   * @generated
-   */
-  public Adapter createActivityAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes <em>Activity Type Attributes</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes
-   * @generated
-   */
-  public Adapter createActivityTypeAttributesAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.ActivityType <em>Activity Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.ActivityType
-   * @generated
-   */
-  public Adapter createActivityTypeAdapter()
   {
     return null;
   }
@@ -628,16 +511,76 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.TextView <em>Text View</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.TypeMap <em>Type Map</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.TextView
+   * @see org.xtext.example.mdsd.androidGenerator.TypeMap
    * @generated
    */
-  public Adapter createTextViewAdapter()
+  public Adapter createTypeMapAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.TypeSetting <em>Type Setting</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mdsd.androidGenerator.TypeSetting
+   * @generated
+   */
+  public Adapter createTypeSettingAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes <em>Activity Type Attributes</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes
+   * @generated
+   */
+  public Adapter createActivityTypeAttributesAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.EditText <em>Edit Text</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mdsd.androidGenerator.EditText
+   * @generated
+   */
+  public Adapter createEditTextAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.Spinner <em>Spinner</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mdsd.androidGenerator.Spinner
+   * @generated
+   */
+  public Adapter createSpinnerAdapter()
   {
     return null;
   }
@@ -653,6 +596,51 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createButtonAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.ButtonActions <em>Button Actions</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mdsd.androidGenerator.ButtonActions
+   * @generated
+   */
+  public Adapter createButtonActionsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.Toast <em>Toast</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mdsd.androidGenerator.Toast
+   * @generated
+   */
+  public Adapter createToastAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.Bundle <em>Bundle</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mdsd.androidGenerator.Bundle
+   * @generated
+   */
+  public Adapter createBundleAdapter()
   {
     return null;
   }
@@ -743,36 +731,6 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createUnitAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.TypeMap <em>Type Map</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.TypeMap
-   * @generated
-   */
-  public Adapter createTypeMapAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.TypeSetting <em>Type Setting</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.TypeSetting
-   * @generated
-   */
-  public Adapter createTypeSettingAdapter()
   {
     return null;
   }

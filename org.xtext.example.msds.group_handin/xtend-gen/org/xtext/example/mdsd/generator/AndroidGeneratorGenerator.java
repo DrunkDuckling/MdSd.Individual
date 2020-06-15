@@ -16,11 +16,9 @@ import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.generator.abstractfiles.ContentGen;
 import org.xtext.example.mdsd.generator.filegen.FragmentGen;
 import org.xtext.example.mdsd.generator.filegen.GradleGen;
-import org.xtext.example.mdsd.generator.filegen.JavaActivityGen;
 import org.xtext.example.mdsd.generator.filegen.LayoutGen;
 import org.xtext.example.mdsd.generator.filegen.MainActivityGen;
 import org.xtext.example.mdsd.generator.filegen.ManifestGen;
-import org.xtext.example.mdsd.generator.filegen.ModelClassGen;
 
 /**
  * Generates code from your model files on save.
@@ -40,12 +38,6 @@ public class AndroidGeneratorGenerator extends AbstractGenerator {
     AndroidGeneratorGenerator.logger.info("Generating Main Activity and Assets..");
     MainActivityGen _mainActivityGen = new MainActivityGen();
     this.generators.add(_mainActivityGen);
-    AndroidGeneratorGenerator.logger.info("Generating Activities..");
-    JavaActivityGen _javaActivityGen = new JavaActivityGen();
-    this.generators.add(_javaActivityGen);
-    AndroidGeneratorGenerator.logger.info("Generating Model class..");
-    ModelClassGen _modelClassGen = new ModelClassGen();
-    this.generators.add(_modelClassGen);
     AndroidGeneratorGenerator.logger.info("Generating Manifest file..");
     ManifestGen _manifestGen = new ManifestGen();
     this.generators.add(_manifestGen);

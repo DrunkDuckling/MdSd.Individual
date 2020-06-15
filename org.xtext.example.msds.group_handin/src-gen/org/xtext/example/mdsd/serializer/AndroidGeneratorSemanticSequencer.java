@@ -14,34 +14,32 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.xtext.example.mdsd.androidGenerator.Activity;
 import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidAppProject;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
 import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
-import org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity;
 import org.xtext.example.mdsd.androidGenerator.ApplicationPermissionList;
 import org.xtext.example.mdsd.androidGenerator.ApplicationVersion;
+import org.xtext.example.mdsd.androidGenerator.Bundle;
 import org.xtext.example.mdsd.androidGenerator.Button;
 import org.xtext.example.mdsd.androidGenerator.Distance;
+import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
-import org.xtext.example.mdsd.androidGenerator.GetSet;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.Less;
 import org.xtext.example.mdsd.androidGenerator.Meters;
 import org.xtext.example.mdsd.androidGenerator.MinSDK;
 import org.xtext.example.mdsd.androidGenerator.Model;
-import org.xtext.example.mdsd.androidGenerator.ModelList;
 import org.xtext.example.mdsd.androidGenerator.More;
 import org.xtext.example.mdsd.androidGenerator.Permission;
+import org.xtext.example.mdsd.androidGenerator.Spinner;
 import org.xtext.example.mdsd.androidGenerator.TargetSDK;
-import org.xtext.example.mdsd.androidGenerator.TextView;
-import org.xtext.example.mdsd.androidGenerator.Type;
+import org.xtext.example.mdsd.androidGenerator.Toast;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.services.AndroidGeneratorGrammarAccess;
@@ -60,9 +58,6 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == AndroidGeneratorPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case AndroidGeneratorPackage.ACTIVITY:
-				sequence_Activity(context, (Activity) semanticObject); 
-				return; 
 			case AndroidGeneratorPackage.ACTIVITY_LAYOUT_ATTRIBUTES:
 				sequence_ActivityLayoutAttributes(context, (ActivityLayoutAttributes) semanticObject); 
 				return; 
@@ -78,20 +73,23 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 			case AndroidGeneratorPackage.APPLICATION_ELEMENT_LIST:
 				sequence_ApplicationElementList(context, (ApplicationElementList) semanticObject); 
 				return; 
-			case AndroidGeneratorPackage.APPLICATION_MAIN_ACTIVITY:
-				sequence_ApplicationMainActivity(context, (ApplicationMainActivity) semanticObject); 
-				return; 
 			case AndroidGeneratorPackage.APPLICATION_PERMISSION_LIST:
 				sequence_ApplicationPermissionList(context, (ApplicationPermissionList) semanticObject); 
 				return; 
 			case AndroidGeneratorPackage.APPLICATION_VERSION:
 				sequence_ApplicationVersion(context, (ApplicationVersion) semanticObject); 
 				return; 
+			case AndroidGeneratorPackage.BUNDLE:
+				sequence_Bundle(context, (Bundle) semanticObject); 
+				return; 
 			case AndroidGeneratorPackage.BUTTON:
 				sequence_Button(context, (Button) semanticObject); 
 				return; 
 			case AndroidGeneratorPackage.DISTANCE:
 				sequence_Distance(context, (Distance) semanticObject); 
+				return; 
+			case AndroidGeneratorPackage.EDIT_TEXT:
+				sequence_EditText(context, (EditText) semanticObject); 
 				return; 
 			case AndroidGeneratorPackage.EQUAL:
 				sequence_Operator(context, (Equal) semanticObject); 
@@ -104,9 +102,6 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 				return; 
 			case AndroidGeneratorPackage.FRAGMENT:
 				sequence_Fragment(context, (Fragment) semanticObject); 
-				return; 
-			case AndroidGeneratorPackage.GET_SET:
-				sequence_GetSet(context, (GetSet) semanticObject); 
 				return; 
 			case AndroidGeneratorPackage.IMPERIAL:
 				sequence_Unit(context, (Imperial) semanticObject); 
@@ -123,9 +118,6 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 			case AndroidGeneratorPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
 				return; 
-			case AndroidGeneratorPackage.MODEL_LIST:
-				sequence_ModelList(context, (ModelList) semanticObject); 
-				return; 
 			case AndroidGeneratorPackage.MORE:
 				sequence_Operator(context, (More) semanticObject); 
 				return; 
@@ -135,20 +127,20 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 			case AndroidGeneratorPackage.PERMISSION:
 				sequence_Permission(context, (Permission) semanticObject); 
 				return; 
+			case AndroidGeneratorPackage.SPINNER:
+				sequence_Spinner(context, (Spinner) semanticObject); 
+				return; 
 			case AndroidGeneratorPackage.TARGET_SDK:
 				sequence_TargetSDK(context, (TargetSDK) semanticObject); 
 				return; 
-			case AndroidGeneratorPackage.TEXT_VIEW:
-				sequence_TextView(context, (TextView) semanticObject); 
-				return; 
-			case AndroidGeneratorPackage.TYPE:
-				sequence_Type(context, (Type) semanticObject); 
+			case AndroidGeneratorPackage.TOAST:
+				sequence_Toast(context, (Toast) semanticObject); 
 				return; 
 			case AndroidGeneratorPackage.TYPE_MAP:
-				sequence_ActivityType(context, (TypeMap) semanticObject); 
+				sequence_TypeMap(context, (TypeMap) semanticObject); 
 				return; 
 			case AndroidGeneratorPackage.TYPE_SETTING:
-				sequence_ActivityType(context, (TypeSetting) semanticObject); 
+				sequence_TypeSetting(context, (TypeSetting) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -187,46 +179,6 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	
 	/**
 	 * Contexts:
-	 *     ActivityType returns TypeMap
-	 *
-	 * Constraint:
-	 *     {TypeMap}
-	 */
-	protected void sequence_ActivityType(ISerializationContext context, TypeMap semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ActivityType returns TypeSetting
-	 *
-	 * Constraint:
-	 *     {TypeSetting}
-	 */
-	protected void sequence_ActivityType(ISerializationContext context, TypeSetting semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ApplicationElement returns Activity
-	 *     Activity returns Activity
-	 *
-	 * Constraint:
-	 *     (
-	 *         (activityType=ActivityType name=ID activityTypeAttributes=ActivityTypeAttributes activityAttributes+=ActivityLayoutAttributes*) | 
-	 *         (name=ID activityAttributes+=ActivityLayoutAttributes*)
-	 *     )?
-	 */
-	protected void sequence_Activity(ISerializationContext context, Activity semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     AndroidAppProject returns AndroidAppProject
 	 *
 	 * Constraint:
@@ -247,25 +199,6 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 */
 	protected void sequence_ApplicationElementList(ISerializationContext context, ApplicationElementList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ApplicationAttribute returns ApplicationMainActivity
-	 *     ApplicationMainActivity returns ApplicationMainActivity
-	 *
-	 * Constraint:
-	 *     launcherActivity=[Activity|ID]
-	 */
-	protected void sequence_ApplicationMainActivity(ISerializationContext context, ApplicationMainActivity semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.APPLICATION_MAIN_ACTIVITY__LAUNCHER_ACTIVITY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.APPLICATION_MAIN_ACTIVITY__LAUNCHER_ACTIVITY));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getApplicationMainActivityAccess().getLauncherActivityActivityIDTerminalRuleCall_1_0_1(), semanticObject.eGet(AndroidGeneratorPackage.Literals.APPLICATION_MAIN_ACTIVITY__LAUNCHER_ACTIVITY, false));
-		feeder.finish();
 	}
 	
 	
@@ -309,20 +242,33 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	
 	/**
 	 * Contexts:
+	 *     ButtonActions returns Bundle
+	 *     Bundle returns Bundle
+	 *
+	 * Constraint:
+	 *     bundleRecipient=[Fragment|ID]
+	 */
+	protected void sequence_Bundle(ISerializationContext context, Bundle semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.BUNDLE__BUNDLE_RECIPIENT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.BUNDLE__BUNDLE_RECIPIENT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBundleAccess().getBundleRecipientFragmentIDTerminalRuleCall_1_0_1(), semanticObject.eGet(AndroidGeneratorPackage.Literals.BUNDLE__BUNDLE_RECIPIENT, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     LayoutElement returns Button
 	 *     Button returns Button
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (name=ID (actions+=ButtonActions actions+=ButtonActions*)?)
 	 */
 	protected void sequence_Button(ISerializationContext context, Button semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.LAYOUT_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.LAYOUT_ELEMENT__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getButtonAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -346,6 +292,25 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 		feeder.accept(grammarAccess.getDistanceAccess().getUnitUnitParserRuleCall_2_0(), semanticObject.getUnit());
 		feeder.accept(grammarAccess.getDistanceAccess().getOperatorOperatorParserRuleCall_3_0(), semanticObject.getOperator());
 		feeder.accept(grammarAccess.getDistanceAccess().getResultsNumberParserRuleCall_4_0(), semanticObject.getResults());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LayoutElement returns EditText
+	 *     EditText returns EditText
+	 *
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_EditText(ISerializationContext context, EditText semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.EDIT_TEXT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.EDIT_TEXT__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEditTextAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -395,28 +360,10 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *     Fragment returns Fragment
 	 *
 	 * Constraint:
-	 *     (activityType=ActivityType? name=ID activityAttributes+=ActivityLayoutAttributes?)
+	 *     (name=ID activityAttributes+=ActivityLayoutAttributes?)
 	 */
 	protected void sequence_Fragment(ISerializationContext context, Fragment semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     GetSet returns GetSet
-	 *
-	 * Constraint:
-	 *     name=ID
-	 */
-	protected void sequence_GetSet(ISerializationContext context, GetSet semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.GET_SET__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.GET_SET__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getGetSetAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
 	}
 	
 	
@@ -440,26 +387,20 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	
 	/**
 	 * Contexts:
-	 *     ModelList returns ModelList
-	 *
-	 * Constraint:
-	 *     (type+=Type getset+=GetSet (type+=Type getset+=GetSet)*)
-	 */
-	protected void sequence_ModelList(ISerializationContext context, ModelList semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     ApplicationElement returns Model
 	 *     Model returns Model
 	 *
 	 * Constraint:
-	 *     (activityType=ActivityType? name=ID modellist=ModelList?)
+	 *     name=ID
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.APPLICATION_ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.APPLICATION_ELEMENT__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getModelAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
@@ -537,6 +478,25 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	
 	/**
 	 * Contexts:
+	 *     LayoutElement returns Spinner
+	 *     Spinner returns Spinner
+	 *
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_Spinner(ISerializationContext context, Spinner semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.SPINNER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.SPINNER__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSpinnerAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     TargetSDK returns TargetSDK
 	 *
 	 * Constraint:
@@ -549,38 +509,46 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	
 	/**
 	 * Contexts:
-	 *     LayoutElement returns TextView
-	 *     TextView returns TextView
+	 *     ButtonActions returns Toast
+	 *     Toast returns Toast
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     text=STRING
 	 */
-	protected void sequence_TextView(ISerializationContext context, TextView semanticObject) {
+	protected void sequence_Toast(ISerializationContext context, Toast semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.LAYOUT_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.LAYOUT_ELEMENT__NAME));
+			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.TOAST__TEXT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.TOAST__TEXT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTextViewAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getToastAccess().getTextSTRINGTerminalRuleCall_1_0(), semanticObject.getText());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Type returns Type
+	 *     LayoutElement returns TypeMap
+	 *     TypeMap returns TypeMap
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     activitytypeattribute=ActivityTypeAttributes?
 	 */
-	protected void sequence_Type(ISerializationContext context, Type semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.TYPE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.TYPE__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTypeAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+	protected void sequence_TypeMap(ISerializationContext context, TypeMap semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LayoutElement returns TypeSetting
+	 *     TypeSetting returns TypeSetting
+	 *
+	 * Constraint:
+	 *     {TypeSetting}
+	 */
+	protected void sequence_TypeSetting(ISerializationContext context, TypeSetting semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

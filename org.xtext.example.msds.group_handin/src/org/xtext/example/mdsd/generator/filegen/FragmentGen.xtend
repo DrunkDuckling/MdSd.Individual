@@ -1,17 +1,25 @@
 package org.xtext.example.mdsd.generator.filegen
 
-import org.xtext.example.mdsd.generator.abstractfiles.AbstractClassGen
-import org.xtext.example.mdsd.androidGenerator.ApplicationElement
 import org.xtext.example.mdsd.androidGenerator.Application
-import org.xtext.example.mdsd.androidGenerator.Activity
-import org.xtext.example.mdsd.androidGenerator.ApplicationMainActivity
+import org.xtext.example.mdsd.androidGenerator.ApplicationElement
 import org.xtext.example.mdsd.androidGenerator.Fragment
+import org.xtext.example.mdsd.generator.abstractfiles.AbstractClassGen
+import org.xtext.example.mdsd.androidGenerator.TypeMap
 import org.xtext.example.mdsd.androidGenerator.TypeSetting
+import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes
+import org.xtext.example.mdsd.androidGenerator.LayoutElement
+import org.xtext.example.mdsd.androidGenerator.Button
+import org.xtext.example.mdsd.androidGenerator.Spinner
+import org.xtext.example.mdsd.androidGenerator.EditText
+import org.xtext.example.mdsd.androidGenerator.Toast
+import org.xtext.example.mdsd.androidGenerator.Bundle
+import org.xtext.example.mdsd.androidGenerator.ButtonActions
+import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes
 
 class FragmentGen extends AbstractClassGen{
 	
 	override protected getSubClassPath() {
-		return "activity"
+		return "fragments"
 	}
 	
 	override protected isAllowedElement(ApplicationElement element) {
@@ -20,24 +28,50 @@ class FragmentGen extends AbstractClassGen{
 	
 	override protected retrieveElementTemplate(Application application, ApplicationElement element) {
 		var fragment = element as Fragment;
-
-        // Checks with a boolean if the activity is of type "Map" or not
-        var map = fragment.activityType;
-        var isMapActivity = map != null;
-        
-        
-        return 
-        '''
-        «IF isMapActivity »
-        	«insertMapImports(application)»
-        	«insertMapfragment(fragment)»
-        «ENDIF» 
-        
-        '''
+		var data = '''Something went wrong''';
+		var ActivityLayoutAttributes layout = getFieldData(fragment.activityAttributes, typeof(ActivityLayoutAttributes));
+		
+        // Checks if is of type "Map" or not
+        if(layout != null){
+        	for(type : layout.layoutElements){
+        		if( type instanceof TypeMap){
+        			data = '''«insertMapFragment(fragment, application)»'''
+        		}if(type instanceof TypeSetting){
+        			data = '''«insertSettingFragment(fragment, application)»'''
+        		}if(!(type instanceof TypeMap) && !(type instanceof TypeSetting)){
+        			data = '''«insertCustomFragment(fragment, application)»'''
+        		}
+       		}
+        }else data = '''«insertBlankFragment(fragment, application)» '''
+       	
+       	return data;
+    }
+	
+	def filterOptions(Fragment fragment, Application application){
+		var ActivityLayoutAttributes layout = getFieldData(fragment.activityAttributes, typeof(ActivityLayoutAttributes));
+		for(type : layout.layoutElements){
+			if( type instanceof TypeMap){
+				if(type.activitytypeattribute != null){
+					return ('''
+						String filterQuery = "«type.activitytypeattribute.filter.name»";
+						double distanceThreshold = «type.activitytypeattribute.filter.filterAttributes.distance.results.value»;
+					''');
+				}else{
+					return ('''
+						// Change values for different options.
+						String filterQuery = "Hotels";
+						double distanceThreshold = 5000;
+					''');
+					
+				}
+			}
+		}
+		
 	}
 	
-	private def String insertMapImports(Application application){
+	def insertMapFragment(Fragment fragment, Application application){
 		return '''
+		package «application.name»;
 		import android.annotation.SuppressLint;
 		import android.content.Context;
 		import android.content.res.Resources;
@@ -69,10 +103,7 @@ class FragmentGen extends AbstractClassGen{
 		import com.google.android.gms.maps.model.MarkerOptions;
 		
 		import java.util.List;
-		'''
-	}
-	private def String insertMapfragment(Fragment fragment){
-		return '''
+		
 		public class «fragment.name» extends Fragment implements LocationListener {
 			
 			private static final String TAG = "MapsFragment";
@@ -87,8 +118,7 @@ class FragmentGen extends AbstractClassGen{
 			private String latitude;
 			private String longitude;
 			// DSL Params
-			String filterQuery = "Hotels";
-			double distanceThreshold = 5000;
+			«filterOptions(fragment, application)»
 			Location startPoint = new Location("locationA"); // Used for distance measuring
 			Location endPoint = new Location("locationB"); // Used for distance measuring
 			
@@ -235,4 +265,291 @@ class FragmentGen extends AbstractClassGen{
 		}
 		'''
 	}	
+	
+	def insertSettingFragment(Fragment fragment, Application application){
+		return '''
+		package «application.name»;
+		package com.example.mdsdproject.fragments;
+		
+		import android.os.Bundle;
+		
+		import androidx.fragment.app.Fragment;
+		import androidx.fragment.app.FragmentTransaction;
+		
+		import android.view.LayoutInflater;
+		import android.view.View;
+		import android.view.ViewGroup;
+		import android.widget.AdapterView;
+		import android.widget.ArrayAdapter;
+		import android.widget.Button;
+		import android.widget.EditText;
+		import android.widget.Spinner;
+		import android.widget.Toast;
+		
+		import com.example.mdsdproject.R;
+		
+		public class SettingsFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+		    
+		    private String mSpinnerText;
+		
+		    private Double number;
+		    private EditText editText;
+		
+		    public SettingsFragment() {
+		        // Required empty public constructor
+		    }
+		
+		    @Override
+		    public void onCreate(Bundle savedInstanceState) {
+		        super.onCreate(savedInstanceState);
+		    }
+		
+		    @Override
+		    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		        // Inflate the layout for this fragment
+		        View view = inflater.inflate(R.layout.fragment_settings, container, false);
+		
+		        Spinner spinner = view.findViewById(R.id.spinner);
+		        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.places, android.R.layout.simple_spinner_item);
+		        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		        spinner.setAdapter(adapter);
+		        spinner.setOnItemSelectedListener(this);
+		
+		        Button btn = view.findViewById(R.id.button);
+		        btn.setOnClickListener(this);
+		
+		        editText = view.findViewById(R.id.editTextNumber);
+		
+		        return view;
+		    }
+		
+		    @Override
+		    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+		        mSpinnerText = parent.getItemAtPosition(position).toString();
+		    }
+		
+		    @Override
+		    public void onNothingSelected(AdapterView<?> parent) {
+		
+		    }
+		
+		    @Override
+		    public void onClick(View v) {
+		        switch (v.getId()){
+		            case R.id.button:
+		                String failSafe = editText.getText().toString();
+		                if(failSafe.matches("")){
+		                    Toast.makeText(getActivity().getApplicationContext(), "Please specify number", Toast.LENGTH_SHORT).show();
+		                }else{
+		                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		                    MapsFragment mapsFragment = new MapsFragment();
+		
+		                    number = Double.parseDouble(editText.getText().toString());
+		                    Bundle bundle = new Bundle();
+		                    bundle.putString("location", mSpinnerText);
+		                    bundle.putDouble("radius", number);
+		                    mapsFragment.setArguments(bundle);
+		                    transaction.replace(R.id.container_frame_layout, mapsFragment).commit();
+		
+		                }
+		
+		        }
+		    }
+		}
+		'''
+	}
+	
+	def insertBlankFragment(Fragment fragment, Application application){
+		return '''
+		package «application.name»;
+		import android.os.Bundle;
+		import androidx.fragment.app.Fragment;
+		import android.view.LayoutInflater;
+		import android.view.View;
+		import android.view.ViewGroup;
+		import «application.name».R;
+		
+		public class «fragment.name» extends Fragment {
+			
+			public «fragment.name» {
+		        // Required empty public constructor
+		    }
+		
+			@Override
+			public void onCreate(Bundle savedInstanceState) {
+				super.onCreate(savedInstanceState);
+			}
+		    
+		    @Override
+		    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		    	// Inflate the layout for this fragment
+		    	View view = inflater.inflate(R.layout.fragment_settings, container, false);
+				return view;
+		    }
+		    
+		}
+		'''
+	}
+	
+	def insertCustomFragment(Fragment fragment, Application application){
+		var ActivityLayoutAttributes layout = getFieldData(fragment.activityAttributes, typeof(ActivityLayoutAttributes));
+		val string = new StringBuilder();
+		val instances = new StringBuilder();
+		val vars = new StringBuilder();
+		val methods = new StringBuilder();
+		
+		for(element : layout.layoutElements){
+			if(element instanceof Spinner){
+				vars.append('''
+				private String m«element.name»;
+				''');
+				
+				instances.append('''
+		        Spinner «element.name» = view.findViewById(R.id.«javaToAndroidIdentifier(element.name)»);
+		        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.places, android.R.layout.simple_spinner_item);
+		        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		        spinner.setAdapter(adapter);
+		        spinner.setOnItemSelectedListener(this);
+		        
+				''');
+				
+				methods.append('''
+			    @Override
+			    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+			        m«element.name» = parent.getItemAtPosition(position).toString();
+			    }
+			    
+			    @Override
+			    public void onNothingSelected(AdapterView<?> parent) { }
+			    
+				''');
+			}if(element instanceof Button){
+				vars.append('''
+				''');
+				
+				instances.append('''
+				Button «element.name» = view.findViewById(R.id.«javaToAndroidIdentifier(element.name)»);
+				«element.name».setOnClickListener(this);
+				
+				''');
+				
+				methods.append('''
+			    @Override
+			    public void onClick(View v) {
+			        switch (v.getId()){
+			            case R.id.«javaToAndroidIdentifier(element.name)»:
+			                «insertVariablesBundle(fragment, application)»
+			        }
+			    }
+				''');
+				
+			}if(element instanceof EditText){
+				vars.append('''
+				private EditText m«element.name»;
+				private Double m«element.name»_number;
+				
+				''');
+				instances.append('''
+				m«element.name» = view.findViewById(R.id.«javaToAndroidIdentifier(element.name)»);
+				
+				''');
+			}
+		}
+		
+		string.append('''
+		package «application.name»;
+		import android.os.Bundle;
+		import androidx.fragment.app.Fragment;
+		import android.view.LayoutInflater;
+		import android.view.View;
+		import android.view.ViewGroup;
+		import «application.name».R;
+		
+		public class «fragment.name» extends Fragment {
+			
+		«vars»
+			public SettingsFragment() {
+		        // Required empty public constructor
+		    }
+		
+		    @Override
+		    public void onCreate(Bundle savedInstanceState) {
+		        super.onCreate(savedInstanceState);
+		    }
+		
+		    @Override
+		    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		        // Inflate the layout for this fragment
+		        View view = inflater.inflate(R.layout.«javaToAndroidIdentifier(fragment.name)», container, false);
+		        «instances»
+		        return view;
+		    }
+		    
+		    «methods»
+		}
+		''');
+		
+		return string;
+	}
+	
+	
+	def insertVariablesBundle(Fragment fragment, Application application){
+		var ActivityLayoutAttributes layout = getFieldData(fragment.activityAttributes, typeof(ActivityLayoutAttributes));
+		val string = new StringBuilder();
+		val spinner = new StringBuilder();
+		val edittext = new StringBuilder();
+		val edittext2 = new StringBuilder();
+		val buttonString = new StringBuilder();
+		val bundleString = new StringBuilder();
+		val bundleString2 = new StringBuilder();
+		
+		for(element : layout.layoutElements){
+			if(element instanceof Spinner){
+				spinner.append('''
+		           bundle.putString("location", m«element.name»);
+				''');
+			}if(element instanceof EditText){
+				edittext.append('''
+				String failSafe = medittext.getText().toString();
+				if(failSafe.matches("")){
+					Toast.makeText(getActivity().getApplicationContext(), "Please specify number", Toast.LENGTH_SHORT).show();
+				}else{
+				''');
+				
+				edittext2.append('''
+				m«element.name»_number = Double.parseDouble(m«element.name».getText().toString());
+				bundle.putDouble("radius", m«element.name»_number);
+				''');
+			}if(element instanceof Button){
+				var action = element.actions;
+				for(actions: action){
+					if((actions instanceof Toast)){
+						buttonString.append('''
+						Toast.makeText(getActivity().getApplicationContext(), "«actions.text»", Toast.LENGTH_SHORT).show();
+						''');
+					}if(actions instanceof Bundle){
+						bundleString.append('''
+						«actions.bundleRecipient.name» b«actions.bundleRecipient.name» = new «actions.bundleRecipient.name»();
+						''');
+						bundleString2.append('''
+						transaction.replace(R.id.container_frame_layout, b«actions.bundleRecipient.name»).commit();
+						''');
+					}
+				}
+			}
+		}
+		
+		string.append('''
+			«buttonString»
+			«edittext»
+			FragmentTransaction transaction = getFragmentManager().beginTransaction();
+			Bundle bundle = new Bundle();
+			«bundleString»
+			«edittext2»
+			«spinner»
+			mapsFragment.setArguments(bundle);
+			«bundleString2»
+			}
+		''');
+	}
 }

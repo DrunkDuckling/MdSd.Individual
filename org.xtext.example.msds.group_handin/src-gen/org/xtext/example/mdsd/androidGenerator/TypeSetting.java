@@ -14,6 +14,6 @@ package org.xtext.example.mdsd.androidGenerator;
  * @model
  * @generated
  */
-public interface TypeSetting extends ActivityType
+public interface TypeSetting extends LayoutElement
 {
 } // TypeSetting

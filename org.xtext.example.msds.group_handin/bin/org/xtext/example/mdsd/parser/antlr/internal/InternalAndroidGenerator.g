@@ -225,15 +225,6 @@ ruleApplicationAttribute returns [EObject current=null]
 			$current = $this_ApplicationElementList_2.current;
 			afterParserOrEnumRuleCall();
 		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getApplicationAttributeAccess().getApplicationMainActivityParserRuleCall_3());
-		}
-		this_ApplicationMainActivity_3=ruleApplicationMainActivity
-		{
-			$current = $this_ApplicationMainActivity_3.current;
-			afterParserOrEnumRuleCall();
-		}
 	)
 ;
 
@@ -585,42 +576,6 @@ ruleApplicationElementList returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleApplicationMainActivity
-entryRuleApplicationMainActivity returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getApplicationMainActivityRule()); }
-	iv_ruleApplicationMainActivity=ruleApplicationMainActivity
-	{ $current=$iv_ruleApplicationMainActivity.current; }
-	EOF;
-
-// Rule ApplicationMainActivity
-ruleApplicationMainActivity returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='main-activity'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getApplicationMainActivityAccess().getMainActivityKeyword_0());
-		}
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getApplicationMainActivityRule());
-					}
-				}
-				otherlv_1=RULE_ID
-				{
-					newLeafNode(otherlv_1, grammarAccess.getApplicationMainActivityAccess().getLauncherActivityActivityCrossReference_1_0());
-				}
-			)
-		)
-	)
-;
-
 // Entry rule entryRuleApplicationElement
 entryRuleApplicationElement returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getApplicationElementRule()); }
@@ -638,29 +593,20 @@ ruleApplicationElement returns [EObject current=null]
 }:
 	(
 		{
-			newCompositeNode(grammarAccess.getApplicationElementAccess().getActivityParserRuleCall_0());
+			newCompositeNode(grammarAccess.getApplicationElementAccess().getFragmentParserRuleCall_0());
 		}
-		this_Activity_0=ruleActivity
+		this_Fragment_0=ruleFragment
 		{
-			$current = $this_Activity_0.current;
+			$current = $this_Fragment_0.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getApplicationElementAccess().getFragmentParserRuleCall_1());
+			newCompositeNode(grammarAccess.getApplicationElementAccess().getModelParserRuleCall_1());
 		}
-		this_Fragment_1=ruleFragment
+		this_Model_1=ruleModel
 		{
-			$current = $this_Fragment_1.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getApplicationElementAccess().getModelParserRuleCall_2());
-		}
-		this_Model_2=ruleModel
-		{
-			$current = $this_Model_2.current;
+			$current = $this_Model_1.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -682,267 +628,19 @@ ruleModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getModelAccess().getModelAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='Model'
+		otherlv_0='Model'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getModelAccess().getModelKeyword_1());
+			newLeafNode(otherlv_0, grammarAccess.getModelAccess().getModelKeyword_0());
 		}
 		(
-			otherlv_2=':'
-			{
-				newLeafNode(otherlv_2, grammarAccess.getModelAccess().getColonKeyword_2_0());
-			}
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getModelAccess().getActivityTypeActivityTypeParserRuleCall_2_1_0());
-					}
-					lv_activityType_3_0=ruleActivityType
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getModelRule());
-						}
-						set(
-							$current,
-							"activityType",
-							lv_activityType_3_0,
-							"org.xtext.example.mdsd.AndroidGenerator.ActivityType");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		(
-			(
-				lv_name_4_0=RULE_ID
+				lv_name_1_0=RULE_ID
 				{
-					newLeafNode(lv_name_4_0, grammarAccess.getModelAccess().getNameIDTerminalRuleCall_3_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getModelAccess().getNameIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getModelRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"name",
-						lv_name_4_0,
-						"org.eclipse.xtext.common.Terminals.ID");
-				}
-			)
-		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getModelAccess().getModellistModelListParserRuleCall_4_0());
-				}
-				lv_modellist_5_0=ruleModelList
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getModelRule());
-					}
-					set(
-						$current,
-						"modellist",
-						lv_modellist_5_0,
-						"org.xtext.example.mdsd.AndroidGenerator.ModelList");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-	)
-;
-
-// Entry rule entryRuleModelList
-entryRuleModelList returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getModelListRule()); }
-	iv_ruleModelList=ruleModelList
-	{ $current=$iv_ruleModelList.current; }
-	EOF;
-
-// Rule ModelList
-ruleModelList returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getModelListAccess().getTypeTypeParserRuleCall_0_0());
-				}
-				lv_type_0_0=ruleType
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getModelListRule());
-					}
-					add(
-						$current,
-						"type",
-						lv_type_0_0,
-						"org.xtext.example.mdsd.AndroidGenerator.Type");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_1=':'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getModelListAccess().getColonKeyword_1());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getModelListAccess().getGetsetGetSetParserRuleCall_2_0());
-				}
-				lv_getset_2_0=ruleGetSet
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getModelListRule());
-					}
-					add(
-						$current,
-						"getset",
-						lv_getset_2_0,
-						"org.xtext.example.mdsd.AndroidGenerator.GetSet");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			otherlv_3=','
-			{
-				newLeafNode(otherlv_3, grammarAccess.getModelListAccess().getCommaKeyword_3_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getModelListAccess().getTypeTypeParserRuleCall_3_1_0());
-					}
-					lv_type_4_0=ruleType
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getModelListRule());
-						}
-						add(
-							$current,
-							"type",
-							lv_type_4_0,
-							"org.xtext.example.mdsd.AndroidGenerator.Type");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			otherlv_5=':'
-			{
-				newLeafNode(otherlv_5, grammarAccess.getModelListAccess().getColonKeyword_3_2());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getModelListAccess().getGetsetGetSetParserRuleCall_3_3_0());
-					}
-					lv_getset_6_0=ruleGetSet
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getModelListRule());
-						}
-						add(
-							$current,
-							"getset",
-							lv_getset_6_0,
-							"org.xtext.example.mdsd.AndroidGenerator.GetSet");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)*
-	)
-;
-
-// Entry rule entryRuleGetSet
-entryRuleGetSet returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getGetSetRule()); }
-	iv_ruleGetSet=ruleGetSet
-	{ $current=$iv_ruleGetSet.current; }
-	EOF;
-
-// Rule GetSet
-ruleGetSet returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getGetSetAccess().getGetSetAction_0(),
-					$current);
-			}
-		)
-		(
-			(
-				lv_name_1_0=RULE_ID
-				{
-					newLeafNode(lv_name_1_0, grammarAccess.getGetSetAccess().getNameIDTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getGetSetRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"name",
-						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
-				}
-			)
-		)
-	)
-;
-
-// Entry rule entryRuleType
-entryRuleType returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getTypeRule()); }
-	iv_ruleType=ruleType
-	{ $current=$iv_ruleType.current; }
-	EOF;
-
-// Rule Type
-ruleType returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getTypeAccess().getTypeAction_0(),
-					$current);
-			}
-		)
-		(
-			(
-				lv_name_1_0=RULE_ID
-				{
-					newLeafNode(lv_name_1_0, grammarAccess.getTypeAccess().getNameIDTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getTypeRule());
 					}
 					setWithLastConsumed(
 						$current,
@@ -983,35 +681,10 @@ ruleFragment returns [EObject current=null]
 			newLeafNode(otherlv_1, grammarAccess.getFragmentAccess().getFragmentKeyword_1());
 		}
 		(
-			otherlv_2=':'
-			{
-				newLeafNode(otherlv_2, grammarAccess.getFragmentAccess().getColonKeyword_2_0());
-			}
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getFragmentAccess().getActivityTypeActivityTypeParserRuleCall_2_1_0());
-					}
-					lv_activityType_3_0=ruleActivityType
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getFragmentRule());
-						}
-						set(
-							$current,
-							"activityType",
-							lv_activityType_3_0,
-							"org.xtext.example.mdsd.AndroidGenerator.ActivityType");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		(
-			(
-				lv_name_4_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name_4_0, grammarAccess.getFragmentAccess().getNameIDTerminalRuleCall_3_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getFragmentAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -1020,7 +693,7 @@ ruleFragment returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_4_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -1028,9 +701,9 @@ ruleFragment returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFragmentAccess().getActivityAttributesActivityLayoutAttributesParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getFragmentAccess().getActivityAttributesActivityLayoutAttributesParserRuleCall_3_0());
 				}
-				lv_activityAttributes_5_0=ruleActivityLayoutAttributes
+				lv_activityAttributes_3_0=ruleActivityLayoutAttributes
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFragmentRule());
@@ -1038,258 +711,12 @@ ruleFragment returns [EObject current=null]
 					add(
 						$current,
 						"activityAttributes",
-						lv_activityAttributes_5_0,
+						lv_activityAttributes_3_0,
 						"org.xtext.example.mdsd.AndroidGenerator.ActivityLayoutAttributes");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)?
-	)
-;
-
-// Entry rule entryRuleActivity
-entryRuleActivity returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getActivityRule()); }
-	iv_ruleActivity=ruleActivity
-	{ $current=$iv_ruleActivity.current; }
-	EOF;
-
-// Rule Activity
-ruleActivity returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getActivityAccess().getActivityAction_0_0(),
-						$current);
-				}
-			)
-			otherlv_1='Activity'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getActivityAccess().getActivityKeyword_0_1());
-			}
-			(
-				otherlv_2=':'
-				{
-					newLeafNode(otherlv_2, grammarAccess.getActivityAccess().getColonKeyword_0_2_0());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getActivityAccess().getActivityTypeActivityTypeParserRuleCall_0_2_1_0());
-						}
-						lv_activityType_3_0=ruleActivityType
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getActivityRule());
-							}
-							set(
-								$current,
-								"activityType",
-								lv_activityType_3_0,
-								"org.xtext.example.mdsd.AndroidGenerator.ActivityType");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-				(
-					(
-						lv_name_4_0=RULE_ID
-						{
-							newLeafNode(lv_name_4_0, grammarAccess.getActivityAccess().getNameIDTerminalRuleCall_0_2_2_0());
-						}
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getActivityRule());
-							}
-							setWithLastConsumed(
-								$current,
-								"name",
-								lv_name_4_0,
-								"org.eclipse.xtext.common.Terminals.ID");
-						}
-					)
-				)
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getActivityAccess().getActivityTypeAttributesActivityTypeAttributesParserRuleCall_0_2_3_0());
-						}
-						lv_activityTypeAttributes_5_0=ruleActivityTypeAttributes
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getActivityRule());
-							}
-							set(
-								$current,
-								"activityTypeAttributes",
-								lv_activityTypeAttributes_5_0,
-								"org.xtext.example.mdsd.AndroidGenerator.ActivityTypeAttributes");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getActivityAccess().getActivityAttributesActivityLayoutAttributesParserRuleCall_0_2_4_0());
-						}
-						lv_activityAttributes_6_0=ruleActivityLayoutAttributes
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getActivityRule());
-							}
-							add(
-								$current,
-								"activityAttributes",
-								lv_activityAttributes_6_0,
-								"org.xtext.example.mdsd.AndroidGenerator.ActivityLayoutAttributes");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)*
-			)?
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getActivityAccess().getActivityAction_1_0(),
-						$current);
-				}
-			)
-			otherlv_8='Activity'
-			{
-				newLeafNode(otherlv_8, grammarAccess.getActivityAccess().getActivityKeyword_1_1());
-			}
-			(
-				(
-					lv_name_9_0=RULE_ID
-					{
-						newLeafNode(lv_name_9_0, grammarAccess.getActivityAccess().getNameIDTerminalRuleCall_1_2_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getActivityRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"name",
-							lv_name_9_0,
-							"org.eclipse.xtext.common.Terminals.ID");
-					}
-				)
-			)
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getActivityAccess().getActivityAttributesActivityLayoutAttributesParserRuleCall_1_3_0());
-					}
-					lv_activityAttributes_10_0=ruleActivityLayoutAttributes
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getActivityRule());
-						}
-						add(
-							$current,
-							"activityAttributes",
-							lv_activityAttributes_10_0,
-							"org.xtext.example.mdsd.AndroidGenerator.ActivityLayoutAttributes");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)*
-		)
-	)
-;
-
-// Entry rule entryRuleActivityTypeAttributes
-entryRuleActivityTypeAttributes returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getActivityTypeAttributesRule()); }
-	iv_ruleActivityTypeAttributes=ruleActivityTypeAttributes
-	{ $current=$iv_ruleActivityTypeAttributes.current; }
-	EOF;
-
-// Rule ActivityTypeAttributes
-ruleActivityTypeAttributes returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				newCompositeNode(grammarAccess.getActivityTypeAttributesAccess().getFilterFilterQueryParserRuleCall_0());
-			}
-			lv_filter_0_0=ruleFilterQuery
-			{
-				if ($current==null) {
-					$current = createModelElementForParent(grammarAccess.getActivityTypeAttributesRule());
-				}
-				set(
-					$current,
-					"filter",
-					lv_filter_0_0,
-					"org.xtext.example.mdsd.AndroidGenerator.FilterQuery");
-				afterParserOrEnumRuleCall();
-			}
-		)
-	)
-;
-
-// Entry rule entryRuleActivityType
-entryRuleActivityType returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getActivityTypeRule()); }
-	iv_ruleActivityType=ruleActivityType
-	{ $current=$iv_ruleActivityType.current; }
-	EOF;
-
-// Rule ActivityType
-ruleActivityType returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getActivityTypeAccess().getTypeMapAction_0_0(),
-						$current);
-				}
-			)
-			otherlv_1='Maps'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getActivityTypeAccess().getMapsKeyword_0_1());
-			}
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getActivityTypeAccess().getTypeSettingAction_1_0(),
-						$current);
-				}
-			)
-			otherlv_3='Settings'
-			{
-				newLeafNode(otherlv_3, grammarAccess.getActivityTypeAccess().getSettingsKeyword_1_1());
-			}
-		)
 	)
 ;
 
@@ -1382,25 +809,52 @@ ruleLayoutElement returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getLayoutElementAccess().getTextViewParserRuleCall_1());
+			newCompositeNode(grammarAccess.getLayoutElementAccess().getEditTextParserRuleCall_1());
 		}
-		this_TextView_1=ruleTextView
+		this_EditText_1=ruleEditText
 		{
-			$current = $this_TextView_1.current;
+			$current = $this_EditText_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getLayoutElementAccess().getSpinnerParserRuleCall_2());
+		}
+		this_Spinner_2=ruleSpinner
+		{
+			$current = $this_Spinner_2.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getLayoutElementAccess().getTypeMapParserRuleCall_3());
+		}
+		this_TypeMap_3=ruleTypeMap
+		{
+			$current = $this_TypeMap_3.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getLayoutElementAccess().getTypeSettingParserRuleCall_4());
+		}
+		this_TypeSetting_4=ruleTypeSetting
+		{
+			$current = $this_TypeSetting_4.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
 ;
 
-// Entry rule entryRuleTextView
-entryRuleTextView returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getTextViewRule()); }
-	iv_ruleTextView=ruleTextView
-	{ $current=$iv_ruleTextView.current; }
+// Entry rule entryRuleTypeMap
+entryRuleTypeMap returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTypeMapRule()); }
+	iv_ruleTypeMap=ruleTypeMap
+	{ $current=$iv_ruleTypeMap.current; }
 	EOF;
 
-// Rule TextView
-ruleTextView returns [EObject current=null]
+// Rule TypeMap
+ruleTypeMap returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -1411,23 +865,186 @@ ruleTextView returns [EObject current=null]
 		(
 			{
 				$current = forceCreateModelElement(
-					grammarAccess.getTextViewAccess().getTextViewAction_0(),
+					grammarAccess.getTypeMapAccess().getTypeMapAction_0(),
 					$current);
 			}
 		)
-		otherlv_1='TextView'
+		otherlv_1='Map'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getTextViewAccess().getTextViewKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getTypeMapAccess().getMapKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getTypeMapAccess().getActivitytypeattributeActivityTypeAttributesParserRuleCall_2_0());
+				}
+				lv_activitytypeattribute_2_0=ruleActivityTypeAttributes
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTypeMapRule());
+					}
+					set(
+						$current,
+						"activitytypeattribute",
+						lv_activitytypeattribute_2_0,
+						"org.xtext.example.mdsd.AndroidGenerator.ActivityTypeAttributes");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+	)
+;
+
+// Entry rule entryRuleTypeSetting
+entryRuleTypeSetting returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTypeSettingRule()); }
+	iv_ruleTypeSetting=ruleTypeSetting
+	{ $current=$iv_ruleTypeSetting.current; }
+	EOF;
+
+// Rule TypeSetting
+ruleTypeSetting returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getTypeSettingAccess().getTypeSettingAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='Settings'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getTypeSettingAccess().getSettingsKeyword_1());
+		}
+	)
+;
+
+// Entry rule entryRuleActivityTypeAttributes
+entryRuleActivityTypeAttributes returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getActivityTypeAttributesRule()); }
+	iv_ruleActivityTypeAttributes=ruleActivityTypeAttributes
+	{ $current=$iv_ruleActivityTypeAttributes.current; }
+	EOF;
+
+// Rule ActivityTypeAttributes
+ruleActivityTypeAttributes returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				newCompositeNode(grammarAccess.getActivityTypeAttributesAccess().getFilterFilterQueryParserRuleCall_0());
+			}
+			lv_filter_0_0=ruleFilterQuery
+			{
+				if ($current==null) {
+					$current = createModelElementForParent(grammarAccess.getActivityTypeAttributesRule());
+				}
+				set(
+					$current,
+					"filter",
+					lv_filter_0_0,
+					"org.xtext.example.mdsd.AndroidGenerator.FilterQuery");
+				afterParserOrEnumRuleCall();
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleEditText
+entryRuleEditText returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEditTextRule()); }
+	iv_ruleEditText=ruleEditText
+	{ $current=$iv_ruleEditText.current; }
+	EOF;
+
+// Rule EditText
+ruleEditText returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getEditTextAccess().getEditTextAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='EditText'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getEditTextAccess().getEditTextKeyword_1());
 		}
 		(
 			(
 				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getTextViewAccess().getNameIDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getEditTextAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getTextViewRule());
+						$current = createModelElement(grammarAccess.getEditTextRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_2_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleSpinner
+entryRuleSpinner returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSpinnerRule()); }
+	iv_ruleSpinner=ruleSpinner
+	{ $current=$iv_ruleSpinner.current; }
+	EOF;
+
+// Rule Spinner
+ruleSpinner returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getSpinnerAccess().getSpinnerAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='Spinner'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getSpinnerAccess().getSpinnerKeyword_1());
+		}
+		(
+			(
+				lv_name_2_0=RULE_ID
+				{
+					newLeafNode(lv_name_2_0, grammarAccess.getSpinnerAccess().getNameIDTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSpinnerRule());
 					}
 					setWithLastConsumed(
 						$current,
@@ -1482,6 +1099,165 @@ ruleButton returns [EObject current=null]
 						"name",
 						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getButtonAccess().getActionsButtonActionsParserRuleCall_3_0_0());
+					}
+					lv_actions_3_0=ruleButtonActions
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getButtonRule());
+						}
+						add(
+							$current,
+							"actions",
+							lv_actions_3_0,
+							"org.xtext.example.mdsd.AndroidGenerator.ButtonActions");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				otherlv_4=','
+				{
+					newLeafNode(otherlv_4, grammarAccess.getButtonAccess().getCommaKeyword_3_1_0());
+				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getButtonAccess().getActionsButtonActionsParserRuleCall_3_1_1_0());
+						}
+						lv_actions_5_0=ruleButtonActions
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getButtonRule());
+							}
+							add(
+								$current,
+								"actions",
+								lv_actions_5_0,
+								"org.xtext.example.mdsd.AndroidGenerator.ButtonActions");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)*
+		)?
+	)
+;
+
+// Entry rule entryRuleButtonActions
+entryRuleButtonActions returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getButtonActionsRule()); }
+	iv_ruleButtonActions=ruleButtonActions
+	{ $current=$iv_ruleButtonActions.current; }
+	EOF;
+
+// Rule ButtonActions
+ruleButtonActions returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getButtonActionsAccess().getToastParserRuleCall_0());
+		}
+		this_Toast_0=ruleToast
+		{
+			$current = $this_Toast_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getButtonActionsAccess().getBundleParserRuleCall_1());
+		}
+		this_Bundle_1=ruleBundle
+		{
+			$current = $this_Bundle_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleToast
+entryRuleToast returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getToastRule()); }
+	iv_ruleToast=ruleToast
+	{ $current=$iv_ruleToast.current; }
+	EOF;
+
+// Rule Toast
+ruleToast returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='Toast'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getToastAccess().getToastKeyword_0());
+		}
+		(
+			(
+				lv_text_1_0=RULE_STRING
+				{
+					newLeafNode(lv_text_1_0, grammarAccess.getToastAccess().getTextSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getToastRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"text",
+						lv_text_1_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleBundle
+entryRuleBundle returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getBundleRule()); }
+	iv_ruleBundle=ruleBundle
+	{ $current=$iv_ruleBundle.current; }
+	EOF;
+
+// Rule Bundle
+ruleBundle returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='Bundle'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getBundleAccess().getBundleKeyword_0());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getBundleRule());
+					}
+				}
+				otherlv_1=RULE_ID
+				{
+					newLeafNode(otherlv_1, grammarAccess.getBundleAccess().getBundleRecipientFragmentCrossReference_1_0());
 				}
 			)
 		)

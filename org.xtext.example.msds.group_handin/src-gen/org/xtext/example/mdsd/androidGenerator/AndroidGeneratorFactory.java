@@ -105,15 +105,6 @@ public interface AndroidGeneratorFactory extends EFactory
   ApplicationElementList createApplicationElementList();
 
   /**
-   * Returns a new object of class '<em>Application Main Activity</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Application Main Activity</em>'.
-   * @generated
-   */
-  ApplicationMainActivity createApplicationMainActivity();
-
-  /**
    * Returns a new object of class '<em>Application Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -132,33 +123,6 @@ public interface AndroidGeneratorFactory extends EFactory
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>Model List</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model List</em>'.
-   * @generated
-   */
-  ModelList createModelList();
-
-  /**
-   * Returns a new object of class '<em>Get Set</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Get Set</em>'.
-   * @generated
-   */
-  GetSet createGetSet();
-
-  /**
-   * Returns a new object of class '<em>Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Type</em>'.
-   * @generated
-   */
-  Type createType();
-
-  /**
    * Returns a new object of class '<em>Fragment</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -166,33 +130,6 @@ public interface AndroidGeneratorFactory extends EFactory
    * @generated
    */
   Fragment createFragment();
-
-  /**
-   * Returns a new object of class '<em>Activity</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Activity</em>'.
-   * @generated
-   */
-  Activity createActivity();
-
-  /**
-   * Returns a new object of class '<em>Activity Type Attributes</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Activity Type Attributes</em>'.
-   * @generated
-   */
-  ActivityTypeAttributes createActivityTypeAttributes();
-
-  /**
-   * Returns a new object of class '<em>Activity Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Activity Type</em>'.
-   * @generated
-   */
-  ActivityType createActivityType();
 
   /**
    * Returns a new object of class '<em>Activity Layout Attributes</em>'.
@@ -213,13 +150,49 @@ public interface AndroidGeneratorFactory extends EFactory
   LayoutElement createLayoutElement();
 
   /**
-   * Returns a new object of class '<em>Text View</em>'.
+   * Returns a new object of class '<em>Type Map</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Text View</em>'.
+   * @return a new object of class '<em>Type Map</em>'.
    * @generated
    */
-  TextView createTextView();
+  TypeMap createTypeMap();
+
+  /**
+   * Returns a new object of class '<em>Type Setting</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type Setting</em>'.
+   * @generated
+   */
+  TypeSetting createTypeSetting();
+
+  /**
+   * Returns a new object of class '<em>Activity Type Attributes</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Activity Type Attributes</em>'.
+   * @generated
+   */
+  ActivityTypeAttributes createActivityTypeAttributes();
+
+  /**
+   * Returns a new object of class '<em>Edit Text</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Edit Text</em>'.
+   * @generated
+   */
+  EditText createEditText();
+
+  /**
+   * Returns a new object of class '<em>Spinner</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Spinner</em>'.
+   * @generated
+   */
+  Spinner createSpinner();
 
   /**
    * Returns a new object of class '<em>Button</em>'.
@@ -229,6 +202,33 @@ public interface AndroidGeneratorFactory extends EFactory
    * @generated
    */
   Button createButton();
+
+  /**
+   * Returns a new object of class '<em>Button Actions</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Button Actions</em>'.
+   * @generated
+   */
+  ButtonActions createButtonActions();
+
+  /**
+   * Returns a new object of class '<em>Toast</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Toast</em>'.
+   * @generated
+   */
+  Toast createToast();
+
+  /**
+   * Returns a new object of class '<em>Bundle</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bundle</em>'.
+   * @generated
+   */
+  Bundle createBundle();
 
   /**
    * Returns a new object of class '<em>Filter Query</em>'.
@@ -283,24 +283,6 @@ public interface AndroidGeneratorFactory extends EFactory
    * @generated
    */
   Unit createUnit();
-
-  /**
-   * Returns a new object of class '<em>Type Map</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Type Map</em>'.
-   * @generated
-   */
-  TypeMap createTypeMap();
-
-  /**
-   * Returns a new object of class '<em>Type Setting</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Type Setting</em>'.
-   * @generated
-   */
-  TypeSetting createTypeSetting();
 
   /**
    * Returns a new object of class '<em>Less</em>'.

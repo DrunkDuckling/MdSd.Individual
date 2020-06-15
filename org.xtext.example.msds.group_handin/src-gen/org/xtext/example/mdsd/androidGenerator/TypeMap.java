@@ -9,11 +9,39 @@ package org.xtext.example.mdsd.androidGenerator;
  * A representation of the model object '<em><b>Type Map</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.mdsd.androidGenerator.TypeMap#getActivitytypeattribute <em>Activitytypeattribute</em>}</li>
+ * </ul>
  *
  * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getTypeMap()
  * @model
  * @generated
  */
-public interface TypeMap extends ActivityType
+public interface TypeMap extends LayoutElement
 {
+  /**
+   * Returns the value of the '<em><b>Activitytypeattribute</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Activitytypeattribute</em>' containment reference.
+   * @see #setActivitytypeattribute(ActivityTypeAttributes)
+   * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getTypeMap_Activitytypeattribute()
+   * @model containment="true"
+   * @generated
+   */
+  ActivityTypeAttributes getActivitytypeattribute();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mdsd.androidGenerator.TypeMap#getActivitytypeattribute <em>Activitytypeattribute</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Activitytypeattribute</em>' containment reference.
+   * @see #getActivitytypeattribute()
+   * @generated
+   */
+  void setActivitytypeattribute(ActivityTypeAttributes value);
+
 } // TypeMap

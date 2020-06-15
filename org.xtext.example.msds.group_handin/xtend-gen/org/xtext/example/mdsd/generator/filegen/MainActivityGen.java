@@ -8,11 +8,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.xtext.example.mdsd.androidGenerator.Activity;
-import org.xtext.example.mdsd.androidGenerator.ActivityType;
+import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
+import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
+import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.generator.abstractfiles.AbstractGen;
 
 @SuppressWarnings("all")
@@ -27,7 +29,7 @@ public class MainActivityGen extends AbstractGen {
         this.constructActivityArray(app);
         String _name = app.getName();
         String _plus = ("%s/src/main/java/" + _name);
-        String _plus_1 = (_plus + "/activity/");
+        String _plus_1 = (_plus + "/");
         String _name_1 = app.getName();
         String _plus_2 = (_plus_1 + _name_1);
         String _plus_3 = (_plus_2 + ".java");
@@ -443,26 +445,41 @@ public class MainActivityGen extends AbstractGen {
     this.activityArrayList = CollectionLiterals.<ArrayList<Object>>newArrayList();
     for (int i = 0; (i < activityList.size()); i++) {
       EObject _get = activityList.get(i);
-      if ((_get instanceof Activity)) {
+      if ((_get instanceof Fragment)) {
         ArrayList<Object> activityItem = CollectionLiterals.<Object>newArrayList();
         EObject _get_1 = activityList.get(i);
-        activityItem.add(((Activity) _get_1).getName());
-        activityItem.add(Integer.valueOf(i));
+        ActivityLayoutAttributes layout = this.<ActivityLayoutAttributes>getFieldData(
+          ((Fragment) _get_1).getActivityAttributes(), 
+          ActivityLayoutAttributes.class);
         EObject _get_2 = activityList.get(i);
-        ActivityType _activityType = ((Activity) _get_2).getActivityType();
-        EObject _get_3 = activityList.get(i);
-        ActivityType _activityType_1 = ((Activity) _get_3).getActivityType();
-        boolean _equals = Objects.equal(_activityType, ((TypeMap) ((ActivityType) _activityType_1)));
-        if (_equals) {
-          activityItem.add("MapsFragment");
-          activityItem.add("maps");
+        activityItem.add(((Fragment) _get_2).getName());
+        activityItem.add(Integer.valueOf(i));
+        boolean _notEquals = (!Objects.equal(layout, null));
+        if (_notEquals) {
+          EList<LayoutElement> _layoutElements = layout.getLayoutElements();
+          for (final LayoutElement type : _layoutElements) {
+            {
+              if ((type instanceof TypeMap)) {
+                activityItem.add("MapsFragment");
+                activityItem.add("maps");
+              }
+              if ((type instanceof TypeSetting)) {
+                activityItem.add("SetFragment");
+                activityItem.add("Setting");
+              }
+              if (((!(type instanceof TypeMap)) && (!(type instanceof TypeSetting)))) {
+                activityItem.add("LayoutFragment");
+                activityItem.add("Layout");
+              }
+            }
+          }
         } else {
           activityItem.add("StandardFragment");
           activityItem.add("standard");
         }
         int _size = activityItem.size();
-        boolean _equals_1 = (_size == 4);
-        if (_equals_1) {
+        boolean _equals = (_size == 4);
+        if (_equals) {
           this.activityArrayList.add(activityItem);
         }
       }
