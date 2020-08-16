@@ -34,6 +34,7 @@ public class AndroidGeneratorParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getApplicationAttributeAccess().getAlternatives(), "rule__ApplicationAttribute__Alternatives");
 			builder.put(grammarAccess.getApplicationElementAccess().getAlternatives(), "rule__ApplicationElement__Alternatives");
 			builder.put(grammarAccess.getLayoutElementAccess().getAlternatives(), "rule__LayoutElement__Alternatives");
+			builder.put(grammarAccess.getDataholdersAccess().getAlternatives(), "rule__Dataholders__Alternatives");
 			builder.put(grammarAccess.getButtonActionsAccess().getAlternatives(), "rule__ButtonActions__Alternatives");
 			builder.put(grammarAccess.getOperatorAccess().getAlternatives(), "rule__Operator__Alternatives");
 			builder.put(grammarAccess.getUnitAccess().getAlternatives(), "rule__Unit__Alternatives");
@@ -54,11 +55,15 @@ public class AndroidGeneratorParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getTypeSettingAccess().getGroup(), "rule__TypeSetting__Group__0");
 			builder.put(grammarAccess.getEditTextAccess().getGroup(), "rule__EditText__Group__0");
 			builder.put(grammarAccess.getSpinnerAccess().getGroup(), "rule__Spinner__Group__0");
+			builder.put(grammarAccess.getTextfieldAccess().getGroup(), "rule__Textfield__Group__0");
 			builder.put(grammarAccess.getButtonAccess().getGroup(), "rule__Button__Group__0");
 			builder.put(grammarAccess.getButtonAccess().getGroup_3(), "rule__Button__Group_3__0");
 			builder.put(grammarAccess.getButtonAccess().getGroup_3_1(), "rule__Button__Group_3_1__0");
 			builder.put(grammarAccess.getToastAccess().getGroup(), "rule__Toast__Group__0");
 			builder.put(grammarAccess.getBundleAccess().getGroup(), "rule__Bundle__Group__0");
+			builder.put(grammarAccess.getBundleAccess().getGroup_2(), "rule__Bundle__Group_2__0");
+			builder.put(grammarAccess.getBundleAccess().getGroup_2_1(), "rule__Bundle__Group_2_1__0");
+			builder.put(grammarAccess.getBundleAccess().getGroup_2_1_1(), "rule__Bundle__Group_2_1_1__0");
 			builder.put(grammarAccess.getFilterQueryAccess().getGroup(), "rule__FilterQuery__Group__0");
 			builder.put(grammarAccess.getDistanceAccess().getGroup(), "rule__Distance__Group__0");
 			builder.put(grammarAccess.getOperatorAccess().getGroup_0(), "rule__Operator__Group_0__0");
@@ -88,11 +93,14 @@ public class AndroidGeneratorParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getActivityTypeAttributesAccess().getFilterAssignment(), "rule__ActivityTypeAttributes__FilterAssignment");
 			builder.put(grammarAccess.getEditTextAccess().getNameAssignment_2(), "rule__EditText__NameAssignment_2");
 			builder.put(grammarAccess.getSpinnerAccess().getNameAssignment_2(), "rule__Spinner__NameAssignment_2");
+			builder.put(grammarAccess.getTextfieldAccess().getNameAssignment_2(), "rule__Textfield__NameAssignment_2");
 			builder.put(grammarAccess.getButtonAccess().getNameAssignment_2(), "rule__Button__NameAssignment_2");
 			builder.put(grammarAccess.getButtonAccess().getActionsAssignment_3_0(), "rule__Button__ActionsAssignment_3_0");
 			builder.put(grammarAccess.getButtonAccess().getActionsAssignment_3_1_1(), "rule__Button__ActionsAssignment_3_1_1");
 			builder.put(grammarAccess.getToastAccess().getTextAssignment_1(), "rule__Toast__TextAssignment_1");
 			builder.put(grammarAccess.getBundleAccess().getBundleRecipientAssignment_1(), "rule__Bundle__BundleRecipientAssignment_1");
+			builder.put(grammarAccess.getBundleAccess().getHolderAssignment_2_1_0(), "rule__Bundle__HolderAssignment_2_1_0");
+			builder.put(grammarAccess.getBundleAccess().getHolderAssignment_2_1_1_1(), "rule__Bundle__HolderAssignment_2_1_1_1");
 			builder.put(grammarAccess.getFilterQueryAccess().getNameAssignment_2(), "rule__FilterQuery__NameAssignment_2");
 			builder.put(grammarAccess.getFilterQueryAccess().getFilterAttributesAssignment_3(), "rule__FilterQuery__FilterAttributesAssignment_3");
 			builder.put(grammarAccess.getFilterAttributesAccess().getDistanceAssignment(), "rule__FilterAttributes__DistanceAssignment");

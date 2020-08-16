@@ -45,6 +45,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ActivityLayoutAttributes/layoutElements"/>
     </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//LayoutElement"/>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//Dataholders">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//Dataholders/name"/>
+    </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//TypeMap">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//TypeMap/activitytypeattribute"/>
     </genClasses>
@@ -52,12 +55,9 @@
     <genClasses ecoreClass="AndroidGenerator.ecore#//ActivityTypeAttributes">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ActivityTypeAttributes/filter"/>
     </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//EditText">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//EditText/name"/>
-    </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//Spinner">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//Spinner/name"/>
-    </genClasses>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//EditText"/>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//Spinner"/>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//Textfield"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Button">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//Button/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Button/actions"/>
@@ -68,6 +68,7 @@
     </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Bundle">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Bundle/bundleRecipient"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Bundle/holder"/>
     </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//FilterQuery">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//FilterQuery/name"/>

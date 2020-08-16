@@ -39,6 +39,7 @@ import org.xtext.example.mdsd.androidGenerator.More;
 import org.xtext.example.mdsd.androidGenerator.Permission;
 import org.xtext.example.mdsd.androidGenerator.Spinner;
 import org.xtext.example.mdsd.androidGenerator.TargetSDK;
+import org.xtext.example.mdsd.androidGenerator.Textfield;
 import org.xtext.example.mdsd.androidGenerator.Toast;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
@@ -132,6 +133,9 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 				return; 
 			case AndroidGeneratorPackage.TARGET_SDK:
 				sequence_TargetSDK(context, (TargetSDK) semanticObject); 
+				return; 
+			case AndroidGeneratorPackage.TEXTFIELD:
+				sequence_Textfield(context, (Textfield) semanticObject); 
 				return; 
 			case AndroidGeneratorPackage.TOAST:
 				sequence_Toast(context, (Toast) semanticObject); 
@@ -246,16 +250,10 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 *     Bundle returns Bundle
 	 *
 	 * Constraint:
-	 *     bundleRecipient=[Fragment|ID]
+	 *     (bundleRecipient=[Fragment|ID] (holder+=[Dataholders|ID] holder+=[Dataholders|ID]*)?)
 	 */
 	protected void sequence_Bundle(ISerializationContext context, Bundle semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.BUNDLE__BUNDLE_RECIPIENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.BUNDLE__BUNDLE_RECIPIENT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBundleAccess().getBundleRecipientFragmentIDTerminalRuleCall_1_0_1(), semanticObject.eGet(AndroidGeneratorPackage.Literals.BUNDLE__BUNDLE_RECIPIENT, false));
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -299,6 +297,7 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	/**
 	 * Contexts:
 	 *     LayoutElement returns EditText
+	 *     Dataholders returns EditText
 	 *     EditText returns EditText
 	 *
 	 * Constraint:
@@ -306,8 +305,8 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 */
 	protected void sequence_EditText(ISerializationContext context, EditText semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.EDIT_TEXT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.EDIT_TEXT__NAME));
+			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.DATAHOLDERS__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.DATAHOLDERS__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getEditTextAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
@@ -479,6 +478,7 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	/**
 	 * Contexts:
 	 *     LayoutElement returns Spinner
+	 *     Dataholders returns Spinner
 	 *     Spinner returns Spinner
 	 *
 	 * Constraint:
@@ -486,8 +486,8 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 */
 	protected void sequence_Spinner(ISerializationContext context, Spinner semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.SPINNER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.SPINNER__NAME));
+			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.DATAHOLDERS__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.DATAHOLDERS__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSpinnerAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
@@ -504,6 +504,26 @@ public class AndroidGeneratorSemanticSequencer extends AbstractDelegatingSemanti
 	 */
 	protected void sequence_TargetSDK(ISerializationContext context, TargetSDK semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LayoutElement returns Textfield
+	 *     Dataholders returns Textfield
+	 *     Textfield returns Textfield
+	 *
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_Textfield(ISerializationContext context, Textfield semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.DATAHOLDERS__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.DATAHOLDERS__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTextfieldAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	

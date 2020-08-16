@@ -23,6 +23,7 @@ import org.xtext.example.mdsd.androidGenerator.ApplicationVersion;
 import org.xtext.example.mdsd.androidGenerator.Bundle;
 import org.xtext.example.mdsd.androidGenerator.Button;
 import org.xtext.example.mdsd.androidGenerator.ButtonActions;
+import org.xtext.example.mdsd.androidGenerator.Dataholders;
 import org.xtext.example.mdsd.androidGenerator.Distance;
 import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Equal;
@@ -40,6 +41,7 @@ import org.xtext.example.mdsd.androidGenerator.Operator;
 import org.xtext.example.mdsd.androidGenerator.Permission;
 import org.xtext.example.mdsd.androidGenerator.Spinner;
 import org.xtext.example.mdsd.androidGenerator.TargetSDK;
+import org.xtext.example.mdsd.androidGenerator.Textfield;
 import org.xtext.example.mdsd.androidGenerator.Toast;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
@@ -179,6 +181,11 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
         return createLayoutElementAdapter();
       }
       @Override
+      public Adapter caseDataholders(Dataholders object)
+      {
+        return createDataholdersAdapter();
+      }
+      @Override
       public Adapter caseTypeMap(TypeMap object)
       {
         return createTypeMapAdapter();
@@ -202,6 +209,11 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
       public Adapter caseSpinner(Spinner object)
       {
         return createSpinnerAdapter();
+      }
+      @Override
+      public Adapter caseTextfield(Textfield object)
+      {
+        return createTextfieldAdapter();
       }
       @Override
       public Adapter caseButton(Button object)
@@ -511,6 +523,21 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.Dataholders <em>Dataholders</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mdsd.androidGenerator.Dataholders
+   * @generated
+   */
+  public Adapter createDataholdersAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.TypeMap <em>Type Map</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -581,6 +608,21 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSpinnerAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.Textfield <em>Textfield</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mdsd.androidGenerator.Textfield
+   * @generated
+   */
+  public Adapter createTextfieldAdapter()
   {
     return null;
   }

@@ -25,6 +25,7 @@ import org.xtext.example.mdsd.androidGenerator.ApplicationVersion;
 import org.xtext.example.mdsd.androidGenerator.Bundle;
 import org.xtext.example.mdsd.androidGenerator.Button;
 import org.xtext.example.mdsd.androidGenerator.ButtonActions;
+import org.xtext.example.mdsd.androidGenerator.Dataholders;
 import org.xtext.example.mdsd.androidGenerator.Distance;
 import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Equal;
@@ -42,6 +43,7 @@ import org.xtext.example.mdsd.androidGenerator.Operator;
 import org.xtext.example.mdsd.androidGenerator.Permission;
 import org.xtext.example.mdsd.androidGenerator.Spinner;
 import org.xtext.example.mdsd.androidGenerator.TargetSDK;
+import org.xtext.example.mdsd.androidGenerator.Textfield;
 import org.xtext.example.mdsd.androidGenerator.Toast;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
@@ -113,11 +115,13 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
       case AndroidGeneratorPackage.FRAGMENT: return createFragment();
       case AndroidGeneratorPackage.ACTIVITY_LAYOUT_ATTRIBUTES: return createActivityLayoutAttributes();
       case AndroidGeneratorPackage.LAYOUT_ELEMENT: return createLayoutElement();
+      case AndroidGeneratorPackage.DATAHOLDERS: return createDataholders();
       case AndroidGeneratorPackage.TYPE_MAP: return createTypeMap();
       case AndroidGeneratorPackage.TYPE_SETTING: return createTypeSetting();
       case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES: return createActivityTypeAttributes();
       case AndroidGeneratorPackage.EDIT_TEXT: return createEditText();
       case AndroidGeneratorPackage.SPINNER: return createSpinner();
+      case AndroidGeneratorPackage.TEXTFIELD: return createTextfield();
       case AndroidGeneratorPackage.BUTTON: return createButton();
       case AndroidGeneratorPackage.BUTTON_ACTIONS: return createButtonActions();
       case AndroidGeneratorPackage.TOAST: return createToast();
@@ -312,6 +316,18 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
    * @generated
    */
   @Override
+  public Dataholders createDataholders()
+  {
+    DataholdersImpl dataholders = new DataholdersImpl();
+    return dataholders;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public TypeMap createTypeMap()
   {
     TypeMapImpl typeMap = new TypeMapImpl();
@@ -364,6 +380,18 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
   {
     SpinnerImpl spinner = new SpinnerImpl();
     return spinner;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Textfield createTextfield()
+  {
+    TextfieldImpl textfield = new TextfieldImpl();
+    return textfield;
   }
 
   /**

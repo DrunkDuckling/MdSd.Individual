@@ -420,32 +420,51 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.LayoutElement");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cButtonParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cEditTextParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cSpinnerParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cTypeMapParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cTypeSettingParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cDataholdersParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cTypeMapParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cTypeSettingParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//LayoutElement:
-		//	Button | EditText | Spinner | TypeMap | TypeSetting;
+		//	Button | Dataholders | TypeMap | TypeSetting;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Button | EditText | Spinner | TypeMap | TypeSetting
+		//Button | Dataholders | TypeMap | TypeSetting
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Button
 		public RuleCall getButtonParserRuleCall_0() { return cButtonParserRuleCall_0; }
 		
-		//EditText
-		public RuleCall getEditTextParserRuleCall_1() { return cEditTextParserRuleCall_1; }
-		
-		//Spinner
-		public RuleCall getSpinnerParserRuleCall_2() { return cSpinnerParserRuleCall_2; }
+		//Dataholders
+		public RuleCall getDataholdersParserRuleCall_1() { return cDataholdersParserRuleCall_1; }
 		
 		//TypeMap
-		public RuleCall getTypeMapParserRuleCall_3() { return cTypeMapParserRuleCall_3; }
+		public RuleCall getTypeMapParserRuleCall_2() { return cTypeMapParserRuleCall_2; }
 		
 		//TypeSetting
-		public RuleCall getTypeSettingParserRuleCall_4() { return cTypeSettingParserRuleCall_4; }
+		public RuleCall getTypeSettingParserRuleCall_3() { return cTypeSettingParserRuleCall_3; }
+	}
+	public class DataholdersElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.Dataholders");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cEditTextParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cSpinnerParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cTextfieldParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//Dataholders:
+		//	EditText | Spinner | Textfield;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//EditText | Spinner | Textfield
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//EditText
+		public RuleCall getEditTextParserRuleCall_0() { return cEditTextParserRuleCall_0; }
+		
+		//Spinner
+		public RuleCall getSpinnerParserRuleCall_1() { return cSpinnerParserRuleCall_1; }
+		
+		//Textfield
+		public RuleCall getTextfieldParserRuleCall_2() { return cTextfieldParserRuleCall_2; }
 	}
 	public class TypeMapElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.TypeMap");
@@ -562,6 +581,33 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 	}
+	public class TextfieldElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.Textfield");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cTextfieldAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cTextfieldKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		
+		//Textfield:
+		//	{Textfield} 'Textfield' name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{Textfield} 'Textfield' name=ID
+		public Group getGroup() { return cGroup; }
+		
+		//{Textfield}
+		public Action getTextfieldAction_0() { return cTextfieldAction_0; }
+		
+		//'Textfield'
+		public Keyword getTextfieldKeyword_1() { return cTextfieldKeyword_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+	}
 	public class ButtonElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.Button");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -666,12 +712,23 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final Assignment cBundleRecipientAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cBundleRecipientFragmentCrossReference_1_0 = (CrossReference)cBundleRecipientAssignment_1.eContents().get(0);
 		private final RuleCall cBundleRecipientFragmentIDTerminalRuleCall_1_0_1 = (RuleCall)cBundleRecipientFragmentCrossReference_1_0.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cHolderKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cGroup_2.eContents().get(1);
+		private final Assignment cHolderAssignment_2_1_0 = (Assignment)cGroup_2_1.eContents().get(0);
+		private final CrossReference cHolderDataholdersCrossReference_2_1_0_0 = (CrossReference)cHolderAssignment_2_1_0.eContents().get(0);
+		private final RuleCall cHolderDataholdersIDTerminalRuleCall_2_1_0_0_1 = (RuleCall)cHolderDataholdersCrossReference_2_1_0_0.eContents().get(1);
+		private final Group cGroup_2_1_1 = (Group)cGroup_2_1.eContents().get(1);
+		private final Keyword cCommaKeyword_2_1_1_0 = (Keyword)cGroup_2_1_1.eContents().get(0);
+		private final Assignment cHolderAssignment_2_1_1_1 = (Assignment)cGroup_2_1_1.eContents().get(1);
+		private final CrossReference cHolderDataholdersCrossReference_2_1_1_1_0 = (CrossReference)cHolderAssignment_2_1_1_1.eContents().get(0);
+		private final RuleCall cHolderDataholdersIDTerminalRuleCall_2_1_1_1_0_1 = (RuleCall)cHolderDataholdersCrossReference_2_1_1_1_0.eContents().get(1);
 		
 		//Bundle:
-		//	'Bundle' bundleRecipient=[Fragment];
+		//	'Bundle' bundleRecipient=[Fragment] ('Holder' (holder+=[Dataholders] (',' holder+=[Dataholders])*)?)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Bundle' bundleRecipient=[Fragment]
+		//'Bundle' bundleRecipient=[Fragment] ('Holder' (holder+=[Dataholders] (',' holder+=[Dataholders])*)?)?
 		public Group getGroup() { return cGroup; }
 		
 		//'Bundle'
@@ -685,6 +742,39 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		
 		//ID
 		public RuleCall getBundleRecipientFragmentIDTerminalRuleCall_1_0_1() { return cBundleRecipientFragmentIDTerminalRuleCall_1_0_1; }
+		
+		//('Holder' (holder+=[Dataholders] (',' holder+=[Dataholders])*)?)?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'Holder'
+		public Keyword getHolderKeyword_2_0() { return cHolderKeyword_2_0; }
+		
+		//(holder+=[Dataholders] (',' holder+=[Dataholders])*)?
+		public Group getGroup_2_1() { return cGroup_2_1; }
+		
+		//holder+=[Dataholders]
+		public Assignment getHolderAssignment_2_1_0() { return cHolderAssignment_2_1_0; }
+		
+		//[Dataholders]
+		public CrossReference getHolderDataholdersCrossReference_2_1_0_0() { return cHolderDataholdersCrossReference_2_1_0_0; }
+		
+		//ID
+		public RuleCall getHolderDataholdersIDTerminalRuleCall_2_1_0_0_1() { return cHolderDataholdersIDTerminalRuleCall_2_1_0_0_1; }
+		
+		//(',' holder+=[Dataholders])*
+		public Group getGroup_2_1_1() { return cGroup_2_1_1; }
+		
+		//','
+		public Keyword getCommaKeyword_2_1_1_0() { return cCommaKeyword_2_1_1_0; }
+		
+		//holder+=[Dataholders]
+		public Assignment getHolderAssignment_2_1_1_1() { return cHolderAssignment_2_1_1_1; }
+		
+		//[Dataholders]
+		public CrossReference getHolderDataholdersCrossReference_2_1_1_1_0() { return cHolderDataholdersCrossReference_2_1_1_1_0; }
+		
+		//ID
+		public RuleCall getHolderDataholdersIDTerminalRuleCall_2_1_1_1_0_1() { return cHolderDataholdersIDTerminalRuleCall_2_1_1_1_0_1; }
 	}
 	public class FilterQueryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.FilterQuery");
@@ -893,11 +983,13 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	private final FragmentElements pFragment;
 	private final ActivityLayoutAttributesElements pActivityLayoutAttributes;
 	private final LayoutElementElements pLayoutElement;
+	private final DataholdersElements pDataholders;
 	private final TypeMapElements pTypeMap;
 	private final TypeSettingElements pTypeSetting;
 	private final ActivityTypeAttributesElements pActivityTypeAttributes;
 	private final EditTextElements pEditText;
 	private final SpinnerElements pSpinner;
+	private final TextfieldElements pTextfield;
 	private final ButtonElements pButton;
 	private final ButtonActionsElements pButtonActions;
 	private final ToastElements pToast;
@@ -933,11 +1025,13 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		this.pFragment = new FragmentElements();
 		this.pActivityLayoutAttributes = new ActivityLayoutAttributesElements();
 		this.pLayoutElement = new LayoutElementElements();
+		this.pDataholders = new DataholdersElements();
 		this.pTypeMap = new TypeMapElements();
 		this.pTypeSetting = new TypeSettingElements();
 		this.pActivityTypeAttributes = new ActivityTypeAttributesElements();
 		this.pEditText = new EditTextElements();
 		this.pSpinner = new SpinnerElements();
+		this.pTextfield = new TextfieldElements();
 		this.pButton = new ButtonElements();
 		this.pButtonActions = new ButtonActionsElements();
 		this.pToast = new ToastElements();
@@ -1115,13 +1209,23 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	}
 	
 	//LayoutElement:
-	//	Button | EditText | Spinner | TypeMap | TypeSetting;
+	//	Button | Dataholders | TypeMap | TypeSetting;
 	public LayoutElementElements getLayoutElementAccess() {
 		return pLayoutElement;
 	}
 	
 	public ParserRule getLayoutElementRule() {
 		return getLayoutElementAccess().getRule();
+	}
+	
+	//Dataholders:
+	//	EditText | Spinner | Textfield;
+	public DataholdersElements getDataholdersAccess() {
+		return pDataholders;
+	}
+	
+	public ParserRule getDataholdersRule() {
+		return getDataholdersAccess().getRule();
 	}
 	
 	//TypeMap:
@@ -1174,6 +1278,16 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		return getSpinnerAccess().getRule();
 	}
 	
+	//Textfield:
+	//	{Textfield} 'Textfield' name=ID;
+	public TextfieldElements getTextfieldAccess() {
+		return pTextfield;
+	}
+	
+	public ParserRule getTextfieldRule() {
+		return getTextfieldAccess().getRule();
+	}
+	
 	//Button:
 	//	{Button} 'Button' name=ID (actions+=ButtonActions (',' actions+=ButtonActions)*)?;
 	public ButtonElements getButtonAccess() {
@@ -1205,7 +1319,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	}
 	
 	//Bundle:
-	//	'Bundle' bundleRecipient=[Fragment];
+	//	'Bundle' bundleRecipient=[Fragment] ('Holder' (holder+=[Dataholders] (',' holder+=[Dataholders])*)?)?;
 	public BundleElements getBundleAccess() {
 		return pBundle;
 	}

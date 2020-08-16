@@ -468,6 +468,34 @@ public interface AndroidGeneratorPackage extends EPackage
   int LAYOUT_ELEMENT_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.DataholdersImpl <em>Dataholders</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mdsd.androidGenerator.impl.DataholdersImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getDataholders()
+   * @generated
+   */
+  int DATAHOLDERS = 14;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATAHOLDERS__NAME = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Dataholders</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATAHOLDERS_FEATURE_COUNT = LAYOUT_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl <em>Type Map</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -475,7 +503,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTypeMap()
    * @generated
    */
-  int TYPE_MAP = 14;
+  int TYPE_MAP = 15;
 
   /**
    * The feature id for the '<em><b>Activitytypeattribute</b></em>' containment reference.
@@ -503,7 +531,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTypeSetting()
    * @generated
    */
-  int TYPE_SETTING = 15;
+  int TYPE_SETTING = 16;
 
   /**
    * The number of structural features of the '<em>Type Setting</em>' class.
@@ -522,7 +550,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivityTypeAttributes()
    * @generated
    */
-  int ACTIVITY_TYPE_ATTRIBUTES = 16;
+  int ACTIVITY_TYPE_ATTRIBUTES = 17;
 
   /**
    * The feature id for the '<em><b>Filter</b></em>' containment reference.
@@ -550,7 +578,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getEditText()
    * @generated
    */
-  int EDIT_TEXT = 17;
+  int EDIT_TEXT = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -559,7 +587,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EDIT_TEXT__NAME = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
+  int EDIT_TEXT__NAME = DATAHOLDERS__NAME;
 
   /**
    * The number of structural features of the '<em>Edit Text</em>' class.
@@ -568,7 +596,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EDIT_TEXT_FEATURE_COUNT = LAYOUT_ELEMENT_FEATURE_COUNT + 1;
+  int EDIT_TEXT_FEATURE_COUNT = DATAHOLDERS_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.SpinnerImpl <em>Spinner</em>}' class.
@@ -578,7 +606,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getSpinner()
    * @generated
    */
-  int SPINNER = 18;
+  int SPINNER = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -587,7 +615,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SPINNER__NAME = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
+  int SPINNER__NAME = DATAHOLDERS__NAME;
 
   /**
    * The number of structural features of the '<em>Spinner</em>' class.
@@ -596,7 +624,35 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SPINNER_FEATURE_COUNT = LAYOUT_ELEMENT_FEATURE_COUNT + 1;
+  int SPINNER_FEATURE_COUNT = DATAHOLDERS_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TextfieldImpl <em>Textfield</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mdsd.androidGenerator.impl.TextfieldImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTextfield()
+   * @generated
+   */
+  int TEXTFIELD = 20;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEXTFIELD__NAME = DATAHOLDERS__NAME;
+
+  /**
+   * The number of structural features of the '<em>Textfield</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEXTFIELD_FEATURE_COUNT = DATAHOLDERS_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ButtonImpl <em>Button</em>}' class.
@@ -606,7 +662,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getButton()
    * @generated
    */
-  int BUTTON = 19;
+  int BUTTON = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -643,7 +699,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getButtonActions()
    * @generated
    */
-  int BUTTON_ACTIONS = 20;
+  int BUTTON_ACTIONS = 22;
 
   /**
    * The number of structural features of the '<em>Button Actions</em>' class.
@@ -662,7 +718,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getToast()
    * @generated
    */
-  int TOAST = 21;
+  int TOAST = 23;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -690,7 +746,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getBundle()
    * @generated
    */
-  int BUNDLE = 22;
+  int BUNDLE = 24;
 
   /**
    * The feature id for the '<em><b>Bundle Recipient</b></em>' reference.
@@ -702,13 +758,22 @@ public interface AndroidGeneratorPackage extends EPackage
   int BUNDLE__BUNDLE_RECIPIENT = BUTTON_ACTIONS_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Holder</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUNDLE__HOLDER = BUTTON_ACTIONS_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Bundle</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BUNDLE_FEATURE_COUNT = BUTTON_ACTIONS_FEATURE_COUNT + 1;
+  int BUNDLE_FEATURE_COUNT = BUTTON_ACTIONS_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.FilterQueryImpl <em>Filter Query</em>}' class.
@@ -718,7 +783,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getFilterQuery()
    * @generated
    */
-  int FILTER_QUERY = 23;
+  int FILTER_QUERY = 25;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -755,7 +820,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getFilterAttributes()
    * @generated
    */
-  int FILTER_ATTRIBUTES = 24;
+  int FILTER_ATTRIBUTES = 26;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' containment reference.
@@ -783,7 +848,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getDistance()
    * @generated
    */
-  int DISTANCE = 25;
+  int DISTANCE = 27;
 
   /**
    * The feature id for the '<em><b>Unit</b></em>' containment reference.
@@ -829,7 +894,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getNumber()
    * @generated
    */
-  int NUMBER = 26;
+  int NUMBER = 28;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -857,7 +922,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getOperator()
    * @generated
    */
-  int OPERATOR = 27;
+  int OPERATOR = 29;
 
   /**
    * The number of structural features of the '<em>Operator</em>' class.
@@ -876,7 +941,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getUnit()
    * @generated
    */
-  int UNIT = 28;
+  int UNIT = 30;
 
   /**
    * The number of structural features of the '<em>Unit</em>' class.
@@ -895,7 +960,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getLess()
    * @generated
    */
-  int LESS = 29;
+  int LESS = 31;
 
   /**
    * The number of structural features of the '<em>Less</em>' class.
@@ -914,7 +979,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getMore()
    * @generated
    */
-  int MORE = 30;
+  int MORE = 32;
 
   /**
    * The number of structural features of the '<em>More</em>' class.
@@ -933,7 +998,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getEqual()
    * @generated
    */
-  int EQUAL = 31;
+  int EQUAL = 33;
 
   /**
    * The number of structural features of the '<em>Equal</em>' class.
@@ -952,7 +1017,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getMeters()
    * @generated
    */
-  int METERS = 32;
+  int METERS = 34;
 
   /**
    * The number of structural features of the '<em>Meters</em>' class.
@@ -971,7 +1036,7 @@ public interface AndroidGeneratorPackage extends EPackage
    * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getImperial()
    * @generated
    */
-  int IMPERIAL = 33;
+  int IMPERIAL = 35;
 
   /**
    * The number of structural features of the '<em>Imperial</em>' class.
@@ -1278,6 +1343,27 @@ public interface AndroidGeneratorPackage extends EPackage
   EClass getLayoutElement();
 
   /**
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Dataholders <em>Dataholders</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Dataholders</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Dataholders
+   * @generated
+   */
+  EClass getDataholders();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mdsd.androidGenerator.Dataholders#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Dataholders#getName()
+   * @see #getDataholders()
+   * @generated
+   */
+  EAttribute getDataholders_Name();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.TypeMap <em>Type Map</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1340,17 +1426,6 @@ public interface AndroidGeneratorPackage extends EPackage
   EClass getEditText();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mdsd.androidGenerator.EditText#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.EditText#getName()
-   * @see #getEditText()
-   * @generated
-   */
-  EAttribute getEditText_Name();
-
-  /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Spinner <em>Spinner</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1361,15 +1436,14 @@ public interface AndroidGeneratorPackage extends EPackage
   EClass getSpinner();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mdsd.androidGenerator.Spinner#getName <em>Name</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Textfield <em>Textfield</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.Spinner#getName()
-   * @see #getSpinner()
+   * @return the meta object for class '<em>Textfield</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Textfield
    * @generated
    */
-  EAttribute getSpinner_Name();
+  EClass getTextfield();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.Button <em>Button</em>}'.
@@ -1454,6 +1528,17 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    */
   EReference getBundle_BundleRecipient();
+
+  /**
+   * Returns the meta object for the reference list '{@link org.xtext.example.mdsd.androidGenerator.Bundle#getHolder <em>Holder</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Holder</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Bundle#getHolder()
+   * @see #getBundle()
+   * @generated
+   */
+  EReference getBundle_Holder();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.FilterQuery <em>Filter Query</em>}'.
@@ -1918,6 +2003,24 @@ public interface AndroidGeneratorPackage extends EPackage
     EClass LAYOUT_ELEMENT = eINSTANCE.getLayoutElement();
 
     /**
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.DataholdersImpl <em>Dataholders</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mdsd.androidGenerator.impl.DataholdersImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getDataholders()
+     * @generated
+     */
+    EClass DATAHOLDERS = eINSTANCE.getDataholders();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DATAHOLDERS__NAME = eINSTANCE.getDataholders_Name();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl <em>Type Map</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1974,14 +2077,6 @@ public interface AndroidGeneratorPackage extends EPackage
     EClass EDIT_TEXT = eINSTANCE.getEditText();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute EDIT_TEXT__NAME = eINSTANCE.getEditText_Name();
-
-    /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.SpinnerImpl <em>Spinner</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1992,12 +2087,14 @@ public interface AndroidGeneratorPackage extends EPackage
     EClass SPINNER = eINSTANCE.getSpinner();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TextfieldImpl <em>Textfield</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.xtext.example.mdsd.androidGenerator.impl.TextfieldImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getTextfield()
      * @generated
      */
-    EAttribute SPINNER__NAME = eINSTANCE.getSpinner_Name();
+    EClass TEXTFIELD = eINSTANCE.getTextfield();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ButtonImpl <em>Button</em>}' class.
@@ -2070,6 +2167,14 @@ public interface AndroidGeneratorPackage extends EPackage
      * @generated
      */
     EReference BUNDLE__BUNDLE_RECIPIENT = eINSTANCE.getBundle_BundleRecipient();
+
+    /**
+     * The meta object literal for the '<em><b>Holder</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUNDLE__HOLDER = eINSTANCE.getBundle_Holder();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.FilterQueryImpl <em>Filter Query</em>}' class.

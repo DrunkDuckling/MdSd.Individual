@@ -1128,6 +1128,7 @@ public class FragmentGen extends AbstractClassGen {
     _builder.append("        ");
     _builder.append(instances, "        ");
     _builder.newLineIfNotEmpty();
+    _builder.newLine();
     _builder.append("        ");
     _builder.append("return view;");
     _builder.newLine();
@@ -1170,8 +1171,11 @@ public class FragmentGen extends AbstractClassGen {
           }
           if ((element instanceof EditText)) {
             StringConcatenation _builder_1 = new StringConcatenation();
-            _builder_1.append("String failSafe = medittext.getText().toString();");
-            _builder_1.newLine();
+            _builder_1.append("String failSafe = ");
+            String _name_1 = ((EditText)element).getName();
+            _builder_1.append(_name_1);
+            _builder_1.append(".getText().toString();");
+            _builder_1.newLineIfNotEmpty();
             _builder_1.append("if(failSafe.matches(\"\")){");
             _builder_1.newLine();
             _builder_1.append("\t");
@@ -1182,16 +1186,16 @@ public class FragmentGen extends AbstractClassGen {
             edittext.append(_builder_1);
             StringConcatenation _builder_2 = new StringConcatenation();
             _builder_2.append("m");
-            String _name_1 = ((EditText)element).getName();
-            _builder_2.append(_name_1);
-            _builder_2.append("_number = Double.parseDouble(m");
             String _name_2 = ((EditText)element).getName();
             _builder_2.append(_name_2);
+            _builder_2.append("_number = Double.parseDouble(m");
+            String _name_3 = ((EditText)element).getName();
+            _builder_2.append(_name_3);
             _builder_2.append(".getText().toString());");
             _builder_2.newLineIfNotEmpty();
             _builder_2.append("bundle.putDouble(\"radius\", m");
-            String _name_3 = ((EditText)element).getName();
-            _builder_2.append(_name_3);
+            String _name_4 = ((EditText)element).getName();
+            _builder_2.append(_name_4);
             _builder_2.append("_number);");
             _builder_2.newLineIfNotEmpty();
             edittext2.append(_builder_2);
@@ -1211,21 +1215,26 @@ public class FragmentGen extends AbstractClassGen {
                 }
                 if ((actions instanceof Bundle)) {
                   StringConcatenation _builder_4 = new StringConcatenation();
-                  String _name_4 = ((Bundle)actions).getBundleRecipient().getName();
-                  _builder_4.append(_name_4);
-                  _builder_4.append(" b");
                   String _name_5 = ((Bundle)actions).getBundleRecipient().getName();
                   _builder_4.append(_name_5);
-                  _builder_4.append(" = new ");
+                  _builder_4.append(" b");
                   String _name_6 = ((Bundle)actions).getBundleRecipient().getName();
                   _builder_4.append(_name_6);
+                  _builder_4.append(" = new ");
+                  String _name_7 = ((Bundle)actions).getBundleRecipient().getName();
+                  _builder_4.append(_name_7);
                   _builder_4.append("();");
                   _builder_4.newLineIfNotEmpty();
                   bundleString.append(_builder_4);
                   StringConcatenation _builder_5 = new StringConcatenation();
+                  _builder_5.append("b");
+                  String _name_8 = ((Bundle)actions).getBundleRecipient().getName();
+                  _builder_5.append(_name_8);
+                  _builder_5.append(".setArguments(bundle);");
+                  _builder_5.newLineIfNotEmpty();
                   _builder_5.append("transaction.replace(R.id.container_frame_layout, b");
-                  String _name_7 = ((Bundle)actions).getBundleRecipient().getName();
-                  _builder_5.append(_name_7);
+                  String _name_9 = ((Bundle)actions).getBundleRecipient().getName();
+                  _builder_5.append(_name_9);
                   _builder_5.append(").commit();");
                   _builder_5.newLineIfNotEmpty();
                   bundleString2.append(_builder_5);
@@ -1250,8 +1259,6 @@ public class FragmentGen extends AbstractClassGen {
       _builder.newLineIfNotEmpty();
       _builder.append(spinner);
       _builder.newLineIfNotEmpty();
-      _builder.append("mapsFragment.setArguments(bundle);");
-      _builder.newLine();
       _builder.append(bundleString2);
       _builder.newLineIfNotEmpty();
       _builder.append("}");

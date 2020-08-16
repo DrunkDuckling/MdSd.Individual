@@ -482,6 +482,8 @@ class FragmentGen extends AbstractClassGen{
 		        // Inflate the layout for this fragment
 		        View view = inflater.inflate(R.layout.«javaToAndroidIdentifier(fragment.name)», container, false);
 		        «instances»
+«««		        TODO: insert bundle
+
 		        return view;
 		    }
 		    
@@ -510,7 +512,7 @@ class FragmentGen extends AbstractClassGen{
 				''');
 			}if(element instanceof EditText){
 				edittext.append('''
-				String failSafe = medittext.getText().toString();
+				String failSafe = «element.name».getText().toString();
 				if(failSafe.matches("")){
 					Toast.makeText(getActivity().getApplicationContext(), "Please specify number", Toast.LENGTH_SHORT).show();
 				}else{
@@ -532,6 +534,7 @@ class FragmentGen extends AbstractClassGen{
 						«actions.bundleRecipient.name» b«actions.bundleRecipient.name» = new «actions.bundleRecipient.name»();
 						''');
 						bundleString2.append('''
+						b«actions.bundleRecipient.name».setArguments(bundle);
 						transaction.replace(R.id.container_frame_layout, b«actions.bundleRecipient.name»).commit();
 						''');
 					}
@@ -547,7 +550,6 @@ class FragmentGen extends AbstractClassGen{
 			«bundleString»
 			«edittext2»
 			«spinner»
-			mapsFragment.setArguments(bundle);
 			«bundleString2»
 			}
 		''');

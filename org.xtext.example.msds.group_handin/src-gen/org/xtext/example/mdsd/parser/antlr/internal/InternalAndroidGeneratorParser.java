@@ -21,13 +21,14 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_PACKAGE_NAME", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "','", "'Application'", "'Android-SDK'", "':'", "'Target-SDK'", "'Minimum-SDK'", "'permissions'", "'elements'", "'Model'", "'Fragment'", "'Map'", "'Settings'", "'EditText'", "'Spinner'", "'Button'", "'Toast'", "'Bundle'", "'FilterQuery'", "'Distance'", "'>'", "'<'", "'='", "'m'", "'f'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_PACKAGE_NAME", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "','", "'Application'", "'Android-SDK'", "':'", "'Target-SDK'", "'Minimum-SDK'", "'permissions'", "'elements'", "'Model'", "'Fragment'", "'Map'", "'Settings'", "'EditText'", "'Spinner'", "'Textfield'", "'Button'", "'Toast'", "'Bundle'", "'Holder'", "'FilterQuery'", "'Distance'", "'>'", "'<'", "'='", "'m'", "'f'"
     };
     public static final int RULE_PACKAGE_NAME=5;
     public static final int RULE_STRING=6;
     public static final int RULE_SL_COMMENT=9;
     public static final int T__19=19;
     public static final int T__15=15;
+    public static final int T__37=37;
     public static final int T__16=16;
     public static final int T__17=17;
     public static final int T__18=18;
@@ -37,6 +38,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
     public static final int T__13=13;
     public static final int T__35=35;
     public static final int T__14=14;
+    public static final int T__36=36;
     public static final int EOF=-1;
     public static final int T__30=30;
     public static final int T__31=31;
@@ -1802,7 +1804,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
             int alt9=2;
             int LA9_0 = input.LA(1);
 
-            if ( ((LA9_0>=22 && LA9_0<=26)) ) {
+            if ( ((LA9_0>=22 && LA9_0<=27)) ) {
                 alt9=1;
             }
             switch (alt9) {
@@ -1959,7 +1961,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
                 if ( (LA10_0==12) ) {
                     int LA10_1 = input.LA(2);
 
-                    if ( ((LA10_1>=22 && LA10_1<=26)) ) {
+                    if ( ((LA10_1>=22 && LA10_1<=27)) ) {
                         alt10=1;
                     }
 
@@ -2074,54 +2076,49 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleLayoutElement"
-    // InternalAndroidGenerator.g:794:1: ruleLayoutElement returns [EObject current=null] : (this_Button_0= ruleButton | this_EditText_1= ruleEditText | this_Spinner_2= ruleSpinner | this_TypeMap_3= ruleTypeMap | this_TypeSetting_4= ruleTypeSetting ) ;
+    // InternalAndroidGenerator.g:794:1: ruleLayoutElement returns [EObject current=null] : (this_Button_0= ruleButton | this_Dataholders_1= ruleDataholders | this_TypeMap_2= ruleTypeMap | this_TypeSetting_3= ruleTypeSetting ) ;
     public final EObject ruleLayoutElement() throws RecognitionException {
         EObject current = null;
 
         EObject this_Button_0 = null;
 
-        EObject this_EditText_1 = null;
+        EObject this_Dataholders_1 = null;
 
-        EObject this_Spinner_2 = null;
+        EObject this_TypeMap_2 = null;
 
-        EObject this_TypeMap_3 = null;
-
-        EObject this_TypeSetting_4 = null;
+        EObject this_TypeSetting_3 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:800:2: ( (this_Button_0= ruleButton | this_EditText_1= ruleEditText | this_Spinner_2= ruleSpinner | this_TypeMap_3= ruleTypeMap | this_TypeSetting_4= ruleTypeSetting ) )
-            // InternalAndroidGenerator.g:801:2: (this_Button_0= ruleButton | this_EditText_1= ruleEditText | this_Spinner_2= ruleSpinner | this_TypeMap_3= ruleTypeMap | this_TypeSetting_4= ruleTypeSetting )
+            // InternalAndroidGenerator.g:800:2: ( (this_Button_0= ruleButton | this_Dataholders_1= ruleDataholders | this_TypeMap_2= ruleTypeMap | this_TypeSetting_3= ruleTypeSetting ) )
+            // InternalAndroidGenerator.g:801:2: (this_Button_0= ruleButton | this_Dataholders_1= ruleDataholders | this_TypeMap_2= ruleTypeMap | this_TypeSetting_3= ruleTypeSetting )
             {
-            // InternalAndroidGenerator.g:801:2: (this_Button_0= ruleButton | this_EditText_1= ruleEditText | this_Spinner_2= ruleSpinner | this_TypeMap_3= ruleTypeMap | this_TypeSetting_4= ruleTypeSetting )
-            int alt11=5;
+            // InternalAndroidGenerator.g:801:2: (this_Button_0= ruleButton | this_Dataholders_1= ruleDataholders | this_TypeMap_2= ruleTypeMap | this_TypeSetting_3= ruleTypeSetting )
+            int alt11=4;
             switch ( input.LA(1) ) {
-            case 26:
+            case 27:
                 {
                 alt11=1;
                 }
                 break;
             case 24:
+            case 25:
+            case 26:
                 {
                 alt11=2;
                 }
                 break;
-            case 25:
+            case 22:
                 {
                 alt11=3;
                 }
                 break;
-            case 22:
-                {
-                alt11=4;
-                }
-                break;
             case 23:
                 {
-                alt11=5;
+                alt11=4;
                 }
                 break;
             default:
@@ -2151,72 +2148,54 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
                     }
                     break;
                 case 2 :
-                    // InternalAndroidGenerator.g:811:3: this_EditText_1= ruleEditText
+                    // InternalAndroidGenerator.g:811:3: this_Dataholders_1= ruleDataholders
                     {
 
-                    			newCompositeNode(grammarAccess.getLayoutElementAccess().getEditTextParserRuleCall_1());
+                    			newCompositeNode(grammarAccess.getLayoutElementAccess().getDataholdersParserRuleCall_1());
                     		
                     pushFollow(FOLLOW_2);
-                    this_EditText_1=ruleEditText();
+                    this_Dataholders_1=ruleDataholders();
 
                     state._fsp--;
 
 
-                    			current = this_EditText_1;
+                    			current = this_Dataholders_1;
                     			afterParserOrEnumRuleCall();
                     		
 
                     }
                     break;
                 case 3 :
-                    // InternalAndroidGenerator.g:820:3: this_Spinner_2= ruleSpinner
+                    // InternalAndroidGenerator.g:820:3: this_TypeMap_2= ruleTypeMap
                     {
 
-                    			newCompositeNode(grammarAccess.getLayoutElementAccess().getSpinnerParserRuleCall_2());
+                    			newCompositeNode(grammarAccess.getLayoutElementAccess().getTypeMapParserRuleCall_2());
                     		
                     pushFollow(FOLLOW_2);
-                    this_Spinner_2=ruleSpinner();
+                    this_TypeMap_2=ruleTypeMap();
 
                     state._fsp--;
 
 
-                    			current = this_Spinner_2;
+                    			current = this_TypeMap_2;
                     			afterParserOrEnumRuleCall();
                     		
 
                     }
                     break;
                 case 4 :
-                    // InternalAndroidGenerator.g:829:3: this_TypeMap_3= ruleTypeMap
+                    // InternalAndroidGenerator.g:829:3: this_TypeSetting_3= ruleTypeSetting
                     {
 
-                    			newCompositeNode(grammarAccess.getLayoutElementAccess().getTypeMapParserRuleCall_3());
+                    			newCompositeNode(grammarAccess.getLayoutElementAccess().getTypeSettingParserRuleCall_3());
                     		
                     pushFollow(FOLLOW_2);
-                    this_TypeMap_3=ruleTypeMap();
+                    this_TypeSetting_3=ruleTypeSetting();
 
                     state._fsp--;
 
 
-                    			current = this_TypeMap_3;
-                    			afterParserOrEnumRuleCall();
-                    		
-
-                    }
-                    break;
-                case 5 :
-                    // InternalAndroidGenerator.g:838:3: this_TypeSetting_4= ruleTypeSetting
-                    {
-
-                    			newCompositeNode(grammarAccess.getLayoutElementAccess().getTypeSettingParserRuleCall_4());
-                    		
-                    pushFollow(FOLLOW_2);
-                    this_TypeSetting_4=ruleTypeSetting();
-
-                    state._fsp--;
-
-
-                    			current = this_TypeSetting_4;
+                    			current = this_TypeSetting_3;
                     			afterParserOrEnumRuleCall();
                     		
 
@@ -2244,8 +2223,165 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
     // $ANTLR end "ruleLayoutElement"
 
 
+    // $ANTLR start "entryRuleDataholders"
+    // InternalAndroidGenerator.g:841:1: entryRuleDataholders returns [EObject current=null] : iv_ruleDataholders= ruleDataholders EOF ;
+    public final EObject entryRuleDataholders() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleDataholders = null;
+
+
+        try {
+            // InternalAndroidGenerator.g:841:52: (iv_ruleDataholders= ruleDataholders EOF )
+            // InternalAndroidGenerator.g:842:2: iv_ruleDataholders= ruleDataholders EOF
+            {
+             newCompositeNode(grammarAccess.getDataholdersRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleDataholders=ruleDataholders();
+
+            state._fsp--;
+
+             current =iv_ruleDataholders; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleDataholders"
+
+
+    // $ANTLR start "ruleDataholders"
+    // InternalAndroidGenerator.g:848:1: ruleDataholders returns [EObject current=null] : (this_EditText_0= ruleEditText | this_Spinner_1= ruleSpinner | this_Textfield_2= ruleTextfield ) ;
+    public final EObject ruleDataholders() throws RecognitionException {
+        EObject current = null;
+
+        EObject this_EditText_0 = null;
+
+        EObject this_Spinner_1 = null;
+
+        EObject this_Textfield_2 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalAndroidGenerator.g:854:2: ( (this_EditText_0= ruleEditText | this_Spinner_1= ruleSpinner | this_Textfield_2= ruleTextfield ) )
+            // InternalAndroidGenerator.g:855:2: (this_EditText_0= ruleEditText | this_Spinner_1= ruleSpinner | this_Textfield_2= ruleTextfield )
+            {
+            // InternalAndroidGenerator.g:855:2: (this_EditText_0= ruleEditText | this_Spinner_1= ruleSpinner | this_Textfield_2= ruleTextfield )
+            int alt12=3;
+            switch ( input.LA(1) ) {
+            case 24:
+                {
+                alt12=1;
+                }
+                break;
+            case 25:
+                {
+                alt12=2;
+                }
+                break;
+            case 26:
+                {
+                alt12=3;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 12, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt12) {
+                case 1 :
+                    // InternalAndroidGenerator.g:856:3: this_EditText_0= ruleEditText
+                    {
+
+                    			newCompositeNode(grammarAccess.getDataholdersAccess().getEditTextParserRuleCall_0());
+                    		
+                    pushFollow(FOLLOW_2);
+                    this_EditText_0=ruleEditText();
+
+                    state._fsp--;
+
+
+                    			current = this_EditText_0;
+                    			afterParserOrEnumRuleCall();
+                    		
+
+                    }
+                    break;
+                case 2 :
+                    // InternalAndroidGenerator.g:865:3: this_Spinner_1= ruleSpinner
+                    {
+
+                    			newCompositeNode(grammarAccess.getDataholdersAccess().getSpinnerParserRuleCall_1());
+                    		
+                    pushFollow(FOLLOW_2);
+                    this_Spinner_1=ruleSpinner();
+
+                    state._fsp--;
+
+
+                    			current = this_Spinner_1;
+                    			afterParserOrEnumRuleCall();
+                    		
+
+                    }
+                    break;
+                case 3 :
+                    // InternalAndroidGenerator.g:874:3: this_Textfield_2= ruleTextfield
+                    {
+
+                    			newCompositeNode(grammarAccess.getDataholdersAccess().getTextfieldParserRuleCall_2());
+                    		
+                    pushFollow(FOLLOW_2);
+                    this_Textfield_2=ruleTextfield();
+
+                    state._fsp--;
+
+
+                    			current = this_Textfield_2;
+                    			afterParserOrEnumRuleCall();
+                    		
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleDataholders"
+
+
     // $ANTLR start "entryRuleTypeMap"
-    // InternalAndroidGenerator.g:850:1: entryRuleTypeMap returns [EObject current=null] : iv_ruleTypeMap= ruleTypeMap EOF ;
+    // InternalAndroidGenerator.g:886:1: entryRuleTypeMap returns [EObject current=null] : iv_ruleTypeMap= ruleTypeMap EOF ;
     public final EObject entryRuleTypeMap() throws RecognitionException {
         EObject current = null;
 
@@ -2253,8 +2389,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:850:48: (iv_ruleTypeMap= ruleTypeMap EOF )
-            // InternalAndroidGenerator.g:851:2: iv_ruleTypeMap= ruleTypeMap EOF
+            // InternalAndroidGenerator.g:886:48: (iv_ruleTypeMap= ruleTypeMap EOF )
+            // InternalAndroidGenerator.g:887:2: iv_ruleTypeMap= ruleTypeMap EOF
             {
              newCompositeNode(grammarAccess.getTypeMapRule()); 
             pushFollow(FOLLOW_1);
@@ -2281,7 +2417,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleTypeMap"
-    // InternalAndroidGenerator.g:857:1: ruleTypeMap returns [EObject current=null] : ( () otherlv_1= 'Map' ( (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes ) )? ) ;
+    // InternalAndroidGenerator.g:893:1: ruleTypeMap returns [EObject current=null] : ( () otherlv_1= 'Map' ( (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes ) )? ) ;
     public final EObject ruleTypeMap() throws RecognitionException {
         EObject current = null;
 
@@ -2293,14 +2429,14 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:863:2: ( ( () otherlv_1= 'Map' ( (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes ) )? ) )
-            // InternalAndroidGenerator.g:864:2: ( () otherlv_1= 'Map' ( (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes ) )? )
+            // InternalAndroidGenerator.g:899:2: ( ( () otherlv_1= 'Map' ( (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes ) )? ) )
+            // InternalAndroidGenerator.g:900:2: ( () otherlv_1= 'Map' ( (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes ) )? )
             {
-            // InternalAndroidGenerator.g:864:2: ( () otherlv_1= 'Map' ( (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes ) )? )
-            // InternalAndroidGenerator.g:865:3: () otherlv_1= 'Map' ( (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes ) )?
+            // InternalAndroidGenerator.g:900:2: ( () otherlv_1= 'Map' ( (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes ) )? )
+            // InternalAndroidGenerator.g:901:3: () otherlv_1= 'Map' ( (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes ) )?
             {
-            // InternalAndroidGenerator.g:865:3: ()
-            // InternalAndroidGenerator.g:866:4: 
+            // InternalAndroidGenerator.g:901:3: ()
+            // InternalAndroidGenerator.g:902:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2314,19 +2450,19 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
             			newLeafNode(otherlv_1, grammarAccess.getTypeMapAccess().getMapKeyword_1());
             		
-            // InternalAndroidGenerator.g:876:3: ( (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes ) )?
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            // InternalAndroidGenerator.g:912:3: ( (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes ) )?
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA12_0==29) ) {
-                alt12=1;
+            if ( (LA13_0==31) ) {
+                alt13=1;
             }
-            switch (alt12) {
+            switch (alt13) {
                 case 1 :
-                    // InternalAndroidGenerator.g:877:4: (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes )
+                    // InternalAndroidGenerator.g:913:4: (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes )
                     {
-                    // InternalAndroidGenerator.g:877:4: (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes )
-                    // InternalAndroidGenerator.g:878:5: lv_activitytypeattribute_2_0= ruleActivityTypeAttributes
+                    // InternalAndroidGenerator.g:913:4: (lv_activitytypeattribute_2_0= ruleActivityTypeAttributes )
+                    // InternalAndroidGenerator.g:914:5: lv_activitytypeattribute_2_0= ruleActivityTypeAttributes
                     {
 
                     					newCompositeNode(grammarAccess.getTypeMapAccess().getActivitytypeattributeActivityTypeAttributesParserRuleCall_2_0());
@@ -2379,7 +2515,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleTypeSetting"
-    // InternalAndroidGenerator.g:899:1: entryRuleTypeSetting returns [EObject current=null] : iv_ruleTypeSetting= ruleTypeSetting EOF ;
+    // InternalAndroidGenerator.g:935:1: entryRuleTypeSetting returns [EObject current=null] : iv_ruleTypeSetting= ruleTypeSetting EOF ;
     public final EObject entryRuleTypeSetting() throws RecognitionException {
         EObject current = null;
 
@@ -2387,8 +2523,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:899:52: (iv_ruleTypeSetting= ruleTypeSetting EOF )
-            // InternalAndroidGenerator.g:900:2: iv_ruleTypeSetting= ruleTypeSetting EOF
+            // InternalAndroidGenerator.g:935:52: (iv_ruleTypeSetting= ruleTypeSetting EOF )
+            // InternalAndroidGenerator.g:936:2: iv_ruleTypeSetting= ruleTypeSetting EOF
             {
              newCompositeNode(grammarAccess.getTypeSettingRule()); 
             pushFollow(FOLLOW_1);
@@ -2415,7 +2551,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleTypeSetting"
-    // InternalAndroidGenerator.g:906:1: ruleTypeSetting returns [EObject current=null] : ( () otherlv_1= 'Settings' ) ;
+    // InternalAndroidGenerator.g:942:1: ruleTypeSetting returns [EObject current=null] : ( () otherlv_1= 'Settings' ) ;
     public final EObject ruleTypeSetting() throws RecognitionException {
         EObject current = null;
 
@@ -2425,14 +2561,14 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:912:2: ( ( () otherlv_1= 'Settings' ) )
-            // InternalAndroidGenerator.g:913:2: ( () otherlv_1= 'Settings' )
+            // InternalAndroidGenerator.g:948:2: ( ( () otherlv_1= 'Settings' ) )
+            // InternalAndroidGenerator.g:949:2: ( () otherlv_1= 'Settings' )
             {
-            // InternalAndroidGenerator.g:913:2: ( () otherlv_1= 'Settings' )
-            // InternalAndroidGenerator.g:914:3: () otherlv_1= 'Settings'
+            // InternalAndroidGenerator.g:949:2: ( () otherlv_1= 'Settings' )
+            // InternalAndroidGenerator.g:950:3: () otherlv_1= 'Settings'
             {
-            // InternalAndroidGenerator.g:914:3: ()
-            // InternalAndroidGenerator.g:915:4: 
+            // InternalAndroidGenerator.g:950:3: ()
+            // InternalAndroidGenerator.g:951:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2469,7 +2605,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleActivityTypeAttributes"
-    // InternalAndroidGenerator.g:929:1: entryRuleActivityTypeAttributes returns [EObject current=null] : iv_ruleActivityTypeAttributes= ruleActivityTypeAttributes EOF ;
+    // InternalAndroidGenerator.g:965:1: entryRuleActivityTypeAttributes returns [EObject current=null] : iv_ruleActivityTypeAttributes= ruleActivityTypeAttributes EOF ;
     public final EObject entryRuleActivityTypeAttributes() throws RecognitionException {
         EObject current = null;
 
@@ -2477,8 +2613,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:929:63: (iv_ruleActivityTypeAttributes= ruleActivityTypeAttributes EOF )
-            // InternalAndroidGenerator.g:930:2: iv_ruleActivityTypeAttributes= ruleActivityTypeAttributes EOF
+            // InternalAndroidGenerator.g:965:63: (iv_ruleActivityTypeAttributes= ruleActivityTypeAttributes EOF )
+            // InternalAndroidGenerator.g:966:2: iv_ruleActivityTypeAttributes= ruleActivityTypeAttributes EOF
             {
              newCompositeNode(grammarAccess.getActivityTypeAttributesRule()); 
             pushFollow(FOLLOW_1);
@@ -2505,7 +2641,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleActivityTypeAttributes"
-    // InternalAndroidGenerator.g:936:1: ruleActivityTypeAttributes returns [EObject current=null] : ( (lv_filter_0_0= ruleFilterQuery ) ) ;
+    // InternalAndroidGenerator.g:972:1: ruleActivityTypeAttributes returns [EObject current=null] : ( (lv_filter_0_0= ruleFilterQuery ) ) ;
     public final EObject ruleActivityTypeAttributes() throws RecognitionException {
         EObject current = null;
 
@@ -2516,14 +2652,14 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:942:2: ( ( (lv_filter_0_0= ruleFilterQuery ) ) )
-            // InternalAndroidGenerator.g:943:2: ( (lv_filter_0_0= ruleFilterQuery ) )
+            // InternalAndroidGenerator.g:978:2: ( ( (lv_filter_0_0= ruleFilterQuery ) ) )
+            // InternalAndroidGenerator.g:979:2: ( (lv_filter_0_0= ruleFilterQuery ) )
             {
-            // InternalAndroidGenerator.g:943:2: ( (lv_filter_0_0= ruleFilterQuery ) )
-            // InternalAndroidGenerator.g:944:3: (lv_filter_0_0= ruleFilterQuery )
+            // InternalAndroidGenerator.g:979:2: ( (lv_filter_0_0= ruleFilterQuery ) )
+            // InternalAndroidGenerator.g:980:3: (lv_filter_0_0= ruleFilterQuery )
             {
-            // InternalAndroidGenerator.g:944:3: (lv_filter_0_0= ruleFilterQuery )
-            // InternalAndroidGenerator.g:945:4: lv_filter_0_0= ruleFilterQuery
+            // InternalAndroidGenerator.g:980:3: (lv_filter_0_0= ruleFilterQuery )
+            // InternalAndroidGenerator.g:981:4: lv_filter_0_0= ruleFilterQuery
             {
 
             				newCompositeNode(grammarAccess.getActivityTypeAttributesAccess().getFilterFilterQueryParserRuleCall_0());
@@ -2570,7 +2706,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleEditText"
-    // InternalAndroidGenerator.g:965:1: entryRuleEditText returns [EObject current=null] : iv_ruleEditText= ruleEditText EOF ;
+    // InternalAndroidGenerator.g:1001:1: entryRuleEditText returns [EObject current=null] : iv_ruleEditText= ruleEditText EOF ;
     public final EObject entryRuleEditText() throws RecognitionException {
         EObject current = null;
 
@@ -2578,8 +2714,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:965:49: (iv_ruleEditText= ruleEditText EOF )
-            // InternalAndroidGenerator.g:966:2: iv_ruleEditText= ruleEditText EOF
+            // InternalAndroidGenerator.g:1001:49: (iv_ruleEditText= ruleEditText EOF )
+            // InternalAndroidGenerator.g:1002:2: iv_ruleEditText= ruleEditText EOF
             {
              newCompositeNode(grammarAccess.getEditTextRule()); 
             pushFollow(FOLLOW_1);
@@ -2606,7 +2742,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleEditText"
-    // InternalAndroidGenerator.g:972:1: ruleEditText returns [EObject current=null] : ( () otherlv_1= 'EditText' ( (lv_name_2_0= RULE_ID ) ) ) ;
+    // InternalAndroidGenerator.g:1008:1: ruleEditText returns [EObject current=null] : ( () otherlv_1= 'EditText' ( (lv_name_2_0= RULE_ID ) ) ) ;
     public final EObject ruleEditText() throws RecognitionException {
         EObject current = null;
 
@@ -2617,14 +2753,14 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:978:2: ( ( () otherlv_1= 'EditText' ( (lv_name_2_0= RULE_ID ) ) ) )
-            // InternalAndroidGenerator.g:979:2: ( () otherlv_1= 'EditText' ( (lv_name_2_0= RULE_ID ) ) )
+            // InternalAndroidGenerator.g:1014:2: ( ( () otherlv_1= 'EditText' ( (lv_name_2_0= RULE_ID ) ) ) )
+            // InternalAndroidGenerator.g:1015:2: ( () otherlv_1= 'EditText' ( (lv_name_2_0= RULE_ID ) ) )
             {
-            // InternalAndroidGenerator.g:979:2: ( () otherlv_1= 'EditText' ( (lv_name_2_0= RULE_ID ) ) )
-            // InternalAndroidGenerator.g:980:3: () otherlv_1= 'EditText' ( (lv_name_2_0= RULE_ID ) )
+            // InternalAndroidGenerator.g:1015:2: ( () otherlv_1= 'EditText' ( (lv_name_2_0= RULE_ID ) ) )
+            // InternalAndroidGenerator.g:1016:3: () otherlv_1= 'EditText' ( (lv_name_2_0= RULE_ID ) )
             {
-            // InternalAndroidGenerator.g:980:3: ()
-            // InternalAndroidGenerator.g:981:4: 
+            // InternalAndroidGenerator.g:1016:3: ()
+            // InternalAndroidGenerator.g:1017:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2638,11 +2774,11 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
             			newLeafNode(otherlv_1, grammarAccess.getEditTextAccess().getEditTextKeyword_1());
             		
-            // InternalAndroidGenerator.g:991:3: ( (lv_name_2_0= RULE_ID ) )
-            // InternalAndroidGenerator.g:992:4: (lv_name_2_0= RULE_ID )
+            // InternalAndroidGenerator.g:1027:3: ( (lv_name_2_0= RULE_ID ) )
+            // InternalAndroidGenerator.g:1028:4: (lv_name_2_0= RULE_ID )
             {
-            // InternalAndroidGenerator.g:992:4: (lv_name_2_0= RULE_ID )
-            // InternalAndroidGenerator.g:993:5: lv_name_2_0= RULE_ID
+            // InternalAndroidGenerator.g:1028:4: (lv_name_2_0= RULE_ID )
+            // InternalAndroidGenerator.g:1029:5: lv_name_2_0= RULE_ID
             {
             lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -2687,7 +2823,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleSpinner"
-    // InternalAndroidGenerator.g:1013:1: entryRuleSpinner returns [EObject current=null] : iv_ruleSpinner= ruleSpinner EOF ;
+    // InternalAndroidGenerator.g:1049:1: entryRuleSpinner returns [EObject current=null] : iv_ruleSpinner= ruleSpinner EOF ;
     public final EObject entryRuleSpinner() throws RecognitionException {
         EObject current = null;
 
@@ -2695,8 +2831,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:1013:48: (iv_ruleSpinner= ruleSpinner EOF )
-            // InternalAndroidGenerator.g:1014:2: iv_ruleSpinner= ruleSpinner EOF
+            // InternalAndroidGenerator.g:1049:48: (iv_ruleSpinner= ruleSpinner EOF )
+            // InternalAndroidGenerator.g:1050:2: iv_ruleSpinner= ruleSpinner EOF
             {
              newCompositeNode(grammarAccess.getSpinnerRule()); 
             pushFollow(FOLLOW_1);
@@ -2723,7 +2859,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleSpinner"
-    // InternalAndroidGenerator.g:1020:1: ruleSpinner returns [EObject current=null] : ( () otherlv_1= 'Spinner' ( (lv_name_2_0= RULE_ID ) ) ) ;
+    // InternalAndroidGenerator.g:1056:1: ruleSpinner returns [EObject current=null] : ( () otherlv_1= 'Spinner' ( (lv_name_2_0= RULE_ID ) ) ) ;
     public final EObject ruleSpinner() throws RecognitionException {
         EObject current = null;
 
@@ -2734,14 +2870,14 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:1026:2: ( ( () otherlv_1= 'Spinner' ( (lv_name_2_0= RULE_ID ) ) ) )
-            // InternalAndroidGenerator.g:1027:2: ( () otherlv_1= 'Spinner' ( (lv_name_2_0= RULE_ID ) ) )
+            // InternalAndroidGenerator.g:1062:2: ( ( () otherlv_1= 'Spinner' ( (lv_name_2_0= RULE_ID ) ) ) )
+            // InternalAndroidGenerator.g:1063:2: ( () otherlv_1= 'Spinner' ( (lv_name_2_0= RULE_ID ) ) )
             {
-            // InternalAndroidGenerator.g:1027:2: ( () otherlv_1= 'Spinner' ( (lv_name_2_0= RULE_ID ) ) )
-            // InternalAndroidGenerator.g:1028:3: () otherlv_1= 'Spinner' ( (lv_name_2_0= RULE_ID ) )
+            // InternalAndroidGenerator.g:1063:2: ( () otherlv_1= 'Spinner' ( (lv_name_2_0= RULE_ID ) ) )
+            // InternalAndroidGenerator.g:1064:3: () otherlv_1= 'Spinner' ( (lv_name_2_0= RULE_ID ) )
             {
-            // InternalAndroidGenerator.g:1028:3: ()
-            // InternalAndroidGenerator.g:1029:4: 
+            // InternalAndroidGenerator.g:1064:3: ()
+            // InternalAndroidGenerator.g:1065:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2755,11 +2891,11 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
             			newLeafNode(otherlv_1, grammarAccess.getSpinnerAccess().getSpinnerKeyword_1());
             		
-            // InternalAndroidGenerator.g:1039:3: ( (lv_name_2_0= RULE_ID ) )
-            // InternalAndroidGenerator.g:1040:4: (lv_name_2_0= RULE_ID )
+            // InternalAndroidGenerator.g:1075:3: ( (lv_name_2_0= RULE_ID ) )
+            // InternalAndroidGenerator.g:1076:4: (lv_name_2_0= RULE_ID )
             {
-            // InternalAndroidGenerator.g:1040:4: (lv_name_2_0= RULE_ID )
-            // InternalAndroidGenerator.g:1041:5: lv_name_2_0= RULE_ID
+            // InternalAndroidGenerator.g:1076:4: (lv_name_2_0= RULE_ID )
+            // InternalAndroidGenerator.g:1077:5: lv_name_2_0= RULE_ID
             {
             lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -2803,8 +2939,125 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
     // $ANTLR end "ruleSpinner"
 
 
+    // $ANTLR start "entryRuleTextfield"
+    // InternalAndroidGenerator.g:1097:1: entryRuleTextfield returns [EObject current=null] : iv_ruleTextfield= ruleTextfield EOF ;
+    public final EObject entryRuleTextfield() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleTextfield = null;
+
+
+        try {
+            // InternalAndroidGenerator.g:1097:50: (iv_ruleTextfield= ruleTextfield EOF )
+            // InternalAndroidGenerator.g:1098:2: iv_ruleTextfield= ruleTextfield EOF
+            {
+             newCompositeNode(grammarAccess.getTextfieldRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleTextfield=ruleTextfield();
+
+            state._fsp--;
+
+             current =iv_ruleTextfield; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleTextfield"
+
+
+    // $ANTLR start "ruleTextfield"
+    // InternalAndroidGenerator.g:1104:1: ruleTextfield returns [EObject current=null] : ( () otherlv_1= 'Textfield' ( (lv_name_2_0= RULE_ID ) ) ) ;
+    public final EObject ruleTextfield() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        Token lv_name_2_0=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalAndroidGenerator.g:1110:2: ( ( () otherlv_1= 'Textfield' ( (lv_name_2_0= RULE_ID ) ) ) )
+            // InternalAndroidGenerator.g:1111:2: ( () otherlv_1= 'Textfield' ( (lv_name_2_0= RULE_ID ) ) )
+            {
+            // InternalAndroidGenerator.g:1111:2: ( () otherlv_1= 'Textfield' ( (lv_name_2_0= RULE_ID ) ) )
+            // InternalAndroidGenerator.g:1112:3: () otherlv_1= 'Textfield' ( (lv_name_2_0= RULE_ID ) )
+            {
+            // InternalAndroidGenerator.g:1112:3: ()
+            // InternalAndroidGenerator.g:1113:4: 
+            {
+
+            				current = forceCreateModelElement(
+            					grammarAccess.getTextfieldAccess().getTextfieldAction_0(),
+            					current);
+            			
+
+            }
+
+            otherlv_1=(Token)match(input,26,FOLLOW_5); 
+
+            			newLeafNode(otherlv_1, grammarAccess.getTextfieldAccess().getTextfieldKeyword_1());
+            		
+            // InternalAndroidGenerator.g:1123:3: ( (lv_name_2_0= RULE_ID ) )
+            // InternalAndroidGenerator.g:1124:4: (lv_name_2_0= RULE_ID )
+            {
+            // InternalAndroidGenerator.g:1124:4: (lv_name_2_0= RULE_ID )
+            // InternalAndroidGenerator.g:1125:5: lv_name_2_0= RULE_ID
+            {
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_2); 
+
+            					newLeafNode(lv_name_2_0, grammarAccess.getTextfieldAccess().getNameIDTerminalRuleCall_2_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getTextfieldRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"name",
+            						lv_name_2_0,
+            						"org.eclipse.xtext.common.Terminals.ID");
+            				
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleTextfield"
+
+
     // $ANTLR start "entryRuleButton"
-    // InternalAndroidGenerator.g:1061:1: entryRuleButton returns [EObject current=null] : iv_ruleButton= ruleButton EOF ;
+    // InternalAndroidGenerator.g:1145:1: entryRuleButton returns [EObject current=null] : iv_ruleButton= ruleButton EOF ;
     public final EObject entryRuleButton() throws RecognitionException {
         EObject current = null;
 
@@ -2812,8 +3065,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:1061:47: (iv_ruleButton= ruleButton EOF )
-            // InternalAndroidGenerator.g:1062:2: iv_ruleButton= ruleButton EOF
+            // InternalAndroidGenerator.g:1145:47: (iv_ruleButton= ruleButton EOF )
+            // InternalAndroidGenerator.g:1146:2: iv_ruleButton= ruleButton EOF
             {
              newCompositeNode(grammarAccess.getButtonRule()); 
             pushFollow(FOLLOW_1);
@@ -2840,7 +3093,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleButton"
-    // InternalAndroidGenerator.g:1068:1: ruleButton returns [EObject current=null] : ( () otherlv_1= 'Button' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )* )? ) ;
+    // InternalAndroidGenerator.g:1152:1: ruleButton returns [EObject current=null] : ( () otherlv_1= 'Button' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )* )? ) ;
     public final EObject ruleButton() throws RecognitionException {
         EObject current = null;
 
@@ -2856,14 +3109,14 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:1074:2: ( ( () otherlv_1= 'Button' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )* )? ) )
-            // InternalAndroidGenerator.g:1075:2: ( () otherlv_1= 'Button' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )* )? )
+            // InternalAndroidGenerator.g:1158:2: ( ( () otherlv_1= 'Button' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )* )? ) )
+            // InternalAndroidGenerator.g:1159:2: ( () otherlv_1= 'Button' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )* )? )
             {
-            // InternalAndroidGenerator.g:1075:2: ( () otherlv_1= 'Button' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )* )? )
-            // InternalAndroidGenerator.g:1076:3: () otherlv_1= 'Button' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )* )?
+            // InternalAndroidGenerator.g:1159:2: ( () otherlv_1= 'Button' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )* )? )
+            // InternalAndroidGenerator.g:1160:3: () otherlv_1= 'Button' ( (lv_name_2_0= RULE_ID ) ) ( ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )* )?
             {
-            // InternalAndroidGenerator.g:1076:3: ()
-            // InternalAndroidGenerator.g:1077:4: 
+            // InternalAndroidGenerator.g:1160:3: ()
+            // InternalAndroidGenerator.g:1161:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2873,15 +3126,15 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_1=(Token)match(input,26,FOLLOW_5); 
+            otherlv_1=(Token)match(input,27,FOLLOW_5); 
 
             			newLeafNode(otherlv_1, grammarAccess.getButtonAccess().getButtonKeyword_1());
             		
-            // InternalAndroidGenerator.g:1087:3: ( (lv_name_2_0= RULE_ID ) )
-            // InternalAndroidGenerator.g:1088:4: (lv_name_2_0= RULE_ID )
+            // InternalAndroidGenerator.g:1171:3: ( (lv_name_2_0= RULE_ID ) )
+            // InternalAndroidGenerator.g:1172:4: (lv_name_2_0= RULE_ID )
             {
-            // InternalAndroidGenerator.g:1088:4: (lv_name_2_0= RULE_ID )
-            // InternalAndroidGenerator.g:1089:5: lv_name_2_0= RULE_ID
+            // InternalAndroidGenerator.g:1172:4: (lv_name_2_0= RULE_ID )
+            // InternalAndroidGenerator.g:1173:5: lv_name_2_0= RULE_ID
             {
             lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_16); 
 
@@ -2903,22 +3156,22 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            // InternalAndroidGenerator.g:1105:3: ( ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )* )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // InternalAndroidGenerator.g:1189:3: ( ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )* )?
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( ((LA14_0>=27 && LA14_0<=28)) ) {
-                alt14=1;
+            if ( ((LA15_0>=28 && LA15_0<=29)) ) {
+                alt15=1;
             }
-            switch (alt14) {
+            switch (alt15) {
                 case 1 :
-                    // InternalAndroidGenerator.g:1106:4: ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )*
+                    // InternalAndroidGenerator.g:1190:4: ( (lv_actions_3_0= ruleButtonActions ) ) (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )*
                     {
-                    // InternalAndroidGenerator.g:1106:4: ( (lv_actions_3_0= ruleButtonActions ) )
-                    // InternalAndroidGenerator.g:1107:5: (lv_actions_3_0= ruleButtonActions )
+                    // InternalAndroidGenerator.g:1190:4: ( (lv_actions_3_0= ruleButtonActions ) )
+                    // InternalAndroidGenerator.g:1191:5: (lv_actions_3_0= ruleButtonActions )
                     {
-                    // InternalAndroidGenerator.g:1107:5: (lv_actions_3_0= ruleButtonActions )
-                    // InternalAndroidGenerator.g:1108:6: lv_actions_3_0= ruleButtonActions
+                    // InternalAndroidGenerator.g:1191:5: (lv_actions_3_0= ruleButtonActions )
+                    // InternalAndroidGenerator.g:1192:6: lv_actions_3_0= ruleButtonActions
                     {
 
                     						newCompositeNode(grammarAccess.getButtonAccess().getActionsButtonActionsParserRuleCall_3_0_0());
@@ -2945,36 +3198,36 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
                     }
 
-                    // InternalAndroidGenerator.g:1125:4: (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )*
-                    loop13:
+                    // InternalAndroidGenerator.g:1209:4: (otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) ) )*
+                    loop14:
                     do {
-                        int alt13=2;
-                        int LA13_0 = input.LA(1);
+                        int alt14=2;
+                        int LA14_0 = input.LA(1);
 
-                        if ( (LA13_0==12) ) {
-                            int LA13_1 = input.LA(2);
+                        if ( (LA14_0==12) ) {
+                            int LA14_1 = input.LA(2);
 
-                            if ( ((LA13_1>=27 && LA13_1<=28)) ) {
-                                alt13=1;
+                            if ( ((LA14_1>=28 && LA14_1<=29)) ) {
+                                alt14=1;
                             }
 
 
                         }
 
 
-                        switch (alt13) {
+                        switch (alt14) {
                     	case 1 :
-                    	    // InternalAndroidGenerator.g:1126:5: otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) )
+                    	    // InternalAndroidGenerator.g:1210:5: otherlv_4= ',' ( (lv_actions_5_0= ruleButtonActions ) )
                     	    {
                     	    otherlv_4=(Token)match(input,12,FOLLOW_17); 
 
                     	    					newLeafNode(otherlv_4, grammarAccess.getButtonAccess().getCommaKeyword_3_1_0());
                     	    				
-                    	    // InternalAndroidGenerator.g:1130:5: ( (lv_actions_5_0= ruleButtonActions ) )
-                    	    // InternalAndroidGenerator.g:1131:6: (lv_actions_5_0= ruleButtonActions )
+                    	    // InternalAndroidGenerator.g:1214:5: ( (lv_actions_5_0= ruleButtonActions ) )
+                    	    // InternalAndroidGenerator.g:1215:6: (lv_actions_5_0= ruleButtonActions )
                     	    {
-                    	    // InternalAndroidGenerator.g:1131:6: (lv_actions_5_0= ruleButtonActions )
-                    	    // InternalAndroidGenerator.g:1132:7: lv_actions_5_0= ruleButtonActions
+                    	    // InternalAndroidGenerator.g:1215:6: (lv_actions_5_0= ruleButtonActions )
+                    	    // InternalAndroidGenerator.g:1216:7: lv_actions_5_0= ruleButtonActions
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getButtonAccess().getActionsButtonActionsParserRuleCall_3_1_1_0());
@@ -3006,7 +3259,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
                     	    break;
 
                     	default :
-                    	    break loop13;
+                    	    break loop14;
                         }
                     } while (true);
 
@@ -3039,7 +3292,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleButtonActions"
-    // InternalAndroidGenerator.g:1155:1: entryRuleButtonActions returns [EObject current=null] : iv_ruleButtonActions= ruleButtonActions EOF ;
+    // InternalAndroidGenerator.g:1239:1: entryRuleButtonActions returns [EObject current=null] : iv_ruleButtonActions= ruleButtonActions EOF ;
     public final EObject entryRuleButtonActions() throws RecognitionException {
         EObject current = null;
 
@@ -3047,8 +3300,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:1155:54: (iv_ruleButtonActions= ruleButtonActions EOF )
-            // InternalAndroidGenerator.g:1156:2: iv_ruleButtonActions= ruleButtonActions EOF
+            // InternalAndroidGenerator.g:1239:54: (iv_ruleButtonActions= ruleButtonActions EOF )
+            // InternalAndroidGenerator.g:1240:2: iv_ruleButtonActions= ruleButtonActions EOF
             {
              newCompositeNode(grammarAccess.getButtonActionsRule()); 
             pushFollow(FOLLOW_1);
@@ -3075,7 +3328,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleButtonActions"
-    // InternalAndroidGenerator.g:1162:1: ruleButtonActions returns [EObject current=null] : (this_Toast_0= ruleToast | this_Bundle_1= ruleBundle ) ;
+    // InternalAndroidGenerator.g:1246:1: ruleButtonActions returns [EObject current=null] : (this_Toast_0= ruleToast | this_Bundle_1= ruleBundle ) ;
     public final EObject ruleButtonActions() throws RecognitionException {
         EObject current = null;
 
@@ -3088,28 +3341,28 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:1168:2: ( (this_Toast_0= ruleToast | this_Bundle_1= ruleBundle ) )
-            // InternalAndroidGenerator.g:1169:2: (this_Toast_0= ruleToast | this_Bundle_1= ruleBundle )
+            // InternalAndroidGenerator.g:1252:2: ( (this_Toast_0= ruleToast | this_Bundle_1= ruleBundle ) )
+            // InternalAndroidGenerator.g:1253:2: (this_Toast_0= ruleToast | this_Bundle_1= ruleBundle )
             {
-            // InternalAndroidGenerator.g:1169:2: (this_Toast_0= ruleToast | this_Bundle_1= ruleBundle )
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            // InternalAndroidGenerator.g:1253:2: (this_Toast_0= ruleToast | this_Bundle_1= ruleBundle )
+            int alt16=2;
+            int LA16_0 = input.LA(1);
 
-            if ( (LA15_0==27) ) {
-                alt15=1;
+            if ( (LA16_0==28) ) {
+                alt16=1;
             }
-            else if ( (LA15_0==28) ) {
-                alt15=2;
+            else if ( (LA16_0==29) ) {
+                alt16=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 15, 0, input);
+                    new NoViableAltException("", 16, 0, input);
 
                 throw nvae;
             }
-            switch (alt15) {
+            switch (alt16) {
                 case 1 :
-                    // InternalAndroidGenerator.g:1170:3: this_Toast_0= ruleToast
+                    // InternalAndroidGenerator.g:1254:3: this_Toast_0= ruleToast
                     {
 
                     			newCompositeNode(grammarAccess.getButtonActionsAccess().getToastParserRuleCall_0());
@@ -3127,7 +3380,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
                     }
                     break;
                 case 2 :
-                    // InternalAndroidGenerator.g:1179:3: this_Bundle_1= ruleBundle
+                    // InternalAndroidGenerator.g:1263:3: this_Bundle_1= ruleBundle
                     {
 
                     			newCompositeNode(grammarAccess.getButtonActionsAccess().getBundleParserRuleCall_1());
@@ -3167,7 +3420,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleToast"
-    // InternalAndroidGenerator.g:1191:1: entryRuleToast returns [EObject current=null] : iv_ruleToast= ruleToast EOF ;
+    // InternalAndroidGenerator.g:1275:1: entryRuleToast returns [EObject current=null] : iv_ruleToast= ruleToast EOF ;
     public final EObject entryRuleToast() throws RecognitionException {
         EObject current = null;
 
@@ -3175,8 +3428,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:1191:46: (iv_ruleToast= ruleToast EOF )
-            // InternalAndroidGenerator.g:1192:2: iv_ruleToast= ruleToast EOF
+            // InternalAndroidGenerator.g:1275:46: (iv_ruleToast= ruleToast EOF )
+            // InternalAndroidGenerator.g:1276:2: iv_ruleToast= ruleToast EOF
             {
              newCompositeNode(grammarAccess.getToastRule()); 
             pushFollow(FOLLOW_1);
@@ -3203,7 +3456,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleToast"
-    // InternalAndroidGenerator.g:1198:1: ruleToast returns [EObject current=null] : (otherlv_0= 'Toast' ( (lv_text_1_0= RULE_STRING ) ) ) ;
+    // InternalAndroidGenerator.g:1282:1: ruleToast returns [EObject current=null] : (otherlv_0= 'Toast' ( (lv_text_1_0= RULE_STRING ) ) ) ;
     public final EObject ruleToast() throws RecognitionException {
         EObject current = null;
 
@@ -3214,21 +3467,21 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:1204:2: ( (otherlv_0= 'Toast' ( (lv_text_1_0= RULE_STRING ) ) ) )
-            // InternalAndroidGenerator.g:1205:2: (otherlv_0= 'Toast' ( (lv_text_1_0= RULE_STRING ) ) )
+            // InternalAndroidGenerator.g:1288:2: ( (otherlv_0= 'Toast' ( (lv_text_1_0= RULE_STRING ) ) ) )
+            // InternalAndroidGenerator.g:1289:2: (otherlv_0= 'Toast' ( (lv_text_1_0= RULE_STRING ) ) )
             {
-            // InternalAndroidGenerator.g:1205:2: (otherlv_0= 'Toast' ( (lv_text_1_0= RULE_STRING ) ) )
-            // InternalAndroidGenerator.g:1206:3: otherlv_0= 'Toast' ( (lv_text_1_0= RULE_STRING ) )
+            // InternalAndroidGenerator.g:1289:2: (otherlv_0= 'Toast' ( (lv_text_1_0= RULE_STRING ) ) )
+            // InternalAndroidGenerator.g:1290:3: otherlv_0= 'Toast' ( (lv_text_1_0= RULE_STRING ) )
             {
-            otherlv_0=(Token)match(input,27,FOLLOW_18); 
+            otherlv_0=(Token)match(input,28,FOLLOW_18); 
 
             			newLeafNode(otherlv_0, grammarAccess.getToastAccess().getToastKeyword_0());
             		
-            // InternalAndroidGenerator.g:1210:3: ( (lv_text_1_0= RULE_STRING ) )
-            // InternalAndroidGenerator.g:1211:4: (lv_text_1_0= RULE_STRING )
+            // InternalAndroidGenerator.g:1294:3: ( (lv_text_1_0= RULE_STRING ) )
+            // InternalAndroidGenerator.g:1295:4: (lv_text_1_0= RULE_STRING )
             {
-            // InternalAndroidGenerator.g:1211:4: (lv_text_1_0= RULE_STRING )
-            // InternalAndroidGenerator.g:1212:5: lv_text_1_0= RULE_STRING
+            // InternalAndroidGenerator.g:1295:4: (lv_text_1_0= RULE_STRING )
+            // InternalAndroidGenerator.g:1296:5: lv_text_1_0= RULE_STRING
             {
             lv_text_1_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -3273,7 +3526,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleBundle"
-    // InternalAndroidGenerator.g:1232:1: entryRuleBundle returns [EObject current=null] : iv_ruleBundle= ruleBundle EOF ;
+    // InternalAndroidGenerator.g:1316:1: entryRuleBundle returns [EObject current=null] : iv_ruleBundle= ruleBundle EOF ;
     public final EObject entryRuleBundle() throws RecognitionException {
         EObject current = null;
 
@@ -3281,8 +3534,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:1232:47: (iv_ruleBundle= ruleBundle EOF )
-            // InternalAndroidGenerator.g:1233:2: iv_ruleBundle= ruleBundle EOF
+            // InternalAndroidGenerator.g:1316:47: (iv_ruleBundle= ruleBundle EOF )
+            // InternalAndroidGenerator.g:1317:2: iv_ruleBundle= ruleBundle EOF
             {
              newCompositeNode(grammarAccess.getBundleRule()); 
             pushFollow(FOLLOW_1);
@@ -3309,45 +3562,163 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleBundle"
-    // InternalAndroidGenerator.g:1239:1: ruleBundle returns [EObject current=null] : (otherlv_0= 'Bundle' ( (otherlv_1= RULE_ID ) ) ) ;
+    // InternalAndroidGenerator.g:1323:1: ruleBundle returns [EObject current=null] : (otherlv_0= 'Bundle' ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'Holder' ( ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* )? )? ) ;
     public final EObject ruleBundle() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
+        Token otherlv_2=null;
+        Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_5=null;
 
 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:1245:2: ( (otherlv_0= 'Bundle' ( (otherlv_1= RULE_ID ) ) ) )
-            // InternalAndroidGenerator.g:1246:2: (otherlv_0= 'Bundle' ( (otherlv_1= RULE_ID ) ) )
+            // InternalAndroidGenerator.g:1329:2: ( (otherlv_0= 'Bundle' ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'Holder' ( ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* )? )? ) )
+            // InternalAndroidGenerator.g:1330:2: (otherlv_0= 'Bundle' ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'Holder' ( ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* )? )? )
             {
-            // InternalAndroidGenerator.g:1246:2: (otherlv_0= 'Bundle' ( (otherlv_1= RULE_ID ) ) )
-            // InternalAndroidGenerator.g:1247:3: otherlv_0= 'Bundle' ( (otherlv_1= RULE_ID ) )
+            // InternalAndroidGenerator.g:1330:2: (otherlv_0= 'Bundle' ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'Holder' ( ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* )? )? )
+            // InternalAndroidGenerator.g:1331:3: otherlv_0= 'Bundle' ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'Holder' ( ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* )? )?
             {
-            otherlv_0=(Token)match(input,28,FOLLOW_5); 
+            otherlv_0=(Token)match(input,29,FOLLOW_5); 
 
             			newLeafNode(otherlv_0, grammarAccess.getBundleAccess().getBundleKeyword_0());
             		
-            // InternalAndroidGenerator.g:1251:3: ( (otherlv_1= RULE_ID ) )
-            // InternalAndroidGenerator.g:1252:4: (otherlv_1= RULE_ID )
+            // InternalAndroidGenerator.g:1335:3: ( (otherlv_1= RULE_ID ) )
+            // InternalAndroidGenerator.g:1336:4: (otherlv_1= RULE_ID )
             {
-            // InternalAndroidGenerator.g:1252:4: (otherlv_1= RULE_ID )
-            // InternalAndroidGenerator.g:1253:5: otherlv_1= RULE_ID
+            // InternalAndroidGenerator.g:1336:4: (otherlv_1= RULE_ID )
+            // InternalAndroidGenerator.g:1337:5: otherlv_1= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getBundleRule());
             					}
             				
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_2); 
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_19); 
 
             					newLeafNode(otherlv_1, grammarAccess.getBundleAccess().getBundleRecipientFragmentCrossReference_1_0());
             				
 
             }
 
+
+            }
+
+            // InternalAndroidGenerator.g:1348:3: (otherlv_2= 'Holder' ( ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* )? )?
+            int alt19=2;
+            int LA19_0 = input.LA(1);
+
+            if ( (LA19_0==30) ) {
+                alt19=1;
+            }
+            switch (alt19) {
+                case 1 :
+                    // InternalAndroidGenerator.g:1349:4: otherlv_2= 'Holder' ( ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* )?
+                    {
+                    otherlv_2=(Token)match(input,30,FOLLOW_20); 
+
+                    				newLeafNode(otherlv_2, grammarAccess.getBundleAccess().getHolderKeyword_2_0());
+                    			
+                    // InternalAndroidGenerator.g:1353:4: ( ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )* )?
+                    int alt18=2;
+                    int LA18_0 = input.LA(1);
+
+                    if ( (LA18_0==RULE_ID) ) {
+                        alt18=1;
+                    }
+                    switch (alt18) {
+                        case 1 :
+                            // InternalAndroidGenerator.g:1354:5: ( (otherlv_3= RULE_ID ) ) (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )*
+                            {
+                            // InternalAndroidGenerator.g:1354:5: ( (otherlv_3= RULE_ID ) )
+                            // InternalAndroidGenerator.g:1355:6: (otherlv_3= RULE_ID )
+                            {
+                            // InternalAndroidGenerator.g:1355:6: (otherlv_3= RULE_ID )
+                            // InternalAndroidGenerator.g:1356:7: otherlv_3= RULE_ID
+                            {
+
+                            							if (current==null) {
+                            								current = createModelElement(grammarAccess.getBundleRule());
+                            							}
+                            						
+                            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_3); 
+
+                            							newLeafNode(otherlv_3, grammarAccess.getBundleAccess().getHolderDataholdersCrossReference_2_1_0_0());
+                            						
+
+                            }
+
+
+                            }
+
+                            // InternalAndroidGenerator.g:1367:5: (otherlv_4= ',' ( (otherlv_5= RULE_ID ) ) )*
+                            loop17:
+                            do {
+                                int alt17=2;
+                                int LA17_0 = input.LA(1);
+
+                                if ( (LA17_0==12) ) {
+                                    int LA17_1 = input.LA(2);
+
+                                    if ( (LA17_1==RULE_ID) ) {
+                                        alt17=1;
+                                    }
+
+
+                                }
+
+
+                                switch (alt17) {
+                            	case 1 :
+                            	    // InternalAndroidGenerator.g:1368:6: otherlv_4= ',' ( (otherlv_5= RULE_ID ) )
+                            	    {
+                            	    otherlv_4=(Token)match(input,12,FOLLOW_5); 
+
+                            	    						newLeafNode(otherlv_4, grammarAccess.getBundleAccess().getCommaKeyword_2_1_1_0());
+                            	    					
+                            	    // InternalAndroidGenerator.g:1372:6: ( (otherlv_5= RULE_ID ) )
+                            	    // InternalAndroidGenerator.g:1373:7: (otherlv_5= RULE_ID )
+                            	    {
+                            	    // InternalAndroidGenerator.g:1373:7: (otherlv_5= RULE_ID )
+                            	    // InternalAndroidGenerator.g:1374:8: otherlv_5= RULE_ID
+                            	    {
+
+                            	    								if (current==null) {
+                            	    									current = createModelElement(grammarAccess.getBundleRule());
+                            	    								}
+                            	    							
+                            	    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_3); 
+
+                            	    								newLeafNode(otherlv_5, grammarAccess.getBundleAccess().getHolderDataholdersCrossReference_2_1_1_1_0());
+                            	    							
+
+                            	    }
+
+
+                            	    }
+
+
+                            	    }
+                            	    break;
+
+                            	default :
+                            	    break loop17;
+                                }
+                            } while (true);
+
+
+                            }
+                            break;
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -3374,7 +3745,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleFilterQuery"
-    // InternalAndroidGenerator.g:1268:1: entryRuleFilterQuery returns [EObject current=null] : iv_ruleFilterQuery= ruleFilterQuery EOF ;
+    // InternalAndroidGenerator.g:1392:1: entryRuleFilterQuery returns [EObject current=null] : iv_ruleFilterQuery= ruleFilterQuery EOF ;
     public final EObject entryRuleFilterQuery() throws RecognitionException {
         EObject current = null;
 
@@ -3382,8 +3753,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:1268:52: (iv_ruleFilterQuery= ruleFilterQuery EOF )
-            // InternalAndroidGenerator.g:1269:2: iv_ruleFilterQuery= ruleFilterQuery EOF
+            // InternalAndroidGenerator.g:1392:52: (iv_ruleFilterQuery= ruleFilterQuery EOF )
+            // InternalAndroidGenerator.g:1393:2: iv_ruleFilterQuery= ruleFilterQuery EOF
             {
              newCompositeNode(grammarAccess.getFilterQueryRule()); 
             pushFollow(FOLLOW_1);
@@ -3410,7 +3781,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleFilterQuery"
-    // InternalAndroidGenerator.g:1275:1: ruleFilterQuery returns [EObject current=null] : ( () otherlv_1= 'FilterQuery' ( (lv_name_2_0= RULE_ID ) ) ( (lv_filterAttributes_3_0= ruleFilterAttributes ) ) ) ;
+    // InternalAndroidGenerator.g:1399:1: ruleFilterQuery returns [EObject current=null] : ( () otherlv_1= 'FilterQuery' ( (lv_name_2_0= RULE_ID ) ) ( (lv_filterAttributes_3_0= ruleFilterAttributes ) ) ) ;
     public final EObject ruleFilterQuery() throws RecognitionException {
         EObject current = null;
 
@@ -3423,14 +3794,14 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:1281:2: ( ( () otherlv_1= 'FilterQuery' ( (lv_name_2_0= RULE_ID ) ) ( (lv_filterAttributes_3_0= ruleFilterAttributes ) ) ) )
-            // InternalAndroidGenerator.g:1282:2: ( () otherlv_1= 'FilterQuery' ( (lv_name_2_0= RULE_ID ) ) ( (lv_filterAttributes_3_0= ruleFilterAttributes ) ) )
+            // InternalAndroidGenerator.g:1405:2: ( ( () otherlv_1= 'FilterQuery' ( (lv_name_2_0= RULE_ID ) ) ( (lv_filterAttributes_3_0= ruleFilterAttributes ) ) ) )
+            // InternalAndroidGenerator.g:1406:2: ( () otherlv_1= 'FilterQuery' ( (lv_name_2_0= RULE_ID ) ) ( (lv_filterAttributes_3_0= ruleFilterAttributes ) ) )
             {
-            // InternalAndroidGenerator.g:1282:2: ( () otherlv_1= 'FilterQuery' ( (lv_name_2_0= RULE_ID ) ) ( (lv_filterAttributes_3_0= ruleFilterAttributes ) ) )
-            // InternalAndroidGenerator.g:1283:3: () otherlv_1= 'FilterQuery' ( (lv_name_2_0= RULE_ID ) ) ( (lv_filterAttributes_3_0= ruleFilterAttributes ) )
+            // InternalAndroidGenerator.g:1406:2: ( () otherlv_1= 'FilterQuery' ( (lv_name_2_0= RULE_ID ) ) ( (lv_filterAttributes_3_0= ruleFilterAttributes ) ) )
+            // InternalAndroidGenerator.g:1407:3: () otherlv_1= 'FilterQuery' ( (lv_name_2_0= RULE_ID ) ) ( (lv_filterAttributes_3_0= ruleFilterAttributes ) )
             {
-            // InternalAndroidGenerator.g:1283:3: ()
-            // InternalAndroidGenerator.g:1284:4: 
+            // InternalAndroidGenerator.g:1407:3: ()
+            // InternalAndroidGenerator.g:1408:4: 
             {
 
             				current = forceCreateModelElement(
@@ -3440,17 +3811,17 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            otherlv_1=(Token)match(input,29,FOLLOW_5); 
+            otherlv_1=(Token)match(input,31,FOLLOW_5); 
 
             			newLeafNode(otherlv_1, grammarAccess.getFilterQueryAccess().getFilterQueryKeyword_1());
             		
-            // InternalAndroidGenerator.g:1294:3: ( (lv_name_2_0= RULE_ID ) )
-            // InternalAndroidGenerator.g:1295:4: (lv_name_2_0= RULE_ID )
+            // InternalAndroidGenerator.g:1418:3: ( (lv_name_2_0= RULE_ID ) )
+            // InternalAndroidGenerator.g:1419:4: (lv_name_2_0= RULE_ID )
             {
-            // InternalAndroidGenerator.g:1295:4: (lv_name_2_0= RULE_ID )
-            // InternalAndroidGenerator.g:1296:5: lv_name_2_0= RULE_ID
+            // InternalAndroidGenerator.g:1419:4: (lv_name_2_0= RULE_ID )
+            // InternalAndroidGenerator.g:1420:5: lv_name_2_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_19); 
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_21); 
 
             					newLeafNode(lv_name_2_0, grammarAccess.getFilterQueryAccess().getNameIDTerminalRuleCall_2_0());
             				
@@ -3470,11 +3841,11 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            // InternalAndroidGenerator.g:1312:3: ( (lv_filterAttributes_3_0= ruleFilterAttributes ) )
-            // InternalAndroidGenerator.g:1313:4: (lv_filterAttributes_3_0= ruleFilterAttributes )
+            // InternalAndroidGenerator.g:1436:3: ( (lv_filterAttributes_3_0= ruleFilterAttributes ) )
+            // InternalAndroidGenerator.g:1437:4: (lv_filterAttributes_3_0= ruleFilterAttributes )
             {
-            // InternalAndroidGenerator.g:1313:4: (lv_filterAttributes_3_0= ruleFilterAttributes )
-            // InternalAndroidGenerator.g:1314:5: lv_filterAttributes_3_0= ruleFilterAttributes
+            // InternalAndroidGenerator.g:1437:4: (lv_filterAttributes_3_0= ruleFilterAttributes )
+            // InternalAndroidGenerator.g:1438:5: lv_filterAttributes_3_0= ruleFilterAttributes
             {
 
             					newCompositeNode(grammarAccess.getFilterQueryAccess().getFilterAttributesFilterAttributesParserRuleCall_3_0());
@@ -3524,7 +3895,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleFilterAttributes"
-    // InternalAndroidGenerator.g:1335:1: entryRuleFilterAttributes returns [EObject current=null] : iv_ruleFilterAttributes= ruleFilterAttributes EOF ;
+    // InternalAndroidGenerator.g:1459:1: entryRuleFilterAttributes returns [EObject current=null] : iv_ruleFilterAttributes= ruleFilterAttributes EOF ;
     public final EObject entryRuleFilterAttributes() throws RecognitionException {
         EObject current = null;
 
@@ -3532,8 +3903,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:1335:57: (iv_ruleFilterAttributes= ruleFilterAttributes EOF )
-            // InternalAndroidGenerator.g:1336:2: iv_ruleFilterAttributes= ruleFilterAttributes EOF
+            // InternalAndroidGenerator.g:1459:57: (iv_ruleFilterAttributes= ruleFilterAttributes EOF )
+            // InternalAndroidGenerator.g:1460:2: iv_ruleFilterAttributes= ruleFilterAttributes EOF
             {
              newCompositeNode(grammarAccess.getFilterAttributesRule()); 
             pushFollow(FOLLOW_1);
@@ -3560,7 +3931,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleFilterAttributes"
-    // InternalAndroidGenerator.g:1342:1: ruleFilterAttributes returns [EObject current=null] : ( (lv_distance_0_0= ruleDistance ) ) ;
+    // InternalAndroidGenerator.g:1466:1: ruleFilterAttributes returns [EObject current=null] : ( (lv_distance_0_0= ruleDistance ) ) ;
     public final EObject ruleFilterAttributes() throws RecognitionException {
         EObject current = null;
 
@@ -3571,14 +3942,14 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:1348:2: ( ( (lv_distance_0_0= ruleDistance ) ) )
-            // InternalAndroidGenerator.g:1349:2: ( (lv_distance_0_0= ruleDistance ) )
+            // InternalAndroidGenerator.g:1472:2: ( ( (lv_distance_0_0= ruleDistance ) ) )
+            // InternalAndroidGenerator.g:1473:2: ( (lv_distance_0_0= ruleDistance ) )
             {
-            // InternalAndroidGenerator.g:1349:2: ( (lv_distance_0_0= ruleDistance ) )
-            // InternalAndroidGenerator.g:1350:3: (lv_distance_0_0= ruleDistance )
+            // InternalAndroidGenerator.g:1473:2: ( (lv_distance_0_0= ruleDistance ) )
+            // InternalAndroidGenerator.g:1474:3: (lv_distance_0_0= ruleDistance )
             {
-            // InternalAndroidGenerator.g:1350:3: (lv_distance_0_0= ruleDistance )
-            // InternalAndroidGenerator.g:1351:4: lv_distance_0_0= ruleDistance
+            // InternalAndroidGenerator.g:1474:3: (lv_distance_0_0= ruleDistance )
+            // InternalAndroidGenerator.g:1475:4: lv_distance_0_0= ruleDistance
             {
 
             				newCompositeNode(grammarAccess.getFilterAttributesAccess().getDistanceDistanceParserRuleCall_0());
@@ -3625,7 +3996,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleDistance"
-    // InternalAndroidGenerator.g:1371:1: entryRuleDistance returns [EObject current=null] : iv_ruleDistance= ruleDistance EOF ;
+    // InternalAndroidGenerator.g:1495:1: entryRuleDistance returns [EObject current=null] : iv_ruleDistance= ruleDistance EOF ;
     public final EObject entryRuleDistance() throws RecognitionException {
         EObject current = null;
 
@@ -3633,8 +4004,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:1371:49: (iv_ruleDistance= ruleDistance EOF )
-            // InternalAndroidGenerator.g:1372:2: iv_ruleDistance= ruleDistance EOF
+            // InternalAndroidGenerator.g:1495:49: (iv_ruleDistance= ruleDistance EOF )
+            // InternalAndroidGenerator.g:1496:2: iv_ruleDistance= ruleDistance EOF
             {
              newCompositeNode(grammarAccess.getDistanceRule()); 
             pushFollow(FOLLOW_1);
@@ -3661,7 +4032,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleDistance"
-    // InternalAndroidGenerator.g:1378:1: ruleDistance returns [EObject current=null] : (otherlv_0= 'Distance' otherlv_1= ':' ( (lv_unit_2_0= ruleUnit ) ) ( (lv_operator_3_0= ruleOperator ) ) ( (lv_results_4_0= ruleNumber ) ) ) ;
+    // InternalAndroidGenerator.g:1502:1: ruleDistance returns [EObject current=null] : (otherlv_0= 'Distance' otherlv_1= ':' ( (lv_unit_2_0= ruleUnit ) ) ( (lv_operator_3_0= ruleOperator ) ) ( (lv_results_4_0= ruleNumber ) ) ) ;
     public final EObject ruleDistance() throws RecognitionException {
         EObject current = null;
 
@@ -3678,30 +4049,30 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:1384:2: ( (otherlv_0= 'Distance' otherlv_1= ':' ( (lv_unit_2_0= ruleUnit ) ) ( (lv_operator_3_0= ruleOperator ) ) ( (lv_results_4_0= ruleNumber ) ) ) )
-            // InternalAndroidGenerator.g:1385:2: (otherlv_0= 'Distance' otherlv_1= ':' ( (lv_unit_2_0= ruleUnit ) ) ( (lv_operator_3_0= ruleOperator ) ) ( (lv_results_4_0= ruleNumber ) ) )
+            // InternalAndroidGenerator.g:1508:2: ( (otherlv_0= 'Distance' otherlv_1= ':' ( (lv_unit_2_0= ruleUnit ) ) ( (lv_operator_3_0= ruleOperator ) ) ( (lv_results_4_0= ruleNumber ) ) ) )
+            // InternalAndroidGenerator.g:1509:2: (otherlv_0= 'Distance' otherlv_1= ':' ( (lv_unit_2_0= ruleUnit ) ) ( (lv_operator_3_0= ruleOperator ) ) ( (lv_results_4_0= ruleNumber ) ) )
             {
-            // InternalAndroidGenerator.g:1385:2: (otherlv_0= 'Distance' otherlv_1= ':' ( (lv_unit_2_0= ruleUnit ) ) ( (lv_operator_3_0= ruleOperator ) ) ( (lv_results_4_0= ruleNumber ) ) )
-            // InternalAndroidGenerator.g:1386:3: otherlv_0= 'Distance' otherlv_1= ':' ( (lv_unit_2_0= ruleUnit ) ) ( (lv_operator_3_0= ruleOperator ) ) ( (lv_results_4_0= ruleNumber ) )
+            // InternalAndroidGenerator.g:1509:2: (otherlv_0= 'Distance' otherlv_1= ':' ( (lv_unit_2_0= ruleUnit ) ) ( (lv_operator_3_0= ruleOperator ) ) ( (lv_results_4_0= ruleNumber ) ) )
+            // InternalAndroidGenerator.g:1510:3: otherlv_0= 'Distance' otherlv_1= ':' ( (lv_unit_2_0= ruleUnit ) ) ( (lv_operator_3_0= ruleOperator ) ) ( (lv_results_4_0= ruleNumber ) )
             {
-            otherlv_0=(Token)match(input,30,FOLLOW_7); 
+            otherlv_0=(Token)match(input,32,FOLLOW_7); 
 
             			newLeafNode(otherlv_0, grammarAccess.getDistanceAccess().getDistanceKeyword_0());
             		
-            otherlv_1=(Token)match(input,15,FOLLOW_20); 
+            otherlv_1=(Token)match(input,15,FOLLOW_22); 
 
             			newLeafNode(otherlv_1, grammarAccess.getDistanceAccess().getColonKeyword_1());
             		
-            // InternalAndroidGenerator.g:1394:3: ( (lv_unit_2_0= ruleUnit ) )
-            // InternalAndroidGenerator.g:1395:4: (lv_unit_2_0= ruleUnit )
+            // InternalAndroidGenerator.g:1518:3: ( (lv_unit_2_0= ruleUnit ) )
+            // InternalAndroidGenerator.g:1519:4: (lv_unit_2_0= ruleUnit )
             {
-            // InternalAndroidGenerator.g:1395:4: (lv_unit_2_0= ruleUnit )
-            // InternalAndroidGenerator.g:1396:5: lv_unit_2_0= ruleUnit
+            // InternalAndroidGenerator.g:1519:4: (lv_unit_2_0= ruleUnit )
+            // InternalAndroidGenerator.g:1520:5: lv_unit_2_0= ruleUnit
             {
 
             					newCompositeNode(grammarAccess.getDistanceAccess().getUnitUnitParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_21);
+            pushFollow(FOLLOW_23);
             lv_unit_2_0=ruleUnit();
 
             state._fsp--;
@@ -3723,11 +4094,11 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            // InternalAndroidGenerator.g:1413:3: ( (lv_operator_3_0= ruleOperator ) )
-            // InternalAndroidGenerator.g:1414:4: (lv_operator_3_0= ruleOperator )
+            // InternalAndroidGenerator.g:1537:3: ( (lv_operator_3_0= ruleOperator ) )
+            // InternalAndroidGenerator.g:1538:4: (lv_operator_3_0= ruleOperator )
             {
-            // InternalAndroidGenerator.g:1414:4: (lv_operator_3_0= ruleOperator )
-            // InternalAndroidGenerator.g:1415:5: lv_operator_3_0= ruleOperator
+            // InternalAndroidGenerator.g:1538:4: (lv_operator_3_0= ruleOperator )
+            // InternalAndroidGenerator.g:1539:5: lv_operator_3_0= ruleOperator
             {
 
             					newCompositeNode(grammarAccess.getDistanceAccess().getOperatorOperatorParserRuleCall_3_0());
@@ -3754,11 +4125,11 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
             }
 
-            // InternalAndroidGenerator.g:1432:3: ( (lv_results_4_0= ruleNumber ) )
-            // InternalAndroidGenerator.g:1433:4: (lv_results_4_0= ruleNumber )
+            // InternalAndroidGenerator.g:1556:3: ( (lv_results_4_0= ruleNumber ) )
+            // InternalAndroidGenerator.g:1557:4: (lv_results_4_0= ruleNumber )
             {
-            // InternalAndroidGenerator.g:1433:4: (lv_results_4_0= ruleNumber )
-            // InternalAndroidGenerator.g:1434:5: lv_results_4_0= ruleNumber
+            // InternalAndroidGenerator.g:1557:4: (lv_results_4_0= ruleNumber )
+            // InternalAndroidGenerator.g:1558:5: lv_results_4_0= ruleNumber
             {
 
             					newCompositeNode(grammarAccess.getDistanceAccess().getResultsNumberParserRuleCall_4_0());
@@ -3808,7 +4179,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleNumber"
-    // InternalAndroidGenerator.g:1455:1: entryRuleNumber returns [EObject current=null] : iv_ruleNumber= ruleNumber EOF ;
+    // InternalAndroidGenerator.g:1579:1: entryRuleNumber returns [EObject current=null] : iv_ruleNumber= ruleNumber EOF ;
     public final EObject entryRuleNumber() throws RecognitionException {
         EObject current = null;
 
@@ -3816,8 +4187,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:1455:47: (iv_ruleNumber= ruleNumber EOF )
-            // InternalAndroidGenerator.g:1456:2: iv_ruleNumber= ruleNumber EOF
+            // InternalAndroidGenerator.g:1579:47: (iv_ruleNumber= ruleNumber EOF )
+            // InternalAndroidGenerator.g:1580:2: iv_ruleNumber= ruleNumber EOF
             {
              newCompositeNode(grammarAccess.getNumberRule()); 
             pushFollow(FOLLOW_1);
@@ -3844,7 +4215,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleNumber"
-    // InternalAndroidGenerator.g:1462:1: ruleNumber returns [EObject current=null] : ( (lv_value_0_0= RULE_INT ) ) ;
+    // InternalAndroidGenerator.g:1586:1: ruleNumber returns [EObject current=null] : ( (lv_value_0_0= RULE_INT ) ) ;
     public final EObject ruleNumber() throws RecognitionException {
         EObject current = null;
 
@@ -3854,14 +4225,14 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:1468:2: ( ( (lv_value_0_0= RULE_INT ) ) )
-            // InternalAndroidGenerator.g:1469:2: ( (lv_value_0_0= RULE_INT ) )
+            // InternalAndroidGenerator.g:1592:2: ( ( (lv_value_0_0= RULE_INT ) ) )
+            // InternalAndroidGenerator.g:1593:2: ( (lv_value_0_0= RULE_INT ) )
             {
-            // InternalAndroidGenerator.g:1469:2: ( (lv_value_0_0= RULE_INT ) )
-            // InternalAndroidGenerator.g:1470:3: (lv_value_0_0= RULE_INT )
+            // InternalAndroidGenerator.g:1593:2: ( (lv_value_0_0= RULE_INT ) )
+            // InternalAndroidGenerator.g:1594:3: (lv_value_0_0= RULE_INT )
             {
-            // InternalAndroidGenerator.g:1470:3: (lv_value_0_0= RULE_INT )
-            // InternalAndroidGenerator.g:1471:4: lv_value_0_0= RULE_INT
+            // InternalAndroidGenerator.g:1594:3: (lv_value_0_0= RULE_INT )
+            // InternalAndroidGenerator.g:1595:4: lv_value_0_0= RULE_INT
             {
             lv_value_0_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -3903,7 +4274,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleOperator"
-    // InternalAndroidGenerator.g:1490:1: entryRuleOperator returns [EObject current=null] : iv_ruleOperator= ruleOperator EOF ;
+    // InternalAndroidGenerator.g:1614:1: entryRuleOperator returns [EObject current=null] : iv_ruleOperator= ruleOperator EOF ;
     public final EObject entryRuleOperator() throws RecognitionException {
         EObject current = null;
 
@@ -3911,8 +4282,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:1490:49: (iv_ruleOperator= ruleOperator EOF )
-            // InternalAndroidGenerator.g:1491:2: iv_ruleOperator= ruleOperator EOF
+            // InternalAndroidGenerator.g:1614:49: (iv_ruleOperator= ruleOperator EOF )
+            // InternalAndroidGenerator.g:1615:2: iv_ruleOperator= ruleOperator EOF
             {
              newCompositeNode(grammarAccess.getOperatorRule()); 
             pushFollow(FOLLOW_1);
@@ -3939,7 +4310,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleOperator"
-    // InternalAndroidGenerator.g:1497:1: ruleOperator returns [EObject current=null] : ( ( () otherlv_1= '>' ) | ( () otherlv_3= '<' ) | ( () otherlv_5= '=' ) ) ;
+    // InternalAndroidGenerator.g:1621:1: ruleOperator returns [EObject current=null] : ( ( () otherlv_1= '>' ) | ( () otherlv_3= '<' ) | ( () otherlv_5= '=' ) ) ;
     public final EObject ruleOperator() throws RecognitionException {
         EObject current = null;
 
@@ -3951,43 +4322,43 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:1503:2: ( ( ( () otherlv_1= '>' ) | ( () otherlv_3= '<' ) | ( () otherlv_5= '=' ) ) )
-            // InternalAndroidGenerator.g:1504:2: ( ( () otherlv_1= '>' ) | ( () otherlv_3= '<' ) | ( () otherlv_5= '=' ) )
+            // InternalAndroidGenerator.g:1627:2: ( ( ( () otherlv_1= '>' ) | ( () otherlv_3= '<' ) | ( () otherlv_5= '=' ) ) )
+            // InternalAndroidGenerator.g:1628:2: ( ( () otherlv_1= '>' ) | ( () otherlv_3= '<' ) | ( () otherlv_5= '=' ) )
             {
-            // InternalAndroidGenerator.g:1504:2: ( ( () otherlv_1= '>' ) | ( () otherlv_3= '<' ) | ( () otherlv_5= '=' ) )
-            int alt16=3;
+            // InternalAndroidGenerator.g:1628:2: ( ( () otherlv_1= '>' ) | ( () otherlv_3= '<' ) | ( () otherlv_5= '=' ) )
+            int alt20=3;
             switch ( input.LA(1) ) {
-            case 31:
-                {
-                alt16=1;
-                }
-                break;
-            case 32:
-                {
-                alt16=2;
-                }
-                break;
             case 33:
                 {
-                alt16=3;
+                alt20=1;
+                }
+                break;
+            case 34:
+                {
+                alt20=2;
+                }
+                break;
+            case 35:
+                {
+                alt20=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 16, 0, input);
+                    new NoViableAltException("", 20, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt16) {
+            switch (alt20) {
                 case 1 :
-                    // InternalAndroidGenerator.g:1505:3: ( () otherlv_1= '>' )
+                    // InternalAndroidGenerator.g:1629:3: ( () otherlv_1= '>' )
                     {
-                    // InternalAndroidGenerator.g:1505:3: ( () otherlv_1= '>' )
-                    // InternalAndroidGenerator.g:1506:4: () otherlv_1= '>'
+                    // InternalAndroidGenerator.g:1629:3: ( () otherlv_1= '>' )
+                    // InternalAndroidGenerator.g:1630:4: () otherlv_1= '>'
                     {
-                    // InternalAndroidGenerator.g:1506:4: ()
-                    // InternalAndroidGenerator.g:1507:5: 
+                    // InternalAndroidGenerator.g:1630:4: ()
+                    // InternalAndroidGenerator.g:1631:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -3997,7 +4368,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
                     }
 
-                    otherlv_1=(Token)match(input,31,FOLLOW_2); 
+                    otherlv_1=(Token)match(input,33,FOLLOW_2); 
 
                     				newLeafNode(otherlv_1, grammarAccess.getOperatorAccess().getGreaterThanSignKeyword_0_1());
                     			
@@ -4008,13 +4379,13 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
                     }
                     break;
                 case 2 :
-                    // InternalAndroidGenerator.g:1519:3: ( () otherlv_3= '<' )
+                    // InternalAndroidGenerator.g:1643:3: ( () otherlv_3= '<' )
                     {
-                    // InternalAndroidGenerator.g:1519:3: ( () otherlv_3= '<' )
-                    // InternalAndroidGenerator.g:1520:4: () otherlv_3= '<'
+                    // InternalAndroidGenerator.g:1643:3: ( () otherlv_3= '<' )
+                    // InternalAndroidGenerator.g:1644:4: () otherlv_3= '<'
                     {
-                    // InternalAndroidGenerator.g:1520:4: ()
-                    // InternalAndroidGenerator.g:1521:5: 
+                    // InternalAndroidGenerator.g:1644:4: ()
+                    // InternalAndroidGenerator.g:1645:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -4024,7 +4395,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
                     }
 
-                    otherlv_3=(Token)match(input,32,FOLLOW_2); 
+                    otherlv_3=(Token)match(input,34,FOLLOW_2); 
 
                     				newLeafNode(otherlv_3, grammarAccess.getOperatorAccess().getLessThanSignKeyword_1_1());
                     			
@@ -4035,13 +4406,13 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
                     }
                     break;
                 case 3 :
-                    // InternalAndroidGenerator.g:1533:3: ( () otherlv_5= '=' )
+                    // InternalAndroidGenerator.g:1657:3: ( () otherlv_5= '=' )
                     {
-                    // InternalAndroidGenerator.g:1533:3: ( () otherlv_5= '=' )
-                    // InternalAndroidGenerator.g:1534:4: () otherlv_5= '='
+                    // InternalAndroidGenerator.g:1657:3: ( () otherlv_5= '=' )
+                    // InternalAndroidGenerator.g:1658:4: () otherlv_5= '='
                     {
-                    // InternalAndroidGenerator.g:1534:4: ()
-                    // InternalAndroidGenerator.g:1535:5: 
+                    // InternalAndroidGenerator.g:1658:4: ()
+                    // InternalAndroidGenerator.g:1659:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -4051,7 +4422,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
                     }
 
-                    otherlv_5=(Token)match(input,33,FOLLOW_2); 
+                    otherlv_5=(Token)match(input,35,FOLLOW_2); 
 
                     				newLeafNode(otherlv_5, grammarAccess.getOperatorAccess().getEqualsSignKeyword_2_1());
                     			
@@ -4084,7 +4455,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "entryRuleUnit"
-    // InternalAndroidGenerator.g:1550:1: entryRuleUnit returns [EObject current=null] : iv_ruleUnit= ruleUnit EOF ;
+    // InternalAndroidGenerator.g:1674:1: entryRuleUnit returns [EObject current=null] : iv_ruleUnit= ruleUnit EOF ;
     public final EObject entryRuleUnit() throws RecognitionException {
         EObject current = null;
 
@@ -4092,8 +4463,8 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
         try {
-            // InternalAndroidGenerator.g:1550:45: (iv_ruleUnit= ruleUnit EOF )
-            // InternalAndroidGenerator.g:1551:2: iv_ruleUnit= ruleUnit EOF
+            // InternalAndroidGenerator.g:1674:45: (iv_ruleUnit= ruleUnit EOF )
+            // InternalAndroidGenerator.g:1675:2: iv_ruleUnit= ruleUnit EOF
             {
              newCompositeNode(grammarAccess.getUnitRule()); 
             pushFollow(FOLLOW_1);
@@ -4120,7 +4491,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
 
     // $ANTLR start "ruleUnit"
-    // InternalAndroidGenerator.g:1557:1: ruleUnit returns [EObject current=null] : ( ( () otherlv_1= 'm' ) | ( () otherlv_3= 'f' ) ) ;
+    // InternalAndroidGenerator.g:1681:1: ruleUnit returns [EObject current=null] : ( ( () otherlv_1= 'm' ) | ( () otherlv_3= 'f' ) ) ;
     public final EObject ruleUnit() throws RecognitionException {
         EObject current = null;
 
@@ -4131,34 +4502,34 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
         	enterRule();
 
         try {
-            // InternalAndroidGenerator.g:1563:2: ( ( ( () otherlv_1= 'm' ) | ( () otherlv_3= 'f' ) ) )
-            // InternalAndroidGenerator.g:1564:2: ( ( () otherlv_1= 'm' ) | ( () otherlv_3= 'f' ) )
+            // InternalAndroidGenerator.g:1687:2: ( ( ( () otherlv_1= 'm' ) | ( () otherlv_3= 'f' ) ) )
+            // InternalAndroidGenerator.g:1688:2: ( ( () otherlv_1= 'm' ) | ( () otherlv_3= 'f' ) )
             {
-            // InternalAndroidGenerator.g:1564:2: ( ( () otherlv_1= 'm' ) | ( () otherlv_3= 'f' ) )
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            // InternalAndroidGenerator.g:1688:2: ( ( () otherlv_1= 'm' ) | ( () otherlv_3= 'f' ) )
+            int alt21=2;
+            int LA21_0 = input.LA(1);
 
-            if ( (LA17_0==34) ) {
-                alt17=1;
+            if ( (LA21_0==36) ) {
+                alt21=1;
             }
-            else if ( (LA17_0==35) ) {
-                alt17=2;
+            else if ( (LA21_0==37) ) {
+                alt21=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 21, 0, input);
 
                 throw nvae;
             }
-            switch (alt17) {
+            switch (alt21) {
                 case 1 :
-                    // InternalAndroidGenerator.g:1565:3: ( () otherlv_1= 'm' )
+                    // InternalAndroidGenerator.g:1689:3: ( () otherlv_1= 'm' )
                     {
-                    // InternalAndroidGenerator.g:1565:3: ( () otherlv_1= 'm' )
-                    // InternalAndroidGenerator.g:1566:4: () otherlv_1= 'm'
+                    // InternalAndroidGenerator.g:1689:3: ( () otherlv_1= 'm' )
+                    // InternalAndroidGenerator.g:1690:4: () otherlv_1= 'm'
                     {
-                    // InternalAndroidGenerator.g:1566:4: ()
-                    // InternalAndroidGenerator.g:1567:5: 
+                    // InternalAndroidGenerator.g:1690:4: ()
+                    // InternalAndroidGenerator.g:1691:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -4168,7 +4539,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
                     }
 
-                    otherlv_1=(Token)match(input,34,FOLLOW_2); 
+                    otherlv_1=(Token)match(input,36,FOLLOW_2); 
 
                     				newLeafNode(otherlv_1, grammarAccess.getUnitAccess().getMKeyword_0_1());
                     			
@@ -4179,13 +4550,13 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
                     }
                     break;
                 case 2 :
-                    // InternalAndroidGenerator.g:1579:3: ( () otherlv_3= 'f' )
+                    // InternalAndroidGenerator.g:1703:3: ( () otherlv_3= 'f' )
                     {
-                    // InternalAndroidGenerator.g:1579:3: ( () otherlv_3= 'f' )
-                    // InternalAndroidGenerator.g:1580:4: () otherlv_3= 'f'
+                    // InternalAndroidGenerator.g:1703:3: ( () otherlv_3= 'f' )
+                    // InternalAndroidGenerator.g:1704:4: () otherlv_3= 'f'
                     {
-                    // InternalAndroidGenerator.g:1580:4: ()
-                    // InternalAndroidGenerator.g:1581:5: 
+                    // InternalAndroidGenerator.g:1704:4: ()
+                    // InternalAndroidGenerator.g:1705:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -4195,7 +4566,7 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
 
                     }
 
-                    otherlv_3=(Token)match(input,35,FOLLOW_2); 
+                    otherlv_3=(Token)match(input,37,FOLLOW_2); 
 
                     				newLeafNode(otherlv_3, grammarAccess.getUnitAccess().getFKeyword_1_1());
                     			
@@ -4243,14 +4614,16 @@ public class InternalAndroidGeneratorParser extends AbstractInternalAntlrParser 
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000020002L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000300002L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000007C00002L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000007C00000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000018000002L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000018000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x000000000FC00002L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x000000000FC00000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000080000002L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000030000002L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000030000000L});
     public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000C00000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000380000000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000040000002L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000003000000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000E00000000L});
 
 }

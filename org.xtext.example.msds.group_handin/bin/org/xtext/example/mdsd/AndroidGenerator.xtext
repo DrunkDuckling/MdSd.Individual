@@ -64,12 +64,16 @@ ActivityLayoutAttributes:
 
 LayoutElement:
 	Button 					| 
-	EditText 				|
-	Spinner					| 
+	Dataholders				|
 	TypeMap					|
 	TypeSetting
 ;
 
+Dataholders:
+	EditText 				|
+	Spinner					|
+	Textfield
+;
 
 TypeMap:
 	{TypeMap} 'Map' (activitytypeattribute = ActivityTypeAttributes)?
@@ -88,7 +92,15 @@ EditText:
 ;
 
 Spinner:
-	{Spinner}'Spinner' name=ID
+	{Spinner}'Spinner' name=ID ('Content:' spinnercon += SpinnerCon (',' spinnercon += SpinnerCon)*)?
+;
+
+SpinnerCon:
+	text = STRING
+;
+
+Textfield:
+	{Textfield} 'Textfield' name=ID
 ;
 
 Button:
@@ -104,10 +116,9 @@ Toast:
 ;
 
 Bundle:
-	'Bundle' bundleRecipient = [Fragment]
+	'Bundle' bundleRecipient = [Fragment] ('Holder'(holder += [Dataholders] (',' holder += [Dataholders])*)?)?
 ;
 
- 
 FilterQuery:
     {FilterQuery} 'FilterQuery' name=ID filterAttributes=FilterAttributes
 ;

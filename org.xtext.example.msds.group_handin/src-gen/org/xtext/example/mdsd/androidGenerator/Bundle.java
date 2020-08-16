@@ -3,6 +3,7 @@
  */
 package org.xtext.example.mdsd.androidGenerator;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,6 +15,7 @@ package org.xtext.example.mdsd.androidGenerator;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mdsd.androidGenerator.Bundle#getBundleRecipient <em>Bundle Recipient</em>}</li>
+ *   <li>{@link org.xtext.example.mdsd.androidGenerator.Bundle#getHolder <em>Holder</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getBundle()
@@ -43,5 +45,17 @@ public interface Bundle extends ButtonActions
    * @generated
    */
   void setBundleRecipient(Fragment value);
+
+  /**
+   * Returns the value of the '<em><b>Holder</b></em>' reference list.
+   * The list contents are of type {@link org.xtext.example.mdsd.androidGenerator.Dataholders}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Holder</em>' reference list.
+   * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getBundle_Holder()
+   * @model
+   * @generated
+   */
+  EList<Dataholders> getHolder();
 
 } // Bundle

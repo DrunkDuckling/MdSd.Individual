@@ -150,6 +150,15 @@ public interface AndroidGeneratorFactory extends EFactory
   LayoutElement createLayoutElement();
 
   /**
+   * Returns a new object of class '<em>Dataholders</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Dataholders</em>'.
+   * @generated
+   */
+  Dataholders createDataholders();
+
+  /**
    * Returns a new object of class '<em>Type Map</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -193,6 +202,15 @@ public interface AndroidGeneratorFactory extends EFactory
    * @generated
    */
   Spinner createSpinner();
+
+  /**
+   * Returns a new object of class '<em>Textfield</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Textfield</em>'.
+   * @generated
+   */
+  Textfield createTextfield();
 
   /**
    * Returns a new object of class '<em>Button</em>'.
