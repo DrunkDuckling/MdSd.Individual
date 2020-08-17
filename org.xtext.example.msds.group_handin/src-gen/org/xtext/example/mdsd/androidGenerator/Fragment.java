@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mdsd.androidGenerator.Fragment#getActivityAttributes <em>Activity Attributes</em>}</li>
+ *   <li>{@link org.xtext.example.mdsd.androidGenerator.Fragment#getFragmentAttributes <em>Fragment Attributes</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getFragment()
@@ -24,15 +24,15 @@ import org.eclipse.emf.common.util.EList;
 public interface Fragment extends ApplicationElement
 {
   /**
-   * Returns the value of the '<em><b>Activity Attributes</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes}.
+   * Returns the value of the '<em><b>Fragment Attributes</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Activity Attributes</em>' containment reference list.
-   * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getFragment_ActivityAttributes()
+   * @return the value of the '<em>Fragment Attributes</em>' containment reference list.
+   * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getFragment_FragmentAttributes()
    * @model containment="true"
    * @generated
    */
-  EList<ActivityLayoutAttributes> getActivityAttributes();
+  EList<FragmentLayoutAttributes> getFragmentAttributes();
 
 } // Fragment

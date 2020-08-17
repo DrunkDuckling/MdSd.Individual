@@ -4,10 +4,7 @@ generate androidGenerator "http://www.xtext.org/example/mdsd/AndroidGenerator"
 AndroidAppProject:
     (applications += Application)*
 ;
- 
-terminal PACKAGE_NAME:
-    '"' ( ID ('.' ID)* ) '"'
-;
+
 Application:
     'App' name=ID attributes += ApplicationAttribute* 
 ;
@@ -27,11 +24,11 @@ TargetSDK:
 ;
 
 MinSDK:
-	{MinSDK} 'Minimum-SDK' ':' result=Number
+	{MinSDK} 'Min-SDK' ':' result=Number
 ;
  
 ApplicationPermissionList:
-    'permissions' permissions+=Permission (',' permissions += Permission)*
+    'Permissions' permissions+=Permission (',' permissions += Permission)*
 ;
  
 Permission:
@@ -39,7 +36,7 @@ Permission:
 ;
  
 ApplicationElementList:
-    {ApplicationElementList} 'elements' BEGIN elements += ApplicationElement* END
+    {ApplicationElementList} 'Elements' BEGIN elements += ApplicationElement* END
 ;
 
 ApplicationElement:
@@ -51,10 +48,10 @@ Model:
 ;
  
 Fragment:
-	{Fragment} 'Fragment' name=ID (activityAttributes+=ActivityLayoutAttributes )? 
+	'Fragment' name=ID (fragmentAttributes+=FragmentLayoutAttributes)? 
 ;
 
-ActivityLayoutAttributes:
+FragmentLayoutAttributes:
 	BEGIN layoutElements += LayoutElement (',' layoutElements += LayoutElement)* END
 ;
 
@@ -72,14 +69,14 @@ Dataholders:
 ;
 
 TypeMap:
-	{TypeMap} 'Map' (activitytypeattribute = ActivityTypeAttributes)?
+	{TypeMap} 'Map' (fragmenttypeattribute = FragmentTypeAttributes)?
 ;
 
 TypeSetting:
 	{TypeSetting} 'Settings'
 ;
 
-ActivityTypeAttributes:
+FragmentTypeAttributes:
     filter=FilterQuery
 ;
  
@@ -96,7 +93,7 @@ SpinnerCon:
 ;
 
 TextView:
-	'Textview' name=ID 'content' ':' text = STRING
+	'Textview' name=ID 'Content' ':' text = STRING
 ;
 
 Button:
@@ -128,7 +125,7 @@ FilterAttributes:
 ;
  
 Distance:
-    'Distance' ':' unit=Unit operator=Operator results=Number
+    'Dist' ':' unit=Unit operator=Operator results=Number
 ;
  
 Number:
@@ -148,4 +145,8 @@ terminal BEGIN:
 ;
 terminal END:
 	'synthetic:END'
+;
+
+terminal PACKAGE_NAME:
+    '"' ( ID ('.' ID)* ) '"'
 ;

@@ -11,8 +11,6 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
-import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidAppProject;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorFactory;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
@@ -32,6 +30,8 @@ import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes;
+import org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.Holder;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
@@ -115,12 +115,12 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
       case AndroidGeneratorPackage.APPLICATION_ELEMENT: return createApplicationElement();
       case AndroidGeneratorPackage.MODEL: return createModel();
       case AndroidGeneratorPackage.FRAGMENT: return createFragment();
-      case AndroidGeneratorPackage.ACTIVITY_LAYOUT_ATTRIBUTES: return createActivityLayoutAttributes();
+      case AndroidGeneratorPackage.FRAGMENT_LAYOUT_ATTRIBUTES: return createFragmentLayoutAttributes();
       case AndroidGeneratorPackage.LAYOUT_ELEMENT: return createLayoutElement();
       case AndroidGeneratorPackage.DATAHOLDERS: return createDataholders();
       case AndroidGeneratorPackage.TYPE_MAP: return createTypeMap();
       case AndroidGeneratorPackage.TYPE_SETTING: return createTypeSetting();
-      case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES: return createActivityTypeAttributes();
+      case AndroidGeneratorPackage.FRAGMENT_TYPE_ATTRIBUTES: return createFragmentTypeAttributes();
       case AndroidGeneratorPackage.EDIT_TEXT: return createEditText();
       case AndroidGeneratorPackage.SPINNER: return createSpinner();
       case AndroidGeneratorPackage.SPINNER_CON: return createSpinnerCon();
@@ -296,10 +296,10 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
    * @generated
    */
   @Override
-  public ActivityLayoutAttributes createActivityLayoutAttributes()
+  public FragmentLayoutAttributes createFragmentLayoutAttributes()
   {
-    ActivityLayoutAttributesImpl activityLayoutAttributes = new ActivityLayoutAttributesImpl();
-    return activityLayoutAttributes;
+    FragmentLayoutAttributesImpl fragmentLayoutAttributes = new FragmentLayoutAttributesImpl();
+    return fragmentLayoutAttributes;
   }
 
   /**
@@ -356,10 +356,10 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
    * @generated
    */
   @Override
-  public ActivityTypeAttributes createActivityTypeAttributes()
+  public FragmentTypeAttributes createFragmentTypeAttributes()
   {
-    ActivityTypeAttributesImpl activityTypeAttributes = new ActivityTypeAttributesImpl();
-    return activityTypeAttributes;
+    FragmentTypeAttributesImpl fragmentTypeAttributes = new FragmentTypeAttributesImpl();
+    return fragmentTypeAttributes;
   }
 
   /**

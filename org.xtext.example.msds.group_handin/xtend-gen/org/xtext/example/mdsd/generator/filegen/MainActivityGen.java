@@ -9,10 +9,10 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.InputOutput;
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
@@ -449,9 +449,9 @@ public class MainActivityGen extends AbstractGen {
       if ((_get instanceof Fragment)) {
         ArrayList<Object> activityItem = CollectionLiterals.<Object>newArrayList();
         EObject _get_1 = activityList.get(i);
-        ActivityLayoutAttributes layout = this.<ActivityLayoutAttributes>getFieldData(
-          ((Fragment) _get_1).getActivityAttributes(), 
-          ActivityLayoutAttributes.class);
+        FragmentLayoutAttributes layout = this.<FragmentLayoutAttributes>getFieldData(
+          ((Fragment) _get_1).getFragmentAttributes(), 
+          FragmentLayoutAttributes.class);
         EObject _get_2 = activityList.get(i);
         activityItem.add(((Fragment) _get_2).getName());
         activityItem.add(Integer.valueOf(i));

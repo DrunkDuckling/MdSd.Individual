@@ -10,8 +10,6 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
-import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidAppProject;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
 import org.xtext.example.mdsd.androidGenerator.Application;
@@ -30,6 +28,8 @@ import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes;
+import org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.Holder;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
@@ -173,9 +173,9 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
         return createFragmentAdapter();
       }
       @Override
-      public Adapter caseActivityLayoutAttributes(ActivityLayoutAttributes object)
+      public Adapter caseFragmentLayoutAttributes(FragmentLayoutAttributes object)
       {
-        return createActivityLayoutAttributesAdapter();
+        return createFragmentLayoutAttributesAdapter();
       }
       @Override
       public Adapter caseLayoutElement(LayoutElement object)
@@ -198,9 +198,9 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
         return createTypeSettingAdapter();
       }
       @Override
-      public Adapter caseActivityTypeAttributes(ActivityTypeAttributes object)
+      public Adapter caseFragmentTypeAttributes(FragmentTypeAttributes object)
       {
-        return createActivityTypeAttributesAdapter();
+        return createFragmentTypeAttributesAdapter();
       }
       @Override
       public Adapter caseEditText(EditText object)
@@ -505,16 +505,16 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes <em>Activity Layout Attributes</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes <em>Fragment Layout Attributes</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes
+   * @see org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes
    * @generated
    */
-  public Adapter createActivityLayoutAttributesAdapter()
+  public Adapter createFragmentLayoutAttributesAdapter()
   {
     return null;
   }
@@ -580,16 +580,16 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes <em>Activity Type Attributes</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes <em>Fragment Type Attributes</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes
+   * @see org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes
    * @generated
    */
-  public Adapter createActivityTypeAttributesAdapter()
+  public Adapter createFragmentTypeAttributesAdapter()
   {
     return null;
   }

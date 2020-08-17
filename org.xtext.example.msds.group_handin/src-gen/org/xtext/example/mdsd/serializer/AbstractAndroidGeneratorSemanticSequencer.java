@@ -14,8 +14,6 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
-import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidAppProject;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
 import org.xtext.example.mdsd.androidGenerator.Application;
@@ -30,6 +28,8 @@ import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes;
+import org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.Holder;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.Less;
@@ -61,12 +61,6 @@ public abstract class AbstractAndroidGeneratorSemanticSequencer extends Abstract
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == AndroidGeneratorPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case AndroidGeneratorPackage.ACTIVITY_LAYOUT_ATTRIBUTES:
-				sequence_ActivityLayoutAttributes(context, (ActivityLayoutAttributes) semanticObject); 
-				return; 
-			case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES:
-				sequence_ActivityTypeAttributes(context, (ActivityTypeAttributes) semanticObject); 
-				return; 
 			case AndroidGeneratorPackage.ANDROID_APP_PROJECT:
 				sequence_AndroidAppProject(context, (AndroidAppProject) semanticObject); 
 				return; 
@@ -105,6 +99,12 @@ public abstract class AbstractAndroidGeneratorSemanticSequencer extends Abstract
 				return; 
 			case AndroidGeneratorPackage.FRAGMENT:
 				sequence_Fragment(context, (Fragment) semanticObject); 
+				return; 
+			case AndroidGeneratorPackage.FRAGMENT_LAYOUT_ATTRIBUTES:
+				sequence_FragmentLayoutAttributes(context, (FragmentLayoutAttributes) semanticObject); 
+				return; 
+			case AndroidGeneratorPackage.FRAGMENT_TYPE_ATTRIBUTES:
+				sequence_FragmentTypeAttributes(context, (FragmentTypeAttributes) semanticObject); 
 				return; 
 			case AndroidGeneratorPackage.HOLDER:
 				sequence_Holder(context, (Holder) semanticObject); 
@@ -158,36 +158,6 @@ public abstract class AbstractAndroidGeneratorSemanticSequencer extends Abstract
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
-	
-	/**
-	 * Contexts:
-	 *     ActivityLayoutAttributes returns ActivityLayoutAttributes
-	 *
-	 * Constraint:
-	 *     (layoutElements+=LayoutElement layoutElements+=LayoutElement*)
-	 */
-	protected void sequence_ActivityLayoutAttributes(ISerializationContext context, ActivityLayoutAttributes semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ActivityTypeAttributes returns ActivityTypeAttributes
-	 *
-	 * Constraint:
-	 *     filter=FilterQuery
-	 */
-	protected void sequence_ActivityTypeAttributes(ISerializationContext context, ActivityTypeAttributes semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.ACTIVITY_TYPE_ATTRIBUTES__FILTER) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.ACTIVITY_TYPE_ATTRIBUTES__FILTER));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getActivityTypeAttributesAccess().getFilterFilterQueryParserRuleCall_0(), semanticObject.getFilter());
-		feeder.finish();
-	}
-	
 	
 	/**
 	 * Contexts:
@@ -363,11 +333,41 @@ public abstract class AbstractAndroidGeneratorSemanticSequencer extends Abstract
 	
 	/**
 	 * Contexts:
+	 *     FragmentLayoutAttributes returns FragmentLayoutAttributes
+	 *
+	 * Constraint:
+	 *     (layoutElements+=LayoutElement layoutElements+=LayoutElement*)
+	 */
+	protected void sequence_FragmentLayoutAttributes(ISerializationContext context, FragmentLayoutAttributes semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     FragmentTypeAttributes returns FragmentTypeAttributes
+	 *
+	 * Constraint:
+	 *     filter=FilterQuery
+	 */
+	protected void sequence_FragmentTypeAttributes(ISerializationContext context, FragmentTypeAttributes semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AndroidGeneratorPackage.Literals.FRAGMENT_TYPE_ATTRIBUTES__FILTER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.FRAGMENT_TYPE_ATTRIBUTES__FILTER));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFragmentTypeAttributesAccess().getFilterFilterQueryParserRuleCall_0(), semanticObject.getFilter());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     ApplicationElement returns Fragment
 	 *     Fragment returns Fragment
 	 *
 	 * Constraint:
-	 *     (name=ID activityAttributes+=ActivityLayoutAttributes?)
+	 *     (name=ID fragmentAttributes+=FragmentLayoutAttributes?)
 	 */
 	protected void sequence_Fragment(ISerializationContext context, Fragment semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -587,7 +587,7 @@ public abstract class AbstractAndroidGeneratorSemanticSequencer extends Abstract
 	 *     TypeMap returns TypeMap
 	 *
 	 * Constraint:
-	 *     activitytypeattribute=ActivityTypeAttributes?
+	 *     fragmenttypeattribute=FragmentTypeAttributes?
 	 */
 	protected void sequence_TypeMap(ISerializationContext context, TypeMap semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

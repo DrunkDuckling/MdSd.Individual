@@ -7,7 +7,7 @@ import java.util.ArrayList
 import java.util.List
 import java.util.logging.Logger
 import org.eclipse.xtext.validation.Check
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage
 import org.xtext.example.mdsd.androidGenerator.Application
 import org.xtext.example.mdsd.androidGenerator.ApplicationAttribute
@@ -21,6 +21,8 @@ import org.xtext.example.mdsd.androidGenerator.EditText
 import org.xtext.example.mdsd.androidGenerator.Spinner
 import org.xtext.example.mdsd.androidGenerator.TypeSetting
 import org.xtext.example.mdsd.androidGenerator.ApplicationVersion
+import org.eclipse.xtext.validation.IssueCodes
+import org.xtext.example.mdsd.androidGenerator.TextView
 
 /** 
  * This class contains custom validation rules. 
@@ -28,7 +30,7 @@ import org.xtext.example.mdsd.androidGenerator.ApplicationVersion
  */
 class AndroidGeneratorValidator extends AbstractAndroidGeneratorValidator {
 	static Logger logger = Logger::getLogger("AndroidGeneratorValidator")
-
+	public static val INVALID_NAME = "warning"
 	@Check
 	def void checkDuplicateFragmentNames(ApplicationElementList elements) {
 		var List<String> fragName = new ArrayList<String>();
@@ -45,11 +47,20 @@ class AndroidGeneratorValidator extends AbstractAndroidGeneratorValidator {
 	}
 	
 	@Check
-	def void checkMapSetFragment(ActivityLayoutAttributes layout){
+    def void checkFragmentNameStartsWithCapital(Fragment fragment) {
+		if (!Character.isUpperCase(fragment.getName().charAt(0))) {
+			warning("Name should start with a capital", 
+				AndroidGeneratorPackage.Literals.APPLICATION_ELEMENT__NAME, INVALID_NAME
+			);
+		}
+    }
+	
+	@Check
+	def void checkMapSetFragment(FragmentLayoutAttributes layout){
 		for(type : layout.layoutElements){
 			if(type instanceof TypeMap || type instanceof TypeSetting){
 				if(layout.layoutElements.size > 1){
-					error("Only one premade Fragment is allowed, and can not have custom layout", type, null)
+					error("Only one premade setup is allowed, and can not have custom layout", type, null)
 				}
 			}
 		}
@@ -69,7 +80,7 @@ class AndroidGeneratorValidator extends AbstractAndroidGeneratorValidator {
     }
     
     @Check
-    def void checkLayoutDuplication(ActivityLayoutAttributes layout){
+    def void checkLayoutDuplication(FragmentLayoutAttributes layout){
 		var List<String> foundElements = new ArrayList<String>();
 		for(elements : layout.layoutElements){
 			if(elements instanceof Button){
@@ -87,6 +98,13 @@ class AndroidGeneratorValidator extends AbstractAndroidGeneratorValidator {
 					foundElements.add(Name)
 				}
 			}if(elements instanceof Spinner){
+				var String Name = elements.name;
+				if(foundElements.contains(Name)){
+					error("Layout name already used", elements, null)
+				}else {
+					foundElements.add(Name)
+				}
+			}if(elements instanceof TextView){
 				var String Name = elements.name;
 				if(foundElements.contains(Name)){
 					error("Layout name already used", elements, null)

@@ -13,7 +13,7 @@ package org.xtext.example.mdsd.androidGenerator;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mdsd.androidGenerator.TypeMap#getActivitytypeattribute <em>Activitytypeattribute</em>}</li>
+ *   <li>{@link org.xtext.example.mdsd.androidGenerator.TypeMap#getFragmenttypeattribute <em>Fragmenttypeattribute</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getTypeMap()
@@ -23,25 +23,25 @@ package org.xtext.example.mdsd.androidGenerator;
 public interface TypeMap extends LayoutElement
 {
   /**
-   * Returns the value of the '<em><b>Activitytypeattribute</b></em>' containment reference.
+   * Returns the value of the '<em><b>Fragmenttypeattribute</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Activitytypeattribute</em>' containment reference.
-   * @see #setActivitytypeattribute(ActivityTypeAttributes)
-   * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getTypeMap_Activitytypeattribute()
+   * @return the value of the '<em>Fragmenttypeattribute</em>' containment reference.
+   * @see #setFragmenttypeattribute(FragmentTypeAttributes)
+   * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getTypeMap_Fragmenttypeattribute()
    * @model containment="true"
    * @generated
    */
-  ActivityTypeAttributes getActivitytypeattribute();
+  FragmentTypeAttributes getFragmenttypeattribute();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mdsd.androidGenerator.TypeMap#getActivitytypeattribute <em>Activitytypeattribute</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mdsd.androidGenerator.TypeMap#getFragmenttypeattribute <em>Fragmenttypeattribute</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Activitytypeattribute</em>' containment reference.
-   * @see #getActivitytypeattribute()
+   * @param value the new value of the '<em>Fragmenttypeattribute</em>' containment reference.
+   * @see #getFragmenttypeattribute()
    * @generated
    */
-  void setActivitytypeattribute(ActivityTypeAttributes value);
+  void setFragmenttypeattribute(FragmentTypeAttributes value);
 
 } // TypeMap

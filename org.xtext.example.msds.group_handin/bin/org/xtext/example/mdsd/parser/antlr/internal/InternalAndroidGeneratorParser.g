@@ -369,9 +369,9 @@ ruleMinSDK returns [EObject current=null]
 					$current);
 			}
 		)
-		otherlv_1=MinimumSDK
+		otherlv_1=MinSDK
 		{
-			newLeafNode(otherlv_1, grammarAccess.getMinSDKAccess().getMinimumSDKKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getMinSDKAccess().getMinSDKKeyword_1());
 		}
 		otherlv_2=Colon
 		{
@@ -651,22 +651,15 @@ ruleFragment returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getFragmentAccess().getFragmentAction_0(),
-					$current);
-			}
-		)
-		otherlv_1=Fragment
+		otherlv_0=Fragment
 		{
-			newLeafNode(otherlv_1, grammarAccess.getFragmentAccess().getFragmentKeyword_1());
+			newLeafNode(otherlv_0, grammarAccess.getFragmentAccess().getFragmentKeyword_0());
 		}
 		(
 			(
-				lv_name_2_0=RULE_ID
+				lv_name_1_0=RULE_ID
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getFragmentAccess().getNameIDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getFragmentAccess().getNameIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -675,7 +668,7 @@ ruleFragment returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_1_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -683,18 +676,18 @@ ruleFragment returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFragmentAccess().getActivityAttributesActivityLayoutAttributesParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getFragmentAccess().getFragmentAttributesFragmentLayoutAttributesParserRuleCall_2_0());
 				}
-				lv_activityAttributes_3_0=ruleActivityLayoutAttributes
+				lv_fragmentAttributes_2_0=ruleFragmentLayoutAttributes
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFragmentRule());
 					}
 					add(
 						$current,
-						"activityAttributes",
-						lv_activityAttributes_3_0,
-						"org.xtext.example.mdsd.AndroidGenerator.ActivityLayoutAttributes");
+						"fragmentAttributes",
+						lv_fragmentAttributes_2_0,
+						"org.xtext.example.mdsd.AndroidGenerator.FragmentLayoutAttributes");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -702,15 +695,15 @@ ruleFragment returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleActivityLayoutAttributes
-entryRuleActivityLayoutAttributes returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getActivityLayoutAttributesRule()); }
-	iv_ruleActivityLayoutAttributes=ruleActivityLayoutAttributes
-	{ $current=$iv_ruleActivityLayoutAttributes.current; }
+// Entry rule entryRuleFragmentLayoutAttributes
+entryRuleFragmentLayoutAttributes returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFragmentLayoutAttributesRule()); }
+	iv_ruleFragmentLayoutAttributes=ruleFragmentLayoutAttributes
+	{ $current=$iv_ruleFragmentLayoutAttributes.current; }
 	EOF;
 
-// Rule ActivityLayoutAttributes
-ruleActivityLayoutAttributes returns [EObject current=null]
+// Rule FragmentLayoutAttributes
+ruleFragmentLayoutAttributes returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -720,17 +713,17 @@ ruleActivityLayoutAttributes returns [EObject current=null]
 	(
 		this_BEGIN_0=RULE_BEGIN
 		{
-			newLeafNode(this_BEGIN_0, grammarAccess.getActivityLayoutAttributesAccess().getBEGINTerminalRuleCall_0());
+			newLeafNode(this_BEGIN_0, grammarAccess.getFragmentLayoutAttributesAccess().getBEGINTerminalRuleCall_0());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getActivityLayoutAttributesAccess().getLayoutElementsLayoutElementParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getFragmentLayoutAttributesAccess().getLayoutElementsLayoutElementParserRuleCall_1_0());
 				}
 				lv_layoutElements_1_0=ruleLayoutElement
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getActivityLayoutAttributesRule());
+						$current = createModelElementForParent(grammarAccess.getFragmentLayoutAttributesRule());
 					}
 					add(
 						$current,
@@ -744,17 +737,17 @@ ruleActivityLayoutAttributes returns [EObject current=null]
 		(
 			otherlv_2=Comma
 			{
-				newLeafNode(otherlv_2, grammarAccess.getActivityLayoutAttributesAccess().getCommaKeyword_2_0());
+				newLeafNode(otherlv_2, grammarAccess.getFragmentLayoutAttributesAccess().getCommaKeyword_2_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getActivityLayoutAttributesAccess().getLayoutElementsLayoutElementParserRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getFragmentLayoutAttributesAccess().getLayoutElementsLayoutElementParserRuleCall_2_1_0());
 					}
 					lv_layoutElements_3_0=ruleLayoutElement
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getActivityLayoutAttributesRule());
+							$current = createModelElementForParent(grammarAccess.getFragmentLayoutAttributesRule());
 						}
 						add(
 							$current,
@@ -768,7 +761,7 @@ ruleActivityLayoutAttributes returns [EObject current=null]
 		)*
 		this_END_4=RULE_END
 		{
-			newLeafNode(this_END_4, grammarAccess.getActivityLayoutAttributesAccess().getENDTerminalRuleCall_3());
+			newLeafNode(this_END_4, grammarAccess.getFragmentLayoutAttributesAccess().getENDTerminalRuleCall_3());
 		}
 	)
 ;
@@ -902,18 +895,18 @@ ruleTypeMap returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getTypeMapAccess().getActivitytypeattributeActivityTypeAttributesParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getTypeMapAccess().getFragmenttypeattributeFragmentTypeAttributesParserRuleCall_2_0());
 				}
-				lv_activitytypeattribute_2_0=ruleActivityTypeAttributes
+				lv_fragmenttypeattribute_2_0=ruleFragmentTypeAttributes
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTypeMapRule());
 					}
 					set(
 						$current,
-						"activitytypeattribute",
-						lv_activitytypeattribute_2_0,
-						"org.xtext.example.mdsd.AndroidGenerator.ActivityTypeAttributes");
+						"fragmenttypeattribute",
+						lv_fragmenttypeattribute_2_0,
+						"org.xtext.example.mdsd.AndroidGenerator.FragmentTypeAttributes");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -951,15 +944,15 @@ ruleTypeSetting returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleActivityTypeAttributes
-entryRuleActivityTypeAttributes returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getActivityTypeAttributesRule()); }
-	iv_ruleActivityTypeAttributes=ruleActivityTypeAttributes
-	{ $current=$iv_ruleActivityTypeAttributes.current; }
+// Entry rule entryRuleFragmentTypeAttributes
+entryRuleFragmentTypeAttributes returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFragmentTypeAttributesRule()); }
+	iv_ruleFragmentTypeAttributes=ruleFragmentTypeAttributes
+	{ $current=$iv_ruleFragmentTypeAttributes.current; }
 	EOF;
 
-// Rule ActivityTypeAttributes
-ruleActivityTypeAttributes returns [EObject current=null]
+// Rule FragmentTypeAttributes
+ruleFragmentTypeAttributes returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -969,12 +962,12 @@ ruleActivityTypeAttributes returns [EObject current=null]
 	(
 		(
 			{
-				newCompositeNode(grammarAccess.getActivityTypeAttributesAccess().getFilterFilterQueryParserRuleCall_0());
+				newCompositeNode(grammarAccess.getFragmentTypeAttributesAccess().getFilterFilterQueryParserRuleCall_0());
 			}
 			lv_filter_0_0=ruleFilterQuery
 			{
 				if ($current==null) {
-					$current = createModelElementForParent(grammarAccess.getActivityTypeAttributesRule());
+					$current = createModelElementForParent(grammarAccess.getFragmentTypeAttributesRule());
 				}
 				set(
 					$current,
@@ -1196,7 +1189,7 @@ ruleTextView returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_2=Content_1
+		otherlv_2=Content
 		{
 			newLeafNode(otherlv_2, grammarAccess.getTextViewAccess().getContentKeyword_2());
 		}
@@ -1633,9 +1626,9 @@ ruleDistance returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0=Distance
+		otherlv_0=Dist
 		{
-			newLeafNode(otherlv_0, grammarAccess.getDistanceAccess().getDistanceKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getDistanceAccess().getDistKeyword_0());
 		}
 		otherlv_1=Colon
 		{

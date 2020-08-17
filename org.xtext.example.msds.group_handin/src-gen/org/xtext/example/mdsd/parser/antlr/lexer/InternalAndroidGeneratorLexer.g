@@ -15,15 +15,13 @@ AndroidSDK : 'Android-SDK';
 
 FilterQuery : 'FilterQuery';
 
-MinimumSDK : 'Minimum-SDK';
-
-Permissions : 'permissions';
+Permissions : 'Permissions';
 
 TargetSDK : 'Target-SDK';
 
-Distance : 'Distance';
-
 EditText : 'EditText';
+
+Elements : 'Elements';
 
 Fragment : 'Fragment';
 
@@ -31,13 +29,11 @@ Settings : 'Settings';
 
 Textview : 'Textview';
 
-Elements : 'elements';
-
 Content : 'Content';
 
-Spinner : 'Spinner';
+MinSDK : 'Min-SDK';
 
-Content_1 : 'content';
+Spinner : 'Spinner';
 
 Bundle : 'Bundle';
 
@@ -48,6 +44,8 @@ Holder : 'Holder';
 Model : 'Model';
 
 Toast : 'Toast';
+
+Dist : 'Dist';
 
 App : 'App';
 
@@ -67,11 +65,11 @@ F : 'f';
 
 M : 'm';
 
-RULE_PACKAGE_NAME : '"' RULE_ID ('.' RULE_ID)* '"';
-
 fragment RULE_BEGIN : ;
 
 fragment RULE_END : ;
+
+RULE_PACKAGE_NAME : '"' RULE_ID ('.' RULE_ID)* '"';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

@@ -10,8 +10,6 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
-import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidAppProject;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorFactory;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
@@ -31,6 +29,8 @@ import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes;
+import org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.Holder;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
@@ -147,7 +147,7 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass activityLayoutAttributesEClass = null;
+  private EClass fragmentLayoutAttributesEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -182,7 +182,7 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass activityTypeAttributesEClass = null;
+  private EClass fragmentTypeAttributesEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -657,7 +657,7 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   @Override
-  public EReference getFragment_ActivityAttributes()
+  public EReference getFragment_FragmentAttributes()
   {
     return (EReference)fragmentEClass.getEStructuralFeatures().get(0);
   }
@@ -668,9 +668,9 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   @Override
-  public EClass getActivityLayoutAttributes()
+  public EClass getFragmentLayoutAttributes()
   {
-    return activityLayoutAttributesEClass;
+    return fragmentLayoutAttributesEClass;
   }
 
   /**
@@ -679,9 +679,9 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   @Override
-  public EReference getActivityLayoutAttributes_LayoutElements()
+  public EReference getFragmentLayoutAttributes_LayoutElements()
   {
-    return (EReference)activityLayoutAttributesEClass.getEStructuralFeatures().get(0);
+    return (EReference)fragmentLayoutAttributesEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -734,7 +734,7 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   @Override
-  public EReference getTypeMap_Activitytypeattribute()
+  public EReference getTypeMap_Fragmenttypeattribute()
   {
     return (EReference)typeMapEClass.getEStructuralFeatures().get(0);
   }
@@ -756,9 +756,9 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   @Override
-  public EClass getActivityTypeAttributes()
+  public EClass getFragmentTypeAttributes()
   {
-    return activityTypeAttributesEClass;
+    return fragmentTypeAttributesEClass;
   }
 
   /**
@@ -767,9 +767,9 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
    * @generated
    */
   @Override
-  public EReference getActivityTypeAttributes_Filter()
+  public EReference getFragmentTypeAttributes_Filter()
   {
-    return (EReference)activityTypeAttributesEClass.getEStructuralFeatures().get(0);
+    return (EReference)fragmentTypeAttributesEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1234,10 +1234,10 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
     modelEClass = createEClass(MODEL);
 
     fragmentEClass = createEClass(FRAGMENT);
-    createEReference(fragmentEClass, FRAGMENT__ACTIVITY_ATTRIBUTES);
+    createEReference(fragmentEClass, FRAGMENT__FRAGMENT_ATTRIBUTES);
 
-    activityLayoutAttributesEClass = createEClass(ACTIVITY_LAYOUT_ATTRIBUTES);
-    createEReference(activityLayoutAttributesEClass, ACTIVITY_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS);
+    fragmentLayoutAttributesEClass = createEClass(FRAGMENT_LAYOUT_ATTRIBUTES);
+    createEReference(fragmentLayoutAttributesEClass, FRAGMENT_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS);
 
     layoutElementEClass = createEClass(LAYOUT_ELEMENT);
 
@@ -1245,12 +1245,12 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
     createEAttribute(dataholdersEClass, DATAHOLDERS__NAME);
 
     typeMapEClass = createEClass(TYPE_MAP);
-    createEReference(typeMapEClass, TYPE_MAP__ACTIVITYTYPEATTRIBUTE);
+    createEReference(typeMapEClass, TYPE_MAP__FRAGMENTTYPEATTRIBUTE);
 
     typeSettingEClass = createEClass(TYPE_SETTING);
 
-    activityTypeAttributesEClass = createEClass(ACTIVITY_TYPE_ATTRIBUTES);
-    createEReference(activityTypeAttributesEClass, ACTIVITY_TYPE_ATTRIBUTES__FILTER);
+    fragmentTypeAttributesEClass = createEClass(FRAGMENT_TYPE_ATTRIBUTES);
+    createEReference(fragmentTypeAttributesEClass, FRAGMENT_TYPE_ATTRIBUTES__FILTER);
 
     editTextEClass = createEClass(EDIT_TEXT);
 
@@ -1394,10 +1394,10 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(fragmentEClass, Fragment.class, "Fragment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFragment_ActivityAttributes(), this.getActivityLayoutAttributes(), null, "activityAttributes", null, 0, -1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFragment_FragmentAttributes(), this.getFragmentLayoutAttributes(), null, "fragmentAttributes", null, 0, -1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(activityLayoutAttributesEClass, ActivityLayoutAttributes.class, "ActivityLayoutAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getActivityLayoutAttributes_LayoutElements(), this.getLayoutElement(), null, "layoutElements", null, 0, -1, ActivityLayoutAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(fragmentLayoutAttributesEClass, FragmentLayoutAttributes.class, "FragmentLayoutAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFragmentLayoutAttributes_LayoutElements(), this.getLayoutElement(), null, "layoutElements", null, 0, -1, FragmentLayoutAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(layoutElementEClass, LayoutElement.class, "LayoutElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1405,12 +1405,12 @@ public class AndroidGeneratorPackageImpl extends EPackageImpl implements Android
     initEAttribute(getDataholders_Name(), ecorePackage.getEString(), "name", null, 0, 1, Dataholders.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeMapEClass, TypeMap.class, "TypeMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTypeMap_Activitytypeattribute(), this.getActivityTypeAttributes(), null, "activitytypeattribute", null, 0, 1, TypeMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTypeMap_Fragmenttypeattribute(), this.getFragmentTypeAttributes(), null, "fragmenttypeattribute", null, 0, 1, TypeMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeSettingEClass, TypeSetting.class, "TypeSetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(activityTypeAttributesEClass, ActivityTypeAttributes.class, "ActivityTypeAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getActivityTypeAttributes_Filter(), this.getFilterQuery(), null, "filter", null, 0, 1, ActivityTypeAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(fragmentTypeAttributesEClass, FragmentTypeAttributes.class, "FragmentTypeAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFragmentTypeAttributes_Filter(), this.getFilterQuery(), null, "filter", null, 0, 1, FragmentTypeAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(editTextEClass, EditText.class, "EditText", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

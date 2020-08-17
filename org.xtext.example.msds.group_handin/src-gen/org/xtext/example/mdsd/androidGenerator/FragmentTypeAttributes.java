@@ -7,21 +7,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Activity Type Attributes</b></em>'.
+ * A representation of the model object '<em><b>Fragment Type Attributes</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes#getFilter <em>Filter</em>}</li>
+ *   <li>{@link org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes#getFilter <em>Filter</em>}</li>
  * </ul>
  *
- * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getActivityTypeAttributes()
+ * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getFragmentTypeAttributes()
  * @model
  * @generated
  */
-public interface ActivityTypeAttributes extends EObject
+public interface FragmentTypeAttributes extends EObject
 {
   /**
    * Returns the value of the '<em><b>Filter</b></em>' containment reference.
@@ -29,14 +29,14 @@ public interface ActivityTypeAttributes extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Filter</em>' containment reference.
    * @see #setFilter(FilterQuery)
-   * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getActivityTypeAttributes_Filter()
+   * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getFragmentTypeAttributes_Filter()
    * @model containment="true"
    * @generated
    */
   FilterQuery getFilter();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes#getFilter <em>Filter</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes#getFilter <em>Filter</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Filter</em>' containment reference.
@@ -45,4 +45,4 @@ public interface ActivityTypeAttributes extends EObject
    */
   void setFilter(FilterQuery value);
 
-} // ActivityTypeAttributes
+} // FragmentTypeAttributes

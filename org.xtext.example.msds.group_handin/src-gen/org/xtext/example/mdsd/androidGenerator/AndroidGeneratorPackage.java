@@ -403,13 +403,13 @@ public interface AndroidGeneratorPackage extends EPackage
   int FRAGMENT__NAME = APPLICATION_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Activity Attributes</b></em>' containment reference list.
+   * The feature id for the '<em><b>Fragment Attributes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FRAGMENT__ACTIVITY_ATTRIBUTES = APPLICATION_ELEMENT_FEATURE_COUNT + 0;
+  int FRAGMENT__FRAGMENT_ATTRIBUTES = APPLICATION_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Fragment</em>' class.
@@ -421,14 +421,14 @@ public interface AndroidGeneratorPackage extends EPackage
   int FRAGMENT_FEATURE_COUNT = APPLICATION_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityLayoutAttributesImpl <em>Activity Layout Attributes</em>}' class.
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.FragmentLayoutAttributesImpl <em>Fragment Layout Attributes</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.example.mdsd.androidGenerator.impl.ActivityLayoutAttributesImpl
-   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivityLayoutAttributes()
+   * @see org.xtext.example.mdsd.androidGenerator.impl.FragmentLayoutAttributesImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getFragmentLayoutAttributes()
    * @generated
    */
-  int ACTIVITY_LAYOUT_ATTRIBUTES = 12;
+  int FRAGMENT_LAYOUT_ATTRIBUTES = 12;
 
   /**
    * The feature id for the '<em><b>Layout Elements</b></em>' containment reference list.
@@ -437,16 +437,16 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTIVITY_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS = 0;
+  int FRAGMENT_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS = 0;
 
   /**
-   * The number of structural features of the '<em>Activity Layout Attributes</em>' class.
+   * The number of structural features of the '<em>Fragment Layout Attributes</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTIVITY_LAYOUT_ATTRIBUTES_FEATURE_COUNT = 1;
+  int FRAGMENT_LAYOUT_ATTRIBUTES_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.LayoutElementImpl <em>Layout Element</em>}' class.
@@ -506,13 +506,13 @@ public interface AndroidGeneratorPackage extends EPackage
   int TYPE_MAP = 15;
 
   /**
-   * The feature id for the '<em><b>Activitytypeattribute</b></em>' containment reference.
+   * The feature id for the '<em><b>Fragmenttypeattribute</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE_MAP__ACTIVITYTYPEATTRIBUTE = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
+  int TYPE_MAP__FRAGMENTTYPEATTRIBUTE = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Type Map</em>' class.
@@ -543,14 +543,14 @@ public interface AndroidGeneratorPackage extends EPackage
   int TYPE_SETTING_FEATURE_COUNT = LAYOUT_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl <em>Activity Type Attributes</em>}' class.
+   * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.FragmentTypeAttributesImpl <em>Fragment Type Attributes</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl
-   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivityTypeAttributes()
+   * @see org.xtext.example.mdsd.androidGenerator.impl.FragmentTypeAttributesImpl
+   * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getFragmentTypeAttributes()
    * @generated
    */
-  int ACTIVITY_TYPE_ATTRIBUTES = 17;
+  int FRAGMENT_TYPE_ATTRIBUTES = 17;
 
   /**
    * The feature id for the '<em><b>Filter</b></em>' containment reference.
@@ -559,16 +559,16 @@ public interface AndroidGeneratorPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTIVITY_TYPE_ATTRIBUTES__FILTER = 0;
+  int FRAGMENT_TYPE_ATTRIBUTES__FILTER = 0;
 
   /**
-   * The number of structural features of the '<em>Activity Type Attributes</em>' class.
+   * The number of structural features of the '<em>Fragment Type Attributes</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTIVITY_TYPE_ATTRIBUTES_FEATURE_COUNT = 1;
+  int FRAGMENT_TYPE_ATTRIBUTES_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mdsd.androidGenerator.impl.EditTextImpl <em>Edit Text</em>}' class.
@@ -1375,36 +1375,36 @@ public interface AndroidGeneratorPackage extends EPackage
   EClass getFragment();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mdsd.androidGenerator.Fragment#getActivityAttributes <em>Activity Attributes</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mdsd.androidGenerator.Fragment#getFragmentAttributes <em>Fragment Attributes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Activity Attributes</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.Fragment#getActivityAttributes()
+   * @return the meta object for the containment reference list '<em>Fragment Attributes</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.Fragment#getFragmentAttributes()
    * @see #getFragment()
    * @generated
    */
-  EReference getFragment_ActivityAttributes();
+  EReference getFragment_FragmentAttributes();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes <em>Activity Layout Attributes</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes <em>Fragment Layout Attributes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Activity Layout Attributes</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes
+   * @return the meta object for class '<em>Fragment Layout Attributes</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes
    * @generated
    */
-  EClass getActivityLayoutAttributes();
+  EClass getFragmentLayoutAttributes();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes#getLayoutElements <em>Layout Elements</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes#getLayoutElements <em>Layout Elements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Layout Elements</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes#getLayoutElements()
-   * @see #getActivityLayoutAttributes()
+   * @see org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes#getLayoutElements()
+   * @see #getFragmentLayoutAttributes()
    * @generated
    */
-  EReference getActivityLayoutAttributes_LayoutElements();
+  EReference getFragmentLayoutAttributes_LayoutElements();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.LayoutElement <em>Layout Element</em>}'.
@@ -1448,15 +1448,15 @@ public interface AndroidGeneratorPackage extends EPackage
   EClass getTypeMap();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mdsd.androidGenerator.TypeMap#getActivitytypeattribute <em>Activitytypeattribute</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mdsd.androidGenerator.TypeMap#getFragmenttypeattribute <em>Fragmenttypeattribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Activitytypeattribute</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.TypeMap#getActivitytypeattribute()
+   * @return the meta object for the containment reference '<em>Fragmenttypeattribute</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.TypeMap#getFragmenttypeattribute()
    * @see #getTypeMap()
    * @generated
    */
-  EReference getTypeMap_Activitytypeattribute();
+  EReference getTypeMap_Fragmenttypeattribute();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.TypeSetting <em>Type Setting</em>}'.
@@ -1469,25 +1469,25 @@ public interface AndroidGeneratorPackage extends EPackage
   EClass getTypeSetting();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes <em>Activity Type Attributes</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes <em>Fragment Type Attributes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Activity Type Attributes</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes
+   * @return the meta object for class '<em>Fragment Type Attributes</em>'.
+   * @see org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes
    * @generated
    */
-  EClass getActivityTypeAttributes();
+  EClass getFragmentTypeAttributes();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes#getFilter <em>Filter</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes#getFilter <em>Filter</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Filter</em>'.
-   * @see org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes#getFilter()
-   * @see #getActivityTypeAttributes()
+   * @see org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes#getFilter()
+   * @see #getFragmentTypeAttributes()
    * @generated
    */
-  EReference getActivityTypeAttributes_Filter();
+  EReference getFragmentTypeAttributes_Filter();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mdsd.androidGenerator.EditText <em>Edit Text</em>}'.
@@ -2105,22 +2105,22 @@ public interface AndroidGeneratorPackage extends EPackage
     EClass FRAGMENT = eINSTANCE.getFragment();
 
     /**
-     * The meta object literal for the '<em><b>Activity Attributes</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Fragment Attributes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FRAGMENT__ACTIVITY_ATTRIBUTES = eINSTANCE.getFragment_ActivityAttributes();
+    EReference FRAGMENT__FRAGMENT_ATTRIBUTES = eINSTANCE.getFragment_FragmentAttributes();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityLayoutAttributesImpl <em>Activity Layout Attributes</em>}' class.
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.FragmentLayoutAttributesImpl <em>Fragment Layout Attributes</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.example.mdsd.androidGenerator.impl.ActivityLayoutAttributesImpl
-     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivityLayoutAttributes()
+     * @see org.xtext.example.mdsd.androidGenerator.impl.FragmentLayoutAttributesImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getFragmentLayoutAttributes()
      * @generated
      */
-    EClass ACTIVITY_LAYOUT_ATTRIBUTES = eINSTANCE.getActivityLayoutAttributes();
+    EClass FRAGMENT_LAYOUT_ATTRIBUTES = eINSTANCE.getFragmentLayoutAttributes();
 
     /**
      * The meta object literal for the '<em><b>Layout Elements</b></em>' containment reference list feature.
@@ -2128,7 +2128,7 @@ public interface AndroidGeneratorPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ACTIVITY_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS = eINSTANCE.getActivityLayoutAttributes_LayoutElements();
+    EReference FRAGMENT_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS = eINSTANCE.getFragmentLayoutAttributes_LayoutElements();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.LayoutElementImpl <em>Layout Element</em>}' class.
@@ -2169,12 +2169,12 @@ public interface AndroidGeneratorPackage extends EPackage
     EClass TYPE_MAP = eINSTANCE.getTypeMap();
 
     /**
-     * The meta object literal for the '<em><b>Activitytypeattribute</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Fragmenttypeattribute</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TYPE_MAP__ACTIVITYTYPEATTRIBUTE = eINSTANCE.getTypeMap_Activitytypeattribute();
+    EReference TYPE_MAP__FRAGMENTTYPEATTRIBUTE = eINSTANCE.getTypeMap_Fragmenttypeattribute();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.TypeSettingImpl <em>Type Setting</em>}' class.
@@ -2187,14 +2187,14 @@ public interface AndroidGeneratorPackage extends EPackage
     EClass TYPE_SETTING = eINSTANCE.getTypeSetting();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl <em>Activity Type Attributes</em>}' class.
+     * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.FragmentTypeAttributesImpl <em>Fragment Type Attributes</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl
-     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getActivityTypeAttributes()
+     * @see org.xtext.example.mdsd.androidGenerator.impl.FragmentTypeAttributesImpl
+     * @see org.xtext.example.mdsd.androidGenerator.impl.AndroidGeneratorPackageImpl#getFragmentTypeAttributes()
      * @generated
      */
-    EClass ACTIVITY_TYPE_ATTRIBUTES = eINSTANCE.getActivityTypeAttributes();
+    EClass FRAGMENT_TYPE_ATTRIBUTES = eINSTANCE.getFragmentTypeAttributes();
 
     /**
      * The meta object literal for the '<em><b>Filter</b></em>' containment reference feature.
@@ -2202,7 +2202,7 @@ public interface AndroidGeneratorPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ACTIVITY_TYPE_ATTRIBUTES__FILTER = eINSTANCE.getActivityTypeAttributes_Filter();
+    EReference FRAGMENT_TYPE_ATTRIBUTES__FILTER = eINSTANCE.getFragmentTypeAttributes_Filter();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mdsd.androidGenerator.impl.EditTextImpl <em>Edit Text</em>}' class.

@@ -7,8 +7,6 @@ import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
-import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.androidGenerator.ApplicationAttribute;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
@@ -19,6 +17,8 @@ import org.xtext.example.mdsd.androidGenerator.ButtonActions;
 import org.xtext.example.mdsd.androidGenerator.Dataholders;
 import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes;
+import org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.Spinner;
 import org.xtext.example.mdsd.androidGenerator.SpinnerCon;
@@ -46,7 +46,7 @@ public class FragmentGen extends AbstractClassGen {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Something went wrong");
     String data = _builder.toString();
-    ActivityLayoutAttributes layout = this.<ActivityLayoutAttributes>getFieldData(fragment.getActivityAttributes(), ActivityLayoutAttributes.class);
+    FragmentLayoutAttributes layout = this.<FragmentLayoutAttributes>getFieldData(fragment.getFragmentAttributes(), FragmentLayoutAttributes.class);
     boolean _notEquals = (!Objects.equal(layout, null));
     if (_notEquals) {
       EList<LayoutElement> _layoutElements = layout.getLayoutElements();
@@ -83,21 +83,21 @@ public class FragmentGen extends AbstractClassGen {
   }
   
   public String filterOptions(final Fragment fragment, final Application application) {
-    ActivityLayoutAttributes layout = this.<ActivityLayoutAttributes>getFieldData(fragment.getActivityAttributes(), ActivityLayoutAttributes.class);
+    FragmentLayoutAttributes layout = this.<FragmentLayoutAttributes>getFieldData(fragment.getFragmentAttributes(), FragmentLayoutAttributes.class);
     EList<LayoutElement> _layoutElements = layout.getLayoutElements();
     for (final LayoutElement type : _layoutElements) {
       if ((type instanceof TypeMap)) {
-        ActivityTypeAttributes _activitytypeattribute = ((TypeMap)type).getActivitytypeattribute();
-        boolean _notEquals = (!Objects.equal(_activitytypeattribute, null));
+        FragmentTypeAttributes _fragmenttypeattribute = ((TypeMap)type).getFragmenttypeattribute();
+        boolean _notEquals = (!Objects.equal(_fragmenttypeattribute, null));
         if (_notEquals) {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("String filterQuery = \"");
-          String _name = ((TypeMap)type).getActivitytypeattribute().getFilter().getName();
+          String _name = ((TypeMap)type).getFragmenttypeattribute().getFilter().getName();
           _builder.append(_name);
           _builder.append("\";");
           _builder.newLineIfNotEmpty();
           _builder.append("double distanceThreshold = ");
-          int _value = ((TypeMap)type).getActivitytypeattribute().getFilter().getFilterAttributes().getDistance().getResults().getValue();
+          int _value = ((TypeMap)type).getFragmenttypeattribute().getFilter().getFilterAttributes().getDistance().getResults().getValue();
           _builder.append(_value);
           _builder.append(";");
           _builder.newLineIfNotEmpty();
@@ -118,6 +118,57 @@ public class FragmentGen extends AbstractClassGen {
   }
   
   public String insertMapFragment(final Fragment fragment, final Application application) {
+    final StringBuilder content = new StringBuilder();
+    final StringBuilder vars = new StringBuilder();
+    final List<LayoutElement> bundleElements = this.getlayoutelem(application, fragment);
+    boolean _notEquals = (!Objects.equal(bundleElements, null));
+    if (_notEquals) {
+      boolean _isEmpty = bundleElements.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        for (final LayoutElement ele : bundleElements) {
+          {
+            if ((ele instanceof Spinner)) {
+              StringConcatenation _builder = new StringConcatenation();
+              _builder.append("filterQuery = bundle.getString(\"b");
+              String _name = ((Spinner)ele).getName();
+              _builder.append(_name);
+              _builder.append("\");");
+              _builder.newLineIfNotEmpty();
+              content.append(_builder);
+            }
+            if ((ele instanceof EditText)) {
+              StringConcatenation _builder_1 = new StringConcatenation();
+              _builder_1.append("distanceThreshold = bundle.getDouble(\"b");
+              String _name_1 = ((EditText)ele).getName();
+              _builder_1.append(_name_1);
+              _builder_1.append("\");");
+              _builder_1.newLineIfNotEmpty();
+              content.append(_builder_1);
+            }
+            if ((ele instanceof TextView)) {
+              StringConcatenation _builder_2 = new StringConcatenation();
+              _builder_2.append("String m");
+              String _name_2 = ((TextView)ele).getName();
+              _builder_2.append(_name_2);
+              _builder_2.append(" = \"\";");
+              _builder_2.newLineIfNotEmpty();
+              vars.append(_builder_2);
+              StringConcatenation _builder_3 = new StringConcatenation();
+              _builder_3.append("m");
+              String _name_3 = ((TextView)ele).getName();
+              _builder_3.append(_name_3);
+              _builder_3.append(" = bundle.getString(\"b");
+              String _name_4 = ((TextView)ele).getName();
+              _builder_3.append(_name_4);
+              _builder_3.append("\");");
+              _builder_3.newLineIfNotEmpty();
+              content.append(_builder_3);
+            }
+          }
+        }
+      }
+    }
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
     String _name = application.getName();
@@ -283,12 +334,22 @@ public class FragmentGen extends AbstractClassGen {
     _builder.append("        ");
     _builder.append("if (bundle != null){");
     _builder.newLine();
-    _builder.append("            ");
-    _builder.append("filterQuery = bundle.getString(\"location\");");
-    _builder.newLine();
-    _builder.append("            ");
-    _builder.append("distanceThreshold = bundle.getDouble(\"radius\");");
-    _builder.newLine();
+    {
+      boolean _isEmpty_1 = bundleElements.isEmpty();
+      boolean _not_1 = (!_isEmpty_1);
+      if (_not_1) {
+        _builder.append("        \t");
+        _builder.append(content, "        \t");
+        _builder.newLineIfNotEmpty();
+      } else {
+        _builder.append("        \t");
+        _builder.append("filterQuery = bundle.getString(\"location\");");
+        _builder.newLine();
+        _builder.append("        \t");
+        _builder.append("distanceThreshold = bundle.getDouble(\"radius\");");
+        _builder.newLine();
+      }
+    }
     _builder.append("        ");
     _builder.append("}");
     _builder.newLine();
@@ -938,12 +999,12 @@ public class FragmentGen extends AbstractClassGen {
   }
   
   public List<LayoutElement> getlayoutelem(final Application app, final Fragment frag) {
-    final ArrayList<LayoutElement> elements = CollectionLiterals.<LayoutElement>newArrayList();
+    final ArrayList<LayoutElement> bundleElements = CollectionLiterals.<LayoutElement>newArrayList();
     final Consumer<ApplicationAttribute> _function = (ApplicationAttribute a) -> {
       if ((((ApplicationAttribute) a) instanceof ApplicationElementList)) {
         final Consumer<ApplicationElement> _function_1 = (ApplicationElement f) -> {
           if ((f instanceof Fragment)) {
-            final Consumer<ActivityLayoutAttributes> _function_2 = (ActivityLayoutAttributes e) -> {
+            final Consumer<FragmentLayoutAttributes> _function_2 = (FragmentLayoutAttributes e) -> {
               final Consumer<LayoutElement> _function_3 = (LayoutElement l) -> {
                 if ((l instanceof Button)) {
                   final Consumer<ButtonActions> _function_4 = (ButtonActions b) -> {
@@ -953,7 +1014,7 @@ public class FragmentGen extends AbstractClassGen {
                       boolean _tripleEquals = (_name == _name_1);
                       if (_tripleEquals) {
                         final Consumer<Dataholders> _function_5 = (Dataholders it) -> {
-                          elements.add(it);
+                          bundleElements.add(it);
                         };
                         ((Bundle) b).getHolder().getHol().forEach(_function_5);
                       }
@@ -964,23 +1025,23 @@ public class FragmentGen extends AbstractClassGen {
               };
               e.getLayoutElements().forEach(_function_3);
             };
-            ((Fragment) f).getActivityAttributes().forEach(_function_2);
+            ((Fragment) f).getFragmentAttributes().forEach(_function_2);
           }
         };
         ((ApplicationElementList) a).getElements().forEach(_function_1);
       }
     };
     app.getAttributes().forEach(_function);
-    return elements;
+    return bundleElements;
   }
   
   public StringBuilder insertCustomFragment(final Fragment fragment, final Application application) {
-    ActivityLayoutAttributes layout = this.<ActivityLayoutAttributes>getFieldData(fragment.getActivityAttributes(), ActivityLayoutAttributes.class);
+    FragmentLayoutAttributes layout = this.<FragmentLayoutAttributes>getFieldData(fragment.getFragmentAttributes(), FragmentLayoutAttributes.class);
     final StringBuilder string = new StringBuilder();
     final StringBuilder instances = new StringBuilder();
     final StringBuilder vars = new StringBuilder();
     final StringBuilder methods = new StringBuilder();
-    final List<LayoutElement> elements = this.getlayoutelem(application, fragment);
+    final List<LayoutElement> bundleElements = this.getlayoutelem(application, fragment);
     final StringBuilder bundle = new StringBuilder();
     final StringBuilder content = new StringBuilder();
     EList<LayoutElement> _layoutElements = layout.getLayoutElements();
@@ -1226,12 +1287,12 @@ public class FragmentGen extends AbstractClassGen {
         }
       }
     }
-    boolean _notEquals = (!Objects.equal(elements, null));
+    boolean _notEquals = (!Objects.equal(bundleElements, null));
     if (_notEquals) {
-      boolean _isEmpty = elements.isEmpty();
+      boolean _isEmpty = bundleElements.isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
-        for (final LayoutElement ele : elements) {
+        for (final LayoutElement ele : bundleElements) {
           {
             if ((ele instanceof Spinner)) {
               StringConcatenation _builder = new StringConcatenation();
@@ -1402,7 +1463,7 @@ public class FragmentGen extends AbstractClassGen {
   public StringBuilder insertVariablesBundle(final Fragment fragment, final Application application) {
     StringBuilder _xblockexpression = null;
     {
-      ActivityLayoutAttributes layout = this.<ActivityLayoutAttributes>getFieldData(fragment.getActivityAttributes(), ActivityLayoutAttributes.class);
+      FragmentLayoutAttributes layout = this.<FragmentLayoutAttributes>getFieldData(fragment.getFragmentAttributes(), FragmentLayoutAttributes.class);
       final StringBuilder string = new StringBuilder();
       final StringBuilder spinner = new StringBuilder();
       final StringBuilder edittext = new StringBuilder();

@@ -17,24 +17,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Activity Layout Attributes</b></em>'.
+ * An implementation of the model object '<em><b>Fragment Layout Attributes</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityLayoutAttributesImpl#getLayoutElements <em>Layout Elements</em>}</li>
+ *   <li>{@link org.xtext.example.mdsd.androidGenerator.impl.FragmentLayoutAttributesImpl#getLayoutElements <em>Layout Elements</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ActivityLayoutAttributesImpl extends MinimalEObjectImpl.Container implements ActivityLayoutAttributes
+public class FragmentLayoutAttributesImpl extends MinimalEObjectImpl.Container implements FragmentLayoutAttributes
 {
   /**
    * The cached value of the '{@link #getLayoutElements() <em>Layout Elements</em>}' containment reference list.
@@ -51,7 +51,7 @@ public class ActivityLayoutAttributesImpl extends MinimalEObjectImpl.Container i
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ActivityLayoutAttributesImpl()
+  protected FragmentLayoutAttributesImpl()
   {
     super();
   }
@@ -64,7 +64,7 @@ public class ActivityLayoutAttributesImpl extends MinimalEObjectImpl.Container i
   @Override
   protected EClass eStaticClass()
   {
-    return AndroidGeneratorPackage.Literals.ACTIVITY_LAYOUT_ATTRIBUTES;
+    return AndroidGeneratorPackage.Literals.FRAGMENT_LAYOUT_ATTRIBUTES;
   }
 
   /**
@@ -77,7 +77,7 @@ public class ActivityLayoutAttributesImpl extends MinimalEObjectImpl.Container i
   {
     if (layoutElements == null)
     {
-      layoutElements = new EObjectContainmentEList<LayoutElement>(LayoutElement.class, this, AndroidGeneratorPackage.ACTIVITY_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS);
+      layoutElements = new EObjectContainmentEList<LayoutElement>(LayoutElement.class, this, AndroidGeneratorPackage.FRAGMENT_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS);
     }
     return layoutElements;
   }
@@ -92,7 +92,7 @@ public class ActivityLayoutAttributesImpl extends MinimalEObjectImpl.Container i
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.ACTIVITY_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS:
+      case AndroidGeneratorPackage.FRAGMENT_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS:
         return ((InternalEList<?>)getLayoutElements()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -108,7 +108,7 @@ public class ActivityLayoutAttributesImpl extends MinimalEObjectImpl.Container i
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.ACTIVITY_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS:
+      case AndroidGeneratorPackage.FRAGMENT_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS:
         return getLayoutElements();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -125,7 +125,7 @@ public class ActivityLayoutAttributesImpl extends MinimalEObjectImpl.Container i
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.ACTIVITY_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS:
+      case AndroidGeneratorPackage.FRAGMENT_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS:
         getLayoutElements().clear();
         getLayoutElements().addAll((Collection<? extends LayoutElement>)newValue);
         return;
@@ -143,7 +143,7 @@ public class ActivityLayoutAttributesImpl extends MinimalEObjectImpl.Container i
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.ACTIVITY_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS:
+      case AndroidGeneratorPackage.FRAGMENT_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS:
         getLayoutElements().clear();
         return;
     }
@@ -160,10 +160,10 @@ public class ActivityLayoutAttributesImpl extends MinimalEObjectImpl.Container i
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.ACTIVITY_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS:
+      case AndroidGeneratorPackage.FRAGMENT_LAYOUT_ATTRIBUTES__LAYOUT_ELEMENTS:
         return layoutElements != null && !layoutElements.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //ActivityLayoutAttributesImpl
+} //FragmentLayoutAttributesImpl

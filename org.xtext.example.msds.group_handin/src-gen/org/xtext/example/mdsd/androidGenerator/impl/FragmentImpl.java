@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +27,7 @@ import org.xtext.example.mdsd.androidGenerator.Fragment;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mdsd.androidGenerator.impl.FragmentImpl#getActivityAttributes <em>Activity Attributes</em>}</li>
+ *   <li>{@link org.xtext.example.mdsd.androidGenerator.impl.FragmentImpl#getFragmentAttributes <em>Fragment Attributes</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,14 +35,14 @@ import org.xtext.example.mdsd.androidGenerator.Fragment;
 public class FragmentImpl extends ApplicationElementImpl implements Fragment
 {
   /**
-   * The cached value of the '{@link #getActivityAttributes() <em>Activity Attributes</em>}' containment reference list.
+   * The cached value of the '{@link #getFragmentAttributes() <em>Fragment Attributes</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getActivityAttributes()
+   * @see #getFragmentAttributes()
    * @generated
    * @ordered
    */
-  protected EList<ActivityLayoutAttributes> activityAttributes;
+  protected EList<FragmentLayoutAttributes> fragmentAttributes;
 
   /**
    * <!-- begin-user-doc -->
@@ -71,13 +71,13 @@ public class FragmentImpl extends ApplicationElementImpl implements Fragment
    * @generated
    */
   @Override
-  public EList<ActivityLayoutAttributes> getActivityAttributes()
+  public EList<FragmentLayoutAttributes> getFragmentAttributes()
   {
-    if (activityAttributes == null)
+    if (fragmentAttributes == null)
     {
-      activityAttributes = new EObjectContainmentEList<ActivityLayoutAttributes>(ActivityLayoutAttributes.class, this, AndroidGeneratorPackage.FRAGMENT__ACTIVITY_ATTRIBUTES);
+      fragmentAttributes = new EObjectContainmentEList<FragmentLayoutAttributes>(FragmentLayoutAttributes.class, this, AndroidGeneratorPackage.FRAGMENT__FRAGMENT_ATTRIBUTES);
     }
-    return activityAttributes;
+    return fragmentAttributes;
   }
 
   /**
@@ -90,8 +90,8 @@ public class FragmentImpl extends ApplicationElementImpl implements Fragment
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.FRAGMENT__ACTIVITY_ATTRIBUTES:
-        return ((InternalEList<?>)getActivityAttributes()).basicRemove(otherEnd, msgs);
+      case AndroidGeneratorPackage.FRAGMENT__FRAGMENT_ATTRIBUTES:
+        return ((InternalEList<?>)getFragmentAttributes()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -106,8 +106,8 @@ public class FragmentImpl extends ApplicationElementImpl implements Fragment
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.FRAGMENT__ACTIVITY_ATTRIBUTES:
-        return getActivityAttributes();
+      case AndroidGeneratorPackage.FRAGMENT__FRAGMENT_ATTRIBUTES:
+        return getFragmentAttributes();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -123,9 +123,9 @@ public class FragmentImpl extends ApplicationElementImpl implements Fragment
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.FRAGMENT__ACTIVITY_ATTRIBUTES:
-        getActivityAttributes().clear();
-        getActivityAttributes().addAll((Collection<? extends ActivityLayoutAttributes>)newValue);
+      case AndroidGeneratorPackage.FRAGMENT__FRAGMENT_ATTRIBUTES:
+        getFragmentAttributes().clear();
+        getFragmentAttributes().addAll((Collection<? extends FragmentLayoutAttributes>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -141,8 +141,8 @@ public class FragmentImpl extends ApplicationElementImpl implements Fragment
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.FRAGMENT__ACTIVITY_ATTRIBUTES:
-        getActivityAttributes().clear();
+      case AndroidGeneratorPackage.FRAGMENT__FRAGMENT_ATTRIBUTES:
+        getFragmentAttributes().clear();
         return;
     }
     super.eUnset(featureID);
@@ -158,8 +158,8 @@ public class FragmentImpl extends ApplicationElementImpl implements Fragment
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.FRAGMENT__ACTIVITY_ATTRIBUTES:
-        return activityAttributes != null && !activityAttributes.isEmpty();
+      case AndroidGeneratorPackage.FRAGMENT__FRAGMENT_ATTRIBUTES:
+        return fragmentAttributes != null && !fragmentAttributes.isEmpty();
     }
     return super.eIsSet(featureID);
   }

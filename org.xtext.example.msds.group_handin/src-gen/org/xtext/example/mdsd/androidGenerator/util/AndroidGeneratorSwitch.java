@@ -8,8 +8,6 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
-import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidAppProject;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
 import org.xtext.example.mdsd.androidGenerator.Application;
@@ -28,6 +26,8 @@ import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes;
+import org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.Holder;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
@@ -199,10 +199,10 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AndroidGeneratorPackage.ACTIVITY_LAYOUT_ATTRIBUTES:
+      case AndroidGeneratorPackage.FRAGMENT_LAYOUT_ATTRIBUTES:
       {
-        ActivityLayoutAttributes activityLayoutAttributes = (ActivityLayoutAttributes)theEObject;
-        T result = caseActivityLayoutAttributes(activityLayoutAttributes);
+        FragmentLayoutAttributes fragmentLayoutAttributes = (FragmentLayoutAttributes)theEObject;
+        T result = caseFragmentLayoutAttributes(fragmentLayoutAttributes);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -237,10 +237,10 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES:
+      case AndroidGeneratorPackage.FRAGMENT_TYPE_ATTRIBUTES:
       {
-        ActivityTypeAttributes activityTypeAttributes = (ActivityTypeAttributes)theEObject;
-        T result = caseActivityTypeAttributes(activityTypeAttributes);
+        FragmentTypeAttributes fragmentTypeAttributes = (FragmentTypeAttributes)theEObject;
+        T result = caseFragmentTypeAttributes(fragmentTypeAttributes);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -595,17 +595,17 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Activity Layout Attributes</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Fragment Layout Attributes</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Activity Layout Attributes</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Fragment Layout Attributes</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseActivityLayoutAttributes(ActivityLayoutAttributes object)
+  public T caseFragmentLayoutAttributes(FragmentLayoutAttributes object)
   {
     return null;
   }
@@ -675,17 +675,17 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Activity Type Attributes</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Fragment Type Attributes</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Activity Type Attributes</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Fragment Type Attributes</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseActivityTypeAttributes(ActivityTypeAttributes object)
+  public T caseFragmentTypeAttributes(FragmentTypeAttributes object)
   {
     return null;
   }

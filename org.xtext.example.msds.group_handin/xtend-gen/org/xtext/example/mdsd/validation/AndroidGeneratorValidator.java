@@ -10,7 +10,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
@@ -18,9 +17,11 @@ import org.xtext.example.mdsd.androidGenerator.ApplicationPermissionList;
 import org.xtext.example.mdsd.androidGenerator.Button;
 import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.Permission;
 import org.xtext.example.mdsd.androidGenerator.Spinner;
+import org.xtext.example.mdsd.androidGenerator.TextView;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.validation.AbstractAndroidGeneratorValidator;
@@ -32,6 +33,8 @@ import org.xtext.example.mdsd.validation.AbstractAndroidGeneratorValidator;
 @SuppressWarnings("all")
 public class AndroidGeneratorValidator extends AbstractAndroidGeneratorValidator {
   private static Logger logger = Logger.getLogger("AndroidGeneratorValidator");
+  
+  public static final String INVALID_NAME = "warning";
   
   @Check
   public void checkDuplicateFragmentNames(final ApplicationElementList elements) {
@@ -51,14 +54,24 @@ public class AndroidGeneratorValidator extends AbstractAndroidGeneratorValidator
   }
   
   @Check
-  public void checkMapSetFragment(final ActivityLayoutAttributes layout) {
+  public void checkFragmentNameStartsWithCapital(final Fragment fragment) {
+    boolean _isUpperCase = Character.isUpperCase(fragment.getName().charAt(0));
+    boolean _not = (!_isUpperCase);
+    if (_not) {
+      this.warning("Name should start with a capital", 
+        AndroidGeneratorPackage.Literals.APPLICATION_ELEMENT__NAME, AndroidGeneratorValidator.INVALID_NAME);
+    }
+  }
+  
+  @Check
+  public void checkMapSetFragment(final FragmentLayoutAttributes layout) {
     EList<LayoutElement> _layoutElements = layout.getLayoutElements();
     for (final LayoutElement type : _layoutElements) {
       if (((type instanceof TypeMap) || (type instanceof TypeSetting))) {
         int _size = layout.getLayoutElements().size();
         boolean _greaterThan = (_size > 1);
         if (_greaterThan) {
-          this.error("Only one premade Fragment is allowed, and can not have custom layout", type, null);
+          this.error("Only one premade setup is allowed, and can not have custom layout", type, null);
         }
       }
     }
@@ -79,7 +92,7 @@ public class AndroidGeneratorValidator extends AbstractAndroidGeneratorValidator
   }
   
   @Check
-  public void checkLayoutDuplication(final ActivityLayoutAttributes layout) {
+  public void checkLayoutDuplication(final FragmentLayoutAttributes layout) {
     List<String> foundElements = new ArrayList<String>();
     EList<LayoutElement> _layoutElements = layout.getLayoutElements();
     for (final LayoutElement elements : _layoutElements) {
@@ -109,6 +122,15 @@ public class AndroidGeneratorValidator extends AbstractAndroidGeneratorValidator
             this.error("Layout name already used", elements, null);
           } else {
             foundElements.add(Name_2);
+          }
+        }
+        if ((elements instanceof TextView)) {
+          String Name_3 = ((TextView)elements).getName();
+          boolean _contains_3 = foundElements.contains(Name_3);
+          if (_contains_3) {
+            this.error("Layout name already used", elements, null);
+          } else {
+            foundElements.add(Name_3);
           }
         }
       }

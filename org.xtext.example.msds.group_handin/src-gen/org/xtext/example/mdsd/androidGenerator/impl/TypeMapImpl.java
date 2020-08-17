@@ -11,8 +11,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
+import org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 
 /**
@@ -23,7 +23,7 @@ import org.xtext.example.mdsd.androidGenerator.TypeMap;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl#getActivitytypeattribute <em>Activitytypeattribute</em>}</li>
+ *   <li>{@link org.xtext.example.mdsd.androidGenerator.impl.TypeMapImpl#getFragmenttypeattribute <em>Fragmenttypeattribute</em>}</li>
  * </ul>
  *
  * @generated
@@ -31,14 +31,14 @@ import org.xtext.example.mdsd.androidGenerator.TypeMap;
 public class TypeMapImpl extends LayoutElementImpl implements TypeMap
 {
   /**
-   * The cached value of the '{@link #getActivitytypeattribute() <em>Activitytypeattribute</em>}' containment reference.
+   * The cached value of the '{@link #getFragmenttypeattribute() <em>Fragmenttypeattribute</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getActivitytypeattribute()
+   * @see #getFragmenttypeattribute()
    * @generated
    * @ordered
    */
-  protected ActivityTypeAttributes activitytypeattribute;
+  protected FragmentTypeAttributes fragmenttypeattribute;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,9 +67,9 @@ public class TypeMapImpl extends LayoutElementImpl implements TypeMap
    * @generated
    */
   @Override
-  public ActivityTypeAttributes getActivitytypeattribute()
+  public FragmentTypeAttributes getFragmenttypeattribute()
   {
-    return activitytypeattribute;
+    return fragmenttypeattribute;
   }
 
   /**
@@ -77,13 +77,13 @@ public class TypeMapImpl extends LayoutElementImpl implements TypeMap
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetActivitytypeattribute(ActivityTypeAttributes newActivitytypeattribute, NotificationChain msgs)
+  public NotificationChain basicSetFragmenttypeattribute(FragmentTypeAttributes newFragmenttypeattribute, NotificationChain msgs)
   {
-    ActivityTypeAttributes oldActivitytypeattribute = activitytypeattribute;
-    activitytypeattribute = newActivitytypeattribute;
+    FragmentTypeAttributes oldFragmenttypeattribute = fragmenttypeattribute;
+    fragmenttypeattribute = newFragmenttypeattribute;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE, oldActivitytypeattribute, newActivitytypeattribute);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AndroidGeneratorPackage.TYPE_MAP__FRAGMENTTYPEATTRIBUTE, oldFragmenttypeattribute, newFragmenttypeattribute);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -95,20 +95,20 @@ public class TypeMapImpl extends LayoutElementImpl implements TypeMap
    * @generated
    */
   @Override
-  public void setActivitytypeattribute(ActivityTypeAttributes newActivitytypeattribute)
+  public void setFragmenttypeattribute(FragmentTypeAttributes newFragmenttypeattribute)
   {
-    if (newActivitytypeattribute != activitytypeattribute)
+    if (newFragmenttypeattribute != fragmenttypeattribute)
     {
       NotificationChain msgs = null;
-      if (activitytypeattribute != null)
-        msgs = ((InternalEObject)activitytypeattribute).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE, null, msgs);
-      if (newActivitytypeattribute != null)
-        msgs = ((InternalEObject)newActivitytypeattribute).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE, null, msgs);
-      msgs = basicSetActivitytypeattribute(newActivitytypeattribute, msgs);
+      if (fragmenttypeattribute != null)
+        msgs = ((InternalEObject)fragmenttypeattribute).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AndroidGeneratorPackage.TYPE_MAP__FRAGMENTTYPEATTRIBUTE, null, msgs);
+      if (newFragmenttypeattribute != null)
+        msgs = ((InternalEObject)newFragmenttypeattribute).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AndroidGeneratorPackage.TYPE_MAP__FRAGMENTTYPEATTRIBUTE, null, msgs);
+      msgs = basicSetFragmenttypeattribute(newFragmenttypeattribute, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE, newActivitytypeattribute, newActivitytypeattribute));
+      eNotify(new ENotificationImpl(this, Notification.SET, AndroidGeneratorPackage.TYPE_MAP__FRAGMENTTYPEATTRIBUTE, newFragmenttypeattribute, newFragmenttypeattribute));
   }
 
   /**
@@ -121,8 +121,8 @@ public class TypeMapImpl extends LayoutElementImpl implements TypeMap
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE:
-        return basicSetActivitytypeattribute(null, msgs);
+      case AndroidGeneratorPackage.TYPE_MAP__FRAGMENTTYPEATTRIBUTE:
+        return basicSetFragmenttypeattribute(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -137,8 +137,8 @@ public class TypeMapImpl extends LayoutElementImpl implements TypeMap
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE:
-        return getActivitytypeattribute();
+      case AndroidGeneratorPackage.TYPE_MAP__FRAGMENTTYPEATTRIBUTE:
+        return getFragmenttypeattribute();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -153,8 +153,8 @@ public class TypeMapImpl extends LayoutElementImpl implements TypeMap
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE:
-        setActivitytypeattribute((ActivityTypeAttributes)newValue);
+      case AndroidGeneratorPackage.TYPE_MAP__FRAGMENTTYPEATTRIBUTE:
+        setFragmenttypeattribute((FragmentTypeAttributes)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,8 +170,8 @@ public class TypeMapImpl extends LayoutElementImpl implements TypeMap
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE:
-        setActivitytypeattribute((ActivityTypeAttributes)null);
+      case AndroidGeneratorPackage.TYPE_MAP__FRAGMENTTYPEATTRIBUTE:
+        setFragmenttypeattribute((FragmentTypeAttributes)null);
         return;
     }
     super.eUnset(featureID);
@@ -187,8 +187,8 @@ public class TypeMapImpl extends LayoutElementImpl implements TypeMap
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.TYPE_MAP__ACTIVITYTYPEATTRIBUTE:
-        return activitytypeattribute != null;
+      case AndroidGeneratorPackage.TYPE_MAP__FRAGMENTTYPEATTRIBUTE:
+        return fragmenttypeattribute != null;
     }
     return super.eIsSet(featureID);
   }

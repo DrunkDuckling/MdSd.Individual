@@ -9,7 +9,7 @@ import org.xtext.example.mdsd.androidGenerator.Fragment
 import org.xtext.example.mdsd.androidGenerator.TypeMap
 import org.xtext.example.mdsd.androidGenerator.TypeSetting
 import org.xtext.example.mdsd.generator.abstractfiles.AbstractGen
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes
 
 class MainActivityGen extends AbstractGen {
     ArrayList<ArrayList<Object>> activityArrayList = newArrayList();
@@ -200,9 +200,9 @@ class MainActivityGen extends AbstractGen {
             if (activityList.get(i) instanceof Fragment) {
                 // Init Array Item
                 var activityItem = newArrayList();
-                var ActivityLayoutAttributes layout = getFieldData(
-                	(activityList.get(i) as Fragment).activityAttributes,
-                	typeof(ActivityLayoutAttributes)
+                var FragmentLayoutAttributes layout = getFieldData(
+                	(activityList.get(i) as Fragment).fragmentAttributes,
+                	typeof(FragmentLayoutAttributes)
                 );
  
                 // Add Name to list

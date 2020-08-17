@@ -14,7 +14,7 @@ import org.eclipse.xtext.scoping.Scopes
 import org.xtext.example.mdsd.androidGenerator.LayoutElement
 import org.xtext.example.mdsd.androidGenerator.Dataholders
 import org.xtext.example.mdsd.androidGenerator.EditText
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes
 import org.xtext.example.mdsd.androidGenerator.Button
 import org.xtext.example.mdsd.androidGenerator.Holder
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList
@@ -39,7 +39,7 @@ class AndroidGeneratorScopeProvider extends AbstractAndroidGeneratorScopeProvide
 		}
 //		get something
 		if(context instanceof Holder){
-			val container = context.eContainer.getContainerOfType(Fragment).activityAttributes.flatMap[f | f.layoutElements]
+			val container = context.eContainer.getContainerOfType(Fragment).fragmentAttributes.flatMap[f | f.layoutElements]
 			return Scopes.scopeFor(container)
 		}
 		

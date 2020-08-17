@@ -8,13 +8,13 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
 import org.xtext.example.mdsd.androidGenerator.Button;
 import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.Spinner;
 import org.xtext.example.mdsd.androidGenerator.TextView;
@@ -48,7 +48,7 @@ public class LayoutGen extends AbstractGen {
   }
   
   private String generateLayout(final Fragment fragment) {
-    ActivityLayoutAttributes layout = this.<ActivityLayoutAttributes>getFieldData(fragment.getActivityAttributes(), ActivityLayoutAttributes.class);
+    FragmentLayoutAttributes layout = this.<FragmentLayoutAttributes>getFieldData(fragment.getFragmentAttributes(), FragmentLayoutAttributes.class);
     boolean isMap = false;
     boolean isSetting = false;
     boolean _notEquals = (!Objects.equal(layout, null));

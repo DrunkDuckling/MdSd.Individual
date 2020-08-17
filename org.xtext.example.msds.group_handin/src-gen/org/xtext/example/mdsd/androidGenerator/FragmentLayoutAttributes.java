@@ -9,21 +9,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Activity Layout Attributes</b></em>'.
+ * A representation of the model object '<em><b>Fragment Layout Attributes</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes#getLayoutElements <em>Layout Elements</em>}</li>
+ *   <li>{@link org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes#getLayoutElements <em>Layout Elements</em>}</li>
  * </ul>
  *
- * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getActivityLayoutAttributes()
+ * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getFragmentLayoutAttributes()
  * @model
  * @generated
  */
-public interface ActivityLayoutAttributes extends EObject
+public interface FragmentLayoutAttributes extends EObject
 {
   /**
    * Returns the value of the '<em><b>Layout Elements</b></em>' containment reference list.
@@ -31,10 +31,10 @@ public interface ActivityLayoutAttributes extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Layout Elements</em>' containment reference list.
-   * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getActivityLayoutAttributes_LayoutElements()
+   * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getFragmentLayoutAttributes_LayoutElements()
    * @model containment="true"
    * @generated
    */
   EList<LayoutElement> getLayoutElements();
 
-} // ActivityLayoutAttributes
+} // FragmentLayoutAttributes

@@ -6,7 +6,7 @@ import org.xtext.example.mdsd.androidGenerator.Fragment
 import org.xtext.example.mdsd.generator.abstractfiles.AbstractClassGen
 import org.xtext.example.mdsd.androidGenerator.TypeMap
 import org.xtext.example.mdsd.androidGenerator.TypeSetting
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes
 import org.xtext.example.mdsd.androidGenerator.LayoutElement
 import org.xtext.example.mdsd.androidGenerator.Button
 import org.xtext.example.mdsd.androidGenerator.Spinner
@@ -14,12 +14,13 @@ import org.xtext.example.mdsd.androidGenerator.EditText
 import org.xtext.example.mdsd.androidGenerator.Toast
 import org.xtext.example.mdsd.androidGenerator.Bundle
 import org.xtext.example.mdsd.androidGenerator.ButtonActions
-import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes
+import org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes
 import org.xtext.example.mdsd.androidGenerator.TextView
 import java.util.List
 import org.xtext.example.mdsd.androidGenerator.ApplicationAttribute
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList
 import sun.util.resources.Bundles.Strategy
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes
 
 class FragmentGen extends AbstractClassGen{
 	
@@ -34,7 +35,7 @@ class FragmentGen extends AbstractClassGen{
 	override protected retrieveElementTemplate(Application application, ApplicationElement element) {
 		var fragment = element as Fragment;
 		var data = '''Something went wrong''';
-		var ActivityLayoutAttributes layout = getFieldData(fragment.activityAttributes, typeof(ActivityLayoutAttributes));
+		var FragmentLayoutAttributes layout = getFieldData(fragment.fragmentAttributes, typeof(FragmentLayoutAttributes));
 		
         // Checks if is of type "Map" or not
         if(layout != null){
@@ -53,13 +54,13 @@ class FragmentGen extends AbstractClassGen{
     }
 	
 	def filterOptions(Fragment fragment, Application application){
-		var ActivityLayoutAttributes layout = getFieldData(fragment.activityAttributes, typeof(ActivityLayoutAttributes));
+		var FragmentLayoutAttributes layout = getFieldData(fragment.fragmentAttributes, typeof(FragmentLayoutAttributes));
 		for(type : layout.layoutElements){
 			if( type instanceof TypeMap){
-				if(type.activitytypeattribute != null){
+				if(type.fragmenttypeattribute != null){
 					return ('''
-						String filterQuery = "«type.activitytypeattribute.filter.name»";
-						double distanceThreshold = «type.activitytypeattribute.filter.filterAttributes.distance.results.value»;
+						String filterQuery = "«type.fragmenttypeattribute.filter.name»";
+						double distanceThreshold = «type.fragmenttypeattribute.filter.filterAttributes.distance.results.value»;
 					''');
 				}else{
 					return ('''
@@ -75,6 +76,34 @@ class FragmentGen extends AbstractClassGen{
 	}
 	
 	def insertMapFragment(Fragment fragment, Application application){
+		// Strings for bundle data
+		val content = new StringBuilder();
+		val vars = new StringBuilder();
+		// If a costume fragment sends data to Map fragment it can now affect it
+		val bundleElements = application.getlayoutelem(fragment)	
+		// get the elements used for bundles; checks if null and empty
+		if(bundleElements != null){
+			if(!bundleElements.isEmpty){
+				for(ele : bundleElements){
+					if(ele instanceof Spinner){
+						content.append('''
+						filterQuery = bundle.getString("b«ele.name»");
+						''')
+					}if(ele instanceof EditText){						
+						content.append('''
+						distanceThreshold = bundle.getDouble("b«ele.name»");
+						''')
+					}if(ele instanceof TextView){
+						vars.append('''
+						String m«ele.name» = "";
+						''')
+						content.append('''
+						m«ele.name» = bundle.getString("b«ele.name»");
+						''')
+					}
+				}
+			}
+		}
 		return '''
 		package «application.name»;
 		import android.annotation.SuppressLint;
@@ -141,10 +170,15 @@ class FragmentGen extends AbstractClassGen{
 		        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 		        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, this);
 		        
+«««		        Burde Map være modulert?
 		        Bundle bundle = getArguments();
 		        if (bundle != null){
-		            filterQuery = bundle.getString("location");
-		            distanceThreshold = bundle.getDouble("radius");
+		        	«IF !bundleElements.isEmpty»
+		        	«content»
+		        	«ELSE»
+		        	filterQuery = bundle.getString("location");
+		        	distanceThreshold = bundle.getDouble("radius");
+		        	«ENDIF»
 		        }
 		        Toast.makeText(getActivity().getApplicationContext(), "BUTTON" + filterQuery + distanceThreshold, Toast.LENGTH_LONG).show();
 		        
@@ -396,37 +430,38 @@ class FragmentGen extends AbstractClassGen{
 		'''
 	}
 	
+	// Get the elements residing inside the holder list for bundles
 	def List<LayoutElement> getlayoutelem(Application app, Fragment frag){
-		val elements = newArrayList()
+		val bundleElements = newArrayList()
 		app.attributes.forEach[ a |
 			if((a as ApplicationAttribute) instanceof ApplicationElementList)
 				(a as ApplicationElementList).elements.forEach[ f |
 					if(f instanceof Fragment)
-						(f as Fragment).activityAttributes.forEach[e |
+						(f as Fragment).fragmentAttributes.forEach[e |
 							e.layoutElements.forEach[l |
 								if(l instanceof Button)
 									(l as Button).actions.forEach[b |
 										if(b instanceof Bundle)
 											if((b as Bundle).bundleRecipient.name === frag.name)
 												(b as Bundle).holder.hol.forEach[
-													elements.add(it)
+													bundleElements.add(it)
 												]
 									]
 							]
 						]
 				]
 		]
-		return elements
+		return bundleElements
 	}
 	
 	def insertCustomFragment(Fragment fragment, Application application){
-		var ActivityLayoutAttributes layout = getFieldData(fragment.activityAttributes, typeof(ActivityLayoutAttributes));
+		var FragmentLayoutAttributes layout = getFieldData(fragment.fragmentAttributes, typeof(FragmentLayoutAttributes));
 		val string = new StringBuilder();
 		val instances = new StringBuilder();
 		val vars = new StringBuilder();
 		val methods = new StringBuilder();
 		
-		val elements = application.getlayoutelem(fragment)		
+		val bundleElements = application.getlayoutelem(fragment)		
 		
 		// String for bundle fetching 
 		val bundle = new StringBuilder();
@@ -546,9 +581,9 @@ class FragmentGen extends AbstractClassGen{
 		}
 		
 		// get the elements used for bundles; checks if null and empty
-		if(elements != null){
-			if(!elements.isEmpty){
-				for(ele : elements){
+		if(bundleElements != null){
+			if(!bundleElements.isEmpty){
+				for(ele : bundleElements){
 					if(ele instanceof Spinner){
 						vars.append('''
 						String m«ele.name» = "";
@@ -622,7 +657,7 @@ class FragmentGen extends AbstractClassGen{
 	
 	// Used to create buttons and their used methods
 	def insertVariablesBundle(Fragment fragment, Application application){
-		var ActivityLayoutAttributes layout = getFieldData(fragment.activityAttributes, typeof(ActivityLayoutAttributes));
+		var FragmentLayoutAttributes layout = getFieldData(fragment.fragmentAttributes, typeof(FragmentLayoutAttributes));
 		val string = new StringBuilder();
 		val spinner = new StringBuilder();
 		val edittext = new StringBuilder();

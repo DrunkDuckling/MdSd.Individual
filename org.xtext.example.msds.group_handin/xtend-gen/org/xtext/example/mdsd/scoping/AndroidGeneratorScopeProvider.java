@@ -13,11 +13,11 @@ import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
 import org.xtext.example.mdsd.androidGenerator.Bundle;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.Holder;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.scoping.AbstractAndroidGeneratorScopeProvider;
@@ -45,10 +45,10 @@ public class AndroidGeneratorScopeProvider extends AbstractAndroidGeneratorScope
         return Scopes.scopeFor(container);
       }
       if ((context instanceof Holder)) {
-        final Function1<ActivityLayoutAttributes, EList<LayoutElement>> _function_1 = (ActivityLayoutAttributes f) -> {
+        final Function1<FragmentLayoutAttributes, EList<LayoutElement>> _function_1 = (FragmentLayoutAttributes f) -> {
           return f.getLayoutElements();
         };
-        final Iterable<LayoutElement> container_1 = IterableExtensions.<ActivityLayoutAttributes, LayoutElement>flatMap(EcoreUtil2.<Fragment>getContainerOfType(((Holder)context).eContainer(), Fragment.class).getActivityAttributes(), _function_1);
+        final Iterable<LayoutElement> container_1 = IterableExtensions.<FragmentLayoutAttributes, LayoutElement>flatMap(EcoreUtil2.<Fragment>getContainerOfType(((Holder)context).eContainer(), Fragment.class).getFragmentAttributes(), _function_1);
         return Scopes.scopeFor(container_1);
       }
       _xblockexpression = super.getScope(context, reference);

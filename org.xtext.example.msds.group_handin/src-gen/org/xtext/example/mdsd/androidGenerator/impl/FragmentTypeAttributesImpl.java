@@ -12,24 +12,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
+import org.xtext.example.mdsd.androidGenerator.FragmentTypeAttributes;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Activity Type Attributes</b></em>'.
+ * An implementation of the model object '<em><b>Fragment Type Attributes</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mdsd.androidGenerator.impl.ActivityTypeAttributesImpl#getFilter <em>Filter</em>}</li>
+ *   <li>{@link org.xtext.example.mdsd.androidGenerator.impl.FragmentTypeAttributesImpl#getFilter <em>Filter</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ActivityTypeAttributesImpl extends MinimalEObjectImpl.Container implements ActivityTypeAttributes
+public class FragmentTypeAttributesImpl extends MinimalEObjectImpl.Container implements FragmentTypeAttributes
 {
   /**
    * The cached value of the '{@link #getFilter() <em>Filter</em>}' containment reference.
@@ -46,7 +46,7 @@ public class ActivityTypeAttributesImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ActivityTypeAttributesImpl()
+  protected FragmentTypeAttributesImpl()
   {
     super();
   }
@@ -59,7 +59,7 @@ public class ActivityTypeAttributesImpl extends MinimalEObjectImpl.Container imp
   @Override
   protected EClass eStaticClass()
   {
-    return AndroidGeneratorPackage.Literals.ACTIVITY_TYPE_ATTRIBUTES;
+    return AndroidGeneratorPackage.Literals.FRAGMENT_TYPE_ATTRIBUTES;
   }
 
   /**
@@ -84,7 +84,7 @@ public class ActivityTypeAttributesImpl extends MinimalEObjectImpl.Container imp
     filter = newFilter;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES__FILTER, oldFilter, newFilter);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AndroidGeneratorPackage.FRAGMENT_TYPE_ATTRIBUTES__FILTER, oldFilter, newFilter);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -102,14 +102,14 @@ public class ActivityTypeAttributesImpl extends MinimalEObjectImpl.Container imp
     {
       NotificationChain msgs = null;
       if (filter != null)
-        msgs = ((InternalEObject)filter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES__FILTER, null, msgs);
+        msgs = ((InternalEObject)filter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AndroidGeneratorPackage.FRAGMENT_TYPE_ATTRIBUTES__FILTER, null, msgs);
       if (newFilter != null)
-        msgs = ((InternalEObject)newFilter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES__FILTER, null, msgs);
+        msgs = ((InternalEObject)newFilter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AndroidGeneratorPackage.FRAGMENT_TYPE_ATTRIBUTES__FILTER, null, msgs);
       msgs = basicSetFilter(newFilter, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES__FILTER, newFilter, newFilter));
+      eNotify(new ENotificationImpl(this, Notification.SET, AndroidGeneratorPackage.FRAGMENT_TYPE_ATTRIBUTES__FILTER, newFilter, newFilter));
   }
 
   /**
@@ -122,7 +122,7 @@ public class ActivityTypeAttributesImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES__FILTER:
+      case AndroidGeneratorPackage.FRAGMENT_TYPE_ATTRIBUTES__FILTER:
         return basicSetFilter(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -138,7 +138,7 @@ public class ActivityTypeAttributesImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES__FILTER:
+      case AndroidGeneratorPackage.FRAGMENT_TYPE_ATTRIBUTES__FILTER:
         return getFilter();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -154,7 +154,7 @@ public class ActivityTypeAttributesImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES__FILTER:
+      case AndroidGeneratorPackage.FRAGMENT_TYPE_ATTRIBUTES__FILTER:
         setFilter((FilterQuery)newValue);
         return;
     }
@@ -171,7 +171,7 @@ public class ActivityTypeAttributesImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES__FILTER:
+      case AndroidGeneratorPackage.FRAGMENT_TYPE_ATTRIBUTES__FILTER:
         setFilter((FilterQuery)null);
         return;
     }
@@ -188,10 +188,10 @@ public class ActivityTypeAttributesImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES__FILTER:
+      case AndroidGeneratorPackage.FRAGMENT_TYPE_ATTRIBUTES__FILTER:
         return filter != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //ActivityTypeAttributesImpl
+} //FragmentTypeAttributesImpl

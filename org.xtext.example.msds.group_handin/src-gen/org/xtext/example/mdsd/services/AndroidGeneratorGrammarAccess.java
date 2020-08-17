@@ -183,23 +183,23 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.MinSDK");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMinSDKAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cMinimumSDKKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cMinSDKKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cResultAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cResultNumberParserRuleCall_3_0 = (RuleCall)cResultAssignment_3.eContents().get(0);
 		
 		//MinSDK:
-		//	{MinSDK} 'Minimum-SDK' ':' result=Number;
+		//	{MinSDK} 'Min-SDK' ':' result=Number;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{MinSDK} 'Minimum-SDK' ':' result=Number
+		//{MinSDK} 'Min-SDK' ':' result=Number
 		public Group getGroup() { return cGroup; }
 		
 		//{MinSDK}
 		public Action getMinSDKAction_0() { return cMinSDKAction_0; }
 		
-		//'Minimum-SDK'
-		public Keyword getMinimumSDKKeyword_1() { return cMinimumSDKKeyword_1; }
+		//'Min-SDK'
+		public Keyword getMinSDKKeyword_1() { return cMinSDKKeyword_1; }
 		
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
@@ -222,13 +222,13 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final RuleCall cPermissionsPermissionParserRuleCall_2_1_0 = (RuleCall)cPermissionsAssignment_2_1.eContents().get(0);
 		
 		//ApplicationPermissionList:
-		//	'permissions' permissions+=Permission (',' permissions+=Permission)*;
+		//	'Permissions' permissions+=Permission (',' permissions+=Permission)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'permissions' permissions+=Permission (',' permissions+=Permission)*
+		//'Permissions' permissions+=Permission (',' permissions+=Permission)*
 		public Group getGroup() { return cGroup; }
 		
-		//'permissions'
+		//'Permissions'
 		public Keyword getPermissionsKeyword_0() { return cPermissionsKeyword_0; }
 		
 		//permissions+=Permission
@@ -276,16 +276,16 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final RuleCall cENDTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
 		
 		//ApplicationElementList:
-		//	{ApplicationElementList} 'elements' BEGIN elements+=ApplicationElement* END;
+		//	{ApplicationElementList} 'Elements' BEGIN elements+=ApplicationElement* END;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{ApplicationElementList} 'elements' BEGIN elements+=ApplicationElement* END
+		//{ApplicationElementList} 'Elements' BEGIN elements+=ApplicationElement* END
 		public Group getGroup() { return cGroup; }
 		
 		//{ApplicationElementList}
 		public Action getApplicationElementListAction_0() { return cApplicationElementListAction_0; }
 		
-		//'elements'
+		//'Elements'
 		public Keyword getElementsKeyword_1() { return cElementsKeyword_1; }
 		
 		//BEGIN
@@ -345,40 +345,36 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	public class FragmentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.Fragment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cFragmentAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cFragmentKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Assignment cActivityAttributesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cActivityAttributesActivityLayoutAttributesParserRuleCall_3_0 = (RuleCall)cActivityAttributesAssignment_3.eContents().get(0);
+		private final Keyword cFragmentKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cFragmentAttributesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cFragmentAttributesFragmentLayoutAttributesParserRuleCall_2_0 = (RuleCall)cFragmentAttributesAssignment_2.eContents().get(0);
 		
 		//Fragment:
-		//	{Fragment} 'Fragment' name=ID activityAttributes+=ActivityLayoutAttributes?;
+		//	'Fragment' name=ID fragmentAttributes+=FragmentLayoutAttributes?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Fragment} 'Fragment' name=ID activityAttributes+=ActivityLayoutAttributes?
+		//'Fragment' name=ID fragmentAttributes+=FragmentLayoutAttributes?
 		public Group getGroup() { return cGroup; }
 		
-		//{Fragment}
-		public Action getFragmentAction_0() { return cFragmentAction_0; }
-		
 		//'Fragment'
-		public Keyword getFragmentKeyword_1() { return cFragmentKeyword_1; }
+		public Keyword getFragmentKeyword_0() { return cFragmentKeyword_0; }
 		
 		//name=ID
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//activityAttributes+=ActivityLayoutAttributes?
-		public Assignment getActivityAttributesAssignment_3() { return cActivityAttributesAssignment_3; }
+		//fragmentAttributes+=FragmentLayoutAttributes?
+		public Assignment getFragmentAttributesAssignment_2() { return cFragmentAttributesAssignment_2; }
 		
-		//ActivityLayoutAttributes
-		public RuleCall getActivityAttributesActivityLayoutAttributesParserRuleCall_3_0() { return cActivityAttributesActivityLayoutAttributesParserRuleCall_3_0; }
+		//FragmentLayoutAttributes
+		public RuleCall getFragmentAttributesFragmentLayoutAttributesParserRuleCall_2_0() { return cFragmentAttributesFragmentLayoutAttributesParserRuleCall_2_0; }
 	}
-	public class ActivityLayoutAttributesElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.ActivityLayoutAttributes");
+	public class FragmentLayoutAttributesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.FragmentLayoutAttributes");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cBEGINTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Assignment cLayoutElementsAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -389,7 +385,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final RuleCall cLayoutElementsLayoutElementParserRuleCall_2_1_0 = (RuleCall)cLayoutElementsAssignment_2_1.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
-		//ActivityLayoutAttributes:
+		//FragmentLayoutAttributes:
 		//	BEGIN layoutElements+=LayoutElement (',' layoutElements+=LayoutElement)* END;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -475,14 +471,14 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cTypeMapAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cMapKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cActivitytypeattributeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cActivitytypeattributeActivityTypeAttributesParserRuleCall_2_0 = (RuleCall)cActivitytypeattributeAssignment_2.eContents().get(0);
+		private final Assignment cFragmenttypeattributeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cFragmenttypeattributeFragmentTypeAttributesParserRuleCall_2_0 = (RuleCall)cFragmenttypeattributeAssignment_2.eContents().get(0);
 		
 		//TypeMap:
-		//	{TypeMap} 'Map' activitytypeattribute=ActivityTypeAttributes?;
+		//	{TypeMap} 'Map' fragmenttypeattribute=FragmentTypeAttributes?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{TypeMap} 'Map' activitytypeattribute=ActivityTypeAttributes?
+		//{TypeMap} 'Map' fragmenttypeattribute=FragmentTypeAttributes?
 		public Group getGroup() { return cGroup; }
 		
 		//{TypeMap}
@@ -491,11 +487,11 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		//'Map'
 		public Keyword getMapKeyword_1() { return cMapKeyword_1; }
 		
-		//activitytypeattribute=ActivityTypeAttributes?
-		public Assignment getActivitytypeattributeAssignment_2() { return cActivitytypeattributeAssignment_2; }
+		//fragmenttypeattribute=FragmentTypeAttributes?
+		public Assignment getFragmenttypeattributeAssignment_2() { return cFragmenttypeattributeAssignment_2; }
 		
-		//ActivityTypeAttributes
-		public RuleCall getActivitytypeattributeActivityTypeAttributesParserRuleCall_2_0() { return cActivitytypeattributeActivityTypeAttributesParserRuleCall_2_0; }
+		//FragmentTypeAttributes
+		public RuleCall getFragmenttypeattributeFragmentTypeAttributesParserRuleCall_2_0() { return cFragmenttypeattributeFragmentTypeAttributesParserRuleCall_2_0; }
 	}
 	public class TypeSettingElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.TypeSetting");
@@ -516,12 +512,12 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		//'Settings'
 		public Keyword getSettingsKeyword_1() { return cSettingsKeyword_1; }
 	}
-	public class ActivityTypeAttributesElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.ActivityTypeAttributes");
+	public class FragmentTypeAttributesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.FragmentTypeAttributes");
 		private final Assignment cFilterAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cFilterFilterQueryParserRuleCall_0 = (RuleCall)cFilterAssignment.eContents().get(0);
 		
-		//ActivityTypeAttributes:
+		//FragmentTypeAttributes:
 		//	filter=FilterQuery;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -640,10 +636,10 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final RuleCall cTextSTRINGTerminalRuleCall_4_0 = (RuleCall)cTextAssignment_4.eContents().get(0);
 		
 		//TextView:
-		//	'Textview' name=ID 'content' ':' text=STRING;
+		//	'Textview' name=ID 'Content' ':' text=STRING;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Textview' name=ID 'content' ':' text=STRING
+		//'Textview' name=ID 'Content' ':' text=STRING
 		public Group getGroup() { return cGroup; }
 		
 		//'Textview'
@@ -655,7 +651,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//'content'
+		//'Content'
 		public Keyword getContentKeyword_2() { return cContentKeyword_2; }
 		
 		//':'
@@ -907,7 +903,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	public class DistanceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.Distance");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cDistanceKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cDistKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cUnitAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cUnitUnitParserRuleCall_2_0 = (RuleCall)cUnitAssignment_2.eContents().get(0);
@@ -917,14 +913,14 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		private final RuleCall cResultsNumberParserRuleCall_4_0 = (RuleCall)cResultsAssignment_4.eContents().get(0);
 		
 		//Distance:
-		//	'Distance' ':' unit=Unit operator=Operator results=Number;
+		//	'Dist' ':' unit=Unit operator=Operator results=Number;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Distance' ':' unit=Unit operator=Operator results=Number
+		//'Dist' ':' unit=Unit operator=Operator results=Number
 		public Group getGroup() { return cGroup; }
 		
-		//'Distance'
-		public Keyword getDistanceKeyword_0() { return cDistanceKeyword_0; }
+		//'Dist'
+		public Keyword getDistKeyword_0() { return cDistKeyword_0; }
 		
 		//':'
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
@@ -1047,7 +1043,6 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	
 	
 	private final AndroidAppProjectElements pAndroidAppProject;
-	private final TerminalRule tPACKAGE_NAME;
 	private final ApplicationElements pApplication;
 	private final ApplicationAttributeElements pApplicationAttribute;
 	private final ApplicationVersionElements pApplicationVersion;
@@ -1059,12 +1054,12 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	private final ApplicationElementElements pApplicationElement;
 	private final ModelElements pModel;
 	private final FragmentElements pFragment;
-	private final ActivityLayoutAttributesElements pActivityLayoutAttributes;
+	private final FragmentLayoutAttributesElements pFragmentLayoutAttributes;
 	private final LayoutElementElements pLayoutElement;
 	private final DataholdersElements pDataholders;
 	private final TypeMapElements pTypeMap;
 	private final TypeSettingElements pTypeSetting;
-	private final ActivityTypeAttributesElements pActivityTypeAttributes;
+	private final FragmentTypeAttributesElements pFragmentTypeAttributes;
 	private final EditTextElements pEditText;
 	private final SpinnerElements pSpinner;
 	private final SpinnerConElements pSpinnerCon;
@@ -1082,6 +1077,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	private final UnitElements pUnit;
 	private final TerminalRule tBEGIN;
 	private final TerminalRule tEND;
+	private final TerminalRule tPACKAGE_NAME;
 	
 	private final Grammar grammar;
 	
@@ -1093,7 +1089,6 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pAndroidAppProject = new AndroidAppProjectElements();
-		this.tPACKAGE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.PACKAGE_NAME");
 		this.pApplication = new ApplicationElements();
 		this.pApplicationAttribute = new ApplicationAttributeElements();
 		this.pApplicationVersion = new ApplicationVersionElements();
@@ -1105,12 +1100,12 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		this.pApplicationElement = new ApplicationElementElements();
 		this.pModel = new ModelElements();
 		this.pFragment = new FragmentElements();
-		this.pActivityLayoutAttributes = new ActivityLayoutAttributesElements();
+		this.pFragmentLayoutAttributes = new FragmentLayoutAttributesElements();
 		this.pLayoutElement = new LayoutElementElements();
 		this.pDataholders = new DataholdersElements();
 		this.pTypeMap = new TypeMapElements();
 		this.pTypeSetting = new TypeSettingElements();
-		this.pActivityTypeAttributes = new ActivityTypeAttributesElements();
+		this.pFragmentTypeAttributes = new FragmentTypeAttributesElements();
 		this.pEditText = new EditTextElements();
 		this.pSpinner = new SpinnerElements();
 		this.pSpinnerCon = new SpinnerConElements();
@@ -1128,6 +1123,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		this.pUnit = new UnitElements();
 		this.tBEGIN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.BEGIN");
 		this.tEND = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.END");
+		this.tPACKAGE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mdsd.AndroidGenerator.PACKAGE_NAME");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1165,12 +1161,6 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	
 	public ParserRule getAndroidAppProjectRule() {
 		return getAndroidAppProjectAccess().getRule();
-	}
-	
-	//terminal PACKAGE_NAME:
-	//	'"' (ID ('.' ID)*) '"';
-	public TerminalRule getPACKAGE_NAMERule() {
-		return tPACKAGE_NAME;
 	}
 	
 	//Application:
@@ -1214,7 +1204,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	}
 	
 	//MinSDK:
-	//	{MinSDK} 'Minimum-SDK' ':' result=Number;
+	//	{MinSDK} 'Min-SDK' ':' result=Number;
 	public MinSDKElements getMinSDKAccess() {
 		return pMinSDK;
 	}
@@ -1224,7 +1214,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	}
 	
 	//ApplicationPermissionList:
-	//	'permissions' permissions+=Permission (',' permissions+=Permission)*;
+	//	'Permissions' permissions+=Permission (',' permissions+=Permission)*;
 	public ApplicationPermissionListElements getApplicationPermissionListAccess() {
 		return pApplicationPermissionList;
 	}
@@ -1245,7 +1235,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	}
 	
 	//ApplicationElementList:
-	//	{ApplicationElementList} 'elements' BEGIN elements+=ApplicationElement* END;
+	//	{ApplicationElementList} 'Elements' BEGIN elements+=ApplicationElement* END;
 	public ApplicationElementListElements getApplicationElementListAccess() {
 		return pApplicationElementList;
 	}
@@ -1275,7 +1265,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	}
 	
 	//Fragment:
-	//	{Fragment} 'Fragment' name=ID activityAttributes+=ActivityLayoutAttributes?;
+	//	'Fragment' name=ID fragmentAttributes+=FragmentLayoutAttributes?;
 	public FragmentElements getFragmentAccess() {
 		return pFragment;
 	}
@@ -1284,14 +1274,14 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		return getFragmentAccess().getRule();
 	}
 	
-	//ActivityLayoutAttributes:
+	//FragmentLayoutAttributes:
 	//	BEGIN layoutElements+=LayoutElement (',' layoutElements+=LayoutElement)* END;
-	public ActivityLayoutAttributesElements getActivityLayoutAttributesAccess() {
-		return pActivityLayoutAttributes;
+	public FragmentLayoutAttributesElements getFragmentLayoutAttributesAccess() {
+		return pFragmentLayoutAttributes;
 	}
 	
-	public ParserRule getActivityLayoutAttributesRule() {
-		return getActivityLayoutAttributesAccess().getRule();
+	public ParserRule getFragmentLayoutAttributesRule() {
+		return getFragmentLayoutAttributesAccess().getRule();
 	}
 	
 	//LayoutElement:
@@ -1315,7 +1305,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	}
 	
 	//TypeMap:
-	//	{TypeMap} 'Map' activitytypeattribute=ActivityTypeAttributes?;
+	//	{TypeMap} 'Map' fragmenttypeattribute=FragmentTypeAttributes?;
 	public TypeMapElements getTypeMapAccess() {
 		return pTypeMap;
 	}
@@ -1334,14 +1324,14 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 		return getTypeSettingAccess().getRule();
 	}
 	
-	//ActivityTypeAttributes:
+	//FragmentTypeAttributes:
 	//	filter=FilterQuery;
-	public ActivityTypeAttributesElements getActivityTypeAttributesAccess() {
-		return pActivityTypeAttributes;
+	public FragmentTypeAttributesElements getFragmentTypeAttributesAccess() {
+		return pFragmentTypeAttributes;
 	}
 	
-	public ParserRule getActivityTypeAttributesRule() {
-		return getActivityTypeAttributesAccess().getRule();
+	public ParserRule getFragmentTypeAttributesRule() {
+		return getFragmentTypeAttributesAccess().getRule();
 	}
 	
 	//EditText:
@@ -1375,7 +1365,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	}
 	
 	//TextView:
-	//	'Textview' name=ID 'content' ':' text=STRING;
+	//	'Textview' name=ID 'Content' ':' text=STRING;
 	public TextViewElements getTextViewAccess() {
 		return pTextView;
 	}
@@ -1455,7 +1445,7 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	}
 	
 	//Distance:
-	//	'Distance' ':' unit=Unit operator=Operator results=Number;
+	//	'Dist' ':' unit=Unit operator=Operator results=Number;
 	public DistanceElements getDistanceAccess() {
 		return pDistance;
 	}
@@ -1504,6 +1494,12 @@ public class AndroidGeneratorGrammarAccess extends AbstractGrammarElementFinder 
 	//	'synthetic:END';
 	public TerminalRule getENDRule() {
 		return tEND;
+	}
+	
+	//terminal PACKAGE_NAME:
+	//	'"' (ID ('.' ID)*) '"';
+	public TerminalRule getPACKAGE_NAMERule() {
+		return tPACKAGE_NAME;
 	}
 	
 	//terminal ID:

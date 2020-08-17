@@ -39,21 +39,21 @@
     </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Model"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Fragment">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Fragment/activityAttributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Fragment/fragmentAttributes"/>
     </genClasses>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//ActivityLayoutAttributes">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ActivityLayoutAttributes/layoutElements"/>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//FragmentLayoutAttributes">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//FragmentLayoutAttributes/layoutElements"/>
     </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//LayoutElement"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Dataholders">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//Dataholders/name"/>
     </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//TypeMap">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//TypeMap/activitytypeattribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//TypeMap/fragmenttypeattribute"/>
     </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//TypeSetting"/>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//ActivityTypeAttributes">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ActivityTypeAttributes/filter"/>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//FragmentTypeAttributes">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//FragmentTypeAttributes/filter"/>
     </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//EditText"/>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Spinner">

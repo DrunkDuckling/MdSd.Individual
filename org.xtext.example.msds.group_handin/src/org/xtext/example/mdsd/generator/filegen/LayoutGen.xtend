@@ -5,7 +5,6 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.xtext.example.mdsd.androidGenerator.Application
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList
 import org.xtext.example.mdsd.generator.abstractfiles.AbstractGen
-import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes
 import org.xtext.example.mdsd.androidGenerator.Button
 import java.util.concurrent.atomic.AtomicInteger
 import org.xtext.example.mdsd.androidGenerator.Fragment
@@ -14,6 +13,7 @@ import org.xtext.example.mdsd.androidGenerator.TypeSetting
 import org.xtext.example.mdsd.androidGenerator.EditText
 import org.xtext.example.mdsd.androidGenerator.Spinner
 import org.xtext.example.mdsd.androidGenerator.TextView
+import org.xtext.example.mdsd.androidGenerator.FragmentLayoutAttributes
 
 class LayoutGen extends AbstractGen{
    
@@ -39,7 +39,7 @@ class LayoutGen extends AbstractGen{
    
     private def String generateLayout(Fragment fragment){
         // is needed later for implementing buttons and so on.
-        var ActivityLayoutAttributes layout = getFieldData(fragment.activityAttributes, typeof(ActivityLayoutAttributes));
+        var FragmentLayoutAttributes layout = getFieldData(fragment.fragmentAttributes, typeof(FragmentLayoutAttributes));
         var isMap = false;
         var isSetting = false;
         if(layout != null){

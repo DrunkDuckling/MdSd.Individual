@@ -44,10 +44,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//ApplicationElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Fragment" eSuperTypes="#//ApplicationElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activityAttributes" upperBound="-1"
-        eType="#//ActivityLayoutAttributes" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fragmentAttributes" upperBound="-1"
+        eType="#//FragmentLayoutAttributes" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ActivityLayoutAttributes">
+  <eClassifiers xsi:type="ecore:EClass" name="FragmentLayoutAttributes">
     <eStructuralFeatures xsi:type="ecore:EReference" name="layoutElements" upperBound="-1"
         eType="#//LayoutElement" containment="true"/>
   </eClassifiers>
@@ -56,11 +56,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypeMap" eSuperTypes="#//LayoutElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activitytypeattribute"
-        eType="#//ActivityTypeAttributes" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fragmenttypeattribute"
+        eType="#//FragmentTypeAttributes" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypeSetting" eSuperTypes="#//LayoutElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ActivityTypeAttributes">
+  <eClassifiers xsi:type="ecore:EClass" name="FragmentTypeAttributes">
     <eStructuralFeatures xsi:type="ecore:EReference" name="filter" eType="#//FilterQuery"
         containment="true"/>
   </eClassifiers>

@@ -132,13 +132,13 @@ public interface AndroidGeneratorFactory extends EFactory
   Fragment createFragment();
 
   /**
-   * Returns a new object of class '<em>Activity Layout Attributes</em>'.
+   * Returns a new object of class '<em>Fragment Layout Attributes</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Activity Layout Attributes</em>'.
+   * @return a new object of class '<em>Fragment Layout Attributes</em>'.
    * @generated
    */
-  ActivityLayoutAttributes createActivityLayoutAttributes();
+  FragmentLayoutAttributes createFragmentLayoutAttributes();
 
   /**
    * Returns a new object of class '<em>Layout Element</em>'.
@@ -177,13 +177,13 @@ public interface AndroidGeneratorFactory extends EFactory
   TypeSetting createTypeSetting();
 
   /**
-   * Returns a new object of class '<em>Activity Type Attributes</em>'.
+   * Returns a new object of class '<em>Fragment Type Attributes</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Activity Type Attributes</em>'.
+   * @return a new object of class '<em>Fragment Type Attributes</em>'.
    * @generated
    */
-  ActivityTypeAttributes createActivityTypeAttributes();
+  FragmentTypeAttributes createFragmentTypeAttributes();
 
   /**
    * Returns a new object of class '<em>Edit Text</em>'.
