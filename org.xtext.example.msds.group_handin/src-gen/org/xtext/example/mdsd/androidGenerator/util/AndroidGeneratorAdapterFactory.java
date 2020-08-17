@@ -30,6 +30,7 @@ import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.Holder;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.Less;
@@ -40,8 +41,9 @@ import org.xtext.example.mdsd.androidGenerator.More;
 import org.xtext.example.mdsd.androidGenerator.Operator;
 import org.xtext.example.mdsd.androidGenerator.Permission;
 import org.xtext.example.mdsd.androidGenerator.Spinner;
+import org.xtext.example.mdsd.androidGenerator.SpinnerCon;
 import org.xtext.example.mdsd.androidGenerator.TargetSDK;
-import org.xtext.example.mdsd.androidGenerator.Textfield;
+import org.xtext.example.mdsd.androidGenerator.TextView;
 import org.xtext.example.mdsd.androidGenerator.Toast;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
@@ -211,9 +213,14 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
         return createSpinnerAdapter();
       }
       @Override
-      public Adapter caseTextfield(Textfield object)
+      public Adapter caseSpinnerCon(SpinnerCon object)
       {
-        return createTextfieldAdapter();
+        return createSpinnerConAdapter();
+      }
+      @Override
+      public Adapter caseTextView(TextView object)
+      {
+        return createTextViewAdapter();
       }
       @Override
       public Adapter caseButton(Button object)
@@ -234,6 +241,11 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
       public Adapter caseBundle(Bundle object)
       {
         return createBundleAdapter();
+      }
+      @Override
+      public Adapter caseHolder(Holder object)
+      {
+        return createHolderAdapter();
       }
       @Override
       public Adapter caseFilterQuery(FilterQuery object)
@@ -613,16 +625,31 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.Textfield <em>Textfield</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.SpinnerCon <em>Spinner Con</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.mdsd.androidGenerator.Textfield
+   * @see org.xtext.example.mdsd.androidGenerator.SpinnerCon
    * @generated
    */
-  public Adapter createTextfieldAdapter()
+  public Adapter createSpinnerConAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.TextView <em>Text View</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mdsd.androidGenerator.TextView
+   * @generated
+   */
+  public Adapter createTextViewAdapter()
   {
     return null;
   }
@@ -683,6 +710,21 @@ public class AndroidGeneratorAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBundleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mdsd.androidGenerator.Holder <em>Holder</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mdsd.androidGenerator.Holder
+   * @generated
+   */
+  public Adapter createHolderAdapter()
   {
     return null;
   }

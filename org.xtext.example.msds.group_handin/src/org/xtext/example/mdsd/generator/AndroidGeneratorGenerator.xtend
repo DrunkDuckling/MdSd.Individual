@@ -12,8 +12,8 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.xtext.example.mdsd.androidGenerator.Application
 import org.xtext.example.mdsd.generator.abstractfiles.ContentGen
-import org.xtext.example.mdsd.generator.filegen.JavaActivityGen
-import org.xtext.example.mdsd.generator.filegen.ModelClassGen
+//import org.xtext.example.mdsd.generator.filegen.JavaActivityGen
+//import org.xtext.example.mdsd.generator.filegen.ModelClassGen
 import org.xtext.example.mdsd.generator.filegen.GradleGen
 import org.xtext.example.mdsd.generator.filegen.ManifestGen
 import org.xtext.example.mdsd.generator.filegen.LayoutGen

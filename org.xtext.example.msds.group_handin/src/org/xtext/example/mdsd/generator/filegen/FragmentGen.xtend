@@ -15,6 +15,11 @@ import org.xtext.example.mdsd.androidGenerator.Toast
 import org.xtext.example.mdsd.androidGenerator.Bundle
 import org.xtext.example.mdsd.androidGenerator.ButtonActions
 import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes
+import org.xtext.example.mdsd.androidGenerator.TextView
+import java.util.List
+import org.xtext.example.mdsd.androidGenerator.ApplicationAttribute
+import org.xtext.example.mdsd.androidGenerator.ApplicationElementList
+import sun.util.resources.Bundles.Strategy
 
 class FragmentGen extends AbstractClassGen{
 	
@@ -391,6 +396,29 @@ class FragmentGen extends AbstractClassGen{
 		'''
 	}
 	
+	def List<LayoutElement> getlayoutelem(Application app, Fragment frag){
+		val elements = newArrayList()
+		app.attributes.forEach[ a |
+			if((a as ApplicationAttribute) instanceof ApplicationElementList)
+				(a as ApplicationElementList).elements.forEach[ f |
+					if(f instanceof Fragment)
+						(f as Fragment).activityAttributes.forEach[e |
+							e.layoutElements.forEach[l |
+								if(l instanceof Button)
+									(l as Button).actions.forEach[b |
+										if(b instanceof Bundle)
+											if((b as Bundle).bundleRecipient.name === frag.name)
+												(b as Bundle).holder.hol.forEach[
+													elements.add(it)
+												]
+									]
+							]
+						]
+				]
+		]
+		return elements
+	}
+	
 	def insertCustomFragment(Fragment fragment, Application application){
 		var ActivityLayoutAttributes layout = getFieldData(fragment.activityAttributes, typeof(ActivityLayoutAttributes));
 		val string = new StringBuilder();
@@ -398,21 +426,75 @@ class FragmentGen extends AbstractClassGen{
 		val vars = new StringBuilder();
 		val methods = new StringBuilder();
 		
-		for(element : layout.layoutElements){
+		val elements = application.getlayoutelem(fragment)		
+		
+		// String for bundle fetching 
+		val bundle = new StringBuilder();
+		val content = new StringBuilder();
+		// implements the methods and vars used by the objects (Spinner and so on)			
+		for(element : layout.layoutElements){		
 			if(element instanceof Spinner){
+				if(element.spinnercon !== null){
+					if(!element.spinnercon.isEmpty){
+						val cost = new StringBuilder();
+						for(cos: element.spinnercon){
+							cost.append('''
+							customise.add(new Customise("«cos.text»"));
+							''')
+						}
+						instances.append('''
+					        ArrayList<Customise> customise = new ArrayList<>();
+					        «cost»
+					        Spinner «element.name» = view.findViewById(R.id.«javaToAndroidIdentifier(element.name)»);
+					        ArrayAdapter<Customise> adapter = new ArrayAdapter<Customise>(getContext(), android.R.layout.simple_spinner_item, customise);
+					        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+					        spinner.setAdapter(adapter);
+					        spinner.setOnItemSelectedListener(this);
+						''');
+						
+						methods.append('''
+						private class Customise {
+						    private String customise_name;
+						
+						    public Customise() {
+						    }
+						
+						    public Customise(String customise_name) {
+						        this.customise_name = customise_name;
+						    }
+						
+						    public String getCustomise_name() {
+						        return customise_name;
+						    }
+						
+						    public void setCustomise_name(String customise_name) {
+						        this.customise_name = customise_name;
+						    }
+						
+						    @Override
+						    public String toString() {
+						        return customise_name;
+						    }
+						}
+						''')
+					}
+				}else{
+					instances.append('''
+				        Spinner «element.name» = view.findViewById(R.id.«javaToAndroidIdentifier(element.name)»);
+				        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.places, android.R.layout.simple_spinner_item);
+				        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				        spinner.setAdapter(adapter);
+				        spinner.setOnItemSelectedListener(this);
+				        
+					''');
+				}
 				vars.append('''
 				private String m«element.name»;
 				''');
 				
-				instances.append('''
-		        Spinner «element.name» = view.findViewById(R.id.«javaToAndroidIdentifier(element.name)»);
-		        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.places, android.R.layout.simple_spinner_item);
-		        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		        spinner.setAdapter(adapter);
-		        spinner.setOnItemSelectedListener(this);
-		        
-				''');
 				
+				
+				// Spinner methods 
 				methods.append('''
 			    @Override
 			    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -423,6 +505,8 @@ class FragmentGen extends AbstractClassGen{
 			    public void onNothingSelected(AdapterView<?> parent) { }
 			    
 				''');
+				
+				
 			}if(element instanceof Button){
 				vars.append('''
 				''');
@@ -446,15 +530,58 @@ class FragmentGen extends AbstractClassGen{
 			}if(element instanceof EditText){
 				vars.append('''
 				private EditText m«element.name»;
-				private Double m«element.name»_number;
+				private Double m«element.name»;
 				
 				''');
 				instances.append('''
 				m«element.name» = view.findViewById(R.id.«javaToAndroidIdentifier(element.name)»);
 				
 				''');
+			}if(element instanceof TextView){
+				instances.append('''
+				final TextView m«element.name» = (TextView) view.findViewById(R.id.«javaToAndroidIdentifier(element.name)»);
+				m«element.name».setText("«element.text»");
+				''');
 			}
 		}
+		
+		// get the elements used for bundles; checks if null and empty
+		if(elements != null){
+			if(!elements.isEmpty){
+				for(ele : elements){
+					if(ele instanceof Spinner){
+						vars.append('''
+						String m«ele.name» = "";
+						''')
+						content.append('''
+						m«ele.name» = bundle.getString("b«ele.name»");
+						''')
+					}if(ele instanceof EditText){
+						vars.append('''
+						double m«ele.name» = 0;
+						''')
+						
+						content.append('''
+						m«ele.name» = bundle.getDouble("b«ele.name»");
+						''')
+					}if(ele instanceof TextView){
+						vars.append('''
+						String m«ele.name» = "";
+						''')
+						content.append('''
+						m«ele.name» = bundle.getString("b«ele.name»");
+						''')
+					}
+				}
+			bundle.append('''
+			Bundle bundle = getArguments();
+			    if (bundle != null){
+			        «content»
+			    }
+			''')
+			}
+		}
+		
 		
 		string.append('''
 		package «application.name»;
@@ -482,8 +609,7 @@ class FragmentGen extends AbstractClassGen{
 		        // Inflate the layout for this fragment
 		        View view = inflater.inflate(R.layout.«javaToAndroidIdentifier(fragment.name)», container, false);
 		        «instances»
-«««		        TODO: insert bundle
-
+				«bundle»
 		        return view;
 		    }
 		    
@@ -494,7 +620,7 @@ class FragmentGen extends AbstractClassGen{
 		return string;
 	}
 	
-	
+	// Used to create buttons and their used methods
 	def insertVariablesBundle(Fragment fragment, Application application){
 		var ActivityLayoutAttributes layout = getFieldData(fragment.activityAttributes, typeof(ActivityLayoutAttributes));
 		val string = new StringBuilder();
@@ -506,23 +632,24 @@ class FragmentGen extends AbstractClassGen{
 		val bundleString2 = new StringBuilder();
 		
 		for(element : layout.layoutElements){
-			if(element instanceof Spinner){
-				spinner.append('''
-		           bundle.putString("location", m«element.name»);
-				''');
-			}if(element instanceof EditText){
-				edittext.append('''
-				String failSafe = «element.name».getText().toString();
-				if(failSafe.matches("")){
-					Toast.makeText(getActivity().getApplicationContext(), "Please specify number", Toast.LENGTH_SHORT).show();
-				}else{
-				''');
-				
-				edittext2.append('''
-				m«element.name»_number = Double.parseDouble(m«element.name».getText().toString());
-				bundle.putDouble("radius", m«element.name»_number);
-				''');
-			}if(element instanceof Button){
+//			if(element instanceof Spinner){
+//				spinner.append('''
+//		           bundle.putString("b«element.name»", m«element.name»);
+//				''');
+//			}if(element instanceof EditText){
+//				edittext.append('''
+//				String failSafe = «element.name».getText().toString();
+//				if(failSafe.matches("")){
+//					Toast.makeText(getActivity().getApplicationContext(), "Please specify number", Toast.LENGTH_SHORT).show();
+//				}else{
+//				''');
+//				
+//				edittext2.append('''
+//				m«element.name» = Double.parseDouble(m«element.name».getText().toString());
+//				bundle.putDouble("b«element.name»", m«element.name»);
+//				''');
+//			}
+			if(element instanceof Button){
 				var action = element.actions;
 				for(actions: action){
 					if((actions instanceof Toast)){
@@ -537,6 +664,28 @@ class FragmentGen extends AbstractClassGen{
 						b«actions.bundleRecipient.name».setArguments(bundle);
 						transaction.replace(R.id.container_frame_layout, b«actions.bundleRecipient.name»).commit();
 						''');
+						
+						// Bundle content to send
+						var holder = actions.holder.hol
+						for(hol: holder){
+							if(hol instanceof Spinner){
+								spinner.append('''
+						           bundle.putString("b«hol.name»", m«hol.name»);
+								''');
+							}if(hol instanceof EditText){
+								edittext.append('''
+								String failSafe = «hol.name».getText().toString();
+								if(failSafe.matches("")){
+									Toast.makeText(getActivity().getApplicationContext(), "Please specify number", Toast.LENGTH_SHORT).show();
+								}else{
+								''');
+								
+								edittext2.append('''
+								m«hol.name» = Double.parseDouble(m«hol.name».getText().toString());
+								bundle.putDouble("b«hol.name»", m«hol.name»);
+								''');
+							}
+						}
 					}
 				}
 			}

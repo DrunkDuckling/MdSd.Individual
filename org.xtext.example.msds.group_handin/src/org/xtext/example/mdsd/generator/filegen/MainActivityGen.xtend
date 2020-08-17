@@ -229,9 +229,9 @@ class MainActivityGen extends AbstractGen {
 		        	activityItem.add("StandardFragment")
                     activityItem.add("standard") 
 		        }
-               
+                print(activityItem.toString)
                 // Checks if all info is here
-                if (activityItem.size() == 4) {
+                if (activityItem.size() >= 4) {
                     // Add item to list
                     activityArrayList.add(activityItem)
                 }

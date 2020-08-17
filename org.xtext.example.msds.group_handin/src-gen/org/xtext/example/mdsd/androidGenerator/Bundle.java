@@ -3,7 +3,6 @@
  */
 package org.xtext.example.mdsd.androidGenerator;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,15 +46,25 @@ public interface Bundle extends ButtonActions
   void setBundleRecipient(Fragment value);
 
   /**
-   * Returns the value of the '<em><b>Holder</b></em>' reference list.
-   * The list contents are of type {@link org.xtext.example.mdsd.androidGenerator.Dataholders}.
+   * Returns the value of the '<em><b>Holder</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Holder</em>' reference list.
+   * @return the value of the '<em>Holder</em>' containment reference.
+   * @see #setHolder(Holder)
    * @see org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage#getBundle_Holder()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  EList<Dataholders> getHolder();
+  Holder getHolder();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mdsd.androidGenerator.Bundle#getHolder <em>Holder</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Holder</em>' containment reference.
+   * @see #getHolder()
+   * @generated
+   */
+  void setHolder(Holder value);
 
 } // Bundle

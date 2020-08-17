@@ -56,7 +56,8 @@ class GradleGen extends AbstractGen {
 					    implementation 'com.google.android.gms:play-services-maps:16.1.0'
 				}
 			''';
-		} else {
+		} 
+		else {
 		
 		return
 		'''

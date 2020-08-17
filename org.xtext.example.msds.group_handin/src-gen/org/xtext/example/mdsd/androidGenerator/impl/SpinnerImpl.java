@@ -3,20 +3,47 @@
  */
 package org.xtext.example.mdsd.androidGenerator.impl;
 
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
 import org.xtext.example.mdsd.androidGenerator.Spinner;
+import org.xtext.example.mdsd.androidGenerator.SpinnerCon;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Spinner</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.mdsd.androidGenerator.impl.SpinnerImpl#getSpinnercon <em>Spinnercon</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class SpinnerImpl extends DataholdersImpl implements Spinner
 {
+  /**
+   * The cached value of the '{@link #getSpinnercon() <em>Spinnercon</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSpinnercon()
+   * @generated
+   * @ordered
+   */
+  protected EList<SpinnerCon> spinnercon;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -36,6 +63,105 @@ public class SpinnerImpl extends DataholdersImpl implements Spinner
   protected EClass eStaticClass()
   {
     return AndroidGeneratorPackage.Literals.SPINNER;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<SpinnerCon> getSpinnercon()
+  {
+    if (spinnercon == null)
+    {
+      spinnercon = new EObjectContainmentEList<SpinnerCon>(SpinnerCon.class, this, AndroidGeneratorPackage.SPINNER__SPINNERCON);
+    }
+    return spinnercon;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case AndroidGeneratorPackage.SPINNER__SPINNERCON:
+        return ((InternalEList<?>)getSpinnercon()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case AndroidGeneratorPackage.SPINNER__SPINNERCON:
+        return getSpinnercon();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case AndroidGeneratorPackage.SPINNER__SPINNERCON:
+        getSpinnercon().clear();
+        getSpinnercon().addAll((Collection<? extends SpinnerCon>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case AndroidGeneratorPackage.SPINNER__SPINNERCON:
+        getSpinnercon().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case AndroidGeneratorPackage.SPINNER__SPINNERCON:
+        return spinnercon != null && !spinnercon.isEmpty();
+    }
+    return super.eIsSet(featureID);
   }
 
 } //SpinnerImpl

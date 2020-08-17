@@ -56,8 +56,15 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//ActivityTypeAttributes/filter"/>
     </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//EditText"/>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//Spinner"/>
-    <genClasses ecoreClass="AndroidGenerator.ecore#//Textfield"/>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//Spinner">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Spinner/spinnercon"/>
+    </genClasses>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//SpinnerCon">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//SpinnerCon/text"/>
+    </genClasses>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//TextView">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//TextView/text"/>
+    </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Button">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//Button/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Button/actions"/>
@@ -68,7 +75,10 @@
     </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//Bundle">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Bundle/bundleRecipient"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Bundle/holder"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Bundle/holder"/>
+    </genClasses>
+    <genClasses ecoreClass="AndroidGenerator.ecore#//Holder">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AndroidGenerator.ecore#//Holder/hol"/>
     </genClasses>
     <genClasses ecoreClass="AndroidGenerator.ecore#//FilterQuery">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AndroidGenerator.ecore#//FilterQuery/name"/>

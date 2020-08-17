@@ -204,13 +204,22 @@ public interface AndroidGeneratorFactory extends EFactory
   Spinner createSpinner();
 
   /**
-   * Returns a new object of class '<em>Textfield</em>'.
+   * Returns a new object of class '<em>Spinner Con</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Textfield</em>'.
+   * @return a new object of class '<em>Spinner Con</em>'.
    * @generated
    */
-  Textfield createTextfield();
+  SpinnerCon createSpinnerCon();
+
+  /**
+   * Returns a new object of class '<em>Text View</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Text View</em>'.
+   * @generated
+   */
+  TextView createTextView();
 
   /**
    * Returns a new object of class '<em>Button</em>'.
@@ -247,6 +256,15 @@ public interface AndroidGeneratorFactory extends EFactory
    * @generated
    */
   Bundle createBundle();
+
+  /**
+   * Returns a new object of class '<em>Holder</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Holder</em>'.
+   * @generated
+   */
+  Holder createHolder();
 
   /**
    * Returns a new object of class '<em>Filter Query</em>'.

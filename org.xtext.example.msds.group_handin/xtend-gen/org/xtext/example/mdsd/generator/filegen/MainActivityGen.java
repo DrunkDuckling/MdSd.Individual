@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.Application;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
@@ -477,9 +478,10 @@ public class MainActivityGen extends AbstractGen {
           activityItem.add("StandardFragment");
           activityItem.add("standard");
         }
+        InputOutput.<String>print(activityItem.toString());
         int _size = activityItem.size();
-        boolean _equals = (_size == 4);
-        if (_equals) {
+        boolean _greaterEqualsThan = (_size >= 4);
+        if (_greaterEqualsThan) {
           this.activityArrayList.add(activityItem);
         }
       }

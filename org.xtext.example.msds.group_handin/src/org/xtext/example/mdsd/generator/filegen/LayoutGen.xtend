@@ -13,6 +13,7 @@ import org.xtext.example.mdsd.androidGenerator.TypeMap
 import org.xtext.example.mdsd.androidGenerator.TypeSetting
 import org.xtext.example.mdsd.androidGenerator.EditText
 import org.xtext.example.mdsd.androidGenerator.Spinner
+import org.xtext.example.mdsd.androidGenerator.TextView
 
 class LayoutGen extends AbstractGen{
    
@@ -151,6 +152,14 @@ class LayoutGen extends AbstractGen{
                             android:id="@+id/«javaToAndroidIdentifier(element.name)»"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
+                    ''');
+                }else if (element instanceof TextView) {
+                	string.append('''
+                         <TextView
+                             android:id="@+id/«javaToAndroidIdentifier(element.name)»"
+                             android:layout_height="wrap_content"
+                             android:layout_width="match_parent"
+                             android:text="Place holder for new text" />
                     ''');
                 }
             ];

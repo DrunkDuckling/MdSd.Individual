@@ -1,19 +1,28 @@
 package org.xtext.example.mdsd.generator.filegen;
 
 import com.google.common.base.Objects;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
 import org.xtext.example.mdsd.androidGenerator.ActivityTypeAttributes;
 import org.xtext.example.mdsd.androidGenerator.Application;
+import org.xtext.example.mdsd.androidGenerator.ApplicationAttribute;
 import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
+import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
 import org.xtext.example.mdsd.androidGenerator.Bundle;
 import org.xtext.example.mdsd.androidGenerator.Button;
 import org.xtext.example.mdsd.androidGenerator.ButtonActions;
+import org.xtext.example.mdsd.androidGenerator.Dataholders;
 import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.Spinner;
+import org.xtext.example.mdsd.androidGenerator.SpinnerCon;
+import org.xtext.example.mdsd.androidGenerator.TextView;
 import org.xtext.example.mdsd.androidGenerator.Toast;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
@@ -928,221 +937,465 @@ public class FragmentGen extends AbstractClassGen {
     return _builder.toString();
   }
   
+  public List<LayoutElement> getlayoutelem(final Application app, final Fragment frag) {
+    final ArrayList<LayoutElement> elements = CollectionLiterals.<LayoutElement>newArrayList();
+    final Consumer<ApplicationAttribute> _function = (ApplicationAttribute a) -> {
+      if ((((ApplicationAttribute) a) instanceof ApplicationElementList)) {
+        final Consumer<ApplicationElement> _function_1 = (ApplicationElement f) -> {
+          if ((f instanceof Fragment)) {
+            final Consumer<ActivityLayoutAttributes> _function_2 = (ActivityLayoutAttributes e) -> {
+              final Consumer<LayoutElement> _function_3 = (LayoutElement l) -> {
+                if ((l instanceof Button)) {
+                  final Consumer<ButtonActions> _function_4 = (ButtonActions b) -> {
+                    if ((b instanceof Bundle)) {
+                      String _name = ((Bundle) b).getBundleRecipient().getName();
+                      String _name_1 = frag.getName();
+                      boolean _tripleEquals = (_name == _name_1);
+                      if (_tripleEquals) {
+                        final Consumer<Dataholders> _function_5 = (Dataholders it) -> {
+                          elements.add(it);
+                        };
+                        ((Bundle) b).getHolder().getHol().forEach(_function_5);
+                      }
+                    }
+                  };
+                  ((Button) l).getActions().forEach(_function_4);
+                }
+              };
+              e.getLayoutElements().forEach(_function_3);
+            };
+            ((Fragment) f).getActivityAttributes().forEach(_function_2);
+          }
+        };
+        ((ApplicationElementList) a).getElements().forEach(_function_1);
+      }
+    };
+    app.getAttributes().forEach(_function);
+    return elements;
+  }
+  
   public StringBuilder insertCustomFragment(final Fragment fragment, final Application application) {
     ActivityLayoutAttributes layout = this.<ActivityLayoutAttributes>getFieldData(fragment.getActivityAttributes(), ActivityLayoutAttributes.class);
     final StringBuilder string = new StringBuilder();
     final StringBuilder instances = new StringBuilder();
     final StringBuilder vars = new StringBuilder();
     final StringBuilder methods = new StringBuilder();
+    final List<LayoutElement> elements = this.getlayoutelem(application, fragment);
+    final StringBuilder bundle = new StringBuilder();
+    final StringBuilder content = new StringBuilder();
     EList<LayoutElement> _layoutElements = layout.getLayoutElements();
     for (final LayoutElement element : _layoutElements) {
       {
         if ((element instanceof Spinner)) {
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("private String m");
-          String _name = ((Spinner)element).getName();
-          _builder.append(_name);
-          _builder.append(";");
-          _builder.newLineIfNotEmpty();
-          vars.append(_builder);
-          StringConcatenation _builder_1 = new StringConcatenation();
-          _builder_1.append("Spinner ");
-          String _name_1 = ((Spinner)element).getName();
-          _builder_1.append(_name_1);
-          _builder_1.append(" = view.findViewById(R.id.");
-          String _javaToAndroidIdentifier = this.javaToAndroidIdentifier(((Spinner)element).getName());
-          _builder_1.append(_javaToAndroidIdentifier);
-          _builder_1.append(");");
-          _builder_1.newLineIfNotEmpty();
-          _builder_1.append("ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.places, android.R.layout.simple_spinner_item);");
-          _builder_1.newLine();
-          _builder_1.append("adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);");
-          _builder_1.newLine();
-          _builder_1.append("spinner.setAdapter(adapter);");
-          _builder_1.newLine();
-          _builder_1.append("spinner.setOnItemSelectedListener(this);");
-          _builder_1.newLine();
-          _builder_1.newLine();
-          instances.append(_builder_1);
-          StringConcatenation _builder_2 = new StringConcatenation();
-          _builder_2.append("@Override");
-          _builder_2.newLine();
-          _builder_2.append("public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {");
-          _builder_2.newLine();
-          _builder_2.append("    ");
-          _builder_2.append("m");
-          String _name_2 = ((Spinner)element).getName();
-          _builder_2.append(_name_2, "    ");
-          _builder_2.append(" = parent.getItemAtPosition(position).toString();");
-          _builder_2.newLineIfNotEmpty();
-          _builder_2.append("}");
-          _builder_2.newLine();
-          _builder_2.newLine();
-          _builder_2.append("@Override");
-          _builder_2.newLine();
-          _builder_2.append("public void onNothingSelected(AdapterView<?> parent) { }");
-          _builder_2.newLine();
-          _builder_2.newLine();
-          methods.append(_builder_2);
-        }
-        if ((element instanceof Button)) {
-          StringConcatenation _builder_3 = new StringConcatenation();
-          vars.append(_builder_3);
+          EList<SpinnerCon> _spinnercon = ((Spinner)element).getSpinnercon();
+          boolean _tripleNotEquals = (_spinnercon != null);
+          if (_tripleNotEquals) {
+            boolean _isEmpty = ((Spinner)element).getSpinnercon().isEmpty();
+            boolean _not = (!_isEmpty);
+            if (_not) {
+              final StringBuilder cost = new StringBuilder();
+              EList<SpinnerCon> _spinnercon_1 = ((Spinner)element).getSpinnercon();
+              for (final SpinnerCon cos : _spinnercon_1) {
+                StringConcatenation _builder = new StringConcatenation();
+                _builder.append("customise.add(new Customise(\"");
+                String _text = cos.getText();
+                _builder.append(_text);
+                _builder.append("\"));");
+                _builder.newLineIfNotEmpty();
+                cost.append(_builder);
+              }
+              StringConcatenation _builder_1 = new StringConcatenation();
+              _builder_1.append("ArrayList<Customise> customise = new ArrayList<>();");
+              _builder_1.newLine();
+              _builder_1.append(cost);
+              _builder_1.newLineIfNotEmpty();
+              _builder_1.append("Spinner ");
+              String _name = ((Spinner)element).getName();
+              _builder_1.append(_name);
+              _builder_1.append(" = view.findViewById(R.id.");
+              String _javaToAndroidIdentifier = this.javaToAndroidIdentifier(((Spinner)element).getName());
+              _builder_1.append(_javaToAndroidIdentifier);
+              _builder_1.append(");");
+              _builder_1.newLineIfNotEmpty();
+              _builder_1.append("ArrayAdapter<Customise> adapter = new ArrayAdapter<Customise>(getContext(), android.R.layout.simple_spinner_item, customise);");
+              _builder_1.newLine();
+              _builder_1.append("adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);");
+              _builder_1.newLine();
+              _builder_1.append("spinner.setAdapter(adapter);");
+              _builder_1.newLine();
+              _builder_1.append("spinner.setOnItemSelectedListener(this);");
+              _builder_1.newLine();
+              instances.append(_builder_1);
+              StringConcatenation _builder_2 = new StringConcatenation();
+              _builder_2.append("private class Customise {");
+              _builder_2.newLine();
+              _builder_2.append("    ");
+              _builder_2.append("private String customise_name;");
+              _builder_2.newLine();
+              _builder_2.newLine();
+              _builder_2.append("    ");
+              _builder_2.append("public Customise() {");
+              _builder_2.newLine();
+              _builder_2.append("    ");
+              _builder_2.append("}");
+              _builder_2.newLine();
+              _builder_2.newLine();
+              _builder_2.append("    ");
+              _builder_2.append("public Customise(String customise_name) {");
+              _builder_2.newLine();
+              _builder_2.append("        ");
+              _builder_2.append("this.customise_name = customise_name;");
+              _builder_2.newLine();
+              _builder_2.append("    ");
+              _builder_2.append("}");
+              _builder_2.newLine();
+              _builder_2.newLine();
+              _builder_2.append("    ");
+              _builder_2.append("public String getCustomise_name() {");
+              _builder_2.newLine();
+              _builder_2.append("        ");
+              _builder_2.append("return customise_name;");
+              _builder_2.newLine();
+              _builder_2.append("    ");
+              _builder_2.append("}");
+              _builder_2.newLine();
+              _builder_2.newLine();
+              _builder_2.append("    ");
+              _builder_2.append("public void setCustomise_name(String customise_name) {");
+              _builder_2.newLine();
+              _builder_2.append("        ");
+              _builder_2.append("this.customise_name = customise_name;");
+              _builder_2.newLine();
+              _builder_2.append("    ");
+              _builder_2.append("}");
+              _builder_2.newLine();
+              _builder_2.newLine();
+              _builder_2.append("    ");
+              _builder_2.append("@Override");
+              _builder_2.newLine();
+              _builder_2.append("    ");
+              _builder_2.append("public String toString() {");
+              _builder_2.newLine();
+              _builder_2.append("        ");
+              _builder_2.append("return customise_name;");
+              _builder_2.newLine();
+              _builder_2.append("    ");
+              _builder_2.append("}");
+              _builder_2.newLine();
+              _builder_2.append("}");
+              _builder_2.newLine();
+              methods.append(_builder_2);
+            }
+          } else {
+            StringConcatenation _builder_3 = new StringConcatenation();
+            _builder_3.append("Spinner ");
+            String _name_1 = ((Spinner)element).getName();
+            _builder_3.append(_name_1);
+            _builder_3.append(" = view.findViewById(R.id.");
+            String _javaToAndroidIdentifier_1 = this.javaToAndroidIdentifier(((Spinner)element).getName());
+            _builder_3.append(_javaToAndroidIdentifier_1);
+            _builder_3.append(");");
+            _builder_3.newLineIfNotEmpty();
+            _builder_3.append("ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.places, android.R.layout.simple_spinner_item);");
+            _builder_3.newLine();
+            _builder_3.append("adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);");
+            _builder_3.newLine();
+            _builder_3.append("spinner.setAdapter(adapter);");
+            _builder_3.newLine();
+            _builder_3.append("spinner.setOnItemSelectedListener(this);");
+            _builder_3.newLine();
+            _builder_3.newLine();
+            instances.append(_builder_3);
+          }
           StringConcatenation _builder_4 = new StringConcatenation();
-          _builder_4.append("Button ");
-          String _name_3 = ((Button)element).getName();
-          _builder_4.append(_name_3);
-          _builder_4.append(" = view.findViewById(R.id.");
-          String _javaToAndroidIdentifier_1 = this.javaToAndroidIdentifier(((Button)element).getName());
-          _builder_4.append(_javaToAndroidIdentifier_1);
-          _builder_4.append(");");
+          _builder_4.append("private String m");
+          String _name_2 = ((Spinner)element).getName();
+          _builder_4.append(_name_2);
+          _builder_4.append(";");
           _builder_4.newLineIfNotEmpty();
-          String _name_4 = ((Button)element).getName();
-          _builder_4.append(_name_4);
-          _builder_4.append(".setOnClickListener(this);");
-          _builder_4.newLineIfNotEmpty();
-          _builder_4.newLine();
-          instances.append(_builder_4);
+          vars.append(_builder_4);
           StringConcatenation _builder_5 = new StringConcatenation();
           _builder_5.append("@Override");
           _builder_5.newLine();
-          _builder_5.append("public void onClick(View v) {");
+          _builder_5.append("public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {");
           _builder_5.newLine();
           _builder_5.append("    ");
-          _builder_5.append("switch (v.getId()){");
-          _builder_5.newLine();
-          _builder_5.append("        ");
-          _builder_5.append("case R.id.");
-          String _javaToAndroidIdentifier_2 = this.javaToAndroidIdentifier(((Button)element).getName());
-          _builder_5.append(_javaToAndroidIdentifier_2, "        ");
-          _builder_5.append(":");
+          _builder_5.append("m");
+          String _name_3 = ((Spinner)element).getName();
+          _builder_5.append(_name_3, "    ");
+          _builder_5.append(" = parent.getItemAtPosition(position).toString();");
           _builder_5.newLineIfNotEmpty();
-          _builder_5.append("            ");
-          StringBuilder _insertVariablesBundle = this.insertVariablesBundle(fragment, application);
-          _builder_5.append(_insertVariablesBundle, "            ");
-          _builder_5.newLineIfNotEmpty();
-          _builder_5.append("    ");
           _builder_5.append("}");
           _builder_5.newLine();
-          _builder_5.append("}");
+          _builder_5.newLine();
+          _builder_5.append("@Override");
+          _builder_5.newLine();
+          _builder_5.append("public void onNothingSelected(AdapterView<?> parent) { }");
+          _builder_5.newLine();
           _builder_5.newLine();
           methods.append(_builder_5);
         }
-        if ((element instanceof EditText)) {
+        if ((element instanceof Button)) {
           StringConcatenation _builder_6 = new StringConcatenation();
-          _builder_6.append("private EditText m");
-          String _name_5 = ((EditText)element).getName();
-          _builder_6.append(_name_5);
-          _builder_6.append(";");
-          _builder_6.newLineIfNotEmpty();
-          _builder_6.append("private Double m");
-          String _name_6 = ((EditText)element).getName();
-          _builder_6.append(_name_6);
-          _builder_6.append("_number;");
-          _builder_6.newLineIfNotEmpty();
-          _builder_6.newLine();
           vars.append(_builder_6);
           StringConcatenation _builder_7 = new StringConcatenation();
-          _builder_7.append("m");
-          String _name_7 = ((EditText)element).getName();
-          _builder_7.append(_name_7);
+          _builder_7.append("Button ");
+          String _name_4 = ((Button)element).getName();
+          _builder_7.append(_name_4);
           _builder_7.append(" = view.findViewById(R.id.");
-          String _javaToAndroidIdentifier_3 = this.javaToAndroidIdentifier(((EditText)element).getName());
-          _builder_7.append(_javaToAndroidIdentifier_3);
+          String _javaToAndroidIdentifier_2 = this.javaToAndroidIdentifier(((Button)element).getName());
+          _builder_7.append(_javaToAndroidIdentifier_2);
           _builder_7.append(");");
+          _builder_7.newLineIfNotEmpty();
+          String _name_5 = ((Button)element).getName();
+          _builder_7.append(_name_5);
+          _builder_7.append(".setOnClickListener(this);");
           _builder_7.newLineIfNotEmpty();
           _builder_7.newLine();
           instances.append(_builder_7);
+          StringConcatenation _builder_8 = new StringConcatenation();
+          _builder_8.append("@Override");
+          _builder_8.newLine();
+          _builder_8.append("public void onClick(View v) {");
+          _builder_8.newLine();
+          _builder_8.append("    ");
+          _builder_8.append("switch (v.getId()){");
+          _builder_8.newLine();
+          _builder_8.append("        ");
+          _builder_8.append("case R.id.");
+          String _javaToAndroidIdentifier_3 = this.javaToAndroidIdentifier(((Button)element).getName());
+          _builder_8.append(_javaToAndroidIdentifier_3, "        ");
+          _builder_8.append(":");
+          _builder_8.newLineIfNotEmpty();
+          _builder_8.append("            ");
+          StringBuilder _insertVariablesBundle = this.insertVariablesBundle(fragment, application);
+          _builder_8.append(_insertVariablesBundle, "            ");
+          _builder_8.newLineIfNotEmpty();
+          _builder_8.append("    ");
+          _builder_8.append("}");
+          _builder_8.newLine();
+          _builder_8.append("}");
+          _builder_8.newLine();
+          methods.append(_builder_8);
+        }
+        if ((element instanceof EditText)) {
+          StringConcatenation _builder_9 = new StringConcatenation();
+          _builder_9.append("private EditText m");
+          String _name_6 = ((EditText)element).getName();
+          _builder_9.append(_name_6);
+          _builder_9.append(";");
+          _builder_9.newLineIfNotEmpty();
+          _builder_9.append("private Double m");
+          String _name_7 = ((EditText)element).getName();
+          _builder_9.append(_name_7);
+          _builder_9.append(";");
+          _builder_9.newLineIfNotEmpty();
+          _builder_9.newLine();
+          vars.append(_builder_9);
+          StringConcatenation _builder_10 = new StringConcatenation();
+          _builder_10.append("m");
+          String _name_8 = ((EditText)element).getName();
+          _builder_10.append(_name_8);
+          _builder_10.append(" = view.findViewById(R.id.");
+          String _javaToAndroidIdentifier_4 = this.javaToAndroidIdentifier(((EditText)element).getName());
+          _builder_10.append(_javaToAndroidIdentifier_4);
+          _builder_10.append(");");
+          _builder_10.newLineIfNotEmpty();
+          _builder_10.newLine();
+          instances.append(_builder_10);
+        }
+        if ((element instanceof TextView)) {
+          StringConcatenation _builder_11 = new StringConcatenation();
+          _builder_11.append("final TextView m");
+          String _name_9 = ((TextView)element).getName();
+          _builder_11.append(_name_9);
+          _builder_11.append(" = (TextView) view.findViewById(R.id.");
+          String _javaToAndroidIdentifier_5 = this.javaToAndroidIdentifier(((TextView)element).getName());
+          _builder_11.append(_javaToAndroidIdentifier_5);
+          _builder_11.append(");");
+          _builder_11.newLineIfNotEmpty();
+          _builder_11.append("m");
+          String _name_10 = ((TextView)element).getName();
+          _builder_11.append(_name_10);
+          _builder_11.append(".setText(\"");
+          String _text_1 = ((TextView)element).getText();
+          _builder_11.append(_text_1);
+          _builder_11.append("\");");
+          _builder_11.newLineIfNotEmpty();
+          instances.append(_builder_11);
         }
       }
     }
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package ");
+    boolean _notEquals = (!Objects.equal(elements, null));
+    if (_notEquals) {
+      boolean _isEmpty = elements.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        for (final LayoutElement ele : elements) {
+          {
+            if ((ele instanceof Spinner)) {
+              StringConcatenation _builder = new StringConcatenation();
+              _builder.append("String m");
+              String _name = ((Spinner)ele).getName();
+              _builder.append(_name);
+              _builder.append(" = \"\";");
+              _builder.newLineIfNotEmpty();
+              vars.append(_builder);
+              StringConcatenation _builder_1 = new StringConcatenation();
+              _builder_1.append("m");
+              String _name_1 = ((Spinner)ele).getName();
+              _builder_1.append(_name_1);
+              _builder_1.append(" = bundle.getString(\"b");
+              String _name_2 = ((Spinner)ele).getName();
+              _builder_1.append(_name_2);
+              _builder_1.append("\");");
+              _builder_1.newLineIfNotEmpty();
+              content.append(_builder_1);
+            }
+            if ((ele instanceof EditText)) {
+              StringConcatenation _builder_2 = new StringConcatenation();
+              _builder_2.append("double m");
+              String _name_3 = ((EditText)ele).getName();
+              _builder_2.append(_name_3);
+              _builder_2.append(" = 0;");
+              _builder_2.newLineIfNotEmpty();
+              vars.append(_builder_2);
+              StringConcatenation _builder_3 = new StringConcatenation();
+              _builder_3.append("m");
+              String _name_4 = ((EditText)ele).getName();
+              _builder_3.append(_name_4);
+              _builder_3.append(" = bundle.getDouble(\"b");
+              String _name_5 = ((EditText)ele).getName();
+              _builder_3.append(_name_5);
+              _builder_3.append("\");");
+              _builder_3.newLineIfNotEmpty();
+              content.append(_builder_3);
+            }
+            if ((ele instanceof TextView)) {
+              StringConcatenation _builder_4 = new StringConcatenation();
+              _builder_4.append("String m");
+              String _name_6 = ((TextView)ele).getName();
+              _builder_4.append(_name_6);
+              _builder_4.append(" = \"\";");
+              _builder_4.newLineIfNotEmpty();
+              vars.append(_builder_4);
+              StringConcatenation _builder_5 = new StringConcatenation();
+              _builder_5.append("m");
+              String _name_7 = ((TextView)ele).getName();
+              _builder_5.append(_name_7);
+              _builder_5.append(" = bundle.getString(\"b");
+              String _name_8 = ((TextView)ele).getName();
+              _builder_5.append(_name_8);
+              _builder_5.append("\");");
+              _builder_5.newLineIfNotEmpty();
+              content.append(_builder_5);
+            }
+          }
+        }
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("Bundle bundle = getArguments();");
+        _builder.newLine();
+        _builder.append("    ");
+        _builder.append("if (bundle != null){");
+        _builder.newLine();
+        _builder.append("        ");
+        _builder.append(content, "        ");
+        _builder.newLineIfNotEmpty();
+        _builder.append("    ");
+        _builder.append("}");
+        _builder.newLine();
+        bundle.append(_builder);
+      }
+    }
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append("package ");
     String _name = application.getName();
-    _builder.append(_name);
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
-    _builder.append("import android.os.Bundle;");
-    _builder.newLine();
-    _builder.append("import androidx.fragment.app.Fragment;");
-    _builder.newLine();
-    _builder.append("import android.view.LayoutInflater;");
-    _builder.newLine();
-    _builder.append("import android.view.View;");
-    _builder.newLine();
-    _builder.append("import android.view.ViewGroup;");
-    _builder.newLine();
-    _builder.append("import ");
+    _builder_1.append(_name);
+    _builder_1.append(";");
+    _builder_1.newLineIfNotEmpty();
+    _builder_1.append("import android.os.Bundle;");
+    _builder_1.newLine();
+    _builder_1.append("import androidx.fragment.app.Fragment;");
+    _builder_1.newLine();
+    _builder_1.append("import android.view.LayoutInflater;");
+    _builder_1.newLine();
+    _builder_1.append("import android.view.View;");
+    _builder_1.newLine();
+    _builder_1.append("import android.view.ViewGroup;");
+    _builder_1.newLine();
+    _builder_1.append("import ");
     String _name_1 = application.getName();
-    _builder.append(_name_1);
-    _builder.append(".R;");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("public class ");
+    _builder_1.append(_name_1);
+    _builder_1.append(".R;");
+    _builder_1.newLineIfNotEmpty();
+    _builder_1.newLine();
+    _builder_1.append("public class ");
     String _name_2 = fragment.getName();
-    _builder.append(_name_2);
-    _builder.append(" extends Fragment {");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append(vars);
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.append("public SettingsFragment() {");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("// Required empty public constructor");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("@Override");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("public void onCreate(Bundle savedInstanceState) {");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("super.onCreate(savedInstanceState);");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("@Override");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("// Inflate the layout for this fragment");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("View view = inflater.inflate(R.layout.");
+    _builder_1.append(_name_2);
+    _builder_1.append(" extends Fragment {");
+    _builder_1.newLineIfNotEmpty();
+    _builder_1.append("\t");
+    _builder_1.newLine();
+    _builder_1.append(vars);
+    _builder_1.newLineIfNotEmpty();
+    _builder_1.append("\t");
+    _builder_1.append("public SettingsFragment() {");
+    _builder_1.newLine();
+    _builder_1.append("        ");
+    _builder_1.append("// Required empty public constructor");
+    _builder_1.newLine();
+    _builder_1.append("    ");
+    _builder_1.append("}");
+    _builder_1.newLine();
+    _builder_1.newLine();
+    _builder_1.append("    ");
+    _builder_1.append("@Override");
+    _builder_1.newLine();
+    _builder_1.append("    ");
+    _builder_1.append("public void onCreate(Bundle savedInstanceState) {");
+    _builder_1.newLine();
+    _builder_1.append("        ");
+    _builder_1.append("super.onCreate(savedInstanceState);");
+    _builder_1.newLine();
+    _builder_1.append("    ");
+    _builder_1.append("}");
+    _builder_1.newLine();
+    _builder_1.newLine();
+    _builder_1.append("    ");
+    _builder_1.append("@Override");
+    _builder_1.newLine();
+    _builder_1.append("    ");
+    _builder_1.append("public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {");
+    _builder_1.newLine();
+    _builder_1.append("        ");
+    _builder_1.append("// Inflate the layout for this fragment");
+    _builder_1.newLine();
+    _builder_1.append("        ");
+    _builder_1.append("View view = inflater.inflate(R.layout.");
     String _javaToAndroidIdentifier = this.javaToAndroidIdentifier(fragment.getName());
-    _builder.append(_javaToAndroidIdentifier, "        ");
-    _builder.append(", container, false);");
-    _builder.newLineIfNotEmpty();
-    _builder.append("        ");
-    _builder.append(instances, "        ");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("return view;");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append(methods, "    ");
-    _builder.newLineIfNotEmpty();
-    _builder.append("}");
-    _builder.newLine();
-    string.append(_builder);
+    _builder_1.append(_javaToAndroidIdentifier, "        ");
+    _builder_1.append(", container, false);");
+    _builder_1.newLineIfNotEmpty();
+    _builder_1.append("        ");
+    _builder_1.append(instances, "        ");
+    _builder_1.newLineIfNotEmpty();
+    _builder_1.append("\t\t");
+    _builder_1.append(bundle, "\t\t");
+    _builder_1.newLineIfNotEmpty();
+    _builder_1.append("        ");
+    _builder_1.append("return view;");
+    _builder_1.newLine();
+    _builder_1.append("    ");
+    _builder_1.append("}");
+    _builder_1.newLine();
+    _builder_1.append("    ");
+    _builder_1.newLine();
+    _builder_1.append("    ");
+    _builder_1.append(methods, "    ");
+    _builder_1.newLineIfNotEmpty();
+    _builder_1.append("}");
+    _builder_1.newLine();
+    string.append(_builder_1);
     return string;
   }
   
@@ -1159,85 +1412,94 @@ public class FragmentGen extends AbstractClassGen {
       final StringBuilder bundleString2 = new StringBuilder();
       EList<LayoutElement> _layoutElements = layout.getLayoutElements();
       for (final LayoutElement element : _layoutElements) {
-        {
-          if ((element instanceof Spinner)) {
-            StringConcatenation _builder = new StringConcatenation();
-            _builder.append("bundle.putString(\"location\", m");
-            String _name = ((Spinner)element).getName();
-            _builder.append(_name);
-            _builder.append(");");
-            _builder.newLineIfNotEmpty();
-            spinner.append(_builder);
-          }
-          if ((element instanceof EditText)) {
-            StringConcatenation _builder_1 = new StringConcatenation();
-            _builder_1.append("String failSafe = ");
-            String _name_1 = ((EditText)element).getName();
-            _builder_1.append(_name_1);
-            _builder_1.append(".getText().toString();");
-            _builder_1.newLineIfNotEmpty();
-            _builder_1.append("if(failSafe.matches(\"\")){");
-            _builder_1.newLine();
-            _builder_1.append("\t");
-            _builder_1.append("Toast.makeText(getActivity().getApplicationContext(), \"Please specify number\", Toast.LENGTH_SHORT).show();");
-            _builder_1.newLine();
-            _builder_1.append("}else{");
-            _builder_1.newLine();
-            edittext.append(_builder_1);
-            StringConcatenation _builder_2 = new StringConcatenation();
-            _builder_2.append("m");
-            String _name_2 = ((EditText)element).getName();
-            _builder_2.append(_name_2);
-            _builder_2.append("_number = Double.parseDouble(m");
-            String _name_3 = ((EditText)element).getName();
-            _builder_2.append(_name_3);
-            _builder_2.append(".getText().toString());");
-            _builder_2.newLineIfNotEmpty();
-            _builder_2.append("bundle.putDouble(\"radius\", m");
-            String _name_4 = ((EditText)element).getName();
-            _builder_2.append(_name_4);
-            _builder_2.append("_number);");
-            _builder_2.newLineIfNotEmpty();
-            edittext2.append(_builder_2);
-          }
-          if ((element instanceof Button)) {
-            EList<ButtonActions> action = ((Button)element).getActions();
-            for (final ButtonActions actions : action) {
-              {
-                if ((actions instanceof Toast)) {
-                  StringConcatenation _builder_3 = new StringConcatenation();
-                  _builder_3.append("Toast.makeText(getActivity().getApplicationContext(), \"");
-                  String _text = ((Toast)actions).getText();
-                  _builder_3.append(_text);
-                  _builder_3.append("\", Toast.LENGTH_SHORT).show();");
-                  _builder_3.newLineIfNotEmpty();
-                  buttonString.append(_builder_3);
-                }
-                if ((actions instanceof Bundle)) {
-                  StringConcatenation _builder_4 = new StringConcatenation();
-                  String _name_5 = ((Bundle)actions).getBundleRecipient().getName();
-                  _builder_4.append(_name_5);
-                  _builder_4.append(" b");
-                  String _name_6 = ((Bundle)actions).getBundleRecipient().getName();
-                  _builder_4.append(_name_6);
-                  _builder_4.append(" = new ");
-                  String _name_7 = ((Bundle)actions).getBundleRecipient().getName();
-                  _builder_4.append(_name_7);
-                  _builder_4.append("();");
-                  _builder_4.newLineIfNotEmpty();
-                  bundleString.append(_builder_4);
-                  StringConcatenation _builder_5 = new StringConcatenation();
-                  _builder_5.append("b");
-                  String _name_8 = ((Bundle)actions).getBundleRecipient().getName();
-                  _builder_5.append(_name_8);
-                  _builder_5.append(".setArguments(bundle);");
-                  _builder_5.newLineIfNotEmpty();
-                  _builder_5.append("transaction.replace(R.id.container_frame_layout, b");
-                  String _name_9 = ((Bundle)actions).getBundleRecipient().getName();
-                  _builder_5.append(_name_9);
-                  _builder_5.append(").commit();");
-                  _builder_5.newLineIfNotEmpty();
-                  bundleString2.append(_builder_5);
+        if ((element instanceof Button)) {
+          EList<ButtonActions> action = ((Button)element).getActions();
+          for (final ButtonActions actions : action) {
+            {
+              if ((actions instanceof Toast)) {
+                StringConcatenation _builder = new StringConcatenation();
+                _builder.append("Toast.makeText(getActivity().getApplicationContext(), \"");
+                String _text = ((Toast)actions).getText();
+                _builder.append(_text);
+                _builder.append("\", Toast.LENGTH_SHORT).show();");
+                _builder.newLineIfNotEmpty();
+                buttonString.append(_builder);
+              }
+              if ((actions instanceof Bundle)) {
+                StringConcatenation _builder_1 = new StringConcatenation();
+                String _name = ((Bundle)actions).getBundleRecipient().getName();
+                _builder_1.append(_name);
+                _builder_1.append(" b");
+                String _name_1 = ((Bundle)actions).getBundleRecipient().getName();
+                _builder_1.append(_name_1);
+                _builder_1.append(" = new ");
+                String _name_2 = ((Bundle)actions).getBundleRecipient().getName();
+                _builder_1.append(_name_2);
+                _builder_1.append("();");
+                _builder_1.newLineIfNotEmpty();
+                bundleString.append(_builder_1);
+                StringConcatenation _builder_2 = new StringConcatenation();
+                _builder_2.append("b");
+                String _name_3 = ((Bundle)actions).getBundleRecipient().getName();
+                _builder_2.append(_name_3);
+                _builder_2.append(".setArguments(bundle);");
+                _builder_2.newLineIfNotEmpty();
+                _builder_2.append("transaction.replace(R.id.container_frame_layout, b");
+                String _name_4 = ((Bundle)actions).getBundleRecipient().getName();
+                _builder_2.append(_name_4);
+                _builder_2.append(").commit();");
+                _builder_2.newLineIfNotEmpty();
+                bundleString2.append(_builder_2);
+                EList<Dataholders> holder = ((Bundle)actions).getHolder().getHol();
+                for (final Dataholders hol : holder) {
+                  {
+                    if ((hol instanceof Spinner)) {
+                      StringConcatenation _builder_3 = new StringConcatenation();
+                      _builder_3.append("bundle.putString(\"b");
+                      String _name_5 = ((Spinner)hol).getName();
+                      _builder_3.append(_name_5);
+                      _builder_3.append("\", m");
+                      String _name_6 = ((Spinner)hol).getName();
+                      _builder_3.append(_name_6);
+                      _builder_3.append(");");
+                      _builder_3.newLineIfNotEmpty();
+                      spinner.append(_builder_3);
+                    }
+                    if ((hol instanceof EditText)) {
+                      StringConcatenation _builder_4 = new StringConcatenation();
+                      _builder_4.append("String failSafe = ");
+                      String _name_7 = ((EditText)hol).getName();
+                      _builder_4.append(_name_7);
+                      _builder_4.append(".getText().toString();");
+                      _builder_4.newLineIfNotEmpty();
+                      _builder_4.append("if(failSafe.matches(\"\")){");
+                      _builder_4.newLine();
+                      _builder_4.append("\t");
+                      _builder_4.append("Toast.makeText(getActivity().getApplicationContext(), \"Please specify number\", Toast.LENGTH_SHORT).show();");
+                      _builder_4.newLine();
+                      _builder_4.append("}else{");
+                      _builder_4.newLine();
+                      edittext.append(_builder_4);
+                      StringConcatenation _builder_5 = new StringConcatenation();
+                      _builder_5.append("m");
+                      String _name_8 = ((EditText)hol).getName();
+                      _builder_5.append(_name_8);
+                      _builder_5.append(" = Double.parseDouble(m");
+                      String _name_9 = ((EditText)hol).getName();
+                      _builder_5.append(_name_9);
+                      _builder_5.append(".getText().toString());");
+                      _builder_5.newLineIfNotEmpty();
+                      _builder_5.append("bundle.putDouble(\"b");
+                      String _name_10 = ((EditText)hol).getName();
+                      _builder_5.append(_name_10);
+                      _builder_5.append("\", m");
+                      String _name_11 = ((EditText)hol).getName();
+                      _builder_5.append(_name_11);
+                      _builder_5.append(");");
+                      _builder_5.newLineIfNotEmpty();
+                      edittext2.append(_builder_5);
+                    }
+                  }
                 }
               }
             }

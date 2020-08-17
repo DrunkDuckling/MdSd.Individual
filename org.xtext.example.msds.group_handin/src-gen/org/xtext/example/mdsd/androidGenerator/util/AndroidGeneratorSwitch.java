@@ -28,6 +28,7 @@ import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.Holder;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.Less;
@@ -38,8 +39,9 @@ import org.xtext.example.mdsd.androidGenerator.More;
 import org.xtext.example.mdsd.androidGenerator.Operator;
 import org.xtext.example.mdsd.androidGenerator.Permission;
 import org.xtext.example.mdsd.androidGenerator.Spinner;
+import org.xtext.example.mdsd.androidGenerator.SpinnerCon;
 import org.xtext.example.mdsd.androidGenerator.TargetSDK;
-import org.xtext.example.mdsd.androidGenerator.Textfield;
+import org.xtext.example.mdsd.androidGenerator.TextView;
 import org.xtext.example.mdsd.androidGenerator.Toast;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
@@ -260,12 +262,19 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AndroidGeneratorPackage.TEXTFIELD:
+      case AndroidGeneratorPackage.SPINNER_CON:
       {
-        Textfield textfield = (Textfield)theEObject;
-        T result = caseTextfield(textfield);
-        if (result == null) result = caseDataholders(textfield);
-        if (result == null) result = caseLayoutElement(textfield);
+        SpinnerCon spinnerCon = (SpinnerCon)theEObject;
+        T result = caseSpinnerCon(spinnerCon);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AndroidGeneratorPackage.TEXT_VIEW:
+      {
+        TextView textView = (TextView)theEObject;
+        T result = caseTextView(textView);
+        if (result == null) result = caseDataholders(textView);
+        if (result == null) result = caseLayoutElement(textView);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -297,6 +306,13 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
         Bundle bundle = (Bundle)theEObject;
         T result = caseBundle(bundle);
         if (result == null) result = caseButtonActions(bundle);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AndroidGeneratorPackage.HOLDER:
+      {
+        Holder holder = (Holder)theEObject;
+        T result = caseHolder(holder);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -707,17 +723,33 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Textfield</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Spinner Con</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Textfield</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Spinner Con</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseTextfield(Textfield object)
+  public T caseSpinnerCon(SpinnerCon object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Text View</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Text View</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTextView(TextView object)
   {
     return null;
   }
@@ -782,6 +814,22 @@ public class AndroidGeneratorSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBundle(Bundle object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Holder</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Holder</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseHolder(Holder object)
   {
     return null;
   }

@@ -4,6 +4,7 @@
 package org.xtext.example.mdsd.scoping
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
+import static extension org.eclipse.xtext.EcoreUtil2.*
 import org.eclipse.xtext.scoping.IScope
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage.Literals
 import org.xtext.example.mdsd.androidGenerator.Bundle
@@ -15,6 +16,8 @@ import org.xtext.example.mdsd.androidGenerator.Dataholders
 import org.xtext.example.mdsd.androidGenerator.EditText
 import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes
 import org.xtext.example.mdsd.androidGenerator.Button
+import org.xtext.example.mdsd.androidGenerator.Holder
+import org.xtext.example.mdsd.androidGenerator.ApplicationElementList
 
 /** 
  * This class contains custom scoping description.
@@ -24,17 +27,20 @@ import org.xtext.example.mdsd.androidGenerator.Button
 class AndroidGeneratorScopeProvider extends AbstractAndroidGeneratorScopeProvider {
 	
 	override IScope getScope(EObject context, EReference reference) {
-		
-		switch context {
-			Bundle case reference==Literals.BUNDLE__HOLDER : {
-				val data = EcoreUtil2.getContainerOfType(context, Button)
-				return Scopes.scopeFor(data)
-			}
-			ActivityLayoutAttributes case reference==Literals.LAYOUT_ELEMENT :{
-				val data = EcoreUtil2.getContainerOfType(context, Fragment)
-				return Scopes.scopeFor(data)
-			}
-			
+//		Get everything in the fragment
+		if(context instanceof Bundle){
+			val container = context.eContainer.getContainerOfType(ApplicationElementList).elements.map[
+				val elem = it
+				if(elem instanceof Fragment){
+					return elem
+				}
+			]
+			return Scopes.scopeFor(container)
+		}
+//		get something
+		if(context instanceof Holder){
+			val container = context.eContainer.getContainerOfType(Fragment).activityAttributes.flatMap[f | f.layoutElements]
+			return Scopes.scopeFor(container)
 		}
 		
 		super.getScope(context,reference)

@@ -44,7 +44,7 @@ import org.eclipse.xtext.validation.ConfigurableIssueCodesProvider;
 import org.xtext.example.mdsd.generator.AndroidGeneratorGenerator;
 import org.xtext.example.mdsd.parser.antlr.AndroidGeneratorAntlrTokenFileProvider;
 import org.xtext.example.mdsd.parser.antlr.AndroidGeneratorParser;
-import org.xtext.example.mdsd.parser.antlr.internal.InternalAndroidGeneratorLexer;
+import org.xtext.example.mdsd.parser.antlr.lexer.InternalAndroidGeneratorLexer;
 import org.xtext.example.mdsd.scoping.AndroidGeneratorScopeProvider;
 import org.xtext.example.mdsd.serializer.AndroidGeneratorSemanticSequencer;
 import org.xtext.example.mdsd.serializer.AndroidGeneratorSyntacticSequencer;

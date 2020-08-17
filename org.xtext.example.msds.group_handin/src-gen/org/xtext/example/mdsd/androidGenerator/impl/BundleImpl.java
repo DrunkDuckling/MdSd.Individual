@@ -3,23 +3,18 @@
  */
 package org.xtext.example.mdsd.androidGenerator.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import org.xtext.example.mdsd.androidGenerator.AndroidGeneratorPackage;
 import org.xtext.example.mdsd.androidGenerator.Bundle;
-import org.xtext.example.mdsd.androidGenerator.Dataholders;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.Holder;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,14 +43,14 @@ public class BundleImpl extends ButtonActionsImpl implements Bundle
   protected Fragment bundleRecipient;
 
   /**
-   * The cached value of the '{@link #getHolder() <em>Holder</em>}' reference list.
+   * The cached value of the '{@link #getHolder() <em>Holder</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getHolder()
    * @generated
    * @ordered
    */
-  protected EList<Dataholders> holder;
+  protected Holder holder;
 
   /**
    * <!-- begin-user-doc -->
@@ -129,13 +124,64 @@ public class BundleImpl extends ButtonActionsImpl implements Bundle
    * @generated
    */
   @Override
-  public EList<Dataholders> getHolder()
+  public Holder getHolder()
   {
-    if (holder == null)
-    {
-      holder = new EObjectResolvingEList<Dataholders>(Dataholders.class, this, AndroidGeneratorPackage.BUNDLE__HOLDER);
-    }
     return holder;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetHolder(Holder newHolder, NotificationChain msgs)
+  {
+    Holder oldHolder = holder;
+    holder = newHolder;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AndroidGeneratorPackage.BUNDLE__HOLDER, oldHolder, newHolder);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setHolder(Holder newHolder)
+  {
+    if (newHolder != holder)
+    {
+      NotificationChain msgs = null;
+      if (holder != null)
+        msgs = ((InternalEObject)holder).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AndroidGeneratorPackage.BUNDLE__HOLDER, null, msgs);
+      if (newHolder != null)
+        msgs = ((InternalEObject)newHolder).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AndroidGeneratorPackage.BUNDLE__HOLDER, null, msgs);
+      msgs = basicSetHolder(newHolder, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AndroidGeneratorPackage.BUNDLE__HOLDER, newHolder, newHolder));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case AndroidGeneratorPackage.BUNDLE__HOLDER:
+        return basicSetHolder(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -162,7 +208,6 @@ public class BundleImpl extends ButtonActionsImpl implements Bundle
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -172,8 +217,7 @@ public class BundleImpl extends ButtonActionsImpl implements Bundle
         setBundleRecipient((Fragment)newValue);
         return;
       case AndroidGeneratorPackage.BUNDLE__HOLDER:
-        getHolder().clear();
-        getHolder().addAll((Collection<? extends Dataholders>)newValue);
+        setHolder((Holder)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -193,7 +237,7 @@ public class BundleImpl extends ButtonActionsImpl implements Bundle
         setBundleRecipient((Fragment)null);
         return;
       case AndroidGeneratorPackage.BUNDLE__HOLDER:
-        getHolder().clear();
+        setHolder((Holder)null);
         return;
     }
     super.eUnset(featureID);
@@ -212,7 +256,7 @@ public class BundleImpl extends ButtonActionsImpl implements Bundle
       case AndroidGeneratorPackage.BUNDLE__BUNDLE_RECIPIENT:
         return bundleRecipient != null;
       case AndroidGeneratorPackage.BUNDLE__HOLDER:
-        return holder != null && !holder.isEmpty();
+        return holder != null;
     }
     return super.eIsSet(featureID);
   }

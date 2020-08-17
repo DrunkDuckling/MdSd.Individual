@@ -1,27 +1,25 @@
 grammar org.xtext.example.mdsd.AndroidGenerator with org.eclipse.xtext.common.Terminals
- 
 generate androidGenerator "http://www.xtext.org/example/mdsd/AndroidGenerator"
  
 AndroidAppProject:
-    (applications += Application) (',' applications += Application)*
+    (applications += Application)*
 ;
  
 terminal PACKAGE_NAME:
     '"' ( ID ('.' ID)* ) '"'
 ;
- 
 Application:
-    'Application' name=ID attributes += ApplicationAttribute*
+    'App' name=ID attributes += ApplicationAttribute* 
 ;
  
 ApplicationAttribute:
-        ApplicationVersion		|
+        ApplicationVersion			|
         ApplicationPermissionList   |
         ApplicationElementList      
 ;
 
 ApplicationVersion:
-	{ApplicationVersion} 'Android-SDK' ':' result=Number (targetsdk=TargetSDK)?
+	{ApplicationVersion} BEGIN 'Android-SDK' ':' result=Number (targetsdk=TargetSDK)? END
 ;
 
 TargetSDK:
@@ -41,7 +39,7 @@ Permission:
 ;
  
 ApplicationElementList:
-    {ApplicationElementList} 'elements' elements += ApplicationElement*
+    {ApplicationElementList} 'elements' BEGIN elements += ApplicationElement* END
 ;
 
 ApplicationElement:
@@ -51,15 +49,13 @@ ApplicationElement:
 Model:
 	'Model' name = ID
 ;
-
  
 Fragment:
-	{Fragment} 'Fragment' name=ID (activityAttributes+=ActivityLayoutAttributes)?
+	{Fragment} 'Fragment' name=ID (activityAttributes+=ActivityLayoutAttributes )? 
 ;
 
-
 ActivityLayoutAttributes:
-	layoutElements += LayoutElement (',' layoutElements += LayoutElement)*
+	BEGIN layoutElements += LayoutElement (',' layoutElements += LayoutElement)* END
 ;
 
 LayoutElement:
@@ -72,7 +68,7 @@ LayoutElement:
 Dataholders:
 	EditText 				|
 	Spinner					|
-	Textfield
+	TextView
 ;
 
 TypeMap:
@@ -88,23 +84,23 @@ ActivityTypeAttributes:
 ;
  
 EditText:
-    {EditText}'EditText' name=ID
+    'EditText' name=ID
 ;
 
 Spinner:
-	{Spinner}'Spinner' name=ID ('Content:' spinnercon += SpinnerCon (',' spinnercon += SpinnerCon)*)?
+	'Spinner' name=ID ('Content' ':' spinnercon += SpinnerCon (',' spinnercon += SpinnerCon)*)?
 ;
 
 SpinnerCon:
 	text = STRING
 ;
 
-Textfield:
-	{Textfield} 'Textfield' name=ID
+TextView:
+	'Textview' name=ID 'content' ':' text = STRING
 ;
 
 Button:
-    {Button}'Button' name=ID (actions += ButtonActions (',' actions += ButtonActions)*)?
+    {Button}'Button' name=ID BEGIN (actions += ButtonActions (',' actions += ButtonActions)*)? END
 ;
 
 ButtonActions:
@@ -116,7 +112,11 @@ Toast:
 ;
 
 Bundle:
-	'Bundle' bundleRecipient = [Fragment] ('Holder'(holder += [Dataholders] (',' holder += [Dataholders])*)?)?
+	'Bundle' bundleRecipient = [Fragment] (holder = Holder)?
+;
+
+Holder:
+	'Holder' hol += [Dataholders] (',' hol += [Dataholders])*
 ;
 
 FilterQuery:
@@ -141,4 +141,11 @@ Operator:
  
 Unit:
     {Meters} 'm' | {Imperial} 'f'
+;
+
+terminal BEGIN:
+	'synthetic:BEGIN'
+;
+terminal END:
+	'synthetic:END'
 ;

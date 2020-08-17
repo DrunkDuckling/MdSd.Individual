@@ -11,6 +11,6 @@ public class AndroidGeneratorAntlrTokenFileProvider implements IAntlrTokenFilePr
 	@Override
 	public InputStream getAntlrTokenFile() {
 		ClassLoader classLoader = getClass().getClassLoader();
-		return classLoader.getResourceAsStream("org/xtext/example/mdsd/parser/antlr/internal/InternalAndroidGenerator.tokens");
+		return classLoader.getResourceAsStream("org/xtext/example/mdsd/parser/antlr/internal/InternalAndroidGeneratorParser.tokens");
 	}
 }

@@ -17,6 +17,7 @@ import org.xtext.example.mdsd.androidGenerator.EditText;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.Spinner;
+import org.xtext.example.mdsd.androidGenerator.TextView;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
 import org.xtext.example.mdsd.generator.abstractfiles.AbstractGen;
@@ -314,6 +315,28 @@ public class LayoutGen extends AbstractGen {
               _builder_5.append("android:layout_height=\"wrap_content\" />");
               _builder_5.newLine();
               string.append(_builder_5);
+            } else {
+              if ((element instanceof TextView)) {
+                StringConcatenation _builder_6 = new StringConcatenation();
+                _builder_6.append("<TextView");
+                _builder_6.newLine();
+                _builder_6.append("    ");
+                _builder_6.append("android:id=\"@+id/");
+                String _javaToAndroidIdentifier_5 = this.javaToAndroidIdentifier(((TextView)element).getName());
+                _builder_6.append(_javaToAndroidIdentifier_5, "    ");
+                _builder_6.append("\"");
+                _builder_6.newLineIfNotEmpty();
+                _builder_6.append("    ");
+                _builder_6.append("android:layout_height=\"wrap_content\"");
+                _builder_6.newLine();
+                _builder_6.append("    ");
+                _builder_6.append("android:layout_width=\"match_parent\"");
+                _builder_6.newLine();
+                _builder_6.append("    ");
+                _builder_6.append("android:text=\"Place holder for new text\" />");
+                _builder_6.newLine();
+                string.append(_builder_6);
+              }
             }
           }
         }

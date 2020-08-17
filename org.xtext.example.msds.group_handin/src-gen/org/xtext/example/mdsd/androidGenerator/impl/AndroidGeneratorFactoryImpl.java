@@ -32,6 +32,7 @@ import org.xtext.example.mdsd.androidGenerator.Equal;
 import org.xtext.example.mdsd.androidGenerator.FilterAttributes;
 import org.xtext.example.mdsd.androidGenerator.FilterQuery;
 import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.Holder;
 import org.xtext.example.mdsd.androidGenerator.Imperial;
 import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.androidGenerator.Less;
@@ -42,8 +43,9 @@ import org.xtext.example.mdsd.androidGenerator.More;
 import org.xtext.example.mdsd.androidGenerator.Operator;
 import org.xtext.example.mdsd.androidGenerator.Permission;
 import org.xtext.example.mdsd.androidGenerator.Spinner;
+import org.xtext.example.mdsd.androidGenerator.SpinnerCon;
 import org.xtext.example.mdsd.androidGenerator.TargetSDK;
-import org.xtext.example.mdsd.androidGenerator.Textfield;
+import org.xtext.example.mdsd.androidGenerator.TextView;
 import org.xtext.example.mdsd.androidGenerator.Toast;
 import org.xtext.example.mdsd.androidGenerator.TypeMap;
 import org.xtext.example.mdsd.androidGenerator.TypeSetting;
@@ -121,11 +123,13 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
       case AndroidGeneratorPackage.ACTIVITY_TYPE_ATTRIBUTES: return createActivityTypeAttributes();
       case AndroidGeneratorPackage.EDIT_TEXT: return createEditText();
       case AndroidGeneratorPackage.SPINNER: return createSpinner();
-      case AndroidGeneratorPackage.TEXTFIELD: return createTextfield();
+      case AndroidGeneratorPackage.SPINNER_CON: return createSpinnerCon();
+      case AndroidGeneratorPackage.TEXT_VIEW: return createTextView();
       case AndroidGeneratorPackage.BUTTON: return createButton();
       case AndroidGeneratorPackage.BUTTON_ACTIONS: return createButtonActions();
       case AndroidGeneratorPackage.TOAST: return createToast();
       case AndroidGeneratorPackage.BUNDLE: return createBundle();
+      case AndroidGeneratorPackage.HOLDER: return createHolder();
       case AndroidGeneratorPackage.FILTER_QUERY: return createFilterQuery();
       case AndroidGeneratorPackage.FILTER_ATTRIBUTES: return createFilterAttributes();
       case AndroidGeneratorPackage.DISTANCE: return createDistance();
@@ -388,10 +392,22 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
    * @generated
    */
   @Override
-  public Textfield createTextfield()
+  public SpinnerCon createSpinnerCon()
   {
-    TextfieldImpl textfield = new TextfieldImpl();
-    return textfield;
+    SpinnerConImpl spinnerCon = new SpinnerConImpl();
+    return spinnerCon;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TextView createTextView()
+  {
+    TextViewImpl textView = new TextViewImpl();
+    return textView;
   }
 
   /**
@@ -440,6 +456,18 @@ public class AndroidGeneratorFactoryImpl extends EFactoryImpl implements Android
   {
     BundleImpl bundle = new BundleImpl();
     return bundle;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Holder createHolder()
+  {
+    HolderImpl holder = new HolderImpl();
+    return holder;
   }
 
   /**

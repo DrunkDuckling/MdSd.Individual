@@ -65,8 +65,16 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EditText" eSuperTypes="#//Dataholders"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Spinner" eSuperTypes="#//Dataholders"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Textfield" eSuperTypes="#//Dataholders"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Spinner" eSuperTypes="#//Dataholders">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spinnercon" upperBound="-1"
+        eType="#//SpinnerCon" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpinnerCon">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextView" eSuperTypes="#//Dataholders">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Button" eSuperTypes="#//LayoutElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
@@ -78,8 +86,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Bundle" eSuperTypes="#//ButtonActions">
     <eStructuralFeatures xsi:type="ecore:EReference" name="bundleRecipient" eType="#//Fragment"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="holder" unique="false"
-        upperBound="-1" eType="#//Dataholders"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="holder" eType="#//Holder"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Holder">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hol" unique="false" upperBound="-1"
+        eType="#//Dataholders"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FilterQuery">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

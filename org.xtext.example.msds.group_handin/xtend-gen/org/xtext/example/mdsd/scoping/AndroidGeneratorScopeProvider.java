@@ -3,9 +3,23 @@
  */
 package org.xtext.example.mdsd.scoping;
 
+import java.util.List;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.xtext.example.mdsd.androidGenerator.ActivityLayoutAttributes;
+import org.xtext.example.mdsd.androidGenerator.ApplicationElement;
+import org.xtext.example.mdsd.androidGenerator.ApplicationElementList;
+import org.xtext.example.mdsd.androidGenerator.Bundle;
+import org.xtext.example.mdsd.androidGenerator.Fragment;
+import org.xtext.example.mdsd.androidGenerator.Holder;
+import org.xtext.example.mdsd.androidGenerator.LayoutElement;
 import org.xtext.example.mdsd.scoping.AbstractAndroidGeneratorScopeProvider;
 
 /**
@@ -17,8 +31,28 @@ import org.xtext.example.mdsd.scoping.AbstractAndroidGeneratorScopeProvider;
 public class AndroidGeneratorScopeProvider extends AbstractAndroidGeneratorScopeProvider {
   @Override
   public IScope getScope(final EObject context, final EReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from Button to Iterable<? extends EObject>"
-      + "\nType mismatch: cannot convert from Fragment to Iterable<? extends EObject>");
+    IScope _xblockexpression = null;
+    {
+      if ((context instanceof Bundle)) {
+        final Function1<ApplicationElement, Fragment> _function = (ApplicationElement it) -> {
+          final ApplicationElement elem = it;
+          if ((elem instanceof Fragment)) {
+            return ((Fragment)elem);
+          }
+          return null;
+        };
+        final List<Fragment> container = ListExtensions.<ApplicationElement, Fragment>map(EcoreUtil2.<ApplicationElementList>getContainerOfType(((Bundle)context).eContainer(), ApplicationElementList.class).getElements(), _function);
+        return Scopes.scopeFor(container);
+      }
+      if ((context instanceof Holder)) {
+        final Function1<ActivityLayoutAttributes, EList<LayoutElement>> _function_1 = (ActivityLayoutAttributes f) -> {
+          return f.getLayoutElements();
+        };
+        final Iterable<LayoutElement> container_1 = IterableExtensions.<ActivityLayoutAttributes, LayoutElement>flatMap(EcoreUtil2.<Fragment>getContainerOfType(((Holder)context).eContainer(), Fragment.class).getActivityAttributes(), _function_1);
+        return Scopes.scopeFor(container_1);
+      }
+      _xblockexpression = super.getScope(context, reference);
+    }
+    return _xblockexpression;
   }
 }
