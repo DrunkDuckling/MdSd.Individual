@@ -109,11 +109,15 @@ ruleApplication returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getApplicationAccess().getAppKeyword_0());
 		}
+		otherlv_1=Colon
+		{
+			newLeafNode(otherlv_1, grammarAccess.getApplicationAccess().getColonKeyword_1());
+		}
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getApplicationAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getApplicationAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -122,7 +126,7 @@ ruleApplication returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -130,9 +134,9 @@ ruleApplication returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getApplicationAccess().getAttributesApplicationAttributeParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getApplicationAccess().getAttributesApplicationAttributeParserRuleCall_3_0());
 				}
-				lv_attributes_2_0=ruleApplicationAttribute
+				lv_attributes_3_0=ruleApplicationAttribute
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getApplicationRule());
@@ -140,7 +144,7 @@ ruleApplication returns [EObject current=null]
 					add(
 						$current,
 						"attributes",
-						lv_attributes_2_0,
+						lv_attributes_3_0,
 						"org.xtext.example.mdsd.AndroidGenerator.ApplicationAttribute");
 					afterParserOrEnumRuleCall();
 				}
@@ -419,12 +423,20 @@ ruleApplicationPermissionList returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getApplicationPermissionListAccess().getPermissionsKeyword_0());
 		}
+		otherlv_1=Colon
+		{
+			newLeafNode(otherlv_1, grammarAccess.getApplicationPermissionListAccess().getColonKeyword_1());
+		}
+		this_BEGIN_2=RULE_BEGIN
+		{
+			newLeafNode(this_BEGIN_2, grammarAccess.getApplicationPermissionListAccess().getBEGINTerminalRuleCall_2());
+		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getApplicationPermissionListAccess().getPermissionsPermissionParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getApplicationPermissionListAccess().getPermissionsPermissionParserRuleCall_3_0());
 				}
-				lv_permissions_1_0=rulePermission
+				lv_permissions_3_0=rulePermission
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getApplicationPermissionListRule());
@@ -432,23 +444,23 @@ ruleApplicationPermissionList returns [EObject current=null]
 					add(
 						$current,
 						"permissions",
-						lv_permissions_1_0,
+						lv_permissions_3_0,
 						"org.xtext.example.mdsd.AndroidGenerator.Permission");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_2=Comma
+			otherlv_4=Comma
 			{
-				newLeafNode(otherlv_2, grammarAccess.getApplicationPermissionListAccess().getCommaKeyword_2_0());
+				newLeafNode(otherlv_4, grammarAccess.getApplicationPermissionListAccess().getCommaKeyword_4_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getApplicationPermissionListAccess().getPermissionsPermissionParserRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getApplicationPermissionListAccess().getPermissionsPermissionParserRuleCall_4_1_0());
 					}
-					lv_permissions_3_0=rulePermission
+					lv_permissions_5_0=rulePermission
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getApplicationPermissionListRule());
@@ -456,13 +468,17 @@ ruleApplicationPermissionList returns [EObject current=null]
 						add(
 							$current,
 							"permissions",
-							lv_permissions_3_0,
+							lv_permissions_5_0,
 							"org.xtext.example.mdsd.AndroidGenerator.Permission");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)*
+		this_END_6=RULE_END
+		{
+			newLeafNode(this_END_6, grammarAccess.getApplicationPermissionListAccess().getENDTerminalRuleCall_5());
+		}
 	)
 ;
 
@@ -528,16 +544,20 @@ ruleApplicationElementList returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getApplicationElementListAccess().getElementsKeyword_1());
 		}
-		this_BEGIN_2=RULE_BEGIN
+		otherlv_2=Colon
 		{
-			newLeafNode(this_BEGIN_2, grammarAccess.getApplicationElementListAccess().getBEGINTerminalRuleCall_2());
+			newLeafNode(otherlv_2, grammarAccess.getApplicationElementListAccess().getColonKeyword_2());
+		}
+		this_BEGIN_3=RULE_BEGIN
+		{
+			newLeafNode(this_BEGIN_3, grammarAccess.getApplicationElementListAccess().getBEGINTerminalRuleCall_3());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getApplicationElementListAccess().getElementsApplicationElementParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getApplicationElementListAccess().getElementsApplicationElementParserRuleCall_4_0());
 				}
-				lv_elements_3_0=ruleApplicationElement
+				lv_elements_4_0=ruleApplicationElement
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getApplicationElementListRule());
@@ -545,15 +565,15 @@ ruleApplicationElementList returns [EObject current=null]
 					add(
 						$current,
 						"elements",
-						lv_elements_3_0,
+						lv_elements_4_0,
 						"org.xtext.example.mdsd.AndroidGenerator.ApplicationElement");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		this_END_4=RULE_END
+		this_END_5=RULE_END
 		{
-			newLeafNode(this_END_4, grammarAccess.getApplicationElementListAccess().getENDTerminalRuleCall_4());
+			newLeafNode(this_END_5, grammarAccess.getApplicationElementListAccess().getENDTerminalRuleCall_5());
 		}
 	)
 ;
@@ -614,11 +634,15 @@ ruleModel returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getModelAccess().getModelKeyword_0());
 		}
+		otherlv_1=Colon
+		{
+			newLeafNode(otherlv_1, grammarAccess.getModelAccess().getColonKeyword_1());
+		}
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getModelAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getModelAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -627,7 +651,7 @@ ruleModel returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -655,11 +679,15 @@ ruleFragment returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getFragmentAccess().getFragmentKeyword_0());
 		}
+		otherlv_1=Colon
+		{
+			newLeafNode(otherlv_1, grammarAccess.getFragmentAccess().getColonKeyword_1());
+		}
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getFragmentAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getFragmentAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -668,7 +696,7 @@ ruleFragment returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -676,9 +704,9 @@ ruleFragment returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFragmentAccess().getFragmentAttributesFragmentLayoutAttributesParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getFragmentAccess().getFragmentAttributesFragmentLayoutAttributesParserRuleCall_3_0());
 				}
-				lv_fragmentAttributes_2_0=ruleFragmentLayoutAttributes
+				lv_fragmentAttributes_3_0=ruleFragmentLayoutAttributes
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFragmentRule());
@@ -686,7 +714,7 @@ ruleFragment returns [EObject current=null]
 					add(
 						$current,
 						"fragmentAttributes",
-						lv_fragmentAttributes_2_0,
+						lv_fragmentAttributes_3_0,
 						"org.xtext.example.mdsd.AndroidGenerator.FragmentLayoutAttributes");
 					afterParserOrEnumRuleCall();
 				}
@@ -892,24 +920,38 @@ ruleTypeMap returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getTypeMapAccess().getMapKeyword_1());
 		}
+		otherlv_2=Colon
+		{
+			newLeafNode(otherlv_2, grammarAccess.getTypeMapAccess().getColonKeyword_2());
+		}
 		(
+			this_BEGIN_3=RULE_BEGIN
+			{
+				newLeafNode(this_BEGIN_3, grammarAccess.getTypeMapAccess().getBEGINTerminalRuleCall_3_0());
+			}
 			(
-				{
-					newCompositeNode(grammarAccess.getTypeMapAccess().getFragmenttypeattributeFragmentTypeAttributesParserRuleCall_2_0());
-				}
-				lv_fragmenttypeattribute_2_0=ruleFragmentTypeAttributes
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getTypeMapRule());
+				(
+					{
+						newCompositeNode(grammarAccess.getTypeMapAccess().getFragmenttypeattributeFragmentTypeAttributesParserRuleCall_3_1_0());
 					}
-					set(
-						$current,
-						"fragmenttypeattribute",
-						lv_fragmenttypeattribute_2_0,
-						"org.xtext.example.mdsd.AndroidGenerator.FragmentTypeAttributes");
-					afterParserOrEnumRuleCall();
-				}
+					lv_fragmenttypeattribute_4_0=ruleFragmentTypeAttributes
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getTypeMapRule());
+						}
+						set(
+							$current,
+							"fragmenttypeattribute",
+							lv_fragmenttypeattribute_4_0,
+							"org.xtext.example.mdsd.AndroidGenerator.FragmentTypeAttributes");
+						afterParserOrEnumRuleCall();
+					}
+				)
 			)
+			this_END_5=RULE_END
+			{
+				newLeafNode(this_END_5, grammarAccess.getTypeMapAccess().getENDTerminalRuleCall_3_2());
+			}
 		)?
 	)
 ;
@@ -1000,11 +1042,15 @@ ruleEditText returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getEditTextAccess().getEditTextKeyword_0());
 		}
+		otherlv_1=Colon
+		{
+			newLeafNode(otherlv_1, grammarAccess.getEditTextAccess().getColonKeyword_1());
+		}
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getEditTextAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getEditTextAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -1013,7 +1059,7 @@ ruleEditText returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -1041,11 +1087,15 @@ ruleSpinner returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getSpinnerAccess().getSpinnerKeyword_0());
 		}
+		otherlv_1=Colon
+		{
+			newLeafNode(otherlv_1, grammarAccess.getSpinnerAccess().getColonKeyword_1());
+		}
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getSpinnerAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getSpinnerAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -1054,26 +1104,26 @@ ruleSpinner returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
 		(
-			otherlv_2=Content
+			otherlv_3=Content
 			{
-				newLeafNode(otherlv_2, grammarAccess.getSpinnerAccess().getContentKeyword_2_0());
+				newLeafNode(otherlv_3, grammarAccess.getSpinnerAccess().getContentKeyword_3_0());
 			}
-			otherlv_3=Colon
+			otherlv_4=Colon
 			{
-				newLeafNode(otherlv_3, grammarAccess.getSpinnerAccess().getColonKeyword_2_1());
+				newLeafNode(otherlv_4, grammarAccess.getSpinnerAccess().getColonKeyword_3_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getSpinnerAccess().getSpinnerconSpinnerConParserRuleCall_2_2_0());
+						newCompositeNode(grammarAccess.getSpinnerAccess().getSpinnerconSpinnerConParserRuleCall_3_2_0());
 					}
-					lv_spinnercon_4_0=ruleSpinnerCon
+					lv_spinnercon_5_0=ruleSpinnerCon
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getSpinnerRule());
@@ -1081,23 +1131,23 @@ ruleSpinner returns [EObject current=null]
 						add(
 							$current,
 							"spinnercon",
-							lv_spinnercon_4_0,
+							lv_spinnercon_5_0,
 							"org.xtext.example.mdsd.AndroidGenerator.SpinnerCon");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
-				otherlv_5=Comma
+				otherlv_6=Comma
 				{
-					newLeafNode(otherlv_5, grammarAccess.getSpinnerAccess().getCommaKeyword_2_3_0());
+					newLeafNode(otherlv_6, grammarAccess.getSpinnerAccess().getCommaKeyword_3_3_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getSpinnerAccess().getSpinnerconSpinnerConParserRuleCall_2_3_1_0());
+							newCompositeNode(grammarAccess.getSpinnerAccess().getSpinnerconSpinnerConParserRuleCall_3_3_1_0());
 						}
-						lv_spinnercon_6_0=ruleSpinnerCon
+						lv_spinnercon_7_0=ruleSpinnerCon
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getSpinnerRule());
@@ -1105,7 +1155,7 @@ ruleSpinner returns [EObject current=null]
 							add(
 								$current,
 								"spinnercon",
-								lv_spinnercon_6_0,
+								lv_spinnercon_7_0,
 								"org.xtext.example.mdsd.AndroidGenerator.SpinnerCon");
 							afterParserOrEnumRuleCall();
 						}
@@ -1171,11 +1221,15 @@ ruleTextView returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getTextViewAccess().getTextviewKeyword_0());
 		}
+		otherlv_1=Colon
+		{
+			newLeafNode(otherlv_1, grammarAccess.getTextViewAccess().getColonKeyword_1());
+		}
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getTextViewAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getTextViewAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -1184,24 +1238,24 @@ ruleTextView returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
-		otherlv_2=Content
+		otherlv_3=Content
 		{
-			newLeafNode(otherlv_2, grammarAccess.getTextViewAccess().getContentKeyword_2());
+			newLeafNode(otherlv_3, grammarAccess.getTextViewAccess().getContentKeyword_3());
 		}
-		otherlv_3=Colon
+		otherlv_4=Colon
 		{
-			newLeafNode(otherlv_3, grammarAccess.getTextViewAccess().getColonKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getTextViewAccess().getColonKeyword_4());
 		}
 		(
 			(
-				lv_text_4_0=RULE_STRING
+				lv_text_5_0=RULE_STRING
 				{
-					newLeafNode(lv_text_4_0, grammarAccess.getTextViewAccess().getTextSTRINGTerminalRuleCall_4_0());
+					newLeafNode(lv_text_5_0, grammarAccess.getTextViewAccess().getTextSTRINGTerminalRuleCall_5_0());
 				}
 				{
 					if ($current==null) {
@@ -1210,7 +1264,7 @@ ruleTextView returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"text",
-						lv_text_4_0,
+						lv_text_5_0,
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
@@ -1245,11 +1299,15 @@ ruleButton returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getButtonAccess().getButtonKeyword_1());
 		}
+		otherlv_2=Colon
+		{
+			newLeafNode(otherlv_2, grammarAccess.getButtonAccess().getColonKeyword_2());
+		}
 		(
 			(
-				lv_name_2_0=RULE_ID
+				lv_name_3_0=RULE_ID
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getButtonAccess().getNameIDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_3_0, grammarAccess.getButtonAccess().getNameIDTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -1258,22 +1316,22 @@ ruleButton returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_3_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
-		this_BEGIN_3=RULE_BEGIN
+		this_BEGIN_4=RULE_BEGIN
 		{
-			newLeafNode(this_BEGIN_3, grammarAccess.getButtonAccess().getBEGINTerminalRuleCall_3());
+			newLeafNode(this_BEGIN_4, grammarAccess.getButtonAccess().getBEGINTerminalRuleCall_4());
 		}
 		(
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getButtonAccess().getActionsButtonActionsParserRuleCall_4_0_0());
+						newCompositeNode(grammarAccess.getButtonAccess().getActionsButtonActionsParserRuleCall_5_0_0());
 					}
-					lv_actions_4_0=ruleButtonActions
+					lv_actions_5_0=ruleButtonActions
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getButtonRule());
@@ -1281,23 +1339,23 @@ ruleButton returns [EObject current=null]
 						add(
 							$current,
 							"actions",
-							lv_actions_4_0,
+							lv_actions_5_0,
 							"org.xtext.example.mdsd.AndroidGenerator.ButtonActions");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
-				otherlv_5=Comma
+				otherlv_6=Comma
 				{
-					newLeafNode(otherlv_5, grammarAccess.getButtonAccess().getCommaKeyword_4_1_0());
+					newLeafNode(otherlv_6, grammarAccess.getButtonAccess().getCommaKeyword_5_1_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getButtonAccess().getActionsButtonActionsParserRuleCall_4_1_1_0());
+							newCompositeNode(grammarAccess.getButtonAccess().getActionsButtonActionsParserRuleCall_5_1_1_0());
 						}
-						lv_actions_6_0=ruleButtonActions
+						lv_actions_7_0=ruleButtonActions
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getButtonRule());
@@ -1305,7 +1363,7 @@ ruleButton returns [EObject current=null]
 							add(
 								$current,
 								"actions",
-								lv_actions_6_0,
+								lv_actions_7_0,
 								"org.xtext.example.mdsd.AndroidGenerator.ButtonActions");
 							afterParserOrEnumRuleCall();
 						}
@@ -1313,9 +1371,9 @@ ruleButton returns [EObject current=null]
 				)
 			)*
 		)?
-		this_END_7=RULE_END
+		this_END_8=RULE_END
 		{
-			newLeafNode(this_END_7, grammarAccess.getButtonAccess().getENDTerminalRuleCall_5());
+			newLeafNode(this_END_8, grammarAccess.getButtonAccess().getENDTerminalRuleCall_6());
 		}
 	)
 ;
@@ -1376,11 +1434,15 @@ ruleToast returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getToastAccess().getToastKeyword_0());
 		}
+		otherlv_1=Colon
+		{
+			newLeafNode(otherlv_1, grammarAccess.getToastAccess().getColonKeyword_1());
+		}
 		(
 			(
-				lv_text_1_0=RULE_STRING
+				lv_text_2_0=RULE_STRING
 				{
-					newLeafNode(lv_text_1_0, grammarAccess.getToastAccess().getTextSTRINGTerminalRuleCall_1_0());
+					newLeafNode(lv_text_2_0, grammarAccess.getToastAccess().getTextSTRINGTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -1389,7 +1451,7 @@ ruleToast returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"text",
-						lv_text_1_0,
+						lv_text_2_0,
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
@@ -1417,6 +1479,10 @@ ruleBundle returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getBundleAccess().getBundleKeyword_0());
 		}
+		otherlv_1=Colon
+		{
+			newLeafNode(otherlv_1, grammarAccess.getBundleAccess().getColonKeyword_1());
+		}
 		(
 			(
 				{
@@ -1424,18 +1490,18 @@ ruleBundle returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getBundleRule());
 					}
 				}
-				otherlv_1=RULE_ID
+				otherlv_2=RULE_ID
 				{
-					newLeafNode(otherlv_1, grammarAccess.getBundleAccess().getBundleRecipientFragmentCrossReference_1_0());
+					newLeafNode(otherlv_2, grammarAccess.getBundleAccess().getBundleRecipientFragmentCrossReference_2_0());
 				}
 			)
 		)
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getBundleAccess().getHolderHolderParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getBundleAccess().getHolderHolderParserRuleCall_3_0());
 				}
-				lv_holder_2_0=ruleHolder
+				lv_holder_3_0=ruleHolder
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getBundleRule());
@@ -1443,7 +1509,7 @@ ruleBundle returns [EObject current=null]
 					set(
 						$current,
 						"holder",
-						lv_holder_2_0,
+						lv_holder_3_0,
 						"org.xtext.example.mdsd.AndroidGenerator.Holder");
 					afterParserOrEnumRuleCall();
 				}
@@ -1472,6 +1538,10 @@ ruleHolder returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getHolderAccess().getHolderKeyword_0());
 		}
+		otherlv_1=Colon
+		{
+			newLeafNode(otherlv_1, grammarAccess.getHolderAccess().getColonKeyword_1());
+		}
 		(
 			(
 				{
@@ -1479,16 +1549,16 @@ ruleHolder returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getHolderRule());
 					}
 				}
-				otherlv_1=RULE_ID
+				otherlv_2=RULE_ID
 				{
-					newLeafNode(otherlv_1, grammarAccess.getHolderAccess().getHolDataholdersCrossReference_1_0());
+					newLeafNode(otherlv_2, grammarAccess.getHolderAccess().getHolDataholdersCrossReference_2_0());
 				}
 			)
 		)
 		(
-			otherlv_2=Comma
+			otherlv_3=Comma
 			{
-				newLeafNode(otherlv_2, grammarAccess.getHolderAccess().getCommaKeyword_2_0());
+				newLeafNode(otherlv_3, grammarAccess.getHolderAccess().getCommaKeyword_3_0());
 			}
 			(
 				(
@@ -1497,9 +1567,9 @@ ruleHolder returns [EObject current=null]
 							$current = createModelElement(grammarAccess.getHolderRule());
 						}
 					}
-					otherlv_3=RULE_ID
+					otherlv_4=RULE_ID
 					{
-						newLeafNode(otherlv_3, grammarAccess.getHolderAccess().getHolDataholdersCrossReference_2_1_0());
+						newLeafNode(otherlv_4, grammarAccess.getHolderAccess().getHolDataholdersCrossReference_3_1_0());
 					}
 				)
 			)
@@ -1534,11 +1604,15 @@ ruleFilterQuery returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getFilterQueryAccess().getFilterQueryKeyword_1());
 		}
+		otherlv_2=Colon
+		{
+			newLeafNode(otherlv_2, grammarAccess.getFilterQueryAccess().getColonKeyword_2());
+		}
 		(
 			(
-				lv_name_2_0=RULE_ID
+				lv_name_3_0=RULE_ID
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getFilterQueryAccess().getNameIDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_3_0, grammarAccess.getFilterQueryAccess().getNameIDTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -1547,7 +1621,7 @@ ruleFilterQuery returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_3_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -1555,9 +1629,9 @@ ruleFilterQuery returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFilterQueryAccess().getFilterAttributesFilterAttributesParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getFilterQueryAccess().getFilterAttributesFilterAttributesParserRuleCall_4_0());
 				}
-				lv_filterAttributes_3_0=ruleFilterAttributes
+				lv_filterAttributes_4_0=ruleFilterAttributes
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFilterQueryRule());
@@ -1565,7 +1639,7 @@ ruleFilterQuery returns [EObject current=null]
 					set(
 						$current,
 						"filterAttributes",
-						lv_filterAttributes_3_0,
+						lv_filterAttributes_4_0,
 						"org.xtext.example.mdsd.AndroidGenerator.FilterAttributes");
 					afterParserOrEnumRuleCall();
 				}

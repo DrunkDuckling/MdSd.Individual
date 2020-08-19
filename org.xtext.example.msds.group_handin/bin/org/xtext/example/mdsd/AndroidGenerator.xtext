@@ -6,7 +6,7 @@ AndroidAppProject:
 ;
 
 Application:
-    'App' name=ID attributes += ApplicationAttribute* 
+    'App' ':' name=ID attributes += ApplicationAttribute* 
 ;
  
 ApplicationAttribute:
@@ -28,7 +28,7 @@ MinSDK:
 ;
  
 ApplicationPermissionList:
-    'Permissions' permissions+=Permission (',' permissions += Permission)*
+    'Permissions' ':' BEGIN permissions+=Permission (',' permissions += Permission)* END
 ;
  
 Permission:
@@ -36,7 +36,7 @@ Permission:
 ;
  
 ApplicationElementList:
-    {ApplicationElementList} 'Elements' BEGIN elements += ApplicationElement* END
+    {ApplicationElementList} 'Elements' ':' BEGIN elements += ApplicationElement* END
 ;
 
 ApplicationElement:
@@ -44,11 +44,11 @@ ApplicationElement:
 ;
 
 Model:
-	'Model' name = ID
+	'Model' ':' name = ID
 ;
  
 Fragment:
-	'Fragment' name=ID (fragmentAttributes+=FragmentLayoutAttributes)? 
+	'Fragment' ':' name=ID (fragmentAttributes+=FragmentLayoutAttributes)? 
 ;
 
 FragmentLayoutAttributes:
@@ -69,7 +69,7 @@ Dataholders:
 ;
 
 TypeMap:
-	{TypeMap} 'Map' (fragmenttypeattribute = FragmentTypeAttributes)?
+	{TypeMap} 'Map' ':' (BEGIN fragmenttypeattribute = FragmentTypeAttributes END)? 
 ;
 
 TypeSetting:
@@ -81,11 +81,11 @@ FragmentTypeAttributes:
 ;
  
 EditText:
-    'EditText' name=ID
+    'EditText' ':' name=ID
 ;
 
 Spinner:
-	'Spinner' name=ID ('Content' ':' spinnercon += SpinnerCon (',' spinnercon += SpinnerCon)*)?
+	'Spinner' ':' name=ID ('Content' ':' spinnercon += SpinnerCon (',' spinnercon += SpinnerCon)*)?
 ;
 
 SpinnerCon:
@@ -93,11 +93,11 @@ SpinnerCon:
 ;
 
 TextView:
-	'Textview' name=ID 'Content' ':' text = STRING
+	'Textview' ':' name=ID 'Content' ':' text = STRING
 ;
 
 Button:
-    {Button}'Button' name=ID BEGIN (actions += ButtonActions (',' actions += ButtonActions)*)? END
+    {Button}'Button' ':' name=ID BEGIN (actions += ButtonActions (',' actions += ButtonActions)*)? END
 ;
 
 ButtonActions:
@@ -105,19 +105,19 @@ ButtonActions:
 ;
 
 Toast:
-	'Toast' text = STRING
+	'Toast' ':' text = STRING
 ;
 
 Bundle:
-	'Bundle' bundleRecipient = [Fragment] (holder = Holder)?
+	'Bundle' ':' bundleRecipient = [Fragment] (holder = Holder)?
 ;
 
 Holder:
-	'Holder' hol += [Dataholders] (',' hol += [Dataholders])*
+	'Holder' ':' hol += [Dataholders] (',' hol += [Dataholders])*
 ;
 
 FilterQuery:
-    {FilterQuery} 'FilterQuery' name=ID filterAttributes=FilterAttributes
+    {FilterQuery} 'FilterQuery' ':' name=ID filterAttributes=FilterAttributes
 ;
  
 FilterAttributes:

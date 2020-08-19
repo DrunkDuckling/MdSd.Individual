@@ -60,9 +60,13 @@ class ManifestGen extends AbstractGen {
 	// Creates a for loop that generates the permissions needed/specified in the grammar
 	private def String generatePermissions(ApplicationPermissionList permissions) {
 		return  '''
-		«FOR permission : permissions.permissions»
-			<uses-permission android:name="«permission.name»" />
-		«ENDFOR» 
+		«IF permissions.permissions !== null»
+			«FOR permission : permissions.permissions»
+				<uses-permission android:name="«permission.name»" />
+			«ENDFOR» 
+		«ELSE»
+			<!-- No permissions specified in DSL -->
+		«ENDIF»
 		''';
 	}
 	

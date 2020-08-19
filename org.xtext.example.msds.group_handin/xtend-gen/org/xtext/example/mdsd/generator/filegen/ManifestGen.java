@@ -123,12 +123,21 @@ public class ManifestGen extends AbstractGen {
     StringConcatenation _builder = new StringConcatenation();
     {
       EList<Permission> _permissions = permissions.getPermissions();
-      for(final Permission permission : _permissions) {
-        _builder.append("<uses-permission android:name=\"");
-        String _name = permission.getName();
-        _builder.append(_name);
-        _builder.append("\" />");
-        _builder.newLineIfNotEmpty();
+      boolean _tripleNotEquals = (_permissions != null);
+      if (_tripleNotEquals) {
+        {
+          EList<Permission> _permissions_1 = permissions.getPermissions();
+          for(final Permission permission : _permissions_1) {
+            _builder.append("<uses-permission android:name=\"");
+            String _name = permission.getName();
+            _builder.append(_name);
+            _builder.append("\" />");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      } else {
+        _builder.append("<!-- No permissions specified in DSL -->");
+        _builder.newLine();
       }
     }
     return _builder.toString();

@@ -287,7 +287,7 @@ public abstract class AbstractAndroidGeneratorSemanticSequencer extends Abstract
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.DATAHOLDERS__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEditTextAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getEditTextAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -325,8 +325,8 @@ public abstract class AbstractAndroidGeneratorSemanticSequencer extends Abstract
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.FILTER_QUERY__FILTER_ATTRIBUTES));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getFilterQueryAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getFilterQueryAccess().getFilterAttributesFilterAttributesParserRuleCall_3_0(), semanticObject.getFilterAttributes());
+		feeder.accept(grammarAccess.getFilterQueryAccess().getNameIDTerminalRuleCall_3_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getFilterQueryAccess().getFilterAttributesFilterAttributesParserRuleCall_4_0(), semanticObject.getFilterAttributes());
 		feeder.finish();
 	}
 	
@@ -418,7 +418,7 @@ public abstract class AbstractAndroidGeneratorSemanticSequencer extends Abstract
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.APPLICATION_ELEMENT__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getModelAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getModelAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -556,8 +556,8 @@ public abstract class AbstractAndroidGeneratorSemanticSequencer extends Abstract
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.TEXT_VIEW__TEXT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTextViewAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getTextViewAccess().getTextSTRINGTerminalRuleCall_4_0(), semanticObject.getText());
+		feeder.accept(grammarAccess.getTextViewAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getTextViewAccess().getTextSTRINGTerminalRuleCall_5_0(), semanticObject.getText());
 		feeder.finish();
 	}
 	
@@ -576,7 +576,7 @@ public abstract class AbstractAndroidGeneratorSemanticSequencer extends Abstract
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AndroidGeneratorPackage.Literals.TOAST__TEXT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getToastAccess().getTextSTRINGTerminalRuleCall_1_0(), semanticObject.getText());
+		feeder.accept(grammarAccess.getToastAccess().getTextSTRINGTerminalRuleCall_2_0(), semanticObject.getText());
 		feeder.finish();
 	}
 	
